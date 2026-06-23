@@ -134,8 +134,9 @@
   --nova-border-strong: var(--nova-gray-300);
 
   --nova-text: var(--nova-gray-900);
-  --nova-text-muted: var(--nova-gray-500);
-  --nova-text-subtle: var(--nova-gray-400);
+  /* Muted/subtle bumped one step darker for comfortable AA+ readability on light. */
+  --nova-text-muted: var(--nova-gray-600);
+  --nova-text-subtle: var(--nova-gray-500);
   --nova-text-on-brand: var(--nova-gray-0);
 
   --nova-primary: var(--nova-brand-600);

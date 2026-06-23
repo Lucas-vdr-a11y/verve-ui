@@ -49,7 +49,7 @@ body {
 }
 
 .demo-topbar-link {
-  color: var(--nova-text-muted);
+  color: var(--nova-text);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
@@ -57,7 +57,27 @@ body {
 }
 
 .demo-topbar-link:hover {
-  color: var(--nova-text);
+  color: var(--nova-primary-text);
+}
+
+.demo-topbar-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #06281e;
+  background: linear-gradient(120deg, #34d399, #10b981 55%, #2dd4bf);
+  box-shadow: 0 6px 18px -8px rgba(16, 185, 129, 0.8);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.demo-topbar-download:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -8px rgba(16, 185, 129, 0.95);
 }
 
 .demo-logo {
@@ -568,7 +588,7 @@ body {
 
 .nv-link {
   align-self: flex-start;
-  color: var(--nova-primary);
+  color: var(--nova-primary-text);
   font-weight: 650;
   text-decoration: none;
 }
@@ -764,8 +784,8 @@ body {
 }
 
 .nv-chip--more {
-  color: var(--nova-primary);
-  background: color-mix(in srgb, var(--nova-primary) 12%, transparent);
+  color: var(--nova-primary-text);
+  background: color-mix(in srgb, var(--nova-primary) 14%, transparent);
 }
 
 .nv-empty {
@@ -855,7 +875,7 @@ body {
   white-space: pre;
 }
 
-.nv-code__c { color: #6b74a3; }
+.nv-code__c { color: #8b93bf; }
 .nv-code__k { color: #2dd4bf; }
 .nv-code__s { color: #7ee0c0; }
 .nv-code__t { color: #5eead4; }

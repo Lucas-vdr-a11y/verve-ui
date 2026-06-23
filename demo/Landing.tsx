@@ -5,7 +5,7 @@ import {
   TOTAL_CATEGORIES,
   SIGNATURE_COUNT,
 } from "./catalog.generated";
-import { REPO_URL, DOCS_URL, categoryHref } from "./site";
+import { REPO_URL, DOCS_URL, DOWNLOAD_URL, categoryHref } from "./site";
 
 /* ---------------------------------------------------------------- *
  * Robust count-up stat — shows the final number by default (so it is
@@ -97,7 +97,10 @@ function Hero() {
         </p>
 
         <div className="nv-hero__cta">
-          <a className="nv-btn nv-btn--primary" href="#overview">
+          <a className="nv-btn nv-btn--primary" href={DOWNLOAD_URL} download>
+            ⤓ Download everything (.zip)
+          </a>
+          <a className="nv-btn nv-btn--ghost" href="#overview">
             Explore components
           </a>
           <a
@@ -106,7 +109,7 @@ function Hero() {
             target="_blank"
             rel="noreferrer"
           >
-            <span className="nv-btn__star">★</span> View on GitHub
+            <span className="nv-btn__star">★</span> GitHub
           </a>
           <a
             className="nv-btn nv-btn--text"

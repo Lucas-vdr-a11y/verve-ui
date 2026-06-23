@@ -6,6 +6,8 @@ export const REPO_URL = `https://github.com/${GITHUB_USER}/${REPO}`;
 export const PAGES_URL = `https://${GITHUB_USER.toLowerCase()}.github.io/${REPO}/`;
 export const DOCS_URL = `${REPO_URL}/blob/main/docs/COMPONENTS.md`;
 export const CONTRACT_URL = `${REPO_URL}/blob/main/CONTRACT.md`;
+/** One-click download of the entire repo (all 660 components + source) as a zip. */
+export const DOWNLOAD_URL = `${REPO_URL}/archive/refs/heads/main.zip`;
 
 /**
  * Map a catalog category key to the id of its live demo section, when one

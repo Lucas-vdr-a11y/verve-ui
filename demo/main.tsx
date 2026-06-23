@@ -11,7 +11,7 @@ import {
 } from "../src/index";
 import "./demo.css";
 import { Landing } from "./Landing";
-import { REPO_URL, DOCS_URL, CONTRACT_URL } from "./site";
+import { REPO_URL, DOCS_URL, CONTRACT_URL, DOWNLOAD_URL } from "./site";
 import {
   InputsSection,
   LayoutSection,
@@ -87,6 +87,9 @@ function TopBar() {
           rel="noreferrer"
         >
           GitHub ↗
+        </a>
+        <a className="demo-topbar-download" href={DOWNLOAD_URL} download>
+          ⤓ Download
         </a>
         <Button variant="outline" tone="neutral" size="sm" onClick={toggle}>
           {resolvedTheme === "dark" ? "☀ Light" : "🌙 Dark"}
@@ -180,7 +183,13 @@ function App() {
   );
 }
 
-createRoot(document.getElementById("root")!).render(
+// Reuse the root across HMR / repeated entry execution so we never call
+// createRoot twice on the same container (avoids the React dev warning and
+// the re-mount that would restart the hero count-up).
+const container = document.getElementById("root")!;
+const w = window as unknown as { __verveRoot?: ReturnType<typeof createRoot> };
+const root = w.__verveRoot ?? (w.__verveRoot = createRoot(container));
+root.render(
   <StrictMode>
     <App />
   </StrictMode>
