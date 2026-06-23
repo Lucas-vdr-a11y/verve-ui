@@ -23,8 +23,8 @@
   transform: translateX(var(--nova-glow-menu-x, 0));
   border-radius: var(--nova-radius-full);
   background: var(--nova-primary-subtle);
-  box-shadow: 0 0 0 1px rgb(99 102 241 / 0.25),
-    0 0 18px 1px rgb(99 102 241 / 0.35);
+  box-shadow: 0 0 0 1px rgb(16 185 129 / 0.25),
+    0 0 18px 1px rgb(16 185 129 / 0.35);
   opacity: 0;
   pointer-events: none;
   transition: transform var(--nova-duration-base) var(--nova-ease-out),

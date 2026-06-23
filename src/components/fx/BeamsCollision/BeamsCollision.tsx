@@ -74,7 +74,7 @@ export const BeamsCollision = forwardRef<HTMLDivElement, BeamsCollisionProps>(
       const probe = document.createElement("span");
       probe.style.color = color;
       root.appendChild(probe);
-      const resolved = getComputedStyle(probe).color || "rgba(99,102,241,1)";
+      const resolved = getComputedStyle(probe).color || "rgba(16, 185, 129,1)";
       root.removeChild(probe);
 
       let dpr = Math.min(window.devicePixelRatio || 1, 2);

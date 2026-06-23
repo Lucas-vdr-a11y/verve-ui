@@ -42,7 +42,7 @@ export const CanvasRevealCard = forwardRef<
     reveal,
     dotGap = 16,
     dotSize = 2,
-    dotColor = "rgb(99 102 241 / 0.9)",
+    dotColor = "rgb(16 185 129 / 0.9)",
     className,
     ...rest
   },

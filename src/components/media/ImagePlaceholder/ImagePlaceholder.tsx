@@ -16,7 +16,7 @@ export interface ImagePlaceholderProps
   color?: string;
   /**
    * Gradient placeholder, used as `background`. When set, takes precedence over
-   * `color`. e.g. `"linear-gradient(135deg, #6366f1, #0ea5e9)"`.
+   * `color`. e.g. `"linear-gradient(135deg, #10b981, #0ea5e9)"`.
    */
   gradient?: string;
   /** Called once the real image has loaded. */

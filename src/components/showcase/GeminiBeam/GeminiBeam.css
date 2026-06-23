@@ -14,7 +14,7 @@
 }
 
 .nova-gemini-beam__path {
-  filter: drop-shadow(0 0 6px rgb(99 102 241 / 0.45));
+  filter: drop-shadow(0 0 6px rgb(16 185 129 / 0.45));
   transition: stroke-dashoffset var(--nova-duration-fast) linear;
 }
 

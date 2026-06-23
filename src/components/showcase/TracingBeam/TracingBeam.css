@@ -51,7 +51,7 @@
   transform: translate(-50%, -50%);
   border-radius: var(--nova-radius-full);
   background: var(--nova-tracing-beam-color);
-  box-shadow: 0 0 0 4px rgb(99 102 241 / 0.18),
+  box-shadow: 0 0 0 4px rgb(16 185 129 / 0.18),
     0 0 12px 2px var(--nova-tracing-beam-color);
   transition: top var(--nova-duration-fast) linear;
   will-change: top;

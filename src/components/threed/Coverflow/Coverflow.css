@@ -83,7 +83,7 @@
 
 /* Floor reflection cue via gradient under active cover. */
 .nova-coverflow__item--active .nova-coverflow__cover {
-  box-shadow: var(--nova-shadow-xl), 0 0 32px rgb(99 102 241 / 0.2);
+  box-shadow: var(--nova-shadow-xl), 0 0 32px rgb(16 185 129 / 0.2);
 }
 
 .nova-coverflow__arrows {

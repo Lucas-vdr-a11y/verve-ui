@@ -38,7 +38,7 @@
   color: var(--nova-text);
   border: 1px solid var(--nova-border);
   border-radius: var(--nova-radius-md);
-  box-shadow: var(--nova-shadow-md), inset 0 0 0 1px rgb(99 102 241 / 0.05);
+  box-shadow: var(--nova-shadow-md), inset 0 0 0 1px rgb(16 185 129 / 0.05);
   overflow: hidden;
   backface-visibility: hidden;
 }

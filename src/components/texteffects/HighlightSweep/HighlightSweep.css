@@ -1,5 +1,5 @@
 .nova-highlight-sweep {
-  --nova-highlight-sweep-color: rgb(99 102 241 / 0.28);
+  --nova-highlight-sweep-color: rgb(16 185 129 / 0.28);
   position: relative;
   display: inline-block;
   font-family: inherit;
@@ -8,7 +8,7 @@
 }
 
 [data-theme="dark"] .nova-highlight-sweep {
-  --nova-highlight-sweep-color: rgb(129 140 248 / 0.35);
+  --nova-highlight-sweep-color: rgb(52 211 153 / 0.35);
 }
 
 .nova-highlight-sweep__text {

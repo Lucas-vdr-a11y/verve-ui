@@ -41,7 +41,7 @@
   background: var(--nova-primary);
   box-shadow:
     0 0 8px 1px var(--nova-primary),
-    0 0 16px 2px rgb(99 102 241 / 0.55);
+    0 0 16px 2px rgb(16 185 129 / 0.55);
 }
 
 .nova-tubelight-nav--glow-top .nova-tubelight-nav__bar {
@@ -62,8 +62,8 @@
   border-radius: var(--nova-radius-full);
   background: radial-gradient(
     50% 60% at 50% 50%,
-    rgb(99 102 241 / 0.45) 0%,
-    rgb(99 102 241 / 0) 70%
+    rgb(16 185 129 / 0.45) 0%,
+    rgb(16 185 129 / 0) 70%
   );
   filter: blur(6px);
 }

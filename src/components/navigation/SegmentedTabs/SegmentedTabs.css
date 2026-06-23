@@ -35,8 +35,8 @@
   background: var(--nova-surface);
   box-shadow:
     var(--nova-shadow-sm),
-    0 0 0 1px rgb(99 102 241 / 0.12),
-    0 0 12px 0 rgb(99 102 241 / 0.22);
+    0 0 0 1px rgb(16 185 129 / 0.12),
+    0 0 12px 0 rgb(16 185 129 / 0.22);
   transition:
     transform var(--nova-duration-base) var(--nova-ease-spring),
     width var(--nova-duration-base) var(--nova-ease-spring),
@@ -48,8 +48,8 @@
 .nova-segmented-tabs--pressed .nova-segmented-tabs__thumb {
   box-shadow:
     var(--nova-shadow-xs),
-    0 0 0 1px rgb(99 102 241 / 0.18),
-    0 0 6px 0 rgb(99 102 241 / 0.28);
+    0 0 0 1px rgb(16 185 129 / 0.18),
+    0 0 6px 0 rgb(16 185 129 / 0.28);
 }
 
 .nova-segmented-tabs__segment {

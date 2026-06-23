@@ -14,7 +14,7 @@ export interface TextHoverFillProps
   fontSize?: number;
 }
 
-const DEFAULT_COLORS = ["#eab308", "#ef4444", "#3b82f6", "#06b6d4", "#8b5cf6"];
+const DEFAULT_COLORS = ["#eab308", "#ef4444", "#3b82f6", "#06b6d4", "#14b8a6"];
 
 /**
  * TextHoverFill — SVG outline text whose gradient fill is revealed through a

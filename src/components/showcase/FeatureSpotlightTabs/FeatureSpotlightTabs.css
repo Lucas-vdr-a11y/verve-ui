@@ -100,7 +100,7 @@
   width: 100%;
   transform-origin: left center;
   background: var(--nova-primary);
-  box-shadow: 0 0 8px rgb(99 102 241 / 0.5);
+  box-shadow: 0 0 8px rgb(16 185 129 / 0.5);
   animation: nova-feature-tabs-progress
     var(--nova-feature-tabs-interval, 5000ms) linear forwards;
 }

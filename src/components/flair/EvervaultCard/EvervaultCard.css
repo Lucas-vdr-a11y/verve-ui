@@ -21,8 +21,8 @@
   opacity: 0;
   background: radial-gradient(
     220px circle at var(--nova-evervault-x) var(--nova-evervault-y),
-    rgb(99 102 241 / 0.5),
-    rgb(168 85 247 / 0.3) 45%,
+    rgb(16 185 129 / 0.5),
+    rgb(20 184 166 / 0.3) 45%,
     transparent 75%
   );
   transition: opacity var(--nova-duration-base) var(--nova-ease);

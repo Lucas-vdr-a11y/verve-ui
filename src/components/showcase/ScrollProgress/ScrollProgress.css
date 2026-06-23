@@ -30,7 +30,7 @@
   transform-origin: left center;
   transform: scaleX(0);
   background: var(--nova-scroll-progress-color);
-  box-shadow: 0 0 8px rgb(99 102 241 / 0.5);
+  box-shadow: 0 0 8px rgb(16 185 129 / 0.5);
   transition: transform var(--nova-duration-fast) linear;
   will-change: transform;
 }

@@ -48,7 +48,7 @@
 .nova-card-stack:not(.nova-card-stack--reduced)
   .nova-card-stack__card--top:hover {
   transform: translateY(-16px) translateZ(48px) rotateX(6deg) scale(1.02);
-  box-shadow: var(--nova-shadow-xl), 0 0 32px rgb(99 102 241 / 0.18);
+  box-shadow: var(--nova-shadow-xl), 0 0 32px rgb(16 185 129 / 0.18);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -67,11 +67,11 @@ export const CanvasRevealEffect = forwardRef<
       const probe = document.createElement("span");
       probe.style.color = c;
       root.appendChild(probe);
-      const resolved = getComputedStyle(probe).color || "rgba(99,102,241,1)";
+      const resolved = getComputedStyle(probe).color || "rgba(16, 185, 129,1)";
       root.removeChild(probe);
       return resolved;
     });
-    if (palette.length === 0) palette.push("rgba(99,102,241,1)");
+    if (palette.length === 0) palette.push("rgba(16, 185, 129,1)");
 
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
     let w = 0;

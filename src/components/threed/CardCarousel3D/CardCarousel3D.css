@@ -68,7 +68,7 @@
 
 .nova-carousel3d__card--front .nova-carousel3d__face {
   filter: none;
-  box-shadow: var(--nova-shadow-xl), 0 0 30px rgb(99 102 241 / 0.18);
+  box-shadow: var(--nova-shadow-xl), 0 0 30px rgb(16 185 129 / 0.18);
 }
 
 @media (prefers-reduced-motion: reduce) {

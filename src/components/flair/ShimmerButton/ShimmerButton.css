@@ -39,11 +39,11 @@
 
 .nova-shimmer--glow {
   box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08),
-    0 6px 20px -6px rgb(99 102 241 / 0.55);
+    0 6px 20px -6px rgb(16 185 129 / 0.55);
 }
 .nova-shimmer--glow:hover {
   box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12),
-    0 10px 32px -6px rgb(99 102 241 / 0.75);
+    0 10px 32px -6px rgb(16 185 129 / 0.75);
 }
 
 .nova-shimmer:active {

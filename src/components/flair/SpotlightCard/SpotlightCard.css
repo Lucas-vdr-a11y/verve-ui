@@ -3,7 +3,7 @@
   --nova-spotlight-y: 50%;
   --nova-spotlight-size: 220px;
   --nova-spotlight-opacity: 0;
-  --nova-spotlight-color: rgb(99 102 241 / 0.35);
+  --nova-spotlight-color: rgb(16 185 129 / 0.35);
 
   position: relative;
   min-width: 14rem;

@@ -33,7 +33,7 @@
   background: radial-gradient(
     var(--nova-spotlight-radius, 260px) circle at var(--nova-spotlight-x)
       var(--nova-spotlight-y),
-    rgb(99 102 241 / 0.28),
+    rgb(16 185 129 / 0.28),
     transparent 70%
   );
   transition: opacity var(--nova-duration-base) var(--nova-ease);
@@ -48,7 +48,7 @@
   opacity: 1;
   background: radial-gradient(
     var(--nova-spotlight-radius, 260px) circle at 50% 20%,
-    rgb(99 102 241 / 0.2),
+    rgb(16 185 129 / 0.2),
     transparent 70%
   );
 }

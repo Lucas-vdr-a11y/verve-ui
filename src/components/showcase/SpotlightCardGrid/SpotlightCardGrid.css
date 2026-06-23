@@ -2,7 +2,7 @@
   --nova-spotlight-grid-x: 50%;
   --nova-spotlight-grid-y: 50%;
   --nova-spotlight-grid-opacity: 0;
-  --nova-spotlight-grid-color: rgb(99 102 241 / 0.35);
+  --nova-spotlight-grid-color: rgb(16 185 129 / 0.35);
   position: relative;
   display: grid;
   grid-template-columns: repeat(var(--nova-spotlight-grid-columns), minmax(0, 1fr));
@@ -10,7 +10,7 @@
 }
 
 [data-theme="dark"] .nova-spotlight-grid {
-  --nova-spotlight-grid-color: rgb(129 140 248 / 0.4);
+  --nova-spotlight-grid-color: rgb(52 211 153 / 0.4);
 }
 
 .nova-spotlight-grid__card {

@@ -61,8 +61,8 @@
   transform: translateX(-1px);
   background: var(--nova-primary);
   box-shadow:
-    0 0 8px rgb(99 102 241 / 0.6),
-    0 0 18px rgb(99 102 241 / 0.4);
+    0 0 8px rgb(16 185 129 / 0.6),
+    0 0 18px rgb(16 185 129 / 0.4);
   z-index: 2;
 }
 
@@ -76,7 +76,7 @@
   border-radius: var(--nova-radius-full);
   background: var(--nova-surface-raised);
   border: 2px solid var(--nova-primary);
-  box-shadow: var(--nova-shadow-md), 0 0 12px rgb(99 102 241 / 0.5);
+  box-shadow: var(--nova-shadow-md), 0 0 12px rgb(16 185 129 / 0.5);
 }
 
 .nova-compare-reveal__handle::before,

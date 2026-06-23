@@ -35,12 +35,12 @@ export interface SpinWheelProps
 }
 
 const PALETTE = [
-  "#6366f1",
+  "#10b981",
   "#f59e0b",
   "#22c55e",
   "#ef4444",
   "#0ea5e9",
-  "#a855f7",
+  "#14b8a6",
   "#ec4899",
   "#14b8a6",
 ];

@@ -61,7 +61,7 @@
   opacity: 0;
   background: radial-gradient(
     18rem 18rem at var(--nova-bento-x) var(--nova-bento-y),
-    rgb(99 102 241 / 0.16),
+    rgb(16 185 129 / 0.16),
     transparent 70%
   );
   transition: opacity var(--nova-duration-base) var(--nova-ease-out);

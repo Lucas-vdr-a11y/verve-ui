@@ -65,7 +65,7 @@
 
 .nova-scroll-timeline__entry[data-visible] .nova-scroll-timeline__dot {
   border-color: var(--nova-primary);
-  box-shadow: 0 0 0 4px rgb(99 102 241 / 0.18);
+  box-shadow: 0 0 0 4px rgb(16 185 129 / 0.18);
 }
 
 .nova-scroll-timeline__card {

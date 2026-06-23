@@ -21,8 +21,8 @@
   background: conic-gradient(
     from var(--nova-glow-angle) at 50% 50%,
     transparent 0deg,
-    rgb(99 102 241 / 0.9) calc(var(--nova-glow-spread) * 0.5),
-    rgb(168 85 247 / 0.9) var(--nova-glow-spread),
+    rgb(16 185 129 / 0.9) calc(var(--nova-glow-spread) * 0.5),
+    rgb(20 184 166 / 0.9) var(--nova-glow-spread),
     transparent calc(var(--nova-glow-spread) * 2)
   );
   /* Keep the glow only on the padding/border ring. */

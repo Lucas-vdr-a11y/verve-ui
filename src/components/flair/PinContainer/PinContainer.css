@@ -99,7 +99,7 @@ a.nova-pin-container__card:focus-visible {
   color: var(--nova-text-on-brand);
   font: var(--nova-font-semibold) var(--nova-text-xs) / 1.2 var(--nova-font-sans);
   white-space: nowrap;
-  box-shadow: 0 4px 14px rgb(99 102 241 / 0.4);
+  box-shadow: 0 4px 14px rgb(16 185 129 / 0.4);
 }
 
 .nova-pin-container__pin-line {
@@ -118,14 +118,14 @@ a.nova-pin-container__card:focus-visible {
   width: var(--nova-space-4);
   height: var(--nova-space-4);
   border-radius: var(--nova-radius-full);
-  border: 1px solid rgb(99 102 241 / 0.5);
+  border: 1px solid rgb(16 185 129 / 0.5);
   transform: translateY(50%);
 }
 
 .nova-pin-container__pin-ring--2 {
   width: var(--nova-space-8);
   height: var(--nova-space-8);
-  border-color: rgb(99 102 241 / 0.25);
+  border-color: rgb(16 185 129 / 0.25);
 }
 
 @media (prefers-reduced-motion: reduce) {
