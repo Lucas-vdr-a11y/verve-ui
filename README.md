@@ -20,6 +20,8 @@ fully token-driven, light/dark out of the box, accessible and SSR-safe by defaul
 
 ### [▶&nbsp; Live demo &amp; component overview ↗](https://lucas-vdr-a11y.github.io/nova-ui/)
 
+[🎬 Launch film](https://lucas-vdr-a11y.github.io/nova-ui/launch.html) · [📖 Component index](docs/COMPONENTS.md) · [🚀 v0.1.0 release](https://github.com/Lucas-vdr-a11y/nova-ui/releases/tag/v0.1.0)
+
 </div>
 
 ```bash

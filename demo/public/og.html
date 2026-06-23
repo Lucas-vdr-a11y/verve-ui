@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; font-family: "Inter", system-ui, sans-serif; }
+  .card { position: relative; width: 1200px; height: 630px; overflow: hidden;
+    background: radial-gradient(130% 130% at 50% 0%, #0c1026 0%, #05060f 55%, #04050c 100%);
+    color: #eef1ff; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(70px); }
+  .b1 { width: 720px; height: 600px; left: -160px; top: -180px; background: radial-gradient(circle, #4f46e5cc, transparent 62%); }
+  .b2 { width: 760px; height: 620px; right: -200px; top: -160px; background: radial-gradient(circle, #a855f7c0, transparent 62%); }
+  .b3 { width: 820px; height: 560px; left: 28%; bottom: -300px; background: radial-gradient(circle, #22d3ee99, transparent 60%); }
+  .grid { position: absolute; inset: 0;
+    background-image: linear-gradient(#ffffff0d 1px, transparent 1px), linear-gradient(90deg, #ffffff0d 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(110% 80% at 50% 40%, #000 35%, transparent 78%); }
+  .inner { position: relative; z-index: 2; text-align: center; }
+  .brand { display: flex; align-items: center; justify-content: center; gap: 24px; }
+  .mark { width: 96px; height: 96px; border-radius: 24px; display: flex; align-items: center; justify-content: center;
+    font-size: 54px; font-weight: 900; color: #0a0d1c;
+    background: linear-gradient(135deg, #a5b4fc, #818cf8 45%, #c4b5fd); box-shadow: 0 24px 60px -16px #818cf8aa; }
+  .word { font-size: 104px; font-weight: 900; letter-spacing: -4px;
+    background: linear-gradient(120deg, #ffffff, #c7d2fe 60%, #a78bfa);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .tag { margin-top: 30px; font-size: 36px; font-weight: 700; letter-spacing: -0.5px; color: #dfe4ff; }
+  .tag b { background: linear-gradient(120deg, #818cf8, #e879f9 60%, #22d3ee);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .pills { margin-top: 44px; display: flex; gap: 18px; justify-content: center; }
+  .pill { padding: 14px 26px; border-radius: 999px; font-size: 24px; font-weight: 600; color: #e7eaff;
+    border: 1px solid #ffffff22; background: #ffffff0e; }
+  .pill b { color: #c7d2fe; font-weight: 800; } .pill.g b { color: #5eead4; }
+  .url { position: absolute; bottom: 36px; left: 0; right: 0; text-align: center;
+    font: 600 24px "JetBrains Mono", monospace; color: #8e97c4; z-index: 2; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="grid"></div>
+    <div class="inner">
+      <div class="brand"><div class="mark">N</div><div class="word">Nova UI</div></div>
+      <div class="tag">The React UI kit with <b>signature motion</b></div>
+      <div class="pills">
+        <div class="pill"><b>660</b> components</div>
+        <div class="pill"><b>28</b> categories</div>
+        <div class="pill g"><b>0</b> runtime deps</div>
+      </div>
+    </div>
+    <div class="url">lucas-vdr-a11y.github.io/nova-ui</div>
+  </div>
+</body>
+</html>
