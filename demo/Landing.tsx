@@ -59,6 +59,10 @@ function Hero() {
           </a>
         </div>
 
+        <a className="lp-hero__film" href={`${import.meta.env.BASE_URL}launch.html`}>
+          ▶ Watch the 34-second launch film
+        </a>
+
         <dl className="lp-stats">
           <div className="lp-stat">
             <dt>

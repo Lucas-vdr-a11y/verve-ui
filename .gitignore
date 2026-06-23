@@ -13,6 +13,10 @@ demo/dist/
 .DS_Store
 Thumbs.db
 
+# Media render artifacts (the launch MP4 is distributed via GitHub Releases)
+.render-frames/
+*.mp4
+
 # Logs & env
 *.log
 npm-debug.log*

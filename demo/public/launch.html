@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nova UI — Launch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root { --s: 1; }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; height: 100%; overflow: hidden;
+    background: #04050c;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+  }
+  body { display: flex; align-items: center; justify-content: center; }
+  #stage {
+    position: relative; flex: 0 0 auto;
+    width: 1920px; height: 1080px;
+    transform: scale(var(--s));
+    transform-origin: center center;
+    background: radial-gradient(120% 120% at 50% 0%, #0b0f24 0%, #05060f 55%, #04050c 100%);
+    overflow: hidden;
+    color: #eef1ff;
+  }
+
+  /* Ambient aurora */
+  .aurora { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.55; will-change: transform; }
+  .a1 { width: 1100px; height: 900px; left: -200px; top: -260px;
+        background: radial-gradient(circle, #4f46e5 0%, transparent 62%); }
+  .a2 { width: 1200px; height: 980px; right: -300px; top: -200px;
+        background: radial-gradient(circle, #a855f7 0%, transparent 62%); }
+  .a3 { width: 1300px; height: 900px; left: 30%; bottom: -440px;
+        background: radial-gradient(circle, #22d3ee 0%, transparent 60%); opacity: 0.4; }
+
+  .grid-overlay {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(#ffffff0a 1px, transparent 1px),
+      linear-gradient(90deg, #ffffff0a 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(120% 90% at 50% 40%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(120% 90% at 50% 40%, #000 30%, transparent 75%);
+  }
+  .vignette { position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(120% 80% at 50% 45%, transparent 40%, #04050cd0 100%); }
+
+  .scene { position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; will-change: opacity; }
+
+  /* Brand */
+  .brand { display: flex; align-items: center; gap: 28px; }
+  .mark { width: 116px; height: 116px; border-radius: 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 64px; font-weight: 900; color: #0a0d1c;
+    background: linear-gradient(135deg, #a5b4fc, #818cf8 45%, #c4b5fd);
+    box-shadow: 0 30px 80px -20px #818cf8aa; }
+  .word { font-size: 116px; font-weight: 900; letter-spacing: -4px;
+    background: linear-gradient(120deg, #ffffff, #c7d2fe 60%, #a78bfa);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+  .tagline { margin-top: 38px; font-size: 44px; font-weight: 700; letter-spacing: -1px; color: #dfe4ff; }
+  .grad { background: linear-gradient(120deg, #818cf8, #e879f9 60%, #22d3ee);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+  .stats { margin-top: 64px; display: flex; gap: 90px; }
+  .stat { display: flex; flex-direction: column; gap: 8px; }
+  .num { font-size: 92px; font-weight: 900; letter-spacing: -3px; color: #c7d2fe;
+    font-variant-numeric: tabular-nums; line-height: 1; }
+  .num.green { color: #5eead4; }
+  .lbl { font-size: 22px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #8893c0; }
+
+  /* Montage */
+  .montage-title { position: absolute; top: 150px; left: 0; right: 0;
+    font-size: 40px; font-weight: 800; letter-spacing: -1px; color: #eef1ff; }
+  .montage-sub { position: absolute; top: 214px; left: 0; right: 0; font-size: 22px; color: #8893c0; font-weight: 500; }
+  .chips { position: absolute; inset: 300px 200px 160px; display: flex; flex-wrap: wrap;
+    align-content: center; justify-content: center; gap: 22px; }
+  .chip { padding: 20px 34px; border-radius: 999px; font-size: 30px; font-weight: 700;
+    color: #e7eaff; border: 1px solid #ffffff1f; background: #ffffff0d;
+    backdrop-filter: blur(6px); will-change: transform, opacity; }
+  .chip .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%;
+    margin-right: 14px; vertical-align: middle;
+    background: linear-gradient(135deg, #818cf8, #c4b5fd); }
+
+  /* Code */
+  .codecard { width: 1180px; border-radius: 22px; overflow: hidden;
+    background: #0a0d1ae6; border: 1px solid #ffffff1a;
+    box-shadow: 0 60px 120px -40px #000, 0 0 0 1px #6366f130; }
+  .codebar { height: 60px; display: flex; align-items: center; gap: 12px; padding: 0 26px;
+    background: #11142a; border-bottom: 1px solid #ffffff12; }
+  .codebar i { width: 16px; height: 16px; border-radius: 50%; display: inline-block; }
+  .codebar .r { background: #ff5f57; } .codebar .y { background: #febc2e; } .codebar .g { background: #28c840; }
+  .codebar span { margin-left: 14px; color: #8893c0; font: 600 20px "JetBrains Mono", monospace; }
+  pre#codetext { margin: 0; padding: 44px 48px; min-height: 420px;
+    font: 500 34px/1.6 "JetBrains Mono", ui-monospace, monospace; color: #d6dcff; text-align: left; white-space: pre-wrap; }
+  pre#codetext .k { color: #c4b5fd; } pre#codetext .s { color: #7ee0c0; } pre#codetext .c { color: #6b74a3; } pre#codetext .t { color: #93c5fd; }
+  .caret { display: inline-block; width: 16px; height: 36px; transform: translateY(6px);
+    background: #a5b4fc; margin-left: 4px; }
+
+  /* CTA */
+  .cta-word { font-size: 180px; font-weight: 900; letter-spacing: -7px;
+    background: linear-gradient(120deg, #ffffff, #c7d2fe 55%, #a78bfa);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .cta-sub { margin-top: 18px; font-size: 34px; font-weight: 600; color: #aeb6e0; letter-spacing: 0.5px; }
+  .cta-url { margin-top: 54px; font: 700 38px "JetBrains Mono", monospace; color: #eef1ff;
+    padding: 20px 46px; border-radius: 999px; border: 1px solid #818cf855;
+    background: linear-gradient(120deg, #6366f126, #a855f726); }
+
+  .replay { position: absolute; right: 28px; bottom: 24px; z-index: 50;
+    font-size: 18px; font-weight: 600; color: #c7d2fe; cursor: pointer; opacity: 0;
+    padding: 10px 18px; border-radius: 999px; border: 1px solid #ffffff2a; background: #ffffff10;
+    transition: opacity .3s; }
+  body.capture .replay { display: none; }
+</style>
+</head>
+<body>
+  <div id="stage">
+    <div class="aurora a1"></div>
+    <div class="aurora a2"></div>
+    <div class="aurora a3"></div>
+    <div class="grid-overlay"></div>
+
+    <section class="scene" id="hero">
+      <div class="brand">
+        <div class="mark">N</div>
+        <div class="word">Nova UI</div>
+      </div>
+      <div class="tagline">The React UI kit with <span class="grad">signature motion</span></div>
+      <div class="stats" id="stats">
+        <div class="stat"><div class="num" data-t="660">0</div><div class="lbl">components</div></div>
+        <div class="stat"><div class="num" data-t="28">0</div><div class="lbl">categories</div></div>
+        <div class="stat"><div class="num" data-t="10">0</div><div class="lbl">signature sets</div></div>
+        <div class="stat"><div class="num green" data-t="0">0</div><div class="lbl">runtime deps</div></div>
+      </div>
+    </section>
+
+    <section class="scene" id="montage">
+      <div class="montage-title">From everyday inputs to aurora backgrounds</div>
+      <div class="montage-sub">28 categories. One cohesive, dependency-free system.</div>
+      <div class="chips" id="chips"></div>
+    </section>
+
+    <section class="scene" id="code">
+      <div class="codecard">
+        <div class="codebar"><i class="r"></i><i class="y"></i><i class="g"></i><span>App.tsx</span></div>
+        <pre id="codetext"></pre>
+      </div>
+    </section>
+
+    <section class="scene" id="cta">
+      <div class="cta-word">Nova UI</div>
+      <div class="cta-sub">660 components · 28 categories · MIT · zero dependencies</div>
+      <div class="cta-url">github.com/Lucas-vdr-a11y/nova-ui</div>
+    </section>
+
+    <div class="vignette"></div>
+    <div class="replay" id="replay">↻ Replay</div>
+  </div>
+
+<script>
+(() => {
+  const DURATION = 34;          // seconds
+  const params = new URLSearchParams(location.search);
+  const CAPTURE = params.has("capture");
+  if (CAPTURE) document.body.classList.add("capture");
+
+  const stage = document.getElementById("stage");
+  const el = (id) => document.getElementById(id);
+
+  // ---- fit-to-viewport scaling ----
+  function fit() {
+    const s = Math.min(innerWidth / 1920, innerHeight / 1080);
+    document.documentElement.style.setProperty("--s", s);
+  }
+  addEventListener("resize", fit); fit();
+
+  // ---- math helpers ----
+  const clamp01 = (x) => x < 0 ? 0 : x > 1 ? 1 : x;
+  const phase = (t, a, b) => clamp01((t - a) / (b - a));
+  const easeOut = (x) => 1 - Math.pow(1 - x, 3);
+  const easeInOut = (x) => x < 0.5 ? 4*x*x*x : 1 - Math.pow(-2*x+2, 3)/2;
+  // visible(t, in0,in1, out0,out1): fade in then out
+  const band = (t, i0, i1, o0, o1) => Math.min(phase(t, i0, i1), 1 - phase(t, o0, o1));
+
+  // ---- montage chips ----
+  const CHIPS = [
+    "Aurora Backgrounds","Kinetic Type","Magnetic Buttons","Bento Grids","Tracing Beams",
+    "Particles","Meteors","Tilt Cards","Loaders","Device Mockups","3D Cards","Charts",
+    "Command Palette","Confetti","Spotlight","Marquee","Scratch Reveal","Cursor FX",
+    "Gamification","Data Tables"
+  ];
+  const chipsWrap = el("chips");
+  const chipEls = CHIPS.map((label) => {
+    const c = document.createElement("div");
+    c.className = "chip";
+    c.innerHTML = '<span class="dot"></span>' + label;
+    chipsWrap.appendChild(c);
+    return c;
+  });
+
+  // ---- code typing ----
+  // tokenized lines: array of {text, cls}
+  const CODE = [
+    [["$ ", "c"], ["npm install ", ""], ["@nova/ui", "s"]],
+    [["", ""]],
+    [["import ", "k"], ["{ Button, AuroraBackground } ", ""], ["from ", "k"], ['"@nova/ui"', "s"], [";", ""]],
+    [["import ", "k"], ['"@nova/ui/styles.css"', "s"], [";", ""]],
+    [["", ""]],
+    [["<", ""], ["AuroraBackground", "t"], [">", ""]],
+    [["  <", ""], ["Button", "t"], [" tone=", ""], ['"primary"', "s"], [">Ship something beautiful</", ""], ["Button", "t"], [">", ""]],
+    [["</", ""], ["AuroraBackground", "t"], [">", ""]],
+  ];
+  // Flatten to a list of {char, cls} for progressive reveal, preserving line breaks.
+  const FLAT = [];
+  CODE.forEach((line, li) => {
+    line.forEach(([txt, cls]) => { for (const ch of txt) FLAT.push({ ch, cls }); });
+    if (li < CODE.length - 1) FLAT.push({ ch: "\n", cls: "" });
+  });
+  const codeEl = el("codetext");
+  function renderCode(n, showCaret) {
+    let html = ""; let cur = null; let buf = "";
+    const flush = () => { if (buf) { html += cur ? `<span class="${cur}">${esc(buf)}</span>` : esc(buf); buf=""; } };
+    for (let i = 0; i < n; i++) {
+      const { ch, cls } = FLAT[i];
+      if (cls !== cur) { flush(); cur = cls; }
+      buf += ch;
+    }
+    flush();
+    if (showCaret) html += '<span class="caret"></span>';
+    codeEl.innerHTML = html;
+  }
+  const esc = (s) => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+  const sceneEls = { hero: el("hero"), montage: el("montage"), code: el("code"), cta: el("cta") };
+  const auroras = [document.querySelector(".a1"), document.querySelector(".a2"), document.querySelector(".a3")];
+  const nums = [...document.querySelectorAll(".num")];
+  const brand = document.querySelector(".brand");
+  const tagline = document.querySelector(".tagline");
+  const statsWrap = el("stats");
+  const mTitle = document.querySelector(".montage-title");
+  const mSub = document.querySelector(".montage-sub");
+  const codeCard = document.querySelector(".codecard");
+  const ctaWord = document.querySelector(".cta-word");
+  const ctaSub = document.querySelector(".cta-sub");
+  const ctaUrl = document.querySelector(".cta-url");
+
+  function renderAt(t) {
+    // Ambient aurora drift (deterministic in t)
+    auroras[0].style.transform = `translate(${Math.sin(t*0.35)*60}px, ${Math.cos(t*0.3)*40}px)`;
+    auroras[1].style.transform = `translate(${Math.cos(t*0.28)*70}px, ${Math.sin(t*0.33)*46}px)`;
+    auroras[2].style.transform = `translate(${Math.sin(t*0.24+1)*80}px, ${Math.cos(t*0.27)*38}px)`;
+
+    // Scene crossfades
+    sceneEls.hero.style.opacity    = band(t, 0.2, 1.4, 9.6, 10.6);
+    sceneEls.montage.style.opacity = band(t, 10.2, 11.0, 19.4, 20.4);
+    sceneEls.code.style.opacity    = band(t, 20.1, 20.9, 26.8, 27.8);
+    sceneEls.cta.style.opacity     = band(t, 27.3, 28.2, DURATION + 1, DURATION + 2);
+
+    // Brand entrance
+    const b = easeOut(phase(t, 0.3, 2.0));
+    brand.style.opacity = b;
+    brand.style.transform = `scale(${0.82 + 0.18*b})`;
+    const tg = easeOut(phase(t, 3.0, 4.2));
+    tagline.style.opacity = tg;
+    tagline.style.transform = `translateY(${(1-tg)*26}px)`;
+
+    // Stats
+    const sv = easeOut(phase(t, 4.4, 5.2));
+    statsWrap.style.opacity = sv;
+    statsWrap.style.transform = `translateY(${(1-sv)*26}px)`;
+    const cp = easeOut(phase(t, 5.0, 8.6));
+    nums.forEach((n) => { n.textContent = Math.round((+n.dataset.t) * cp); });
+
+    // Montage
+    const mt = easeOut(phase(t, 10.4, 11.4));
+    mTitle.style.opacity = mt; mTitle.style.transform = `translateY(${(1-mt)*18}px)`;
+    const ms = easeOut(phase(t, 10.9, 11.9));
+    mSub.style.opacity = ms;
+    chipEls.forEach((c, i) => {
+      const start = 11.3 + i * 0.16;
+      const p = easeOut(phase(t, start, start + 0.6));
+      const out = phase(t, 19.4, 20.2);
+      c.style.opacity = p * (1 - out);
+      c.style.transform = `translateY(${(1-p)*30}px) scale(${0.9 + 0.1*p})`;
+    });
+
+    // Code
+    const cc = easeOut(phase(t, 20.4, 21.3));
+    codeCard.style.opacity = cc;
+    codeCard.style.transform = `translateY(${(1-cc)*30}px) scale(${0.96 + 0.04*cc})`;
+    const typed = Math.floor(FLAT.length * easeInOut(phase(t, 21.3, 26.2)));
+    const caretOn = t < 26.6 && (Math.floor(t * 2) % 2 === 0 || CAPTURE);
+    renderCode(typed, caretOn && cc > 0.5);
+
+    // CTA
+    const cw = easeOut(phase(t, 27.5, 28.7));
+    ctaWord.style.opacity = cw;
+    ctaWord.style.transform = `scale(${0.9 + 0.1*cw + Math.sin(Math.max(0,t-28.7)*0.8)*0.012})`;
+    ctaSub.style.opacity = easeOut(phase(t, 28.7, 29.6));
+    const cu = easeOut(phase(t, 29.3, 30.4));
+    ctaUrl.style.opacity = cu;
+    ctaUrl.style.transform = `translateY(${(1-cu)*22}px)`;
+  }
+
+  // ---- capture mode: deterministic frame rendering for headless capture ----
+  if (CAPTURE) {
+    window.__seek = (tt) => renderAt(tt);   // driven frame-by-frame by the CDP renderer
+    window.__duration = DURATION;
+    const t0 = parseFloat(params.get("t") || "0");
+    const go = () => { renderAt(t0); window.__ready = true; document.body.setAttribute("data-ready", "1"); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go();
+    return;
+  }
+
+  // ---- play mode ----
+  const replay = el("replay");
+  let start = null;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function frame(now) {
+    if (start === null) start = now;
+    const t = (now - start) / 1000;
+    renderAt(Math.min(t, DURATION));
+    if (t < DURATION) requestAnimationFrame(frame);
+    else replay.style.opacity = 1;
+  }
+  function run() { start = null; replay.style.opacity = 0; requestAnimationFrame(frame); }
+  replay.addEventListener("click", run);
+
+  if (reduced) { renderAt(30.5); replay.style.opacity = 1; }   // static end card
+  else run();
+})();
+</script>
+</body>
+</html>

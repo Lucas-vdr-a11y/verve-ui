@@ -386,6 +386,21 @@ body {
   transform: translateY(-2px);
 }
 
+.lp-hero__film {
+  margin-top: 0.2rem;
+  color: rgba(238, 241, 255, 0.72);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+
+.lp-hero__film:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
 .lp-stats {
   display: flex;
   flex-wrap: wrap;

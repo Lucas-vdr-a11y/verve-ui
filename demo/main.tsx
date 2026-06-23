@@ -106,6 +106,7 @@ function Footer() {
           <span>Nova UI — MIT licensed</span>
         </div>
         <nav className="demo-footer__links">
+          <a href={`${import.meta.env.BASE_URL}launch.html`}>Launch film ▶</a>
           <a href={REPO_URL} target="_blank" rel="noreferrer">
             GitHub
           </a>
