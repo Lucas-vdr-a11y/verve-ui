@@ -6,7 +6,7 @@ export interface TypingIndicatorProps
   extends React.HTMLAttributes<HTMLDivElement> {
   /** Avatar slot shown before the bubble. */
   avatar?: React.ReactNode;
-  /** Optional text label (e.g. "Nova is typing"). */
+  /** Optional text label (e.g. "Verve is typing"). */
   label?: React.ReactNode;
   /** Accessible status text announced to assistive tech. Defaults to `"Typing"`. */
   ariaLabel?: string;

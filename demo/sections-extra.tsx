@@ -411,16 +411,16 @@ export function MoreChartsSection() {
 
 /* ------------------------------------------------------ More data display ---- */
 const SAMPLE_JSON = {
-  name: "Nova UI",
+  name: "Verve UI",
   version: "1.0.0",
   themeable: true,
   categories: 15,
   components: 273,
   tags: ["react", "typescript", "zero-deps"],
-  author: { name: "Nova", url: "https://example.com" },
+  author: { name: "Verve", url: "https://example.com" },
 };
 
-const CODE_SAMPLE = `import { Button } from "nova-ui";
+const CODE_SAMPLE = `import { Button } from "verve-ui";
 
 export function App() {
   return <Button variant="soft">Click me</Button>;
@@ -678,7 +678,7 @@ export function MoreNavSection() {
       <Sheet open={sheet} onClose={() => setSheet(false)} title="Quick actions">
         <Stack gap={3}>
           <Stack direction="horizontal" gap={3} align="center">
-            <Avatar name="Nova UI" />
+            <Avatar name="Verve UI" />
             <Text size="sm">Bottom sheet content slides up from the edge.</Text>
           </Stack>
           <img

@@ -76,7 +76,7 @@ export function FormField({
     const child = children as React.ReactElement<Record<string, unknown>>;
     control = cloneElement(child, {
       ...wiring,
-      // Forward `invalid` to Nova controls that understand it; aria-invalid in
+      // Forward `invalid` to Verve controls that understand it; aria-invalid in
       // `wiring` covers the accessibility tree either way.
       invalid: hasError || (child.props as { invalid?: boolean }).invalid,
     });

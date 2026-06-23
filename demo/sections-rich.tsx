@@ -210,10 +210,10 @@ export function OverlaySection() {
               trigger={<Button variant="ghost">Hover me</Button>}
               content={
                 <Stack direction="horizontal" gap={3} align="center">
-                  <Avatar name="Nova UI" />
+                  <Avatar name="Verve UI" />
                   <div>
                     <Text weight="semibold" size="sm">
-                      Nova UI
+                      Verve UI
                     </Text>
                     <Text tone="muted" size="sm">
                       188+ components
@@ -232,7 +232,7 @@ export function OverlaySection() {
       <Modal
         open={modal}
         onClose={() => setModal(false)}
-        title="Welcome to Nova UI"
+        title="Welcome to Verve UI"
         footer={
           <Stack direction="horizontal" gap={2} justify="end">
             <Button variant="soft" onClick={() => setModal(false)}>
@@ -292,7 +292,7 @@ export function DisclosureSection() {
         <Example label="Accordion">
           <Accordion type="single" defaultValue="a1" variant="separated">
             <AccordionItem value="a1">
-              <AccordionTrigger>What is Nova UI?</AccordionTrigger>
+              <AccordionTrigger>What is Verve UI?</AccordionTrigger>
               <AccordionPanel>
                 A themeable React + TypeScript component library.
               </AccordionPanel>
@@ -447,7 +447,7 @@ export function BlocksSection() {
             href="#"
           />
           <TestimonialCard
-            quote="Nova UI let us ship a polished product in days, not weeks."
+            quote="Verve UI let us ship a polished product in days, not weeks."
             author="Jane Doe"
             role="CTO, Acme"
             rating={5}
@@ -472,7 +472,7 @@ export function BlocksSection() {
 
         <CTABanner
           title="Build something beautiful"
-          subtitle="Start with Nova UI today."
+          subtitle="Start with Verve UI today."
           primaryAction={<Button>Get started</Button>}
           secondaryAction={
             <Button variant="ghost" tone="neutral">

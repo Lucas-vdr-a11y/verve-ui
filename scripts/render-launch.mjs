@@ -1,4 +1,4 @@
-// Nova UI — launch-video renderer.
+// Verve UI — launch-video renderer.
 //
 // Renders demo/public/launch.html to an MP4 by driving headless Chrome over the
 // DevTools Protocol (CDP) with Node's built-in WebSocket — no puppeteer. Each
@@ -12,7 +12,7 @@
 //   node scripts/render-launch.mjs [--url URL] [--fps 30] [--out FILE]
 // Env: CHROME_BIN, LAUNCH_URL
 //
-// Defaults: URL http://localhost:5173/launch.html, 30 fps, ./nova-ui-launch.mp4
+// Defaults: URL http://localhost:5173/launch.html, 30 fps, ./verve-ui-launch.mp4
 
 import { spawn, spawnSync } from "node:child_process";
 import fs from "node:fs";
@@ -31,10 +31,12 @@ const getArg = (name, def) => {
 };
 const URL = process.env.LAUNCH_URL || getArg("url", "http://localhost:5173/launch.html");
 const FPS = parseInt(getArg("fps", "30"), 10);
-const OUT = path.resolve(ROOT, getArg("out", "nova-ui-launch.mp4"));
+const OUT = path.resolve(ROOT, getArg("out", "verve-ui-launch.mp4"));
 const W = 1920, H = 1080;
 const PORT = 9322;
-const FRAME_DIR = path.join(ROOT, ".render-frames");
+// Frames go to the local temp disk (fast, reliable) — writing 1000+ PNGs to an
+// external/network volume can intermittently fail mid-run.
+const FRAME_DIR = path.join(os.tmpdir(), "verve-launch-frames");
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

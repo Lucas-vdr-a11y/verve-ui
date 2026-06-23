@@ -24,7 +24,7 @@ export interface AuthLayoutProps
  * AuthLayout — centered authentication shell. A single card floats over a
  * subtle (optionally gradient) background, with brand, title/subtitle, the
  * form (children) and a footer slot. Responsive and SSR-safe. Self-contained:
- * does not import other Nova components.
+ * does not import other Verve components.
  */
 export const AuthLayout = forwardRef<HTMLDivElement, AuthLayoutProps>(
   function AuthLayout(

@@ -1,5 +1,5 @@
 /* =============================================================================
- * Nova UI — Design Tokens
+ * Verve UI — Design Tokens
  * Single source of truth for every component. Never hard-code a value that a
  * token already covers. Themeable via [data-theme] on a root element.
  * ========================================================================== */
@@ -19,16 +19,16 @@
   --nova-gray-900: #0f172a;
   --nova-gray-950: #020617;
 
-  --nova-brand-50: #eef2ff;
-  --nova-brand-100: #e0e7ff;
-  --nova-brand-200: #c7d2fe;
-  --nova-brand-300: #a5b4fc;
-  --nova-brand-400: #818cf8;
-  --nova-brand-500: #6366f1;
-  --nova-brand-600: #4f46e5;
-  --nova-brand-700: #4338ca;
-  --nova-brand-800: #3730a3;
-  --nova-brand-900: #312e81;
+  --nova-brand-50: #ecfdf5;
+  --nova-brand-100: #d1fae5;
+  --nova-brand-200: #a7f3d0;
+  --nova-brand-300: #6ee7b7;
+  --nova-brand-400: #34d399;
+  --nova-brand-500: #10b981;
+  --nova-brand-600: #059669;
+  --nova-brand-700: #047857;
+  --nova-brand-800: #065f46;
+  --nova-brand-900: #064e3b;
 
   --nova-success-500: #22c55e;
   --nova-success-600: #16a34a;
@@ -153,7 +153,7 @@
   --nova-info: var(--nova-info-600);
   --nova-info-subtle: #e0f2fe;
 
-  --nova-ring: rgb(99 102 241 / 0.45);
+  --nova-ring: rgb(16 185 129 / 0.45);
   --nova-overlay-bg: rgb(15 23 42 / 0.45);
   color-scheme: light;
 }
@@ -181,7 +181,7 @@
   --nova-primary: var(--nova-brand-500);
   --nova-primary-hover: var(--nova-brand-400);
   --nova-primary-active: var(--nova-brand-300);
-  --nova-primary-subtle: rgb(99 102 241 / 0.15);
+  --nova-primary-subtle: rgb(16 185 129 / 0.15);
   --nova-primary-text: var(--nova-brand-300);
 
   --nova-success: var(--nova-success-500);
@@ -193,7 +193,7 @@
   --nova-info: var(--nova-info-500);
   --nova-info-subtle: rgb(14 165 233 / 0.15);
 
-  --nova-ring: rgb(129 140 248 / 0.5);
+  --nova-ring: rgb(45 212 191 / 0.5);
   --nova-overlay-bg: rgb(2 6 23 / 0.65);
   color-scheme: dark;
 }

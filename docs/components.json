@@ -5279,7 +5279,7 @@
             "AuthLayout"
           ],
           "hasStyles": true,
-          "description": "AuthLayout — centered authentication shell. A single card floats over a subtle (optionally gradient) background, with brand, title/subtitle, the form (children) and a footer slot. Responsive and SSR-safe. Self-contained: does not import other Nova components."
+          "description": "AuthLayout — centered authentication shell. A single card floats over a subtle (optionally gradient) background, with brand, title/subtitle, the form (children) and a footer slot. Responsive and SSR-safe. Self-contained: does not import other Verve components."
         },
         {
           "name": "BlankCenteredLayout",

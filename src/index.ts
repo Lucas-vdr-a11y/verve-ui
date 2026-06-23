@@ -1,5 +1,5 @@
 /* =============================================================================
- * Nova UI — public entry point
+ * Verve UI — public entry point
  * Styles are imported once here; component barrels are re-exported per category.
  * ========================================================================== */
 import "./styles/tokens.css";

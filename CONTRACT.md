@@ -1,4 +1,4 @@
-# Nova UI — Component Authoring Contract
+# Verve UI — Component Authoring Contract
 
 Every component MUST follow this contract so the library stays consistent no
 matter who (or which agent) wrote it.

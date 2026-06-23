@@ -1,4 +1,4 @@
-// Nova UI — landing-page catalog generator.
+// Verve UI — landing-page catalog generator.
 //
 // Reads the machine-readable manifest (docs/components.json, produced by
 // generate-manifest.mjs) and emits a compact, display-oriented catalog for the
@@ -110,7 +110,7 @@ const body =
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, body, "utf8");
 
-console.log("Nova UI catalog generated.");
+console.log("Verve UI catalog generated.");
 console.log(`  Categories: ${categories.length}`);
 console.log(`  Components: ${manifest.totalComponents}`);
 console.log(`  -> ${path.relative(ROOT, OUT)}`);

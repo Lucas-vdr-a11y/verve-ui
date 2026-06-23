@@ -1,4 +1,4 @@
-# Nova UI — image prompt list
+# Verve UI — image prompt list
 
 The site already ships **two generated, working images** committed to the repo:
 
@@ -36,7 +36,7 @@ as the committed versions above (or composite the text in afterwards).
 > Optional replacement for the committed `og-cover.png`. Keep the same filename
 > and 1200×630 size and it goes live on next deploy — `index.html` already
 > points its `og:image` / `twitter:image` there. (If your generated version
-> includes baked-in text, double-check it reads "Nova UI · 660 components".)
+> includes baked-in text, double-check it reads "Verve UI · 660 components".)
 
 **Prompt (background only, compose text on top):**
 > A 1200×630 social-card background. Dark cosmic gradient from #0c1026 at the top

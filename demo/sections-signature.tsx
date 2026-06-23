@@ -169,7 +169,7 @@ export function TextEffectsSection() {
  * ---------------------------------------------------------------- */
 
 const STACK_ITEMS = [
-  { id: 1, content: <Text>"Nova UI shipped our redesign in a weekend." — Ada</Text> },
+  { id: 1, content: <Text>"Verve UI shipped our redesign in a weekend." — Ada</Text> },
   { id: 2, content: <Text>"The motion components are unreal." — Lin</Text> },
   { id: 3, content: <Text>"Zero dependencies, all the flair." — Rey</Text> },
 ];

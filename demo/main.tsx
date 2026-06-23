@@ -6,7 +6,6 @@ import {
   ToastProvider,
   Button,
   Badge,
-  GradientText,
   Heading,
   Lead,
 } from "../src/index";
@@ -74,8 +73,8 @@ function TopBar() {
   return (
     <header className="demo-topbar">
       <a className="demo-wordmark" href="#top">
-        <span className="demo-logo">N</span>
-        <span>Nova UI</span>
+        <span className="demo-logo">V</span>
+        <span>Verve UI</span>
       </a>
       <div className="demo-topbar-right">
         <Badge tone="primary" variant="soft">
@@ -102,8 +101,8 @@ function Footer() {
     <footer className="demo-footer">
       <div className="demo-footer__inner">
         <div className="demo-wordmark">
-          <span className="demo-logo">N</span>
-          <span>Nova UI — MIT licensed</span>
+          <span className="demo-logo">V</span>
+          <span>Verve UI — MIT licensed</span>
         </div>
         <nav className="demo-footer__links">
           <a href={`${import.meta.env.BASE_URL}launch.html`}>Launch film ▶</a>
@@ -133,7 +132,7 @@ function App() {
 
         <div className="demo-playground-head">
           <Heading level={2} size="3xl">
-            <GradientText preset="brand">Live playground</GradientText>
+            <span className="demo-playground-grad">Live playground</span>
           </Heading>
           <Lead style={{ margin: "0.5rem auto 0", maxWidth: "48ch" }}>
             Every component, interactive and themed. Flip light / dark from the

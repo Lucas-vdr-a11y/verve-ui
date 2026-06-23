@@ -223,7 +223,7 @@ export function TypographySection() {
         <Example label="Headings & gradient">
           <Stack gap={2}>
             <Heading level={1} size="4xl">
-              <GradientText preset="brand">Nova UI</GradientText>
+              <GradientText preset="brand">Verve UI</GradientText>
             </Heading>
             <Heading level={3} size="xl">
               The quick brown fox

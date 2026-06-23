@@ -1,7 +1,7 @@
-// Shared links + small maps for the Nova UI marketing/overview site.
+// Shared links + small maps for the Verve UI marketing/overview site.
 
 export const GITHUB_USER = "Lucas-vdr-a11y";
-export const REPO = "nova-ui";
+export const REPO = "verve-ui";
 export const REPO_URL = `https://github.com/${GITHUB_USER}/${REPO}`;
 export const PAGES_URL = `https://${GITHUB_USER.toLowerCase()}.github.io/${REPO}/`;
 export const DOCS_URL = `${REPO_URL}/blob/main/docs/COMPONENTS.md`;

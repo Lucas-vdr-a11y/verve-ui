@@ -5,25 +5,25 @@
       <stop offset="1" stop-color="#0d1024"/>
     </linearGradient>
     <radialGradient id="a1" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#6366f1" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+      <stop offset="0" stop-color="#10b981" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#10b981" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="a2" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#a855f7" stop-opacity="0.5"/>
-      <stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+      <stop offset="0" stop-color="#14b8a6" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#14b8a6" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="a3" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.4"/>
-      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+      <stop offset="0" stop-color="#84cc16" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#84cc16" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="word" x1="0" y1="0" x2="520" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#a5b4fc"/>
-      <stop offset="0.5" stop-color="#818cf8"/>
-      <stop offset="1" stop-color="#c4b5fd"/>
+      <stop offset="0" stop-color="#6ee7b7"/>
+      <stop offset="0.5" stop-color="#34d399"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
     </linearGradient>
     <linearGradient id="mark" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#a5b4fc"/>
-      <stop offset="1" stop-color="#c4b5fd"/>
+      <stop offset="0" stop-color="#6ee7b7"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
     </linearGradient>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
@@ -40,8 +40,8 @@
   <g transform="translate(420, 132)">
     <rect x="0" y="0" width="56" height="56" rx="14" fill="#0b0d17"/>
     <rect x="0" y="0" width="56" height="56" rx="14" fill="url(#mark)" opacity="0.18"/>
-    <path d="M16 41V17h4l16.5 16.4V17H41v24h-4L20.5 24.6V41H16z" fill="url(#mark)"/>
-    <text x="74" y="42" font-size="44" font-weight="800" letter-spacing="-1" fill="#f2f4ff">Nova UI</text>
+    <path d="M16 17 L22 17 L28 35 L34 17 L40 17 L31 41 L25 41 Z" fill="url(#mark)"/>
+    <text x="74" y="42" font-size="44" font-weight="800" letter-spacing="-1" fill="#ecfdf5">Verve UI</text>
   </g>
 
   <!-- Tagline -->
@@ -56,19 +56,19 @@
   <g font-size="15" font-weight="600">
     <g transform="translate(348, 320)">
       <rect width="118" height="40" rx="20" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
-      <text x="59" y="25" text-anchor="middle" fill="#e7eaff"><tspan font-weight="800" fill="#c7d2fe">660</tspan> components</text>
+      <text x="59" y="25" text-anchor="middle" fill="#d1fae5"><tspan font-weight="800" fill="#a7f3d0">660</tspan> components</text>
     </g>
     <g transform="translate(478, 320)">
       <rect width="110" height="40" rx="20" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
-      <text x="55" y="25" text-anchor="middle" fill="#e7eaff"><tspan font-weight="800" fill="#c7d2fe">28</tspan> categories</text>
+      <text x="55" y="25" text-anchor="middle" fill="#d1fae5"><tspan font-weight="800" fill="#a7f3d0">28</tspan> categories</text>
     </g>
     <g transform="translate(600, 320)">
       <rect width="132" height="40" rx="20" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
-      <text x="66" y="25" text-anchor="middle" fill="#e7eaff"><tspan font-weight="800" fill="#c7d2fe">10</tspan> signature sets</text>
+      <text x="66" y="25" text-anchor="middle" fill="#d1fae5"><tspan font-weight="800" fill="#a7f3d0">10</tspan> signature sets</text>
     </g>
     <g transform="translate(744, 320)">
       <rect width="108" height="40" rx="20" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
-      <text x="54" y="25" text-anchor="middle" fill="#e7eaff"><tspan font-weight="800" fill="#5eead4">0</tspan> runtime deps</text>
+      <text x="54" y="25" text-anchor="middle" fill="#d1fae5"><tspan font-weight="800" fill="#5eead4">0</tspan> runtime deps</text>
     </g>
   </g>
 </svg>

@@ -1,36 +1,36 @@
 <div align="center">
 
-<a href="https://lucas-vdr-a11y.github.io/nova-ui/">
-  <img src="docs/hero-banner.svg" alt="Nova UI — 660 modern React components with signature motion" width="100%" />
+<a href="https://lucas-vdr-a11y.github.io/verve-ui/">
+  <img src="docs/hero-banner.svg" alt="Verve UI — 660 modern React components with signature motion" width="100%" />
 </a>
 
-# Nova UI
+# Verve UI
 
 **A modern, themeable React + TypeScript component library — with signature motion.**
 
 660 components across 28 categories. Zero runtime dependencies beyond React,
 fully token-driven, light/dark out of the box, accessible and SSR-safe by default.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-6366f1.svg)](LICENSE)
-&nbsp;[![Components](https://img.shields.io/badge/components-660-7c3aed)](docs/COMPONENTS.md)
-&nbsp;[![Categories](https://img.shields.io/badge/categories-28-8b5cf6)](docs/COMPONENTS.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-059669.svg)](LICENSE)
+&nbsp;[![Components](https://img.shields.io/badge/components-660-10b981)](docs/COMPONENTS.md)
+&nbsp;[![Categories](https://img.shields.io/badge/categories-28-14b8a6)](docs/COMPONENTS.md)
 &nbsp;[![React 18](https://img.shields.io/badge/React-18-61dafb?logo=react&logoColor=white)](https://react.dev)
 &nbsp;[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 &nbsp;[![Runtime deps](https://img.shields.io/badge/runtime%20deps-0-22c55e)](package.json)
 
-### [▶&nbsp; Live demo &amp; component overview ↗](https://lucas-vdr-a11y.github.io/nova-ui/)
+### [▶&nbsp; Live demo &amp; component overview ↗](https://lucas-vdr-a11y.github.io/verve-ui/)
 
-[🎬 Launch film](https://lucas-vdr-a11y.github.io/nova-ui/launch.html) · [📖 Component index](docs/COMPONENTS.md) · [🚀 v0.1.0 release](https://github.com/Lucas-vdr-a11y/nova-ui/releases/tag/v0.1.0)
+[🎬 Launch film](https://lucas-vdr-a11y.github.io/verve-ui/launch.html) · [📖 Component index](docs/COMPONENTS.md) · [🚀 v0.1.0 release](https://github.com/Lucas-vdr-a11y/verve-ui/releases/tag/v0.1.0)
 
 </div>
 
 ```bash
-npm install @nova/ui
+npm install @verve/ui
 ```
 
 ```tsx
-import { Button, Card, Stack, useToast } from "@nova/ui";
-import "@nova/ui/styles.css";
+import { Button, Card, Stack, useToast } from "@verve/ui";
+import "@verve/ui/styles.css";
 
 export function Example() {
   return (
@@ -144,4 +144,4 @@ adding a component so they stay accurate.
 
 ## License
 
-[MIT](LICENSE) © Nova UI contributors
+[MIT](LICENSE) © Verve UI contributors

@@ -1,6 +1,6 @@
 name: Deploy site to GitHub Pages
 
-# Builds the Nova UI overview site (the /demo Vite app) and publishes it to
+# Builds the Verve UI overview site (the /demo Vite app) and publishes it to
 # GitHub Pages on every push to main. The library bundle itself is not deployed.
 
 on:
@@ -41,7 +41,7 @@ jobs:
         run: npm run build:site
         env:
           # Project pages are served from /<repo>/ — must match the repo name.
-          PAGES_BASE: /nova-ui/
+          PAGES_BASE: /verve-ui/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
