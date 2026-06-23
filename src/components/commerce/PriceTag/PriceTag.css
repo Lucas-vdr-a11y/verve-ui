@@ -1,0 +1,80 @@
+/* PriceTag — formatted price with optional original price + discount badge. */
+.nova-price-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--nova-space-2);
+  color: var(--nova-text);
+  font-family: inherit;
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-price-tag__current {
+  font-weight: var(--nova-font-bold);
+}
+
+.nova-price-tag__original {
+  color: var(--nova-text-subtle);
+  font-weight: var(--nova-font-normal);
+  text-decoration: line-through;
+}
+
+.nova-price-tag__discount {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border-radius: var(--nova-radius-sm);
+  background-color: var(--nova-danger-subtle);
+  color: var(--nova-danger);
+  font-weight: var(--nova-font-semibold);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  align-self: center;
+}
+
+/* On sale, emphasize the live price with the danger tone. */
+.nova-price-tag--sale .nova-price-tag__current {
+  color: var(--nova-danger);
+}
+
+.nova-price-tag__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Sizes --------------------------------------------------------------------- */
+.nova-price-tag--sm .nova-price-tag__current {
+  font-size: var(--nova-text-md);
+}
+.nova-price-tag--sm .nova-price-tag__original {
+  font-size: var(--nova-text-xs);
+}
+.nova-price-tag--sm .nova-price-tag__discount {
+  font-size: var(--nova-text-xs);
+}
+
+.nova-price-tag--md .nova-price-tag__current {
+  font-size: var(--nova-text-lg);
+}
+.nova-price-tag--md .nova-price-tag__original {
+  font-size: var(--nova-text-sm);
+}
+.nova-price-tag--md .nova-price-tag__discount {
+  font-size: var(--nova-text-xs);
+}
+
+.nova-price-tag--lg .nova-price-tag__current {
+  font-size: var(--nova-text-3xl);
+}
+.nova-price-tag--lg .nova-price-tag__original {
+  font-size: var(--nova-text-lg);
+}
+.nova-price-tag--lg .nova-price-tag__discount {
+  font-size: var(--nova-text-sm);
+}

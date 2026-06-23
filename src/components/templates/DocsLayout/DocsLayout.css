@@ -1,0 +1,142 @@
+/* DocsLayout — documentation shell: nav + content + TOC rail. */
+.nova-docs {
+  box-sizing: border-box;
+  display: grid;
+  min-height: 100%;
+  width: 100%;
+  color: var(--nova-text);
+  background: var(--nova-bg);
+  grid-template-columns:
+    var(--nova-docs-nav-w)
+    minmax(0, 1fr)
+    var(--nova-docs-toc-w);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "topbar topbar topbar"
+    "nav main toc";
+}
+
+/* Drop columns when a region is absent. */
+.nova-docs:not(.nova-docs--has-nav) {
+  grid-template-columns: minmax(0, 1fr) var(--nova-docs-toc-w);
+  grid-template-areas:
+    "topbar topbar"
+    "main toc";
+}
+
+.nova-docs:not(.nova-docs--has-toc) {
+  grid-template-columns: var(--nova-docs-nav-w) minmax(0, 1fr);
+  grid-template-areas:
+    "topbar topbar"
+    "nav main";
+}
+
+.nova-docs:not(.nova-docs--has-nav):not(.nova-docs--has-toc) {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "topbar"
+    "main";
+}
+
+.nova-docs__topbar {
+  grid-area: topbar;
+  position: sticky;
+  top: 0;
+  z-index: var(--nova-z-sticky);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-4);
+  min-width: 0;
+  height: var(--nova-docs-topbar-h);
+  padding-inline: var(--nova-space-5);
+  border-bottom: 1px solid var(--nova-border);
+  background: var(--nova-surface);
+}
+
+.nova-docs__nav {
+  grid-area: nav;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: auto;
+  padding: var(--nova-space-5) var(--nova-space-4);
+  border-right: 1px solid var(--nova-border);
+  background: var(--nova-bg-subtle);
+}
+
+.nova-docs__main {
+  grid-area: main;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+.nova-docs__content {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--nova-docs-content-max-w);
+  margin-inline: auto;
+  padding: var(--nova-space-8) var(--nova-space-6);
+  line-height: var(--nova-leading-relaxed);
+}
+
+.nova-docs__toc {
+  grid-area: toc;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: auto;
+  padding: var(--nova-space-8) var(--nova-space-4);
+  border-left: 1px solid var(--nova-border);
+  background: var(--nova-bg);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}
+
+/* Sticky TOC under the topbar (when present). */
+.nova-docs--has-topbar .nova-docs__toc,
+.nova-docs--has-topbar .nova-docs__nav {
+  position: sticky;
+  top: var(--nova-docs-topbar-h);
+  align-self: start;
+  max-height: calc(100vh - var(--nova-docs-topbar-h));
+}
+
+/* Hide the TOC rail first on medium screens. */
+@media (max-width: 64rem) {
+  .nova-docs,
+  .nova-docs:not(.nova-docs--has-nav),
+  .nova-docs:not(.nova-docs--has-toc) {
+    grid-template-columns: var(--nova-docs-nav-w) minmax(0, 1fr);
+    grid-template-areas:
+      "topbar topbar"
+      "nav main";
+  }
+
+  .nova-docs:not(.nova-docs--has-nav) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "topbar"
+      "main";
+  }
+
+  .nova-docs__toc {
+    display: none;
+  }
+}
+
+/* Hide the nav rail on small screens. */
+@media (max-width: 48rem) {
+  .nova-docs,
+  .nova-docs:not(.nova-docs--has-nav),
+  .nova-docs:not(.nova-docs--has-toc) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "topbar"
+      "main";
+  }
+
+  .nova-docs__nav {
+    display: none;
+  }
+}

@@ -1,0 +1,69 @@
+.nova-knob {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-knob__dial {
+  position: relative;
+  display: inline-flex;
+  border-radius: var(--nova-radius-full);
+  cursor: ns-resize;
+  outline: none;
+}
+
+.nova-knob__dial:focus-visible {
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-knob--disabled .nova-knob__dial {
+  cursor: not-allowed;
+}
+
+.nova-knob__svg {
+  display: block;
+  overflow: visible;
+}
+
+.nova-knob__track {
+  stroke: var(--nova-border-strong);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.nova-knob__fill {
+  stroke: var(--nova-primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-knob__hub {
+  fill: var(--nova-surface-raised);
+  stroke: var(--nova-border);
+  stroke-width: 1;
+}
+
+.nova-knob__indicator {
+  stroke: var(--nova-primary);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.nova-knob--disabled {
+  opacity: 0.6;
+}
+
+.nova-knob__label {
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}
+
+.nova-knob__value {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  font-variant-numeric: tabular-nums;
+}

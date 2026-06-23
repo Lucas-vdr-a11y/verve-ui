@@ -1,0 +1,87 @@
+/* Transition — core mount/unmount transition primitive.
+ * Presets supply a "from" state on enter/exit and a "to" state in between.
+ * Duration/easing default to motion tokens; props override via custom props. */
+
+.nova-transition {
+  --nova-transition-duration: var(--nova-duration-base);
+  --nova-transition-ease: var(--nova-ease-out);
+}
+
+/* ---- fade ---------------------------------------------------------------- */
+.nova-transition--fade {
+  transition: opacity var(--nova-transition-duration) var(--nova-transition-ease);
+}
+.nova-transition--fade[data-transition="enter"],
+.nova-transition--fade[data-transition="exiting"],
+.nova-transition--fade[data-transition="exited"] {
+  opacity: 0;
+}
+.nova-transition--fade[data-transition="entering"],
+.nova-transition--fade[data-transition="entered"] {
+  opacity: 1;
+}
+
+/* ---- slide (from below) -------------------------------------------------- */
+.nova-transition--slide {
+  transition:
+    opacity var(--nova-transition-duration) var(--nova-transition-ease),
+    transform var(--nova-transition-duration) var(--nova-transition-ease);
+}
+.nova-transition--slide[data-transition="enter"],
+.nova-transition--slide[data-transition="exiting"],
+.nova-transition--slide[data-transition="exited"] {
+  opacity: 0;
+  transform: translateY(0.5rem);
+}
+.nova-transition--slide[data-transition="entering"],
+.nova-transition--slide[data-transition="entered"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- scale --------------------------------------------------------------- */
+.nova-transition--scale {
+  transition:
+    opacity var(--nova-transition-duration) var(--nova-transition-ease),
+    transform var(--nova-transition-duration) var(--nova-ease-spring);
+}
+.nova-transition--scale[data-transition="enter"],
+.nova-transition--scale[data-transition="exiting"],
+.nova-transition--scale[data-transition="exited"] {
+  opacity: 0;
+  transform: scale(0.95);
+}
+.nova-transition--scale[data-transition="entering"],
+.nova-transition--scale[data-transition="entered"] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---- collapse ------------------------------------------------------------ */
+.nova-transition--collapse {
+  overflow: hidden;
+  transition:
+    opacity var(--nova-transition-duration) var(--nova-transition-ease),
+    grid-template-rows var(--nova-transition-duration) var(--nova-transition-ease);
+  display: grid;
+}
+.nova-transition--collapse[data-transition="enter"],
+.nova-transition--collapse[data-transition="exiting"],
+.nova-transition--collapse[data-transition="exited"] {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+.nova-transition--collapse[data-transition="entering"],
+.nova-transition--collapse[data-transition="entered"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.nova-transition--collapse > * {
+  min-height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-transition {
+    transition-duration: 1ms !important;
+  }
+}

@@ -1,0 +1,72 @@
+.nova-activity-rings {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nova-space-3);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-activity-rings__figure {
+  position: relative;
+  width: 100%;
+}
+
+.nova-activity-rings__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nova-activity-rings__track {
+  stroke: currentColor;
+  opacity: 0.16;
+}
+
+.nova-activity-rings__bar {
+  transition: stroke-dasharray var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-activity-rings__group:hover .nova-activity-rings__bar {
+  filter: brightness(1.08);
+}
+
+.nova-activity-rings__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--nova-text);
+  font-weight: var(--nova-font-semibold);
+  pointer-events: none;
+}
+
+.nova-activity-rings__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2) var(--nova-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-activity-rings__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+.nova-activity-rings__swatch {
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: var(--nova-radius-full);
+  flex: none;
+}
+
+.nova-activity-rings__legend-value {
+  color: var(--nova-text);
+  font-weight: var(--nova-font-semibold);
+}

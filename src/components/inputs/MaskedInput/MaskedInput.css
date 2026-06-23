@@ -1,0 +1,4 @@
+/* MaskedInput reuses .nova-input for its shell; this file holds tweaks only. */
+.nova-masked .nova-input__field {
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,48 @@
+.nova-suggestion-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-suggestion-chips__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-size: var(--nova-text-sm);
+  font-family: inherit;
+  line-height: var(--nova-leading-snug);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-suggestion-chips__chip:hover:not(:disabled) {
+  background: var(--nova-primary-subtle);
+  border-color: var(--nova-primary);
+  color: var(--nova-primary-text);
+}
+
+.nova-suggestion-chips__chip:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.nova-suggestion-chips__icon {
+  display: inline-flex;
+  line-height: 0;
+  font-size: var(--nova-text-md);
+  color: var(--nova-text-muted);
+}
+
+.nova-suggestion-chips__chip:hover:not(:disabled)
+  .nova-suggestion-chips__icon {
+  color: inherit;
+}

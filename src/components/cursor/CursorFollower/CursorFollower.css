@@ -1,0 +1,30 @@
+.nova-cursor-follower {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--nova-z-tooltip);
+}
+
+.nova-cursor-follower__blob {
+  --nova-cursor-follower-color: var(--nova-primary);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--nova-cursor-follower-size);
+  height: var(--nova-cursor-follower-size);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-cursor-follower-color);
+  opacity: 0;
+  filter: blur(2px);
+  mix-blend-mode: multiply;
+  will-change: transform;
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+[data-theme="dark"] .nova-cursor-follower__blob {
+  mix-blend-mode: screen;
+}
+
+.nova-cursor-follower__blob--visible {
+  opacity: 0.6;
+}

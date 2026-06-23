@@ -1,0 +1,40 @@
+.nova-rotating-text {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: bottom;
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-bold);
+  color: var(--nova-primary);
+}
+
+.nova-rotating-text__word {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.nova-rotating-text__char {
+  display: inline-block;
+  white-space: pre;
+  animation: nova-rotating-in var(--nova-duration-slow) var(--nova-ease-out)
+    backwards;
+  animation-delay: calc(var(--nova-rt-i, 0) * var(--nova-rt-stagger, 35ms));
+}
+
+@keyframes nova-rotating-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%) rotateX(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-rotating-text__char {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

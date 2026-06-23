@@ -1,0 +1,23 @@
+.nova-scroll-text-reveal {
+  display: block;
+  margin: 0;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text);
+}
+
+.nova-scroll-text-reveal__word {
+  display: inline-block;
+  white-space: pre;
+  transition: opacity var(--nova-duration-fast) var(--nova-ease);
+  will-change: opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-scroll-text-reveal__word {
+    opacity: 1 !important;
+    transition: none;
+  }
+}

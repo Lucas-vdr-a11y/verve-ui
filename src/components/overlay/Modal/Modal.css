@@ -1,0 +1,96 @@
+.nova-modal__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--nova-z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nova-space-4);
+  background: var(--nova-overlay-bg);
+  animation: nova-modal-overlay-in var(--nova-duration-base) var(--nova-ease)
+    both;
+}
+
+.nova-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: calc(100vh - var(--nova-space-16));
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-xl);
+  outline: none;
+  overflow: hidden;
+  animation: nova-modal-in var(--nova-duration-base) var(--nova-ease-out) both;
+}
+
+.nova-modal--sm {
+  max-width: 24rem;
+}
+.nova-modal--md {
+  max-width: 32rem;
+}
+.nova-modal--lg {
+  max-width: 42rem;
+}
+.nova-modal--xl {
+  max-width: 56rem;
+}
+
+.nova-modal__header {
+  flex: 0 0 auto;
+  padding: var(--nova-space-5) var(--nova-space-6);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-modal__title {
+  margin: 0;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-modal__body {
+  flex: 1 1 auto;
+  padding: var(--nova-space-6);
+  overflow-y: auto;
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text);
+}
+
+.nova-modal__footer {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-4) var(--nova-space-6);
+  border-top: 1px solid var(--nova-border);
+  background: var(--nova-surface);
+}
+
+@keyframes nova-modal-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nova-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--nova-space-3)) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

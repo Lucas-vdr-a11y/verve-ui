@@ -1,0 +1,11 @@
+/* Flex — general-purpose flexbox container with a token-driven gap. */
+.nova-flex {
+  box-sizing: border-box;
+  display: flex;
+  min-width: 0;
+  gap: var(--nova-flex-gap, var(--nova-space-0));
+}
+
+.nova-flex--inline {
+  display: inline-flex;
+}

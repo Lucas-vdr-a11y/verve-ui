@@ -1,0 +1,276 @@
+.nova-multiselect {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+/* ---- Control ------------------------------------------------------------- */
+.nova-multiselect__control {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  box-shadow: var(--nova-shadow-xs);
+  cursor: text;
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-multiselect:hover:not(.nova-multiselect--disabled)
+  .nova-multiselect__control {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-multiselect__control:focus-within {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-multiselect--invalid .nova-multiselect__control {
+  border-color: var(--nova-danger);
+}
+
+.nova-multiselect--invalid .nova-multiselect__control:focus-within {
+  border-color: var(--nova-danger);
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+.nova-multiselect--disabled .nova-multiselect__control {
+  opacity: 0.6;
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+/* ---- Chips area ---------------------------------------------------------- */
+.nova-multiselect__chips {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nova-space-1);
+  min-width: 0;
+  padding: var(--nova-space-1) var(--nova-space-2);
+}
+
+.nova-multiselect__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  max-width: 100%;
+  padding: 0 var(--nova-space-1) 0 var(--nova-space-2);
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+}
+
+.nova-multiselect__chip-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nova-multiselect__chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.25em;
+  height: 1.25em;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: transparent;
+  color: inherit;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-multiselect__chip-remove:hover {
+  opacity: 1;
+  background: rgb(99 102 241 / 0.18);
+}
+
+.nova-multiselect__chip-remove svg {
+  display: block;
+  width: 0.75em;
+  height: 0.75em;
+}
+
+/* ---- Input --------------------------------------------------------------- */
+.nova-multiselect__input {
+  flex: 1 1 6rem;
+  min-width: 4rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--nova-leading-normal);
+}
+
+.nova-multiselect__input.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-multiselect__input::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-multiselect__input:disabled {
+  cursor: not-allowed;
+}
+
+/* ---- Trailing actions ---------------------------------------------------- */
+.nova-multiselect__clear,
+.nova-multiselect__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--nova-text-muted);
+}
+
+.nova-multiselect__clear {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: transparent;
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-multiselect__clear:hover {
+  color: var(--nova-text);
+  background: var(--nova-surface-hover);
+}
+
+.nova-multiselect__clear svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.nova-multiselect__chevron {
+  padding-right: var(--nova-space-2);
+}
+
+.nova-multiselect__chevron svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ---- Popover list -------------------------------------------------------- */
+.nova-multiselect__list {
+  position: absolute;
+  top: calc(100% + var(--nova-space-1));
+  left: 0;
+  right: 0;
+  z-index: var(--nova-z-dropdown);
+  margin: 0;
+  padding: var(--nova-space-1);
+  list-style: none;
+  max-height: 16rem;
+  overflow-y: auto;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface-raised);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-multiselect__option {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border-radius: var(--nova-radius-sm);
+  color: var(--nova-text);
+  font-size: inherit;
+  line-height: var(--nova-leading-snug);
+  cursor: pointer;
+  user-select: none;
+}
+
+.nova-multiselect__option--active {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-multiselect__option--selected {
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-multiselect__option--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nova-multiselect__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  color: var(--nova-primary);
+}
+
+.nova-multiselect__check svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.nova-multiselect__option-label {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-multiselect__empty {
+  padding: var(--nova-space-3);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  text-align: center;
+}
+
+/* ---- Sizes --------------------------------------------------------------- */
+.nova-multiselect--sm {
+  font-size: var(--nova-text-xs);
+}
+
+.nova-multiselect--sm .nova-multiselect__chip,
+.nova-multiselect--sm .nova-multiselect__input {
+  min-height: 1.5rem;
+}
+
+.nova-multiselect--md {
+  font-size: var(--nova-text-sm);
+}
+
+.nova-multiselect--md .nova-multiselect__chip,
+.nova-multiselect--md .nova-multiselect__input {
+  min-height: 1.75rem;
+}
+
+.nova-multiselect--lg {
+  font-size: var(--nova-text-md);
+}
+
+.nova-multiselect--lg .nova-multiselect__chip,
+.nova-multiselect--lg .nova-multiselect__input {
+  min-height: 2rem;
+}

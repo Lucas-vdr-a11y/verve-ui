@@ -1,0 +1,132 @@
+.nova-comparison__scroll {
+  width: 100%;
+  overflow: auto;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface);
+}
+
+.nova-comparison {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  color: var(--nova-text);
+  font-size: var(--nova-text-sm);
+}
+
+/* ---- Sticky header row ---------------------------------------------------- */
+.nova-comparison--sticky-header .nova-comparison__head th {
+  position: sticky;
+  top: 0;
+  z-index: var(--nova-z-sticky);
+}
+
+/* ---- Sticky first column -------------------------------------------------- */
+.nova-comparison__feature-col {
+  position: sticky;
+  left: 0;
+  z-index: var(--nova-z-base);
+  background: var(--nova-surface);
+  text-align: left;
+}
+
+/* Corner cell sits at both sticky axes — needs the highest stack order. */
+.nova-comparison--sticky-header .nova-comparison__corner {
+  z-index: calc(var(--nova-z-sticky) + 1);
+}
+
+.nova-comparison__corner {
+  background: var(--nova-bg-muted);
+}
+
+/* ---- Header cells --------------------------------------------------------- */
+.nova-comparison__head th {
+  padding: var(--nova-space-3) var(--nova-space-4);
+  background: var(--nova-bg-muted);
+  font-weight: var(--nova-font-semibold);
+  border-bottom: 1px solid var(--nova-border);
+  vertical-align: bottom;
+}
+
+.nova-comparison__col-header {
+  white-space: nowrap;
+}
+
+.nova-comparison__col-title {
+  display: block;
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-comparison__col-subtitle {
+  display: block;
+  margin-top: var(--nova-space-1);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-normal);
+  color: var(--nova-text-muted);
+}
+
+.nova-comparison__col-header--highlighted {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+  box-shadow: inset 0 2px 0 var(--nova-primary);
+}
+
+/* ---- Body cells ----------------------------------------------------------- */
+.nova-comparison__feature {
+  padding: var(--nova-space-3) var(--nova-space-4);
+  font-weight: var(--nova-font-medium);
+  border-bottom: 1px solid var(--nova-border);
+  vertical-align: middle;
+}
+
+.nova-comparison__feature-label {
+  display: block;
+}
+
+.nova-comparison__feature-hint {
+  display: block;
+  margin-top: var(--nova-space-1);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-normal);
+  color: var(--nova-text-muted);
+}
+
+.nova-comparison__cell {
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border-bottom: 1px solid var(--nova-border);
+  color: var(--nova-text);
+  vertical-align: middle;
+}
+
+.nova-comparison__row:last-child .nova-comparison__cell,
+.nova-comparison__row:last-child .nova-comparison__feature {
+  border-bottom: none;
+}
+
+.nova-comparison__cell--highlighted {
+  background: var(--nova-primary-subtle);
+}
+
+/* ---- Alignment ------------------------------------------------------------ */
+.nova-comparison__cell--left {
+  text-align: left;
+}
+.nova-comparison__cell--center {
+  text-align: center;
+}
+.nova-comparison__cell--right {
+  text-align: right;
+}
+
+/* ---- Boolean icons -------------------------------------------------------- */
+.nova-comparison__icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+.nova-comparison__icon--yes {
+  color: var(--nova-success);
+}
+.nova-comparison__icon--no {
+  color: var(--nova-text-subtle);
+}

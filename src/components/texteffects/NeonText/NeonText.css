@@ -1,0 +1,46 @@
+.nova-neon-text {
+  --nova-neon-glow: var(--nova-neon-color, var(--nova-brand-400));
+  display: inline-block;
+  color: #fff;
+  font-weight: var(--nova-font-bold);
+  text-shadow:
+    0 0 calc(2px * var(--nova-neon-intensity, 1)) #fff,
+    0 0 calc(6px * var(--nova-neon-intensity, 1)) var(--nova-neon-glow),
+    0 0 calc(12px * var(--nova-neon-intensity, 1)) var(--nova-neon-glow),
+    0 0 calc(24px * var(--nova-neon-intensity, 1)) var(--nova-neon-glow),
+    0 0 calc(42px * var(--nova-neon-intensity, 1)) var(--nova-neon-glow);
+}
+
+.nova-neon-text--flicker {
+  animation: nova-neon-flicker 3s linear infinite;
+}
+
+@keyframes nova-neon-flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 calc(2px * var(--nova-neon-intensity, 1)) #fff,
+      0 0 calc(6px * var(--nova-neon-intensity, 1)) var(--nova-neon-glow),
+      0 0 calc(12px * var(--nova-neon-intensity, 1)) var(--nova-neon-glow),
+      0 0 calc(24px * var(--nova-neon-intensity, 1)) var(--nova-neon-glow),
+      0 0 calc(42px * var(--nova-neon-intensity, 1)) var(--nova-neon-glow);
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.6;
+    text-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-neon-text--flicker {
+    animation: none;
+  }
+}

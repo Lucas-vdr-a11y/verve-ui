@@ -1,0 +1,23 @@
+.nova-sticky {
+  position: sticky;
+  /* `top` / `bottom` and `z-index` are set inline from props. */
+}
+
+/* The sentinel is a zero-height marker offset just past the sticky edge so the
+ * IntersectionObserver can detect when the element pins. */
+.nova-sticky__sentinel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.nova-sticky__sentinel--top {
+  top: -1px;
+}
+
+.nova-sticky__sentinel--bottom {
+  bottom: -1px;
+}

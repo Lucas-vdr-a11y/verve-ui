@@ -1,0 +1,53 @@
+.nova-shine {
+  position: relative;
+  border-radius: var(--nova-shine-radius);
+  background: var(--nova-surface);
+}
+
+.nova-shine__border {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--nova-shine-border);
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    var(--nova-shine-gradient)
+  );
+  background-size: 300% 300%;
+  /* Paint the gradient only on the ring by masking out the interior. */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: nova-shine-move var(--nova-shine-duration) linear infinite;
+  will-change: background-position;
+}
+
+.nova-shine__content {
+  position: relative;
+  border-radius: inherit;
+  height: 100%;
+}
+
+@keyframes nova-shine-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-shine__border {
+    animation: none;
+  }
+}

@@ -1,0 +1,14 @@
+.nova-watermark {
+  position: relative;
+}
+
+.nova-watermark__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: var(--nova-z-base);
+  pointer-events: none;
+  background-repeat: repeat;
+  background-position: 0 0;
+  /* `currentColor` in the SVG tile resolves against this. */
+  color: var(--nova-text);
+}

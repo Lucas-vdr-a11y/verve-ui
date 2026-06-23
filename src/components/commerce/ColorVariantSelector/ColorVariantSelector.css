@@ -1,0 +1,105 @@
+/* ColorVariantSelector — radiogroup of color swatches. */
+.nova-color-variant-selector {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2);
+}
+
+.nova-color-variant-selector--disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.nova-color-variant-selector__swatch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-surface);
+  cursor: pointer;
+  transition:
+    box-shadow var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-color-variant-selector__swatch:hover:not(:disabled) {
+  border-color: var(--nova-border-strong);
+}
+
+.nova-color-variant-selector__swatch:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-color-variant-selector__swatch--selected {
+  border-color: var(--nova-primary);
+  box-shadow: 0 0 0 2px var(--nova-surface), 0 0 0 4px var(--nova-primary);
+}
+
+.nova-color-variant-selector__swatch--selected:focus-visible {
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-color-variant-selector__swatch:disabled {
+  cursor: not-allowed;
+}
+
+.nova-color-variant-selector__fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  /* Inner contrast hairline so light swatches stay visible on light surfaces. */
+  box-shadow: inset 0 0 0 1px rgb(15 23 42 / 0.08);
+}
+
+.nova-color-variant-selector__check {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nova-text-on-brand);
+  font-size: 0.75em;
+  /* Drop shadow keeps the check legible on any swatch color. */
+  filter: drop-shadow(0 1px 1px rgb(15 23 42 / 0.55));
+  pointer-events: none;
+}
+
+/* Out of stock — diagonal strike across the swatch. */
+.nova-color-variant-selector__swatch--out-of-stock .nova-color-variant-selector__fill {
+  opacity: 0.5;
+}
+
+.nova-color-variant-selector__swatch--out-of-stock::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    to top left,
+    transparent calc(50% - 1px),
+    var(--nova-danger) calc(50% - 1px),
+    var(--nova-danger) calc(50% + 1px),
+    transparent calc(50% + 1px)
+  );
+  pointer-events: none;
+}
+
+/* Sizes --------------------------------------------------------------------- */
+.nova-color-variant-selector--sm .nova-color-variant-selector__swatch {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.nova-color-variant-selector--md .nova-color-variant-selector__swatch {
+  width: 2rem;
+  height: 2rem;
+}
+.nova-color-variant-selector--lg .nova-color-variant-selector__swatch {
+  width: 2.5rem;
+  height: 2.5rem;
+}

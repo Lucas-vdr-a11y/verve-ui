@@ -1,0 +1,15 @@
+.nova-scramble-hover {
+  display: inline-block;
+  font-family: var(--nova-font-mono);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+  font-variant-numeric: tabular-nums;
+  white-space: pre;
+  cursor: default;
+  border-radius: var(--nova-radius-xs);
+}
+
+.nova-scramble-hover:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}

@@ -1,0 +1,184 @@
+.nova-mini-calendar {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  width: 100%;
+  max-width: 16rem;
+  padding: var(--nova-space-3);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  box-sizing: border-box;
+}
+
+.nova-mini-calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nova-space-1);
+}
+
+.nova-mini-calendar__label {
+  flex: 1;
+  text-align: center;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-mini-calendar__nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-mini-calendar__nav:hover {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-mini-calendar__nav svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.nova-mini-calendar__weekdays,
+.nova-mini-calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.nova-mini-calendar__weekdays {
+  gap: 0;
+}
+
+.nova-mini-calendar__weekday {
+  text-align: center;
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-subtle);
+  padding-bottom: var(--nova-space-1);
+}
+
+.nova-mini-calendar__grid {
+  gap: 1px;
+}
+
+.nova-mini-calendar__day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  aspect-ratio: 1 / 1;
+  min-height: 1.75rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-xs);
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-mini-calendar__day:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-mini-calendar__date {
+  line-height: 1;
+}
+
+.nova-mini-calendar__day--outside {
+  color: var(--nova-text-subtle);
+}
+
+.nova-mini-calendar__day--today {
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-primary-text);
+}
+
+.nova-mini-calendar__day--today::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px var(--nova-primary);
+  pointer-events: none;
+}
+
+.nova-mini-calendar__day--selected,
+.nova-mini-calendar__day--selected:hover {
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-mini-calendar__day--selected.nova-mini-calendar__day--today {
+  color: var(--nova-text-on-brand);
+}
+
+.nova-mini-calendar__day--selected.nova-mini-calendar__day--today::after {
+  box-shadow: inset 0 0 0 1px var(--nova-text-on-brand);
+}
+
+.nova-mini-calendar__day--disabled {
+  color: var(--nova-text-subtle);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nova-mini-calendar__day--disabled:hover {
+  background: transparent;
+}
+
+.nova-mini-calendar__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 4px;
+}
+
+.nova-mini-calendar__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-tone, var(--nova-primary));
+}
+
+.nova-mini-calendar__day--selected .nova-mini-calendar__dot {
+  background: var(--nova-text-on-brand);
+}
+
+.nova-mini-calendar__dot--primary {
+  --nova-tone: var(--nova-primary);
+}
+.nova-mini-calendar__dot--success {
+  --nova-tone: var(--nova-success);
+}
+.nova-mini-calendar__dot--warning {
+  --nova-tone: var(--nova-warning);
+}
+.nova-mini-calendar__dot--danger {
+  --nova-tone: var(--nova-danger);
+}
+.nova-mini-calendar__dot--info {
+  --nova-tone: var(--nova-info);
+}

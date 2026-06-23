@@ -1,0 +1,106 @@
+.nova-button-group {
+  display: inline-flex;
+  --nova-button-group-radius: var(--nova-radius-md);
+}
+
+.nova-button-group--horizontal {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.nova-button-group--vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.nova-button-group--sm {
+  --nova-button-group-radius: var(--nova-radius-sm);
+}
+.nova-button-group--md {
+  --nova-button-group-radius: var(--nova-radius-md);
+}
+.nova-button-group--lg {
+  --nova-button-group-radius: var(--nova-radius-lg);
+}
+
+.nova-button-group--full {
+  display: flex;
+  width: 100%;
+}
+
+.nova-button-group--full > * {
+  flex: 1 1 0;
+}
+
+/*
+ * Style any button-like child directly so the group is standalone (no Button
+ * import). Children keep their own look but get joined edges. We scope to
+ * direct children to avoid leaking into nested content.
+ */
+.nova-button-group > button,
+.nova-button-group > a,
+.nova-button-group > [role="button"] {
+  position: relative;
+  border-radius: var(--nova-button-group-radius);
+}
+
+/* ---- Attached: collapse shared borders ---------------------------------- */
+.nova-button-group--attached.nova-button-group--horizontal > *:not(:first-child),
+.nova-button-group--attached.nova-button-group--horizontal
+  > button:not(:first-child),
+.nova-button-group--attached.nova-button-group--horizontal
+  > a:not(:first-child) {
+  margin-inline-start: -1px;
+}
+
+.nova-button-group--attached.nova-button-group--vertical > *:not(:first-child) {
+  margin-top: -1px;
+}
+
+/* Horizontal segmented radii */
+.nova-button-group--attached.nova-button-group--horizontal
+  > *:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.nova-button-group--attached.nova-button-group--horizontal > *:first-child {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+.nova-button-group--attached.nova-button-group--horizontal > *:last-child {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+.nova-button-group--attached.nova-button-group--horizontal
+  > *:first-child:last-child {
+  border-radius: var(--nova-button-group-radius);
+}
+
+/* Vertical segmented radii */
+.nova-button-group--attached.nova-button-group--vertical
+  > *:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.nova-button-group--attached.nova-button-group--vertical > *:first-child {
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+.nova-button-group--attached.nova-button-group--vertical > *:last-child {
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+}
+.nova-button-group--attached.nova-button-group--vertical
+  > *:first-child:last-child {
+  border-radius: var(--nova-button-group-radius);
+}
+
+/* Lift the hovered/focused segment so its full border shows above neighbours. */
+.nova-button-group--attached > *:hover,
+.nova-button-group--attached > *:focus-visible,
+.nova-button-group--attached > *:focus-within {
+  z-index: var(--nova-z-base);
+}
+
+/* ---- Detached: keep a small gap ----------------------------------------- */
+.nova-button-group:not(.nova-button-group--attached) {
+  gap: var(--nova-space-2);
+}

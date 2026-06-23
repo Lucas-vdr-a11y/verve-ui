@@ -1,0 +1,11 @@
+.nova-em {
+  font-style: italic;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.nova-strong {
+  font-weight: var(--nova-font-semibold);
+  font-style: inherit;
+  color: var(--nova-text);
+}

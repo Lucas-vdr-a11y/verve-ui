@@ -1,0 +1,91 @@
+.nova-flipbox {
+  --nova-flipbox-w: 240px;
+  --nova-flipbox-h: 160px;
+  --nova-flipbox-angle: 0deg;
+  --nova-flipbox-depth: 0px;
+  display: inline-block;
+  width: var(--nova-flipbox-w);
+  height: var(--nova-flipbox-h);
+  perspective: calc(var(--nova-flipbox-w) * 4);
+}
+
+.nova-flipbox[role="button"] {
+  cursor: pointer;
+  outline: none;
+}
+.nova-flipbox[role="button"]:focus-visible {
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-flipbox__box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+/* ---- Rotation per axis -------------------------------------------------- */
+.nova-flipbox--axis-y .nova-flipbox__box {
+  transform: rotateY(var(--nova-flipbox-angle));
+}
+.nova-flipbox--axis-x .nova-flipbox__box {
+  transform: rotateX(var(--nova-flipbox-angle));
+}
+
+/* Hover trigger nudges the two-sided flip without changing the index. */
+.nova-flipbox--flip.nova-flipbox--axis-y .nova-flipbox__box--hover {
+  transform: rotateY(180deg);
+}
+.nova-flipbox--flip.nova-flipbox--axis-x .nova-flipbox__box--hover {
+  transform: rotateX(180deg);
+}
+
+.nova-flipbox__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: var(--nova-space-4);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-md);
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* ---- Two-sided flip layout --------------------------------------------- */
+.nova-flipbox--flip .nova-flipbox__face--back {
+  transform: rotateY(180deg);
+}
+.nova-flipbox--flip.nova-flipbox--axis-x .nova-flipbox__face--back {
+  transform: rotateX(180deg);
+}
+
+/* ---- N-face reel layout: faces fan around the rotation axis ------------- */
+.nova-flipbox--reel .nova-flipbox__face {
+  backface-visibility: hidden;
+}
+.nova-flipbox--reel.nova-flipbox--axis-y .nova-flipbox__face {
+  transform: rotateY(
+      calc(var(--nova-flipbox-face-i) * (360deg / var(--nova-flipbox-faces, 3)))
+    )
+    translateZ(var(--nova-flipbox-depth));
+}
+.nova-flipbox--reel.nova-flipbox--axis-x .nova-flipbox__face {
+  transform: rotateX(
+      calc(var(--nova-flipbox-face-i) * (360deg / var(--nova-flipbox-faces, 3)))
+    )
+    translateZ(var(--nova-flipbox-depth));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-flipbox__box {
+    transition: none;
+  }
+}

@@ -1,0 +1,12 @@
+.nova-dot-grid-shape {
+  display: inline-block;
+  line-height: 0;
+}
+
+.nova-dot-grid-shape__svg {
+  display: block;
+}
+
+.nova-dot-grid-shape__dot {
+  fill: var(--nova-dotgrid-color);
+}

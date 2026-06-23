@@ -1,0 +1,71 @@
+.nova-countdown {
+  display: inline-flex;
+  align-items: flex-start;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  --nova-countdown-value-size: var(--nova-text-2xl);
+  --nova-countdown-gap: var(--nova-space-3);
+}
+
+.nova-countdown--sm {
+  --nova-countdown-value-size: var(--nova-text-lg);
+  --nova-countdown-gap: var(--nova-space-2);
+}
+.nova-countdown--md {
+  --nova-countdown-value-size: var(--nova-text-2xl);
+  --nova-countdown-gap: var(--nova-space-3);
+}
+.nova-countdown--lg {
+  --nova-countdown-value-size: var(--nova-text-4xl);
+  --nova-countdown-gap: var(--nova-space-4);
+}
+
+/* ---- Segmented --------------------------------------------------------- */
+.nova-countdown--segmented {
+  gap: var(--nova-countdown-gap);
+}
+
+.nova-countdown__segment {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  min-inline-size: 2.25em;
+}
+
+.nova-countdown__value {
+  font-size: var(--nova-countdown-value-size);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.nova-countdown__label {
+  margin-block-start: var(--nova-space-1);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--nova-text-muted);
+}
+
+.nova-countdown__sep {
+  position: absolute;
+  inset-inline-end: calc(var(--nova-countdown-gap) / -2);
+  inset-block-start: 0;
+  transform: translateX(50%);
+  font-size: var(--nova-countdown-value-size);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  color: var(--nova-text-subtle);
+}
+
+/* ---- Compact ----------------------------------------------------------- */
+.nova-countdown--compact .nova-countdown__compact {
+  font-size: var(--nova-countdown-value-size);
+  font-weight: var(--nova-font-semibold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  line-height: var(--nova-leading-tight);
+}

@@ -1,0 +1,253 @@
+.nova-button {
+  --nova-button-bg: transparent;
+  --nova-button-fg: var(--nova-text);
+  --nova-button-border: transparent;
+  --nova-button-bg-hover: transparent;
+  --nova-button-bg-active: transparent;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  box-sizing: border-box;
+  border: 1px solid var(--nova-button-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-button-bg);
+  color: var(--nova-button-fg);
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-button:hover {
+  background: var(--nova-button-bg-hover);
+}
+
+.nova-button:active {
+  background: var(--nova-button-bg-active);
+  transform: translateY(0.5px) scale(0.99);
+}
+
+.nova-button:disabled,
+.nova-button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+  box-shadow: none;
+}
+
+.nova-button--full {
+  width: 100%;
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-button--sm {
+  min-height: 2rem;
+  padding: 0 var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-button--md {
+  min-height: 2.5rem;
+  padding: 0 var(--nova-space-4);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-button--lg {
+  min-height: 3rem;
+  padding: 0 var(--nova-space-5);
+  font-size: var(--nova-text-md);
+}
+
+/* ---- Tone color resolution --------------------------------------------- */
+.nova-button--primary {
+  --nova-tone: var(--nova-primary);
+  --nova-tone-hover: var(--nova-primary-hover);
+  --nova-tone-active: var(--nova-primary-active);
+  --nova-tone-subtle: var(--nova-primary-subtle);
+  --nova-tone-text: var(--nova-primary-text);
+  --nova-tone-on: var(--nova-text-on-brand);
+}
+
+.nova-button--neutral {
+  --nova-tone: var(--nova-text);
+  --nova-tone-hover: var(--nova-text);
+  --nova-tone-active: var(--nova-text);
+  --nova-tone-subtle: var(--nova-surface-hover);
+  --nova-tone-text: var(--nova-text);
+  --nova-tone-on: var(--nova-surface);
+}
+
+.nova-button--danger {
+  --nova-tone: var(--nova-danger);
+  --nova-tone-hover: var(--nova-danger);
+  --nova-tone-active: var(--nova-danger);
+  --nova-tone-subtle: var(--nova-danger-subtle);
+  --nova-tone-text: var(--nova-danger);
+  --nova-tone-on: var(--nova-text-on-brand);
+}
+
+/* ---- Variant: solid ----------------------------------------------------- */
+.nova-button--solid {
+  --nova-button-bg: var(--nova-tone);
+  --nova-button-fg: var(--nova-tone-on);
+  --nova-button-bg-hover: var(--nova-tone-hover);
+  --nova-button-bg-active: var(--nova-tone-active);
+  box-shadow: var(--nova-shadow-xs);
+}
+
+.nova-button--solid.nova-button--neutral {
+  --nova-button-bg: var(--nova-text);
+  --nova-button-fg: var(--nova-surface);
+  --nova-button-bg-hover: var(--nova-text);
+  --nova-button-bg-active: var(--nova-text);
+}
+
+/* ---- Variant: soft ------------------------------------------------------ */
+.nova-button--soft {
+  --nova-button-bg: var(--nova-tone-subtle);
+  --nova-button-fg: var(--nova-tone-text);
+  --nova-button-bg-hover: var(--nova-tone-subtle);
+  --nova-button-bg-active: var(--nova-tone-subtle);
+}
+
+.nova-button--soft:hover {
+  filter: brightness(0.97);
+}
+
+.nova-button--soft.nova-button--neutral {
+  --nova-button-fg: var(--nova-text);
+  --nova-button-bg: var(--nova-surface-hover);
+  --nova-button-bg-hover: var(--nova-surface-active);
+  --nova-button-bg-active: var(--nova-surface-active);
+}
+
+.nova-button--soft.nova-button--neutral:hover {
+  filter: none;
+}
+
+/* ---- Variant: outline --------------------------------------------------- */
+.nova-button--outline {
+  --nova-button-bg: var(--nova-surface);
+  --nova-button-fg: var(--nova-tone-text);
+  --nova-button-border: var(--nova-border-strong);
+  --nova-button-bg-hover: var(--nova-surface-hover);
+  --nova-button-bg-active: var(--nova-surface-active);
+  box-shadow: var(--nova-shadow-xs);
+}
+
+.nova-button--outline.nova-button--neutral {
+  --nova-button-fg: var(--nova-text);
+}
+
+.nova-button--outline.nova-button--primary:hover {
+  border-color: var(--nova-primary);
+}
+
+.nova-button--outline.nova-button--danger:hover {
+  border-color: var(--nova-danger);
+}
+
+/* ---- Variant: ghost ----------------------------------------------------- */
+.nova-button--ghost {
+  --nova-button-bg: transparent;
+  --nova-button-fg: var(--nova-tone-text);
+  --nova-button-bg-hover: var(--nova-tone-subtle);
+  --nova-button-bg-active: var(--nova-tone-subtle);
+}
+
+.nova-button--ghost.nova-button--neutral {
+  --nova-button-fg: var(--nova-text);
+  --nova-button-bg-hover: var(--nova-surface-hover);
+  --nova-button-bg-active: var(--nova-surface-active);
+}
+
+/* ---- Variant: link ------------------------------------------------------ */
+.nova-button--link {
+  --nova-button-fg: var(--nova-tone-text);
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  text-decoration: none;
+}
+
+.nova-button--link:hover {
+  background: transparent;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.nova-button--link:active {
+  transform: none;
+}
+
+/* ---- Icons -------------------------------------------------------------- */
+.nova-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.nova-button__icon svg {
+  display: block;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.nova-button__label {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ---- Loading spinner ---------------------------------------------------- */
+.nova-button--loading .nova-button__label,
+.nova-button--loading .nova-button__icon {
+  visibility: hidden;
+}
+
+.nova-button__spinner {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inset: 0;
+  margin: auto;
+}
+
+.nova-button__spinner-svg {
+  width: 1.15em;
+  height: 1.15em;
+  animation: nova-button-spin 0.7s linear infinite;
+}
+
+.nova-button__spinner-track {
+  stroke: currentColor;
+  opacity: 0.25;
+}
+
+.nova-button__spinner-head {
+  stroke: currentColor;
+}
+
+@keyframes nova-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-button__spinner-svg {
+    animation-duration: 1.4s;
+  }
+}

@@ -1,0 +1,29 @@
+.nova-skip-link {
+  position: absolute;
+  top: var(--nova-space-2);
+  left: var(--nova-space-2);
+  z-index: var(--nova-z-toast);
+  display: inline-flex;
+  align-items: center;
+  padding: var(--nova-space-2) var(--nova-space-4);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  text-decoration: none;
+  box-shadow: var(--nova-shadow-lg);
+  transition: transform var(--nova-duration-fast) var(--nova-ease-out);
+
+  /* Visually hidden until focused: pulled off-screen above the viewport. */
+  transform: translateY(calc(-100% - var(--nova-space-4)));
+}
+
+.nova-skip-link:focus-visible,
+.nova-skip-link:focus {
+  transform: translateY(0);
+  outline: none;
+  box-shadow: var(--nova-shadow-lg), var(--nova-shadow-focus);
+}

@@ -1,0 +1,52 @@
+.nova-spoiler {
+  display: inline;
+  position: relative;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  border-radius: var(--nova-radius-xs);
+  transition: filter var(--nova-duration-base) var(--nova-ease),
+    background-color var(--nova-duration-base) var(--nova-ease),
+    color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-spoiler__content {
+  transition: filter var(--nova-duration-base) var(--nova-ease),
+    opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+/* ---- Hidden states ------------------------------------------------------ */
+.nova-spoiler--hidden {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Blur mode: content stays visible but heavily blurred. */
+.nova-spoiler--blur.nova-spoiler--hidden .nova-spoiler__content {
+  filter: blur(0.4em);
+  opacity: 0.85;
+}
+
+/* Block mode: content masked by a solid surface block. */
+.nova-spoiler--block.nova-spoiler--hidden {
+  background-color: var(--nova-text);
+  color: var(--nova-text);
+  border-radius: var(--nova-radius-sm);
+}
+
+.nova-spoiler--block.nova-spoiler--hidden .nova-spoiler__content {
+  opacity: 0;
+}
+
+/* ---- Revealed state ----------------------------------------------------- */
+.nova-spoiler--revealed {
+  cursor: text;
+}
+
+.nova-spoiler--revealed.nova-focusable {
+  cursor: pointer;
+}
+
+.nova-spoiler--revealed .nova-spoiler__content {
+  filter: none;
+  opacity: 1;
+}

@@ -1,0 +1,17 @@
+.nova-emoji-cursor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--nova-z-tooltip);
+}
+
+.nova-emoji-cursor__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: var(--nova-emoji-cursor-size);
+  line-height: 1;
+  opacity: 0;
+  user-select: none;
+  will-change: transform, opacity;
+}

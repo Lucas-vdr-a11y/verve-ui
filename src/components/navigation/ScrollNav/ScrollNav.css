@@ -1,0 +1,175 @@
+.nova-scroll-nav {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  min-width: 0;
+  border-bottom: 1px solid var(--nova-border);
+}
+
+/* ---- Scroller ----------------------------------------------------------- */
+.nova-scroll-nav__scroller {
+  display: flex;
+  align-items: stretch;
+  gap: var(--nova-space-2);
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+}
+
+.nova-scroll-nav__scroller::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---- Item --------------------------------------------------------------- */
+.nova-scroll-nav__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: -1px;
+  transition: color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-scroll-nav__item:hover:not(:disabled) {
+  color: var(--nova-text);
+}
+
+.nova-scroll-nav__item:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.nova-scroll-nav__item--selected {
+  color: var(--nova-primary-text);
+  border-bottom-color: var(--nova-primary);
+}
+
+.nova-scroll-nav__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.nova-scroll-nav__icon svg {
+  display: block;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-scroll-nav--sm .nova-scroll-nav__item {
+  min-height: 2rem;
+  padding: 0 var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-scroll-nav--md .nova-scroll-nav__item {
+  min-height: 2.5rem;
+  padding: 0 var(--nova-space-4);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-scroll-nav--lg .nova-scroll-nav__item {
+  min-height: 3rem;
+  padding: 0 var(--nova-space-5);
+  font-size: var(--nova-text-md);
+}
+
+/* ---- Scroll buttons ----------------------------------------------------- */
+.nova-scroll-nav__btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 2rem;
+  border: none;
+  background: var(--nova-surface);
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  z-index: var(--nova-z-base);
+  transition: color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-scroll-nav__btn:hover:not(:disabled) {
+  color: var(--nova-text);
+}
+
+.nova-scroll-nav__btn svg {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.nova-scroll-nav--overflow-left .nova-scroll-nav__btn--left {
+  display: inline-flex;
+}
+
+.nova-scroll-nav--overflow-right .nova-scroll-nav__btn--right {
+  display: inline-flex;
+}
+
+/* ---- Edge fades --------------------------------------------------------- */
+.nova-scroll-nav--fades::before,
+.nova-scroll-nav--fades::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--nova-space-8);
+  pointer-events: none;
+  opacity: 0;
+  z-index: var(--nova-z-base);
+  transition: opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-scroll-nav--fades::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--nova-surface),
+    transparent
+  );
+}
+
+.nova-scroll-nav--fades::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--nova-surface),
+    transparent
+  );
+}
+
+.nova-scroll-nav--fades.nova-scroll-nav--overflow-left::before {
+  opacity: 1;
+}
+
+.nova-scroll-nav--fades.nova-scroll-nav--overflow-right::after {
+  opacity: 1;
+}
+
+/* When buttons are visible, nudge the fades past the button width. */
+.nova-scroll-nav--overflow-left.nova-scroll-nav--fades::before {
+  left: 2rem;
+}
+
+.nova-scroll-nav--overflow-right.nova-scroll-nav--fades::after {
+  right: 2rem;
+}

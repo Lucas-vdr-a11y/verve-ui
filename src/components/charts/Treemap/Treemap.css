@@ -1,0 +1,38 @@
+.nova-treemap {
+  display: block;
+  width: 100%;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-treemap__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nova-treemap__cell {
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    filter var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-treemap__group:hover .nova-treemap__cell {
+  filter: brightness(1.08);
+}
+
+.nova-treemap:hover .nova-treemap__group:not(:hover) .nova-treemap__cell {
+  opacity: 0.7;
+}
+
+.nova-treemap__label {
+  fill: var(--nova-text-on-brand);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  pointer-events: none;
+}
+
+.nova-treemap__value {
+  fill: var(--nova-text-on-brand);
+  font-size: var(--nova-text-xs);
+  opacity: 0.85;
+  pointer-events: none;
+}

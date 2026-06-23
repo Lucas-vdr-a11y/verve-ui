@@ -1,0 +1,29 @@
+/* Split — static two-pane layout with a configurable ratio. */
+.nova-split {
+  box-sizing: border-box;
+  display: flex;
+  min-width: 0;
+  gap: var(--nova-split-gap, var(--nova-space-4));
+}
+
+.nova-split--horizontal {
+  flex-direction: row;
+}
+
+.nova-split--vertical {
+  flex-direction: column;
+}
+
+.nova-split__pane {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+}
+
+.nova-split__pane--start {
+  flex: var(--nova-split-start, 0.5) 1 0;
+}
+
+.nova-split__pane--end {
+  flex: var(--nova-split-end, 0.5) 1 0;
+}

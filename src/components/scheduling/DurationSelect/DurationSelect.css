@@ -1,0 +1,79 @@
+.nova-duration-select {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  box-sizing: border-box;
+}
+
+.nova-duration-select *,
+.nova-duration-select *::before,
+.nova-duration-select *::after {
+  box-sizing: border-box;
+}
+
+.nova-duration-select__presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2);
+}
+
+.nova-duration-select__option {
+  padding: var(--nova-space-2) var(--nova-space-4);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-duration-select__option:hover {
+  border-color: var(--nova-primary);
+  background: var(--nova-surface-hover);
+}
+
+.nova-duration-select__option--selected,
+.nova-duration-select__option--selected:hover {
+  border-color: var(--nova-primary);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-duration-select__custom {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+}
+
+.nova-duration-select__custom-input {
+  width: 6rem;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-duration-select__custom-unit {
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}
+
+.nova-duration-select__custom-readout {
+  margin-left: auto;
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+}

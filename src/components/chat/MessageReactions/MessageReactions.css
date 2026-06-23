@@ -1,0 +1,122 @@
+.nova-message-reactions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-message-reactions__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  height: 1.625rem;
+  padding: 0 var(--nova-space-2);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-message-reactions__pill:hover {
+  background: var(--nova-surface-hover);
+  border-color: var(--nova-border-strong);
+}
+
+.nova-message-reactions__pill--reacted {
+  background: var(--nova-primary-subtle);
+  border-color: var(--nova-primary);
+  color: var(--nova-primary-text);
+}
+
+.nova-message-reactions__emoji {
+  font-size: var(--nova-text-sm);
+  line-height: 1;
+}
+
+.nova-message-reactions__count {
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-message-reactions__add {
+  position: relative;
+  display: inline-flex;
+}
+
+.nova-message-reactions__add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  padding: 0;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-md);
+  line-height: 0;
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-message-reactions__add-btn:hover {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-message-reactions__picker {
+  position: absolute;
+  bottom: calc(100% + var(--nova-space-1));
+  left: 0;
+  z-index: var(--nova-z-popover);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-1);
+  max-width: 14rem;
+  padding: var(--nova-space-1);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-message-reactions__picker-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--nova-radius-md);
+  background: transparent;
+  font-size: var(--nova-text-lg);
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-message-reactions__picker-item:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-message-reactions__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

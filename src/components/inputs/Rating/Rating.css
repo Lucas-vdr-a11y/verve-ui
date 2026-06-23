@@ -1,0 +1,92 @@
+.nova-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  border-radius: var(--nova-radius-sm);
+  color: var(--nova-warning);
+  line-height: 0;
+}
+
+.nova-rating.nova-focusable:focus-visible,
+.nova-rating:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-rating--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nova-rating--readonly {
+  cursor: default;
+}
+
+/* ---- Symbol -------------------------------------------------------------- */
+.nova-rating__symbol {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  font-size: var(--nova-symbol-size, 1.5rem);
+}
+
+.nova-rating__icon {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+}
+
+.nova-rating__icon svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+.nova-rating__icon--bg {
+  color: var(--nova-border-strong);
+}
+
+.nova-rating__icon--fg {
+  color: var(--nova-warning);
+  transition: width var(--nova-duration-fast) var(--nova-ease);
+}
+
+/* ---- Hit targets --------------------------------------------------------- */
+.nova-rating__hit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: var(--nova-z-base);
+}
+
+.nova-rating__hit--full {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.nova-rating__hit--half {
+  left: 0;
+  width: 50%;
+  z-index: calc(var(--nova-z-base) + 1);
+}
+
+/* ---- Sizes --------------------------------------------------------------- */
+.nova-rating--sm {
+  --nova-symbol-size: 1rem;
+}
+
+.nova-rating--md {
+  --nova-symbol-size: 1.5rem;
+}
+
+.nova-rating--lg {
+  --nova-symbol-size: 2rem;
+}

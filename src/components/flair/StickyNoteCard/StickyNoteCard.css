@@ -1,0 +1,84 @@
+.nova-sticky-note {
+  --nova-note-x: 0px;
+  --nova-note-y: 0px;
+  --nova-note-bg: #fef3c7;
+  --nova-note-ink: #422006;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 11rem;
+  min-height: 11rem;
+  padding: var(--nova-space-4);
+  background: var(--nova-note-bg);
+  color: var(--nova-note-ink);
+  border-radius: var(--nova-radius-xs);
+  box-shadow: var(--nova-shadow-md);
+  transform: translate3d(var(--nova-note-x), var(--nova-note-y), 0) rotate(-2deg);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  transition: box-shadow var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-sticky-note--dragging {
+  cursor: grabbing;
+  transform: translate3d(var(--nova-note-x), var(--nova-note-y), 0)
+    rotate(-2deg) scale(1.04);
+  box-shadow: var(--nova-shadow-xl);
+  transition: box-shadow var(--nova-duration-base) var(--nova-ease);
+  z-index: var(--nova-z-sticky);
+}
+
+.nova-sticky-note__body {
+  font: var(--nova-font-medium) var(--nova-text-sm) / var(--nova-leading-snug)
+    var(--nova-font-sans);
+  word-break: break-word;
+}
+
+/* Peeling corner curl in the bottom-right. */
+.nova-sticky-note__curl {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--nova-space-6);
+  height: var(--nova-space-6);
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    rgb(0 0 0 / 0.12) 50%,
+    rgb(0 0 0 / 0.04) 100%
+  );
+  border-bottom-right-radius: var(--nova-radius-xs);
+  pointer-events: none;
+}
+
+/* Color variants (paper tints, fixed so they read in any theme). */
+.nova-sticky-note--yellow {
+  --nova-note-bg: #fef3c7;
+  --nova-note-ink: #422006;
+}
+.nova-sticky-note--pink {
+  --nova-note-bg: #fce7f3;
+  --nova-note-ink: #500724;
+}
+.nova-sticky-note--blue {
+  --nova-note-bg: #dbeafe;
+  --nova-note-ink: #172554;
+}
+.nova-sticky-note--green {
+  --nova-note-bg: #dcfce7;
+  --nova-note-ink: #052e16;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-sticky-note,
+  .nova-sticky-note--dragging {
+    transition: none;
+  }
+  .nova-sticky-note--dragging {
+    transform: translate3d(var(--nova-note-x), var(--nova-note-y), 0)
+      rotate(-2deg);
+  }
+}

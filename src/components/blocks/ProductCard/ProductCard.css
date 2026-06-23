@@ -1,0 +1,160 @@
+/* ProductCard — e-commerce product tile with hover lift. */
+.nova-product-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  transition:
+    box-shadow var(--nova-duration-base) var(--nova-ease),
+    border-color var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-product-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--nova-border-strong);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+/* Media --------------------------------------------------------------------- */
+.nova-product-card__media {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--nova-bg-muted);
+}
+
+.nova-product-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--nova-duration-slow) var(--nova-ease);
+}
+
+.nova-product-card:hover .nova-product-card__media img {
+  transform: scale(1.04);
+}
+
+/* Badge --------------------------------------------------------------------- */
+.nova-product-card__badge {
+  position: absolute;
+  top: var(--nova-space-3);
+  left: var(--nova-space-3);
+  z-index: var(--nova-z-base);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border-radius: var(--nova-radius-sm);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.nova-product-card__badge--sale {
+  background-color: var(--nova-danger);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-product-card__badge--new {
+  background-color: var(--nova-success);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-product-card__badge--neutral {
+  background-color: var(--nova-bg-subtle);
+  color: var(--nova-text);
+}
+
+/* Body ---------------------------------------------------------------------- */
+.nova-product-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-4);
+}
+
+.nova-product-card__title {
+  margin: 0;
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+}
+
+/* Rating -------------------------------------------------------------------- */
+.nova-product-card__rating {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+}
+
+.nova-product-card__stars {
+  display: inline-flex;
+  gap: 0.1em;
+  color: var(--nova-warning);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-product-card__star {
+  display: inline-flex;
+}
+
+.nova-product-card__reviews {
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+}
+
+/* Footer -------------------------------------------------------------------- */
+.nova-product-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nova-space-3);
+  margin-top: var(--nova-space-1);
+}
+
+.nova-product-card__price-group {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--nova-space-2);
+}
+
+.nova-product-card__price {
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-bold);
+}
+
+.nova-product-card__original-price {
+  color: var(--nova-text-subtle);
+  font-size: var(--nova-text-sm);
+  text-decoration: line-through;
+}
+
+/* Action -------------------------------------------------------------------- */
+.nova-product-card__action {
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: 0;
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-product-card__action:hover {
+  background-color: var(--nova-primary-hover);
+}
+
+.nova-product-card__action:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}

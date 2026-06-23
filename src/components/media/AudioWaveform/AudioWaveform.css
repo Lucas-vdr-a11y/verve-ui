@@ -1,0 +1,38 @@
+.nova-audio-waveform {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: var(--nova-waveform-height, 48px);
+  width: 100%;
+  padding: 0;
+  border-radius: var(--nova-radius-sm);
+}
+
+.nova-audio-waveform__bar {
+  flex: 1 1 0;
+  min-width: 2px;
+  height: calc(var(--nova-waveform-amp, 0.5) * 100%);
+  padding: 0;
+  border: none;
+  background: var(--nova-border-strong);
+  border-radius: var(--nova-radius-full);
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-audio-waveform__bar--played {
+  background: var(--nova-primary);
+}
+
+.nova-audio-waveform--interactive .nova-audio-waveform__bar {
+  cursor: pointer;
+}
+.nova-audio-waveform--interactive .nova-audio-waveform__bar:hover {
+  background: var(--nova-primary-hover);
+  transform: scaleY(1.08);
+}
+
+.nova-audio-waveform--interactive:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}

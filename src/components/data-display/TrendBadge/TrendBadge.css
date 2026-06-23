@@ -1,0 +1,56 @@
+.nova-trend-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-semibold);
+  line-height: 1;
+  border-radius: var(--nova-radius-full);
+  white-space: nowrap;
+}
+
+.nova-trend-badge--sm {
+  font-size: var(--nova-text-xs);
+  padding: var(--nova-space-1) var(--nova-space-2);
+}
+
+.nova-trend-badge--md {
+  font-size: var(--nova-text-sm);
+  padding: var(--nova-space-1) var(--nova-space-3);
+}
+
+.nova-trend-badge--positive {
+  color: var(--nova-success);
+  background: var(--nova-success-subtle);
+}
+
+.nova-trend-badge--negative {
+  color: var(--nova-danger);
+  background: var(--nova-danger-subtle);
+}
+
+.nova-trend-badge--flat {
+  color: var(--nova-text-muted);
+  background: var(--nova-bg-muted);
+}
+
+.nova-trend-badge__icon {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.nova-trend-badge__value {
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-trend-badge__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

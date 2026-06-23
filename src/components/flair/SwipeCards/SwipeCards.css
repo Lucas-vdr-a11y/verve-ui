@@ -1,0 +1,106 @@
+.nova-swipe-cards {
+  --nova-swipe-x: 0px;
+  --nova-swipe-y: 0px;
+  --nova-swipe-rot: 0deg;
+  --nova-swipe-progress: 0;
+  --nova-swipe-offset: 12px;
+
+  position: relative;
+  width: 18rem;
+  height: 24rem;
+  outline: none;
+}
+
+.nova-swipe-cards.nova-focusable:focus-visible,
+.nova-swipe-cards:focus-visible {
+  box-shadow: var(--nova-shadow-focus);
+  border-radius: var(--nova-radius-2xl);
+}
+
+.nova-swipe-cards--empty {
+  /* keep layout box but show nothing */
+}
+
+.nova-swipe-cards__card {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-2xl);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-lg);
+  overflow: hidden;
+  transition: transform var(--nova-duration-base) var(--nova-ease-out);
+  will-change: transform;
+}
+
+.nova-swipe-cards__card--front {
+  cursor: grab;
+  touch-action: none;
+  transform: translate3d(var(--nova-swipe-x), var(--nova-swipe-y), 0)
+    rotate(var(--nova-swipe-rot));
+}
+
+.nova-swipe-cards__card--dragging {
+  cursor: grabbing;
+  transition: none;
+}
+
+.nova-swipe-cards__card--fly-right {
+  transform: translate3d(140%, var(--nova-swipe-y), 0) rotate(22deg);
+  opacity: 0;
+  transition: transform var(--nova-duration-slow) var(--nova-ease),
+    opacity var(--nova-duration-slow) var(--nova-ease);
+}
+
+.nova-swipe-cards__card--fly-left {
+  transform: translate3d(-140%, var(--nova-swipe-y), 0) rotate(-22deg);
+  opacity: 0;
+  transition: transform var(--nova-duration-slow) var(--nova-ease),
+    opacity var(--nova-duration-slow) var(--nova-ease);
+}
+
+.nova-swipe-cards__content {
+  height: 100%;
+  width: 100%;
+}
+
+/* Directional cue badges that fade in as the card is dragged. */
+.nova-swipe-cards__badge {
+  position: absolute;
+  top: var(--nova-space-4);
+  z-index: 2;
+  padding: var(--nova-space-1) var(--nova-space-3);
+  border-radius: var(--nova-radius-md);
+  border: 2px solid currentColor;
+  font: var(--nova-font-bold) var(--nova-text-sm) / 1 var(--nova-font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+.nova-swipe-cards__badge--right {
+  left: var(--nova-space-4);
+  color: var(--nova-success);
+  transform: rotate(-12deg);
+  opacity: clamp(0, var(--nova-swipe-progress), 1);
+}
+.nova-swipe-cards__badge--right::before {
+  content: "Like";
+}
+
+.nova-swipe-cards__badge--left {
+  right: var(--nova-space-4);
+  color: var(--nova-danger);
+  transform: rotate(12deg);
+  opacity: clamp(0, calc(-1 * var(--nova-swipe-progress)), 1);
+}
+.nova-swipe-cards__badge--left::before {
+  content: "Nope";
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-swipe-cards__card {
+    transition: none;
+  }
+}

@@ -1,0 +1,134 @@
+.nova-mentions {
+  position: relative;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+/* ---- Field --------------------------------------------------------------- */
+.nova-mentions__field {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 5rem;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: inherit;
+  box-shadow: var(--nova-shadow-xs);
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--nova-leading-normal);
+  resize: vertical;
+  outline: none;
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-mentions__field:hover:not(:disabled) {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-mentions__field:focus,
+.nova-mentions__field.nova-focusable:focus-visible {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-mentions__field::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-mentions--invalid .nova-mentions__field {
+  border-color: var(--nova-danger);
+}
+
+.nova-mentions--invalid .nova-mentions__field:focus {
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+.nova-mentions--disabled .nova-mentions__field {
+  opacity: 0.6;
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+/* ---- Popover list -------------------------------------------------------- */
+.nova-mentions__list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: var(--nova-z-dropdown);
+  margin: var(--nova-space-1) 0 0;
+  padding: var(--nova-space-1);
+  list-style: none;
+  max-height: 14rem;
+  overflow-y: auto;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface-raised);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-mentions__option {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border-radius: var(--nova-radius-sm);
+  color: var(--nova-text);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+  cursor: pointer;
+  user-select: none;
+}
+
+.nova-mentions__option--active {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-mentions__option--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nova-mentions__option-trigger {
+  color: var(--nova-text-muted);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-mentions__option--active .nova-mentions__option-trigger {
+  color: inherit;
+}
+
+.nova-mentions__option-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-mentions__empty {
+  padding: var(--nova-space-3);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  text-align: center;
+}
+
+/* ---- Sizes --------------------------------------------------------------- */
+.nova-mentions--sm .nova-mentions__field {
+  font-size: var(--nova-text-sm);
+  min-height: 4rem;
+}
+
+.nova-mentions--md .nova-mentions__field {
+  font-size: var(--nova-text-sm);
+}
+
+.nova-mentions--lg .nova-mentions__field {
+  font-size: var(--nova-text-md);
+  min-height: 6rem;
+}

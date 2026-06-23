@@ -1,0 +1,119 @@
+.nova-gooey-nav {
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-gooey-nav__defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.nova-gooey-nav__list {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  gap: var(--nova-space-1);
+  padding: var(--nova-space-1);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-subtle);
+  border: 1px solid var(--nova-border);
+}
+
+/* Goo layer holds the blobs and applies the gooey SVG filter so the moving
+   blob visually merges with its trailing droplet. */
+.nova-gooey-nav__goo {
+  position: absolute;
+  inset: var(--nova-space-1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.nova-gooey-nav__blob {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  transition:
+    transform var(--nova-duration-slow) var(--nova-ease-spring),
+    width var(--nova-duration-slow) var(--nova-ease-spring),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+  will-change: transform, width;
+}
+
+/* The trailing droplet lags slightly so the blob stretches mid-slide, then
+   catches up — the merge/separate is what the gooey filter renders as liquid. */
+.nova-gooey-nav__blob--trail {
+  transition:
+    transform var(--nova-duration-slow) cubic-bezier(0.5, 0, 0.2, 1)
+      calc(var(--nova-duration-fast) / 2),
+    width var(--nova-duration-slow) var(--nova-ease)
+      calc(var(--nova-duration-fast) / 2),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-gooey-nav__item {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-4);
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  font-weight: var(--nova-font-medium);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: var(--nova-radius-full);
+  transition: color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-gooey-nav--sm .nova-gooey-nav__item {
+  padding: var(--nova-space-1) var(--nova-space-3);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-gooey-nav--lg .nova-gooey-nav__item {
+  padding: var(--nova-space-3) var(--nova-space-5);
+  font-size: var(--nova-text-md);
+}
+
+.nova-gooey-nav__item:hover:not([aria-disabled="true"]) {
+  color: var(--nova-text);
+}
+
+.nova-gooey-nav__item:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-gooey-nav__item--active {
+  color: var(--nova-text-on-brand);
+}
+
+.nova-gooey-nav__item[aria-disabled="true"] {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-gooey-nav__icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Reduced motion: no blob stretch lag, snap the highlight. */
+.nova-gooey-nav--reduced .nova-gooey-nav__blob,
+.nova-gooey-nav--reduced .nova-gooey-nav__blob--trail {
+  transition:
+    transform var(--nova-duration-fast) var(--nova-ease),
+    width var(--nova-duration-fast) var(--nova-ease),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+}

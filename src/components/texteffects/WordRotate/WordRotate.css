@@ -1,0 +1,57 @@
+.nova-word-rotate {
+  --nova-word-rotate-duration: 420ms;
+  display: inline-grid;
+  vertical-align: bottom;
+  overflow: hidden;
+  perspective: 600px;
+}
+
+.nova-word-rotate__word {
+  grid-area: 1 / 1;
+  display: inline-block;
+  white-space: nowrap;
+  backface-visibility: hidden;
+}
+
+/* ---- Slide ------------------------------------------------------------- */
+.nova-word-rotate--slide .nova-word-rotate__word {
+  animation: nova-word-rotate-slide var(--nova-word-rotate-duration)
+    var(--nova-ease-out) both;
+}
+
+@keyframes nova-word-rotate-slide {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ---- Flip -------------------------------------------------------------- */
+.nova-word-rotate--flip .nova-word-rotate__word {
+  transform-origin: center bottom;
+  animation: nova-word-rotate-flip var(--nova-word-rotate-duration)
+    var(--nova-ease-out) both;
+}
+
+@keyframes nova-word-rotate-flip {
+  from {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-word-rotate__word {
+    animation: none !important;
+    transform: none;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,35 @@
+.nova-spotlight {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  --nova-spot-x: 50%;
+  --nova-spot-y: 50%;
+  --nova-spot-opacity: 0;
+  --nova-spot-size: 320px;
+  --nova-spot-intensity: 0.15;
+}
+
+.nova-spotlight__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--nova-spot-opacity);
+  transition: opacity var(--nova-duration-slow) var(--nova-ease);
+  background: radial-gradient(
+    var(--nova-spot-size) circle at var(--nova-spot-x) var(--nova-spot-y),
+    color-mix(in srgb, var(--nova-spot-color) calc(var(--nova-spot-intensity) * 100%), transparent),
+    transparent 70%
+  );
+}
+
+.nova-spotlight__content {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-spotlight__glow {
+    transition: none;
+  }
+}

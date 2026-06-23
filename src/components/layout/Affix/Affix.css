@@ -1,0 +1,50 @@
+.nova-affix {
+  position: fixed;
+  --nova-affix-offset: var(--nova-space-4);
+}
+
+/* ---- Corners ------------------------------------------------------------ */
+.nova-affix--top-left {
+  top: var(--nova-affix-offset);
+  inset-inline-start: var(--nova-affix-offset);
+}
+
+.nova-affix--top-right {
+  top: var(--nova-affix-offset);
+  inset-inline-end: var(--nova-affix-offset);
+}
+
+.nova-affix--bottom-left {
+  bottom: var(--nova-affix-offset);
+  inset-inline-start: var(--nova-affix-offset);
+}
+
+.nova-affix--bottom-right {
+  bottom: var(--nova-affix-offset);
+  inset-inline-end: var(--nova-affix-offset);
+}
+
+/* ---- Edge centers ------------------------------------------------------- */
+.nova-affix--top-center {
+  top: var(--nova-affix-offset);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nova-affix--bottom-center {
+  bottom: var(--nova-affix-offset);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nova-affix--left-center {
+  inset-inline-start: var(--nova-affix-offset);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nova-affix--right-center {
+  inset-inline-end: var(--nova-affix-offset);
+  top: 50%;
+  transform: translateY(-50%);
+}

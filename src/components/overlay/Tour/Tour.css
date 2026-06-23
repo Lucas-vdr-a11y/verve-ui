@@ -1,0 +1,131 @@
+.nova-tour {
+  position: fixed;
+  inset: 0;
+  z-index: var(--nova-z-modal);
+  font-family: var(--nova-font-sans);
+  pointer-events: none;
+}
+
+/* The Spotlight inside the tour should not eat the card's pointer events. */
+.nova-tour .nova-spotlight {
+  z-index: var(--nova-z-modal);
+}
+
+/* ---- Step card ---------------------------------------------------------- */
+.nova-tour__card {
+  position: fixed;
+  box-sizing: border-box;
+  width: min(20rem, calc(100vw - 2 * var(--nova-space-6)));
+  padding: var(--nova-space-5);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-xl);
+  pointer-events: auto;
+  z-index: calc(var(--nova-z-modal) + 1);
+  animation: nova-tour-in var(--nova-duration-base) var(--nova-ease-out);
+}
+
+@keyframes nova-tour-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.nova-tour__title {
+  margin: 0 0 var(--nova-space-2);
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-tour__content {
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text-muted);
+}
+
+/* ---- Footer ------------------------------------------------------------- */
+.nova-tour__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nova-space-3);
+  margin-top: var(--nova-space-5);
+}
+
+.nova-tour__counter {
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-tour__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  margin-left: auto;
+}
+
+/* ---- Buttons ------------------------------------------------------------ */
+.nova-tour__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border-radius: var(--nova-radius-md);
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-tour__btn--primary {
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-tour__btn--primary:hover {
+  background: var(--nova-primary-hover);
+}
+
+.nova-tour__btn--ghost {
+  background: transparent;
+  border-color: var(--nova-border-strong);
+  color: var(--nova-text);
+}
+
+.nova-tour__btn--ghost:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-tour__skip {
+  padding: var(--nova-space-2) var(--nova-space-2);
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: 1;
+  cursor: pointer;
+  border-radius: var(--nova-radius-md);
+  transition: color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-tour__skip:hover {
+  color: var(--nova-text);
+}

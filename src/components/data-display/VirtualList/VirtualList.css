@@ -1,0 +1,44 @@
+.nova-virtual-list {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  outline: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nova-virtual-list:focus-visible {
+  box-shadow: var(--nova-shadow-focus);
+  border-color: var(--nova-primary);
+}
+
+.nova-virtual-list__sizer {
+  position: relative;
+  width: 100%;
+}
+
+.nova-virtual-list__window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  will-change: transform;
+}
+
+.nova-virtual-list__item {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-virtual-list__item:last-child {
+  border-bottom: none;
+}

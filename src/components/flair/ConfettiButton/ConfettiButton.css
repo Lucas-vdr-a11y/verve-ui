@@ -1,0 +1,86 @@
+.nova-confetti {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-3) var(--nova-space-6);
+  border: none;
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-confetti:hover {
+  background: var(--nova-primary-hover);
+}
+
+.nova-confetti:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-confetti__label {
+  position: relative;
+  z-index: 1;
+}
+
+/* Burst origin = button center, overflow allowed to spray outward. */
+.nova-confetti__layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.nova-confetti__bit {
+  --nova-cf-x: 0px;
+  --nova-cf-y: 0px;
+  --nova-cf-rot: 0deg;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+  animation: nova-cf-pop 900ms var(--nova-ease-out) forwards;
+}
+
+@keyframes nova-cf-pop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(
+        calc(-50% + var(--nova-cf-x)),
+        calc(-50% + var(--nova-cf-y) + 40px)
+      )
+      scale(1) rotate(var(--nova-cf-rot));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-confetti {
+    transition: none;
+  }
+  .nova-confetti__bit {
+    animation: none;
+    display: none;
+  }
+}

@@ -1,0 +1,88 @@
+.nova-context-menu__trigger {
+  display: contents;
+}
+
+.nova-context-menu {
+  position: fixed;
+  z-index: var(--nova-z-popover);
+  min-width: 11rem;
+  max-width: 18rem;
+  padding: var(--nova-space-1);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  box-shadow: var(--nova-shadow-lg);
+  outline: none;
+  font-family: var(--nova-font-sans);
+  animation: nova-context-menu-in var(--nova-duration-fast) var(--nova-ease-out)
+    both;
+}
+
+.nova-context-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  width: 100%;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-normal);
+  line-height: var(--nova-leading-snug);
+  text-align: left;
+  color: var(--nova-text);
+  background: transparent;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-context-menu__item--active:not(:disabled) {
+  background: var(--nova-surface-hover);
+}
+
+.nova-context-menu__item:disabled {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-context-menu__item--danger {
+  color: var(--nova-danger);
+}
+.nova-context-menu__item--danger.nova-context-menu__item--active:not(:disabled) {
+  background: var(--nova-danger-subtle);
+  color: var(--nova-danger);
+}
+
+.nova-context-menu__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-space-4);
+  height: var(--nova-space-4);
+  flex: 0 0 auto;
+}
+
+.nova-context-menu__label {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nova-context-menu__separator {
+  height: 1px;
+  margin: var(--nova-space-1) calc(-1 * var(--nova-space-1));
+  background: var(--nova-border);
+}
+
+@keyframes nova-context-menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

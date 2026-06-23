@@ -1,0 +1,76 @@
+.nova-image-accordion {
+  display: flex;
+  gap: var(--nova-space-2);
+  width: 100%;
+  height: 22rem;
+  max-height: 80vh;
+}
+
+.nova-image-accordion__panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface);
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  transition: flex-grow var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-image-accordion__panel--active {
+  flex-grow: 6;
+}
+
+.nova-image-accordion__panel:focus-visible {
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-image-accordion__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.nova-image-accordion__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--nova-space-4);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  text-align: left;
+  color: var(--nova-text-on-brand);
+  background: linear-gradient(
+    to top,
+    rgb(2 6 23 / 0.78),
+    rgb(2 6 23 / 0)
+  );
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+.nova-image-accordion__panel--active .nova-image-accordion__caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-image-accordion__panel,
+  .nova-image-accordion__caption {
+    transition: none;
+  }
+}

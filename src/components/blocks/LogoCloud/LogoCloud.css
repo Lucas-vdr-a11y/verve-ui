@@ -1,0 +1,74 @@
+/* LogoCloud — "trusted by" band with grayscale logo slots. */
+.nova-logo-cloud {
+  box-sizing: border-box;
+  display: block;
+  color: var(--nova-text);
+}
+
+.nova-logo-cloud *,
+.nova-logo-cloud *::before,
+.nova-logo-cloud *::after {
+  box-sizing: border-box;
+}
+
+.nova-logo-cloud__title {
+  margin: 0 0 var(--nova-space-6);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nova-logo-cloud--center {
+  text-align: center;
+}
+
+/* Row ----------------------------------------------------------------------- */
+.nova-logo-cloud__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nova-space-8) var(--nova-space-12);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-logo-cloud--center .nova-logo-cloud__row {
+  justify-content: center;
+}
+
+.nova-logo-cloud--start .nova-logo-cloud__row {
+  justify-content: flex-start;
+}
+
+/* Slot ---------------------------------------------------------------------- */
+.nova-logo-cloud__slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--nova-space-10);
+  color: var(--nova-text-muted);
+}
+
+.nova-logo-cloud__slot :is(img, svg) {
+  display: block;
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Grayscale treatment ------------------------------------------------------- */
+.nova-logo-cloud--grayscale .nova-logo-cloud__slot {
+  filter: grayscale(1);
+  opacity: 0.65;
+  transition:
+    filter var(--nova-duration-base) var(--nova-ease),
+    opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-logo-cloud--grayscale .nova-logo-cloud__slot:hover {
+  filter: grayscale(0);
+  opacity: 1;
+}

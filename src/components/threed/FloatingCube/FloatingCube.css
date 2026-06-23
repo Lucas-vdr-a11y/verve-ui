@@ -1,0 +1,79 @@
+.nova-floating-cube {
+  --nova-floating-cube-size: 200px;
+  --nova-floating-cube-speed: 16s;
+  --nova-floating-cube-half: calc(var(--nova-floating-cube-size) / 2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-floating-cube-size);
+  height: var(--nova-floating-cube-size);
+  perspective: calc(var(--nova-floating-cube-size) * 4);
+  perspective-origin: 50% 50%;
+}
+
+.nova-floating-cube__cube {
+  position: relative;
+  width: var(--nova-floating-cube-size);
+  height: var(--nova-floating-cube-size);
+  transform-style: preserve-3d;
+  transform: rotateX(-22deg) rotateY(-32deg);
+}
+
+.nova-floating-cube__cube--spinning {
+  animation: nova-floating-cube-spin var(--nova-floating-cube-speed) linear
+    infinite;
+}
+
+@keyframes nova-floating-cube-spin {
+  from {
+    transform: rotateX(-22deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(-22deg) rotateY(360deg);
+  }
+}
+
+.nova-floating-cube__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nova-space-3);
+  box-sizing: border-box;
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  box-shadow: inset 0 0 0 1px rgb(99 102 241 / 0.06),
+    0 0 24px rgb(99 102 241 / 0.12);
+  backface-visibility: visible;
+  overflow: hidden;
+  font-size: var(--nova-text-md);
+  text-align: center;
+}
+
+.nova-floating-cube__face--front {
+  transform: rotateY(0deg) translateZ(var(--nova-floating-cube-half));
+}
+.nova-floating-cube__face--back {
+  transform: rotateY(180deg) translateZ(var(--nova-floating-cube-half));
+}
+.nova-floating-cube__face--right {
+  transform: rotateY(90deg) translateZ(var(--nova-floating-cube-half));
+}
+.nova-floating-cube__face--left {
+  transform: rotateY(-90deg) translateZ(var(--nova-floating-cube-half));
+}
+.nova-floating-cube__face--top {
+  transform: rotateX(90deg) translateZ(var(--nova-floating-cube-half));
+}
+.nova-floating-cube__face--bottom {
+  transform: rotateX(-90deg) translateZ(var(--nova-floating-cube-half));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-floating-cube__cube--spinning {
+    animation: none;
+  }
+}

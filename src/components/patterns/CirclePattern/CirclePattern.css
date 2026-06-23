@@ -1,0 +1,17 @@
+.nova-circle-pattern {
+  display: inline-block;
+  line-height: 0;
+}
+
+.nova-circle-pattern__svg {
+  display: block;
+}
+
+.nova-circle-pattern__ring {
+  fill: none;
+  stroke: var(--nova-circle-color);
+}
+
+.nova-circle-pattern__dot {
+  fill: var(--nova-circle-color);
+}

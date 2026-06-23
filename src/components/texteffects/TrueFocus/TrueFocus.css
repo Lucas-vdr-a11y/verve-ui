@@ -1,0 +1,62 @@
+.nova-true-focus {
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-3xl);
+  font-weight: var(--nova-font-bold);
+  color: var(--nova-text);
+}
+
+.nova-true-focus__word {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  filter: blur(var(--nova-tf-blur, 5px));
+  opacity: 0.55;
+  transition:
+    filter var(--nova-duration-slow) var(--nova-ease),
+    opacity var(--nova-duration-slow) var(--nova-ease);
+}
+
+.nova-true-focus__word--focused {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.nova-true-focus__word--focused::before,
+.nova-true-focus__word--focused::after {
+  content: "";
+  position: absolute;
+  width: 0.5em;
+  height: 0.5em;
+  border-color: var(--nova-primary);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.nova-true-focus__word--focused::before {
+  top: -0.12em;
+  left: -0.12em;
+  border-width: 2px 0 0 2px;
+  border-top-left-radius: var(--nova-radius-xs);
+}
+
+.nova-true-focus__word--focused::after {
+  bottom: -0.12em;
+  right: 0.18em;
+  border-width: 0 2px 2px 0;
+  border-bottom-right-radius: var(--nova-radius-xs);
+}
+
+.nova-true-focus--static .nova-true-focus__word {
+  filter: none;
+  opacity: 1;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-true-focus__word {
+    filter: none;
+    opacity: 1;
+    transition: none;
+  }
+}

@@ -1,0 +1,144 @@
+.nova-video-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  inline-size: 100%;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-video-card--interactive {
+  cursor: pointer;
+  border-radius: var(--nova-radius-lg);
+}
+
+.nova-video-card--interactive:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* ---- Media ------------------------------------------------------------- */
+.nova-video-card__media {
+  position: relative;
+  inline-size: 100%;
+  aspect-ratio: var(--nova-video-card-ratio, calc(16 / 9));
+  overflow: hidden;
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-bg-muted);
+}
+
+.nova-video-card__thumb {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  transition: transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-video-card__placeholder {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  background: var(--nova-bg-muted);
+}
+
+.nova-video-card--interactive:hover .nova-video-card__thumb {
+  transform: scale(1.04);
+}
+
+/* ---- Play overlay ------------------------------------------------------ */
+.nova-video-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(15 23 42 / 0.15);
+  opacity: 0;
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+  pointer-events: none;
+}
+
+.nova-video-card--interactive:hover .nova-video-card__overlay,
+.nova-video-card--interactive:focus-visible .nova-video-card__overlay {
+  opacity: 1;
+}
+
+.nova-video-card__play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--nova-space-12);
+  block-size: var(--nova-space-12);
+  padding-inline-start: 0.15em;
+  color: var(--nova-gray-0);
+  background: var(--nova-overlay-bg);
+  border-radius: var(--nova-radius-full);
+  transform: scale(0.85);
+  transition: transform var(--nova-duration-base) var(--nova-ease-spring);
+}
+
+.nova-video-card--interactive:hover .nova-video-card__play,
+.nova-video-card--interactive:focus-visible .nova-video-card__play {
+  transform: scale(1);
+}
+
+/* ---- Duration badge ---------------------------------------------------- */
+.nova-video-card__duration {
+  position: absolute;
+  inset-block-end: var(--nova-space-2);
+  inset-inline-end: var(--nova-space-2);
+  padding: 0 var(--nova-space-1);
+  color: var(--nova-gray-0);
+  background: var(--nova-overlay-bg);
+  border-radius: var(--nova-radius-xs);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+/* ---- Body -------------------------------------------------------------- */
+.nova-video-card__body {
+  display: flex;
+  gap: var(--nova-space-3);
+  align-items: flex-start;
+}
+
+.nova-video-card__avatar {
+  flex: none;
+  inline-size: var(--nova-space-10);
+  block-size: var(--nova-space-10);
+  object-fit: cover;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-muted);
+}
+
+.nova-video-card__text {
+  min-inline-size: 0;
+  flex: 1 1 auto;
+}
+
+.nova-video-card__title {
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.nova-video-card__author {
+  margin-block-start: var(--nova-space-1);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}
+
+.nova-video-card__meta {
+  margin-block-start: var(--nova-space-1);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}

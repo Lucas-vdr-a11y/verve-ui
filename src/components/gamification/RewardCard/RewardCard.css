@@ -1,0 +1,161 @@
+.nova-reward-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nova-space-3);
+  width: 100%;
+  max-width: 14rem;
+  padding: var(--nova-space-5);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  box-shadow: var(--nova-shadow-sm);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  text-align: center;
+}
+
+.nova-reward-card__media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+.nova-reward-card__icon {
+  display: grid;
+  place-items: center;
+  width: 55%;
+  height: 55%;
+}
+.nova-reward-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+.nova-reward-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.nova-reward-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+.nova-reward-card__title {
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-md);
+}
+.nova-reward-card__description {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-reward-card__claim {
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  width: 100%;
+  padding: var(--nova-space-2) var(--nova-space-4);
+  border: none;
+  border-radius: var(--nova-radius-md);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text-on-brand);
+  background: var(--nova-primary);
+  transition: filter var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+.nova-reward-card__claim:hover:not(:disabled) {
+  filter: brightness(1.07);
+}
+.nova-reward-card__claim:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.nova-reward-card__claim:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+.nova-reward-card__cost {
+  font-size: var(--nova-text-xs);
+  opacity: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+.nova-reward-card__claim-icon {
+  display: grid;
+  place-items: center;
+  width: 1rem;
+  height: 1rem;
+}
+.nova-reward-card__claim-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.nova-reward-card--claimed .nova-reward-card__claim {
+  background: var(--nova-success);
+  cursor: default;
+}
+.nova-reward-card--claimed .nova-reward-card__media {
+  background: var(--nova-success-subtle);
+  color: var(--nova-success);
+}
+.nova-reward-card--disabled {
+  opacity: 0.6;
+}
+.nova-reward-card--disabled .nova-reward-card__claim {
+  cursor: not-allowed;
+}
+
+/* ---- Celebratory pop --------------------------------------------------- */
+.nova-reward-card__pop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.nova-reward-card__spark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin: -0.2rem 0 0 -0.2rem;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-warning);
+  animation: nova-reward-spark 0.6s var(--nova-ease-out) forwards;
+  transform: rotate(calc(var(--i) * 60deg)) translateY(0);
+}
+.nova-reward-card__spark:nth-child(even) {
+  background: var(--nova-primary);
+}
+
+@keyframes nova-reward-spark {
+  0% {
+    opacity: 1;
+    transform: rotate(calc(var(--i) * 60deg)) translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(calc(var(--i) * 60deg)) translateY(-2.2rem) scale(0.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-reward-card__claim {
+    transition: none;
+  }
+  .nova-reward-card__spark {
+    animation: none;
+    display: none;
+  }
+}

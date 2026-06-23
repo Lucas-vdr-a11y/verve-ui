@@ -1,0 +1,154 @@
+.nova-drawer__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--nova-z-modal);
+  display: flex;
+  background: var(--nova-overlay-bg);
+  animation: nova-drawer-overlay-in var(--nova-duration-base) var(--nova-ease)
+    both;
+}
+
+.nova-drawer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  box-shadow: var(--nova-shadow-xl);
+  outline: none;
+  animation-duration: var(--nova-duration-slow);
+  animation-timing-function: var(--nova-ease-out);
+  animation-fill-mode: both;
+}
+
+/* ---- Placement ---------------------------------------------------------- */
+.nova-drawer--left,
+.nova-drawer--right {
+  height: 100%;
+  max-width: 100vw;
+}
+.nova-drawer--top,
+.nova-drawer--bottom {
+  width: 100%;
+  max-height: 100vh;
+}
+
+.nova-drawer--left {
+  margin-right: auto;
+  animation-name: nova-drawer-in-left;
+}
+.nova-drawer--right {
+  margin-left: auto;
+  animation-name: nova-drawer-in-right;
+}
+.nova-drawer--top {
+  margin-bottom: auto;
+  animation-name: nova-drawer-in-top;
+}
+.nova-drawer--bottom {
+  margin-top: auto;
+  animation-name: nova-drawer-in-bottom;
+}
+
+/* ---- Size (along the sliding axis) -------------------------------------- */
+.nova-drawer--left.nova-drawer--sm,
+.nova-drawer--right.nova-drawer--sm {
+  width: 18rem;
+}
+.nova-drawer--left.nova-drawer--md,
+.nova-drawer--right.nova-drawer--md {
+  width: 24rem;
+}
+.nova-drawer--left.nova-drawer--lg,
+.nova-drawer--right.nova-drawer--lg {
+  width: 32rem;
+}
+
+.nova-drawer--top.nova-drawer--sm,
+.nova-drawer--bottom.nova-drawer--sm {
+  height: 12rem;
+}
+.nova-drawer--top.nova-drawer--md,
+.nova-drawer--bottom.nova-drawer--md {
+  height: 18rem;
+}
+.nova-drawer--top.nova-drawer--lg,
+.nova-drawer--bottom.nova-drawer--lg {
+  height: 26rem;
+}
+
+.nova-drawer__header {
+  flex: 0 0 auto;
+  padding: var(--nova-space-5) var(--nova-space-6);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-drawer__title {
+  margin: 0;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-drawer__body {
+  flex: 1 1 auto;
+  padding: var(--nova-space-6);
+  overflow: auto;
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-normal);
+}
+
+.nova-drawer__footer {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-4) var(--nova-space-6);
+  border-top: 1px solid var(--nova-border);
+  background: var(--nova-surface);
+}
+
+@keyframes nova-drawer-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes nova-drawer-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes nova-drawer-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes nova-drawer-in-top {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes nova-drawer-in-bottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

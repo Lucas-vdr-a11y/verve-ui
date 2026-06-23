@@ -1,0 +1,113 @@
+.nova-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  inline-size: 100%;
+  padding: var(--nova-space-2) var(--nova-space-4);
+  border-block-end: 1px solid transparent;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+  /* tone palette, overridden below */
+  --nova-banner-accent: var(--nova-info);
+  --nova-banner-subtle: var(--nova-info-subtle);
+  background: var(--nova-banner-subtle);
+  border-block-end-color: var(--nova-banner-accent);
+  color: var(--nova-text);
+}
+
+/* ---- Tones ------------------------------------------------------------- */
+.nova-banner--info {
+  --nova-banner-accent: var(--nova-info);
+  --nova-banner-subtle: var(--nova-info-subtle);
+}
+
+.nova-banner--success {
+  --nova-banner-accent: var(--nova-success);
+  --nova-banner-subtle: var(--nova-success-subtle);
+}
+
+.nova-banner--warning {
+  --nova-banner-accent: var(--nova-warning);
+  --nova-banner-subtle: var(--nova-warning-subtle);
+}
+
+.nova-banner--danger {
+  --nova-banner-accent: var(--nova-danger);
+  --nova-banner-subtle: var(--nova-danger-subtle);
+}
+
+.nova-banner--neutral {
+  --nova-banner-accent: var(--nova-border-strong);
+  --nova-banner-subtle: var(--nova-bg-subtle);
+}
+
+/* ---- Inner / layout ---------------------------------------------------- */
+.nova-banner__inner {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: var(--nova-space-2);
+  min-inline-size: 0;
+}
+
+.nova-banner--center .nova-banner__inner {
+  justify-content: center;
+  text-align: center;
+}
+
+.nova-banner__icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1.15em;
+  block-size: 1.15em;
+  color: var(--nova-banner-accent);
+}
+
+.nova-banner__icon svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.nova-banner__message {
+  min-inline-size: 0;
+}
+
+.nova-banner__action {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-banner-accent);
+}
+
+/* ---- Dismiss ----------------------------------------------------------- */
+.nova-banner__dismiss {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--nova-space-6);
+  block-size: var(--nova-space-6);
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: currentColor;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-banner__dismiss svg {
+  inline-size: var(--nova-space-4);
+  block-size: var(--nova-space-4);
+}
+
+.nova-banner__dismiss:hover {
+  opacity: 1;
+  background: var(--nova-surface-hover);
+}

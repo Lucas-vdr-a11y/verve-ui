@@ -1,0 +1,84 @@
+.nova-emojirating {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-family: var(--nova-font-sans);
+  --nova-emojirating-face: 2.25rem;
+}
+
+.nova-emojirating--sm {
+  --nova-emojirating-face: 1.75rem;
+}
+.nova-emojirating--lg {
+  --nova-emojirating-face: 2.75rem;
+}
+
+.nova-emojirating--disabled {
+  opacity: 0.6;
+}
+
+.nova-emojirating__row {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+}
+
+.nova-emojirating__face {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--nova-emojirating-face) + var(--nova-space-2));
+  height: calc(var(--nova-emojirating-face) + var(--nova-space-2));
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: transparent;
+  cursor: pointer;
+  transition: transform var(--nova-duration-fast) var(--nova-ease-spring),
+    filter var(--nova-duration-fast) var(--nova-ease),
+    opacity var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-emojirating__emoji {
+  font-size: var(--nova-emojirating-face);
+  line-height: 1;
+  /* Desaturate inactive faces so the active one stands out. */
+  filter: grayscale(0.85);
+  opacity: 0.55;
+  transition: filter var(--nova-duration-fast) var(--nova-ease),
+    opacity var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease-spring);
+}
+
+.nova-emojirating__face--lit .nova-emojirating__emoji {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+.nova-emojirating__face--active {
+  background: var(--nova-bg-muted);
+}
+
+.nova-emojirating__face--active .nova-emojirating__emoji {
+  transform: scale(1.18);
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+.nova-emojirating__face:disabled {
+  cursor: not-allowed;
+}
+
+.nova-emojirating--readonly .nova-emojirating__face,
+.nova-emojirating--disabled .nova-emojirating__face {
+  cursor: default;
+}
+
+.nova-emojirating__label {
+  min-height: 1.25em;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-muted);
+}

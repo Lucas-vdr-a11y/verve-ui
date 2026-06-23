@@ -1,0 +1,55 @@
+.nova-field-group {
+  display: flex;
+  box-sizing: border-box;
+  /* reset fieldset defaults when used as a fieldset */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.nova-field-group--vertical {
+  flex-direction: column;
+}
+
+.nova-field-group--horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.nova-field-group--horizontal.nova-field-group--wrap {
+  flex-wrap: wrap;
+}
+
+/* Horizontal children should share width evenly by default. */
+.nova-field-group--horizontal > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* ---- Gaps (mapped to --nova-space-* tokens) ----------------------------- */
+.nova-field-group--gap-sm {
+  gap: var(--nova-space-2);
+}
+
+.nova-field-group--gap-md {
+  gap: var(--nova-space-4);
+}
+
+.nova-field-group--gap-lg {
+  gap: var(--nova-space-6);
+}
+
+/* ---- Legend ------------------------------------------------------------- */
+.nova-field-group__legend {
+  padding: 0;
+  margin-bottom: var(--nova-space-3);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+/* When a fieldset has a legend, it sits above the flex flow naturally because
+   <legend> is block-level; the gap still applies between sibling fields. */

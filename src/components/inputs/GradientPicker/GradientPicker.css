@@ -1,0 +1,192 @@
+.nova-gradientpicker {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  width: 22rem;
+  max-width: 100%;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-gradientpicker--sm {
+  width: 18rem;
+  font-size: var(--nova-text-sm);
+}
+.nova-gradientpicker--lg {
+  width: 26rem;
+}
+
+.nova-gradientpicker--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.nova-gradientpicker__preview {
+  height: 3.5rem;
+  border-radius: var(--nova-radius-md);
+  border: 1px solid var(--nova-border);
+  box-shadow: var(--nova-shadow-xs);
+}
+
+.nova-gradientpicker__row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-3);
+}
+
+/* ---- Angle dial --------------------------------------------------------- */
+.nova-gradientpicker__dial {
+  position: relative;
+  flex: 0 0 auto;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--nova-radius-full);
+  border: 1px solid var(--nova-border-strong);
+  background: var(--nova-surface);
+  box-shadow: var(--nova-shadow-xs);
+  cursor: grab;
+  touch-action: none;
+}
+
+.nova-gradientpicker__dial:active {
+  cursor: grabbing;
+}
+
+.nova-gradientpicker__dial-knob {
+  position: absolute;
+  width: 0.65rem;
+  height: 0.65rem;
+  transform: translate(-50%, -50%);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+}
+
+.nova-gradientpicker__dial-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-muted);
+  pointer-events: none;
+}
+
+/* ---- Stops bar ---------------------------------------------------------- */
+.nova-gradientpicker__bar-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nova-gradientpicker__bar {
+  position: relative;
+  height: 2rem;
+  border-radius: var(--nova-radius-sm);
+  border: 1px solid var(--nova-border);
+  box-shadow: inset 0 0 0 1px rgb(15 23 42 / 0.08);
+  cursor: copy;
+  touch-action: none;
+}
+
+.nova-gradientpicker__handle {
+  position: absolute;
+  top: 50%;
+  width: 1rem;
+  height: 1.6rem;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  border-radius: var(--nova-radius-xs);
+  border: 2px solid var(--nova-surface);
+  background: var(--nova-gp-stop, #888);
+  box-shadow: 0 0 0 1px var(--nova-border-strong), var(--nova-shadow-xs);
+  cursor: grab;
+  touch-action: none;
+}
+
+.nova-gradientpicker__handle:active {
+  cursor: grabbing;
+}
+
+.nova-gradientpicker__handle--active {
+  box-shadow: 0 0 0 2px var(--nova-surface), 0 0 0 4px var(--nova-primary);
+  z-index: var(--nova-z-base);
+}
+
+.nova-gradientpicker__hint {
+  margin: var(--nova-space-2) 0 0;
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-subtle);
+  line-height: var(--nova-leading-snug);
+}
+
+/* ---- Active stop editor ------------------------------------------------- */
+.nova-gradientpicker__editor {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-bg-subtle);
+}
+
+.nova-gradientpicker__swatch {
+  position: relative;
+  display: inline-flex;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex: 0 0 auto;
+  border-radius: var(--nova-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--nova-border-strong);
+  cursor: pointer;
+}
+
+.nova-gradientpicker__swatch-fill {
+  position: absolute;
+  inset: 0;
+}
+
+.nova-gradientpicker__color-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nova-gradientpicker__editor-meta {
+  flex: 1 1 auto;
+  font-size: var(--nova-text-sm);
+  font-family: var(--nova-font-mono);
+  color: var(--nova-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nova-gradientpicker__remove {
+  flex: 0 0 auto;
+  padding: var(--nova-space-1) var(--nova-space-2);
+  font-size: var(--nova-text-xs);
+  font-family: inherit;
+  color: var(--nova-danger);
+  background: transparent;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-sm);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-gradientpicker__remove:hover:not(:disabled) {
+  background: var(--nova-danger-subtle);
+}
+
+.nova-gradientpicker__remove:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

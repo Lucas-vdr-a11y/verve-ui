@@ -1,0 +1,52 @@
+/* Collapse — animated height/width via the CSS grid 0fr/1fr trick.
+ * No DOM measurement needed, so it is SSR-safe and JS-free. */
+
+.nova-collapse {
+  display: grid;
+  transition:
+    grid-template-rows var(--nova-duration-base) var(--nova-ease),
+    grid-template-columns var(--nova-duration-base) var(--nova-ease);
+}
+
+/* height axis */
+.nova-collapse--height {
+  grid-template-rows: 0fr;
+}
+.nova-collapse--height[data-state="open"] {
+  grid-template-rows: 1fr;
+}
+
+/* width axis */
+.nova-collapse--width {
+  grid-template-columns: 0fr;
+}
+.nova-collapse--width[data-state="open"] {
+  grid-template-columns: 1fr;
+}
+
+/* both axes */
+.nova-collapse--both {
+  grid-template-rows: 0fr;
+  grid-template-columns: 0fr;
+}
+.nova-collapse--both[data-state="open"] {
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+}
+
+.nova-collapse__inner {
+  overflow: hidden;
+  min-height: 0;
+  min-width: 0;
+}
+
+.nova-collapse__content {
+  /* Lets margins inside the content not collapse through the overflow clip. */
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-collapse {
+    transition-duration: 1ms !important;
+  }
+}

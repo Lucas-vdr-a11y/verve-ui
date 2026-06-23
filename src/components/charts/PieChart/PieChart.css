@@ -1,0 +1,85 @@
+.nova-pie-chart {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nova-space-5);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-pie-chart__figure {
+  flex: none;
+  max-width: 100%;
+}
+
+.nova-pie-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.nova-pie-chart__slice {
+  stroke: var(--nova-surface);
+  stroke-width: 1;
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+  transform-origin: center;
+}
+
+.nova-pie-chart__svg:hover .nova-pie-chart__slice:not(:hover) {
+  opacity: 0.6;
+}
+
+.nova-pie-chart__inside-label {
+  fill: var(--nova-text-on-brand);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  pointer-events: none;
+}
+
+.nova-pie-chart__leader-line {
+  fill: none;
+  stroke-width: 1;
+  opacity: 0.6;
+}
+
+.nova-pie-chart__leader-label {
+  fill: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-pie-chart__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  min-width: 0;
+}
+
+.nova-pie-chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-pie-chart__swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--nova-radius-xs);
+  flex: none;
+}
+
+.nova-pie-chart__legend-label {
+  color: var(--nova-text);
+}
+
+.nova-pie-chart__legend-value {
+  margin-left: auto;
+  color: var(--nova-text-muted);
+  font-variant-numeric: tabular-nums;
+  padding-left: var(--nova-space-3);
+}

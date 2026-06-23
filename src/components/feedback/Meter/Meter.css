@@ -1,0 +1,73 @@
+.nova-meter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  inline-size: 100%;
+  font-family: var(--nova-font-sans);
+  /* thickness, overridden per size */
+  --nova-meter-thickness: var(--nova-space-2);
+}
+
+.nova-meter--sm {
+  --nova-meter-thickness: var(--nova-space-1);
+}
+
+.nova-meter--md {
+  --nova-meter-thickness: var(--nova-space-2);
+}
+
+.nova-meter--lg {
+  --nova-meter-thickness: var(--nova-space-3);
+}
+
+/* ---- Header ------------------------------------------------------------ */
+.nova-meter__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-meter__label {
+  color: var(--nova-text);
+  font-weight: var(--nova-font-medium);
+  min-inline-size: 0;
+}
+
+.nova-meter__value {
+  flex: none;
+  color: var(--nova-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Track / fill ------------------------------------------------------ */
+.nova-meter__track {
+  inline-size: 100%;
+  block-size: var(--nova-meter-thickness);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-muted);
+  overflow: hidden;
+}
+
+.nova-meter__fill {
+  block-size: 100%;
+  min-inline-size: 0;
+  border-radius: inherit;
+  background: var(--nova-meter-color, var(--nova-success));
+  transition: inline-size var(--nova-duration-base) var(--nova-ease),
+    background-color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-meter__fill--good {
+  --nova-meter-color: var(--nova-success);
+}
+
+.nova-meter__fill--ok {
+  --nova-meter-color: var(--nova-warning);
+}
+
+.nova-meter__fill--bad {
+  --nova-meter-color: var(--nova-danger);
+}

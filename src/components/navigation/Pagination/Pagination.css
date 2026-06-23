@@ -1,0 +1,90 @@
+.nova-pagination {
+  font-family: var(--nova-font-sans);
+}
+
+.nova-pagination__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nova-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-pagination__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: var(--nova-radius-md);
+  background: transparent;
+  color: var(--nova-text);
+  font-family: inherit;
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-pagination__item:hover:not(:disabled):not(.nova-pagination__item--active) {
+  background: var(--nova-surface-hover);
+}
+
+.nova-pagination__item:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.nova-pagination__item--active {
+  background: var(--nova-primary);
+  border-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-pagination__nav {
+  color: var(--nova-text-muted);
+}
+
+.nova-pagination__nav svg {
+  display: block;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.nova-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nova-text-subtle);
+  user-select: none;
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-pagination--sm .nova-pagination__item,
+.nova-pagination--sm .nova-pagination__ellipsis {
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-pagination--md .nova-pagination__item,
+.nova-pagination--md .nova-pagination__ellipsis {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-pagination--lg .nova-pagination__item,
+.nova-pagination--lg .nova-pagination__ellipsis {
+  min-width: 3rem;
+  height: 3rem;
+  padding: 0 var(--nova-space-3);
+  font-size: var(--nova-text-md);
+}

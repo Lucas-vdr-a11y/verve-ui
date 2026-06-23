@@ -1,0 +1,163 @@
+.nova-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+/* ---- Field block --------------------------------------------------------- */
+.nova-card-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  min-width: 0;
+}
+
+.nova-card-form__row {
+  display: flex;
+  gap: var(--nova-space-4);
+}
+
+.nova-card-form__row .nova-card-form__field {
+  flex: 1 1 0;
+}
+
+.nova-card-form__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text);
+}
+
+/* ---- Cardholder name (local field, matches Input look) ------------------- */
+.nova-card-form__name {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  box-shadow: var(--nova-shadow-xs);
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-card-form__name:hover {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-card-form__name:focus-within {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-card-form__name-field {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  line-height: var(--nova-leading-normal);
+}
+
+.nova-card-form__name-field.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-card-form__name-field::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+/* ---- Submit -------------------------------------------------------------- */
+.nova-card-form__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: none;
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: inherit;
+  font-weight: var(--nova-font-semibold);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-card-form__submit:hover:not(:disabled) {
+  background: var(--nova-primary-hover);
+}
+
+.nova-card-form__submit:active:not(:disabled) {
+  background: var(--nova-primary-active);
+}
+
+.nova-card-form__submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ---- Sizes (drive only the local name field + submit; child inputs own
+   their own sizing via the `size` prop) ----------------------------------- */
+.nova-card-form--sm {
+  font-size: var(--nova-text-sm);
+}
+
+.nova-card-form--sm .nova-card-form__name {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+}
+
+.nova-card-form--sm .nova-card-form__name-field {
+  min-height: calc(2rem - 2px);
+}
+
+.nova-card-form--sm .nova-card-form__submit {
+  min-height: 2rem;
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+}
+
+.nova-card-form--md {
+  font-size: var(--nova-text-sm);
+}
+
+.nova-card-form--md .nova-card-form__name {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+}
+
+.nova-card-form--md .nova-card-form__name-field {
+  min-height: calc(2.5rem - 2px);
+}
+
+.nova-card-form--md .nova-card-form__submit {
+  min-height: 2.5rem;
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-4);
+}
+
+.nova-card-form--lg {
+  font-size: var(--nova-text-md);
+}
+
+.nova-card-form--lg .nova-card-form__name {
+  font-size: var(--nova-text-md);
+  padding: 0 var(--nova-space-4);
+}
+
+.nova-card-form--lg .nova-card-form__name-field {
+  min-height: calc(3rem - 2px);
+}
+
+.nova-card-form--lg .nova-card-form__submit {
+  min-height: 3rem;
+  font-size: var(--nova-text-md);
+  padding: 0 var(--nova-space-5);
+}

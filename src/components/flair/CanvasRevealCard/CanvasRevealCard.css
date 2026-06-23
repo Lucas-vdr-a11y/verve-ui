@@ -1,0 +1,69 @@
+.nova-canvas-reveal {
+  position: relative;
+  width: 18rem;
+  height: 16rem;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.nova-canvas-reveal__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: var(--nova-gray-950);
+  transition: opacity var(--nova-duration-slow) var(--nova-ease);
+  pointer-events: none;
+}
+
+.nova-canvas-reveal__canvas--on {
+  opacity: 1;
+}
+
+.nova-canvas-reveal__reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: var(--nova-space-6);
+  text-align: center;
+  color: var(--nova-gray-0);
+  opacity: 0;
+  transition: opacity var(--nova-duration-slow) var(--nova-ease);
+  pointer-events: none;
+}
+
+.nova-canvas-reveal__reveal--on {
+  opacity: 1;
+}
+
+.nova-canvas-reveal__front {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: var(--nova-space-6);
+  text-align: center;
+  opacity: 1;
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-canvas-reveal__front--off {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-canvas-reveal__canvas,
+  .nova-canvas-reveal__reveal,
+  .nova-canvas-reveal__front {
+    transition: none;
+  }
+}

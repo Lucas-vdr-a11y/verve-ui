@@ -1,0 +1,145 @@
+.nova-pin-container {
+  position: relative;
+  display: inline-block;
+  perspective: 1000px;
+}
+
+.nova-pin-container__perspective {
+  transform-style: preserve-3d;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+/* Backdrop perspective grid that fades in on hover. */
+.nova-pin-container__perspective::before {
+  content: "";
+  position: absolute;
+  inset: -20% -20% -40% -20%;
+  z-index: 0;
+  opacity: 0;
+  border-radius: var(--nova-radius-2xl);
+  background-image: linear-gradient(
+      to right,
+      var(--nova-border-strong) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, var(--nova-border-strong) 1px, transparent 1px);
+  background-size: var(--nova-space-6) var(--nova-space-6);
+  transform: rotateX(60deg) translateZ(-60px);
+  transform-origin: bottom center;
+  -webkit-mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 70%);
+  mask-image: radial-gradient(circle at 50% 30%, #000 0%, transparent 70%);
+  transition: opacity var(--nova-duration-slow) var(--nova-ease-out);
+  pointer-events: none;
+}
+
+.nova-pin-container:hover .nova-pin-container__perspective::before {
+  opacity: 0.6;
+}
+
+.nova-pin-container__tilt {
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-pin-container:hover .nova-pin-container__tilt {
+  transform: rotateX(38deg) translateZ(20px) scale(0.94);
+}
+
+.nova-pin-container__card {
+  display: block;
+  position: relative;
+  min-width: 16rem;
+  min-height: 14rem;
+  padding: var(--nova-space-6);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  text-decoration: none;
+  box-shadow: var(--nova-shadow-md);
+  transition: box-shadow var(--nova-duration-base) var(--nova-ease);
+}
+
+a.nova-pin-container__card:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-pin-container:hover .nova-pin-container__card {
+  box-shadow: var(--nova-shadow-xl);
+}
+
+/* Floating pin label tag that rises on hover. */
+.nova-pin-container__pin {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -120%) scale(0.9);
+  opacity: 0;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-spring),
+    opacity var(--nova-duration-base) var(--nova-ease);
+  pointer-events: none;
+}
+
+.nova-pin-container:hover .nova-pin-container__pin {
+  transform: translate(-50%, -150%) scale(1);
+  opacity: 1;
+}
+
+.nova-pin-container__pin-label {
+  padding: var(--nova-space-1) var(--nova-space-3);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font: var(--nova-font-semibold) var(--nova-text-xs) / 1.2 var(--nova-font-sans);
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgb(99 102 241 / 0.4);
+}
+
+.nova-pin-container__pin-line {
+  width: 1px;
+  height: var(--nova-space-8);
+  background: linear-gradient(
+    to bottom,
+    var(--nova-primary),
+    transparent
+  );
+}
+
+.nova-pin-container__pin-ring {
+  position: absolute;
+  bottom: 0;
+  width: var(--nova-space-4);
+  height: var(--nova-space-4);
+  border-radius: var(--nova-radius-full);
+  border: 1px solid rgb(99 102 241 / 0.5);
+  transform: translateY(50%);
+}
+
+.nova-pin-container__pin-ring--2 {
+  width: var(--nova-space-8);
+  height: var(--nova-space-8);
+  border-color: rgb(99 102 241 / 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-pin-container:hover .nova-pin-container__tilt,
+  .nova-pin-container__tilt,
+  .nova-pin-container__pin,
+  .nova-pin-container__perspective::before {
+    transition: none;
+  }
+  .nova-pin-container:hover .nova-pin-container__tilt {
+    transform: none;
+  }
+  .nova-pin-container:hover .nova-pin-container__pin {
+    transform: translate(-50%, -130%);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,149 @@
+/* NotificationItem — a single notification row. */
+.nova-notification-item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-3);
+  width: 100%;
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border-radius: var(--nova-radius-lg);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-notification-item *,
+.nova-notification-item *::before,
+.nova-notification-item *::after {
+  box-sizing: border-box;
+}
+
+.nova-notification-item:hover {
+  background-color: var(--nova-surface-hover);
+}
+
+.nova-notification-item--unread {
+  background-color: var(--nova-primary-subtle);
+}
+
+.nova-notification-item--unread:hover {
+  background-color: var(--nova-primary-subtle);
+}
+
+/* Unread dot column --------------------------------------------------------- */
+.nova-notification-item__dot-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.nova-notification-item__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-primary);
+}
+
+/* Media (icon/avatar) ------------------------------------------------------- */
+.nova-notification-item__media {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-bg-muted);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-lg);
+  overflow: hidden;
+}
+
+.nova-notification-item__media :where(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Body ---------------------------------------------------------------------- */
+.nova-notification-item__body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-notification-item__title {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-notification-item--unread .nova-notification-item__title {
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-notification-item__description {
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text-muted);
+}
+
+.nova-notification-item__timestamp {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-subtle);
+}
+
+/* Actions ------------------------------------------------------------------- */
+.nova-notification-item__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  flex-shrink: 0;
+}
+
+.nova-notification-item__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-md);
+  background: none;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-md);
+  cursor: pointer;
+  transition:
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-notification-item__action:hover {
+  background-color: var(--nova-surface-active);
+  color: var(--nova-text);
+}
+
+.nova-notification-item__action:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* Screen-reader only -------------------------------------------------------- */
+.nova-notification-item__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

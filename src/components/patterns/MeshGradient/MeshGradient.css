@@ -1,0 +1,40 @@
+.nova-mesh-gradient {
+  position: relative;
+  border-radius: var(--nova-mesh-radius);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.nova-mesh-gradient__bg {
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  background-color: var(--nova-brand-500);
+  background-image: var(--nova-mesh-layers);
+  background-blend-mode: screen;
+  pointer-events: none;
+}
+
+.nova-mesh-gradient > :not(.nova-mesh-gradient__bg) {
+  position: relative;
+  z-index: 1;
+}
+
+.nova-mesh-gradient--animated .nova-mesh-gradient__bg {
+  animation: nova-mesh-drift 18s var(--nova-ease) infinite alternate;
+}
+
+@keyframes nova-mesh-drift {
+  from {
+    transform: translate3d(-3%, -2%, 0) scale(1.05) rotate(0deg);
+  }
+  to {
+    transform: translate3d(3%, 2%, 0) scale(1.12) rotate(4deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-mesh-gradient--animated .nova-mesh-gradient__bg {
+    animation: none;
+  }
+}

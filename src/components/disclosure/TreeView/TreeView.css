@@ -1,0 +1,118 @@
+.nova-tree {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text);
+}
+
+.nova-tree__item {
+  list-style: none;
+}
+
+.nova-tree__group {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ---- Row ---------------------------------------------------------------- */
+.nova-tree__row {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  box-sizing: border-box;
+  min-height: 2rem;
+  padding-block: var(--nova-space-1);
+  padding-inline-end: var(--nova-space-2);
+  border-radius: var(--nova-radius-md);
+  color: inherit;
+  line-height: var(--nova-leading-tight);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-tree__row:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-tree__row--selected {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-tree__row--selected:hover {
+  background: var(--nova-primary-subtle);
+}
+
+.nova-tree__row--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.nova-tree__row--disabled:hover {
+  background: transparent;
+}
+
+/* Indent driven by --nova-tree-level (1-based). */
+.nova-tree__indent {
+  flex: 0 0 auto;
+  width: calc((var(--nova-tree-level, 1) - 1) * var(--nova-space-5));
+}
+
+/* ---- Toggle chevron ----------------------------------------------------- */
+.nova-tree__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+  color: var(--nova-text-subtle);
+  transition: transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-tree__toggle svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+.nova-tree__item--branch[aria-expanded="true"] > .nova-tree__row .nova-tree__toggle {
+  transform: rotate(90deg);
+}
+
+.nova-tree__toggle--leaf {
+  visibility: hidden;
+}
+
+/* ---- Icon --------------------------------------------------------------- */
+.nova-tree__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--nova-text-muted);
+}
+
+.nova-tree__icon svg {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.nova-tree__row--selected .nova-tree__icon {
+  color: var(--nova-primary-text);
+}
+
+/* ---- Label -------------------------------------------------------------- */
+.nova-tree__label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

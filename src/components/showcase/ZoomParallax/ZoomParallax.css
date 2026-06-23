@@ -1,0 +1,72 @@
+.nova-zoom-parallax {
+  position: relative;
+  height: 300vh;
+  background: var(--nova-bg);
+}
+
+.nova-zoom-parallax__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.nova-zoom-parallax__item {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Drift outward + scale, both driven by scroll progress (0 → 1). */
+  transform: translate3d(
+      calc(var(--nova-zoom-parallax-item-x) * var(--nova-zoom-parallax-progress)),
+      calc(var(--nova-zoom-parallax-item-y) * var(--nova-zoom-parallax-progress)),
+      0
+    )
+    scale(
+      calc(
+        1 +
+          (var(--nova-zoom-parallax-item-scale) - 1) *
+          var(--nova-zoom-parallax-progress)
+      )
+    );
+  will-change: transform;
+}
+
+.nova-zoom-parallax__img {
+  width: 25vw;
+  height: 25vh;
+  object-fit: cover;
+  border-radius: var(--nova-radius-md);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-zoom-parallax__item--center .nova-zoom-parallax__img {
+  width: 25vw;
+  height: 25vh;
+  border-radius: var(--nova-radius-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-zoom-parallax {
+    height: auto;
+  }
+  .nova-zoom-parallax__sticky {
+    position: static;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--nova-space-4);
+    padding: var(--nova-space-6);
+  }
+  .nova-zoom-parallax__item {
+    position: static;
+    inset: auto;
+    transform: none;
+  }
+  .nova-zoom-parallax__img,
+  .nova-zoom-parallax__item--center .nova-zoom-parallax__img {
+    width: 100%;
+    height: 22vh;
+  }
+}

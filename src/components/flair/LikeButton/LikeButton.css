@@ -1,0 +1,125 @@
+.nova-like {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2);
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  font-family: var(--nova-font-sans);
+  border-radius: var(--nova-radius-md);
+}
+
+.nova-like:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-like__heart-wrap {
+  position: relative;
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.nova-like__heart {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  transition: transform var(--nova-duration-base) var(--nova-ease-spring),
+    fill var(--nova-duration-base) var(--nova-ease),
+    stroke var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-like:hover .nova-like__heart {
+  transform: scale(1.08);
+}
+
+.nova-like--on {
+  color: var(--nova-danger);
+}
+
+.nova-like--on .nova-like__heart {
+  fill: var(--nova-danger);
+  stroke: var(--nova-danger);
+  animation: nova-like-pop var(--nova-duration-slow) var(--nova-ease-spring);
+}
+
+@keyframes nova-like-pop {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(0.78);
+  }
+  70% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.nova-like__burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.nova-like__particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-danger);
+  opacity: 0;
+  transform: rotate(var(--nova-like-angle)) translateX(0);
+  animation: nova-like-fly var(--nova-duration-slow) var(--nova-ease-out)
+    forwards;
+}
+
+@keyframes nova-like-fly {
+  0% {
+    opacity: 1;
+    transform: rotate(var(--nova-like-angle)) translateX(2px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--nova-like-angle)) translateX(18px) scale(0.3);
+  }
+}
+
+.nova-like__count {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  font-variant-numeric: tabular-nums;
+  animation: nova-like-bump var(--nova-duration-base) var(--nova-ease-spring);
+}
+
+@keyframes nova-like-bump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-like__heart,
+  .nova-like--on .nova-like__heart,
+  .nova-like__count {
+    transition: none;
+    animation: none;
+  }
+}

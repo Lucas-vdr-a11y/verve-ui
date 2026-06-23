@@ -1,0 +1,41 @@
+.nova-pull-quote {
+  margin: var(--nova-space-6) 0;
+  padding: 0 0 0 var(--nova-space-5);
+  border-left: 4px solid var(--nova-brand-500);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-pull-quote__quote {
+  margin: 0;
+  font-size: var(--nova-text-3xl);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  color: var(--nova-brand-700);
+}
+
+.nova-pull-quote__attribution {
+  margin-top: var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-muted);
+}
+
+/* ---- Float variants ----------------------------------------------------- */
+.nova-pull-quote--float-left {
+  float: left;
+  max-width: 18rem;
+  margin-right: var(--nova-space-6);
+}
+
+.nova-pull-quote--float-right {
+  float: right;
+  max-width: 18rem;
+  margin-left: var(--nova-space-6);
+}
+
+[data-theme="dark"] .nova-pull-quote__quote {
+  color: var(--nova-brand-300);
+}

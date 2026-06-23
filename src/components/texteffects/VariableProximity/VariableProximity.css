@@ -1,0 +1,22 @@
+.nova-variable-proximity {
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-4xl);
+  font-weight: var(--nova-vp-rest, 300);
+  color: var(--nova-text);
+  font-variation-settings: "wght" var(--nova-vp-rest, 300);
+}
+
+.nova-variable-proximity__char {
+  display: inline-block;
+  white-space: pre;
+  transform-origin: center bottom;
+  will-change: transform, font-weight;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-variable-proximity__char {
+    transform: none !important;
+    font-weight: var(--nova-vp-rest, 300) !important;
+  }
+}

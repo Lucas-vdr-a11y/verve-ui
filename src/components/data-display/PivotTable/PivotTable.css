@@ -1,0 +1,94 @@
+.nova-pivot-table__scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.nova-pivot-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text);
+}
+
+.nova-pivot-table__head th {
+  background: var(--nova-bg-subtle);
+  color: var(--nova-text-muted);
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--nova-border);
+  white-space: nowrap;
+}
+
+.nova-pivot-table__group-header {
+  text-align: left;
+}
+
+.nova-pivot-table__value-header {
+  text-align: right;
+}
+
+.nova-pivot-table__header-cell,
+.nova-pivot-table__cell,
+.nova-pivot-table__group-cell,
+.nova-pivot-table__empty {
+  padding: var(--nova-space-3) var(--nova-space-4);
+}
+
+.nova-pivot-table--dense .nova-pivot-table__header-cell,
+.nova-pivot-table--dense .nova-pivot-table__cell,
+.nova-pivot-table--dense .nova-pivot-table__group-cell,
+.nova-pivot-table--dense .nova-pivot-table__empty {
+  padding: var(--nova-space-1) var(--nova-space-3);
+}
+
+.nova-pivot-table__row {
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-pivot-table__body tr:last-child {
+  border-bottom: none;
+}
+
+.nova-pivot-table__row:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-pivot-table__group-cell {
+  text-align: left;
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text);
+}
+
+.nova-pivot-table__cell {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-pivot-table__empty-cell {
+  color: var(--nova-text-subtle);
+}
+
+.nova-pivot-table__total-header,
+.nova-pivot-table__total-cell {
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-pivot-table__foot {
+  background: var(--nova-bg-subtle);
+}
+
+.nova-pivot-table__foot th,
+.nova-pivot-table__foot td {
+  border-top: 2px solid var(--nova-border-strong);
+}
+
+.nova-pivot-table__empty {
+  text-align: center;
+  color: var(--nova-text-muted);
+  padding-top: var(--nova-space-8);
+  padding-bottom: var(--nova-space-8);
+}

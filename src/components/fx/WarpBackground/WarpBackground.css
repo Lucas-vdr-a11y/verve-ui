@@ -1,0 +1,102 @@
+.nova-warp {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  --nova-warp-color: var(--nova-primary);
+  --nova-warp-duration: 3s;
+  --nova-warp-perspective: 100px;
+  background: var(--nova-bg);
+}
+
+.nova-warp__scene {
+  position: absolute;
+  inset: 0;
+  perspective: var(--nova-warp-perspective);
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+/* Each side is a plane rotated into depth, receding from the center. */
+.nova-warp__plane {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.nova-warp__plane--top {
+  transform-origin: top center;
+  transform: rotateX(-90deg);
+}
+.nova-warp__plane--bottom {
+  transform-origin: bottom center;
+  transform: rotateX(90deg);
+}
+.nova-warp__plane--left {
+  transform-origin: center left;
+  transform: rotateY(90deg);
+}
+.nova-warp__plane--right {
+  transform-origin: center right;
+  transform: rotateY(-90deg);
+}
+
+/* A beam tile streaking outward from the depth toward the viewer. */
+.nova-warp__beam {
+  position: absolute;
+  top: 0;
+  left: var(--nova-warp-pos);
+  width: var(--nova-warp-bw);
+  height: 40%;
+  border-radius: var(--nova-radius-full);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--nova-warp-color),
+    transparent
+  );
+  filter: blur(0.5px);
+  animation: nova-warp-fly var(--nova-warp-duration) linear infinite;
+  will-change: transform, opacity;
+}
+
+.nova-warp__plane--left .nova-warp__beam,
+.nova-warp__plane--right .nova-warp__beam {
+  top: var(--nova-warp-pos);
+  left: 0;
+  width: 40%;
+  height: var(--nova-warp-bw);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--nova-warp-color),
+    transparent
+  );
+}
+
+@keyframes nova-warp-fly {
+  0% {
+    transform: translateZ(-340px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 0;
+  }
+}
+
+.nova-warp__content {
+  position: relative;
+  z-index: var(--nova-z-base);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-warp__beam {
+    animation: none;
+    opacity: 0.35;
+  }
+}

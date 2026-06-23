@@ -1,0 +1,88 @@
+/* ScrollReveal — hidden offset/blur state by default; `--in` transitions to the
+ * resting state. Stagger mode delays each direct child by its index. */
+
+.nova-scroll-reveal {
+  --nova-scroll-reveal-delay: 0ms;
+  --nova-scroll-reveal-stagger: 0ms;
+  transition: opacity var(--nova-duration-slow) var(--nova-ease-out),
+    transform var(--nova-duration-slow) var(--nova-ease-out),
+    filter var(--nova-duration-slow) var(--nova-ease-out);
+  transition-delay: var(--nova-scroll-reveal-delay);
+  will-change: opacity, transform;
+}
+
+/* hidden states (non-stagger; applied to the wrapper itself) */
+.nova-scroll-reveal:not(.nova-scroll-reveal--stagger) {
+  opacity: 0;
+}
+.nova-scroll-reveal--slide-up:not(.nova-scroll-reveal--stagger) {
+  transform: translateY(1.5rem);
+}
+.nova-scroll-reveal--slide-down:not(.nova-scroll-reveal--stagger) {
+  transform: translateY(-1.5rem);
+}
+.nova-scroll-reveal--slide-left:not(.nova-scroll-reveal--stagger) {
+  transform: translateX(1.5rem);
+}
+.nova-scroll-reveal--slide-right:not(.nova-scroll-reveal--stagger) {
+  transform: translateX(-1.5rem);
+}
+.nova-scroll-reveal--scale:not(.nova-scroll-reveal--stagger) {
+  transform: scale(0.94);
+}
+.nova-scroll-reveal--blur:not(.nova-scroll-reveal--stagger) {
+  filter: blur(10px);
+}
+
+/* resting state */
+.nova-scroll-reveal--in:not(.nova-scroll-reveal--stagger) {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ---- stagger mode -------------------------------------------------------- */
+.nova-scroll-reveal__child {
+  opacity: 0;
+  transition: opacity var(--nova-duration-slow) var(--nova-ease-out),
+    transform var(--nova-duration-slow) var(--nova-ease-out),
+    filter var(--nova-duration-slow) var(--nova-ease-out);
+  transition-delay: calc(
+    var(--nova-scroll-reveal-delay) +
+      var(--nova-scroll-reveal-i, 0) * var(--nova-scroll-reveal-stagger)
+  );
+  will-change: opacity, transform;
+}
+.nova-scroll-reveal--slide-up .nova-scroll-reveal__child {
+  transform: translateY(1.5rem);
+}
+.nova-scroll-reveal--slide-down .nova-scroll-reveal__child {
+  transform: translateY(-1.5rem);
+}
+.nova-scroll-reveal--slide-left .nova-scroll-reveal__child {
+  transform: translateX(1.5rem);
+}
+.nova-scroll-reveal--slide-right .nova-scroll-reveal__child {
+  transform: translateX(-1.5rem);
+}
+.nova-scroll-reveal--scale .nova-scroll-reveal__child {
+  transform: scale(0.94);
+}
+.nova-scroll-reveal--blur .nova-scroll-reveal__child {
+  filter: blur(10px);
+}
+.nova-scroll-reveal--in .nova-scroll-reveal__child {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-scroll-reveal,
+  .nova-scroll-reveal__child {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

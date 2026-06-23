@@ -1,0 +1,229 @@
+.nova-app-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+.nova-app-switcher__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  max-width: 16rem;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-normal);
+  cursor: pointer;
+  transition:
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-app-switcher__trigger:hover {
+  background: var(--nova-surface-hover);
+  border-color: var(--nova-border-strong);
+}
+
+.nova-app-switcher__trigger-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--nova-radius-sm);
+  overflow: hidden;
+}
+
+.nova-app-switcher__trigger-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-app-switcher__chevron {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--nova-text-muted);
+  transition: transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-app-switcher[data-open] .nova-app-switcher__chevron {
+  transform: rotate(180deg);
+}
+
+.nova-app-switcher__popover {
+  position: absolute;
+  z-index: var(--nova-z-popover);
+  top: calc(100% + var(--nova-space-1));
+  min-width: 15rem;
+  max-width: 20rem;
+  padding: var(--nova-space-1);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface-raised);
+  box-shadow: var(--nova-shadow-lg);
+  animation: nova-app-switcher-in var(--nova-duration-fast) var(--nova-ease-out);
+}
+
+.nova-app-switcher__popover--start {
+  left: 0;
+}
+
+.nova-app-switcher__popover--end {
+  right: 0;
+}
+
+@keyframes nova-app-switcher-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nova-app-switcher__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-app-switcher__list-item {
+  margin: 0;
+}
+
+.nova-app-switcher__option {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  width: 100%;
+  padding: var(--nova-space-2);
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-app-switcher__option:hover,
+.nova-app-switcher__option:focus-visible {
+  background: var(--nova-surface-hover);
+  outline: none;
+}
+
+.nova-app-switcher__option:focus-visible {
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-app-switcher__option--selected {
+  background: var(--nova-primary-subtle);
+}
+
+.nova-app-switcher__option:disabled {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-app-switcher__option-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--nova-radius-sm);
+  overflow: hidden;
+}
+
+.nova-app-switcher__option-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nova-app-switcher__option-name {
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-app-switcher__option-desc {
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+  line-height: var(--nova-leading-snug);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-app-switcher__check {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  color: var(--nova-primary);
+}
+
+.nova-app-switcher__separator {
+  height: 1px;
+  margin: var(--nova-space-1) 0;
+  background: var(--nova-border);
+}
+
+.nova-app-switcher__create {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  width: 100%;
+  padding: var(--nova-space-2);
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: var(--nova-primary-text);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-app-switcher__create:hover,
+.nova-app-switcher__create:focus-visible {
+  background: var(--nova-surface-hover);
+  outline: none;
+}
+
+.nova-app-switcher__create:focus-visible {
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-app-switcher__create-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-primary-subtle);
+}

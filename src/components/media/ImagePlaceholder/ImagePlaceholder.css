@@ -1,0 +1,47 @@
+.nova-image-placeholder {
+  position: relative;
+  display: inline-block;
+  inline-size: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background: var(--nova-bg-muted);
+}
+
+.nova-image-placeholder--ratio {
+  aspect-ratio: var(--nova-image-placeholder-ratio, 1);
+}
+
+/* ---- Placeholder background ------------------------------------------- */
+.nova-image-placeholder__bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 1;
+  transition: opacity var(--nova-duration-slow) var(--nova-ease);
+}
+
+.nova-image-placeholder--loaded .nova-image-placeholder__bg {
+  opacity: 0;
+}
+
+/* ---- Image ------------------------------------------------------------- */
+.nova-image-placeholder__img {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  opacity: 0;
+  transition: opacity var(--nova-duration-slow) var(--nova-ease);
+}
+
+.nova-image-placeholder--cover .nova-image-placeholder__img {
+  object-fit: cover;
+}
+
+.nova-image-placeholder--contain .nova-image-placeholder__img {
+  object-fit: contain;
+}
+
+.nova-image-placeholder--loaded .nova-image-placeholder__img {
+  opacity: 1;
+}

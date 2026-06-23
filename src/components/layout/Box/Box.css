@@ -1,0 +1,6 @@
+/* Box — minimal layout primitive. Stays unopinionated so other components
+   can compose on top of it. */
+.nova-box {
+  box-sizing: border-box;
+  min-width: 0;
+}

@@ -1,0 +1,195 @@
+.nova-chat-bubble {
+  display: flex;
+  gap: var(--nova-space-2);
+  align-items: flex-end;
+  max-width: 100%;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-chat-bubble__avatar {
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.nova-chat-bubble__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.nova-chat-bubble__header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-chat-bubble__name {
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-chat-bubble__time {
+  color: var(--nova-text-subtle);
+}
+
+.nova-chat-bubble__bubble {
+  position: relative;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border-radius: var(--nova-radius-lg);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  border: 1px solid transparent;
+  width: fit-content;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.nova-chat-bubble__content > :first-child {
+  margin-top: 0;
+}
+.nova-chat-bubble__content > :last-child {
+  margin-bottom: 0;
+}
+
+.nova-chat-bubble__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+.nova-chat-bubble__actions {
+  min-width: 0;
+}
+
+.nova-chat-bubble__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+}
+
+.nova-chat-bubble__status-icon {
+  display: inline-flex;
+  font-size: var(--nova-text-sm);
+  line-height: 0;
+}
+
+.nova-chat-bubble__status--sent {
+  color: var(--nova-success);
+}
+.nova-chat-bubble__status--error {
+  color: var(--nova-danger);
+}
+
+/* ---- Tones --------------------------------------------------------------- */
+.nova-chat-bubble--tone-default .nova-chat-bubble__bubble {
+  background: var(--nova-bg-muted);
+  color: var(--nova-text);
+  border-color: var(--nova-border);
+}
+
+.nova-chat-bubble--tone-primary .nova-chat-bubble__bubble {
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-chat-bubble--tone-success .nova-chat-bubble__bubble {
+  background: var(--nova-success-subtle);
+  color: var(--nova-text);
+  border-color: var(--nova-success);
+}
+
+.nova-chat-bubble--tone-danger .nova-chat-bubble__bubble {
+  background: var(--nova-danger-subtle);
+  color: var(--nova-text);
+  border-color: var(--nova-danger);
+}
+
+/* ---- Role: user (align right) -------------------------------------------- */
+.nova-chat-bubble--user {
+  flex-direction: row-reverse;
+  margin-left: auto;
+}
+
+.nova-chat-bubble--user .nova-chat-bubble__main {
+  align-items: flex-end;
+}
+
+.nova-chat-bubble--user .nova-chat-bubble__bubble {
+  border-bottom-right-radius: var(--nova-radius-xs);
+}
+
+.nova-chat-bubble--user .nova-chat-bubble__footer {
+  flex-direction: row-reverse;
+}
+
+/* ---- Role: assistant / system (align left) ------------------------------- */
+.nova-chat-bubble--assistant .nova-chat-bubble__bubble,
+.nova-chat-bubble--system .nova-chat-bubble__bubble {
+  border-bottom-left-radius: var(--nova-radius-xs);
+}
+
+.nova-chat-bubble--system {
+  justify-content: center;
+}
+
+.nova-chat-bubble--system .nova-chat-bubble__main {
+  align-items: center;
+}
+
+.nova-chat-bubble--system .nova-chat-bubble__bubble {
+  background: var(--nova-bg-subtle);
+  color: var(--nova-text-muted);
+  border-color: var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  font-size: var(--nova-text-xs);
+}
+
+/* ---- Tail ---------------------------------------------------------------- */
+.nova-chat-bubble--tail.nova-chat-bubble--user
+  .nova-chat-bubble--tone-primary,
+.nova-chat-bubble--tail .nova-chat-bubble__bubble::after {
+  content: "";
+}
+
+.nova-chat-bubble--tail.nova-chat-bubble--user .nova-chat-bubble__bubble::after {
+  position: absolute;
+  bottom: 0;
+  right: -5px;
+  width: 10px;
+  height: 12px;
+  background: inherit;
+  border: inherit;
+  border-left: 0;
+  border-bottom: 0;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  border-bottom-right-radius: var(--nova-radius-xs);
+}
+
+.nova-chat-bubble--tail.nova-chat-bubble--assistant
+  .nova-chat-bubble__bubble::after,
+.nova-chat-bubble--tail.nova-chat-bubble--system
+  .nova-chat-bubble__bubble::after {
+  position: absolute;
+  bottom: 0;
+  left: -5px;
+  width: 10px;
+  height: 12px;
+  background: inherit;
+  border: inherit;
+  border-right: 0;
+  border-bottom: 0;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+  border-bottom-left-radius: var(--nova-radius-xs);
+}
+
+/* System bubbles are pill-shaped — no tail. */
+.nova-chat-bubble--tail.nova-chat-bubble--system
+  .nova-chat-bubble__bubble::after {
+  display: none;
+}

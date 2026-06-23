@@ -1,0 +1,34 @@
+.nova-blockquote {
+  margin: 0;
+  padding: var(--nova-space-2) 0 var(--nova-space-2) var(--nova-space-4);
+  border-inline-start: 3px solid var(--nova-border-strong);
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-blockquote__content {
+  font-size: var(--nova-text-lg);
+  line-height: var(--nova-leading-relaxed);
+  font-style: italic;
+}
+
+.nova-blockquote__content > :first-child {
+  margin-block-start: 0;
+}
+.nova-blockquote__content > :last-child {
+  margin-block-end: 0;
+}
+
+.nova-blockquote__footer {
+  margin-block-start: var(--nova-space-2);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-blockquote__cite {
+  font-style: normal;
+}
+
+.nova-blockquote__cite::before {
+  content: "\2014\00a0"; /* em dash + nbsp */
+}

@@ -1,0 +1,67 @@
+.nova-tree-diagram {
+  overflow: auto;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  padding: var(--nova-space-2);
+}
+
+.nova-tree-diagram__canvas {
+  position: relative;
+}
+
+.nova-tree-diagram__links {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.nova-tree-diagram__link {
+  stroke: var(--nova-border-strong);
+  stroke-width: 1.5;
+}
+
+.nova-tree-diagram__node {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--nova-space-3);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-left: 3px solid var(--nova-tree-accent, var(--nova-primary));
+  border-radius: var(--nova-radius-md);
+  box-shadow: var(--nova-shadow-xs);
+  transition: box-shadow var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-tree-diagram--vertical .nova-tree-diagram__node {
+  border-left: 1px solid var(--nova-border);
+  border-top: 3px solid var(--nova-tree-accent, var(--nova-primary));
+}
+
+.nova-tree-diagram__node--interactive {
+  cursor: pointer;
+}
+
+.nova-tree-diagram__node--interactive:hover {
+  box-shadow: var(--nova-shadow-sm);
+  transform: translateY(-1px);
+}
+
+.nova-tree-diagram__node--interactive:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-tree-diagram__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,112 @@
+.nova-save {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  height: 2.5rem;
+  padding: 0 var(--nova-space-4);
+  border: none;
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  cursor: pointer;
+  transition: background var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-save:hover:not(:disabled) {
+  background: var(--nova-primary-hover);
+}
+
+.nova-save:disabled {
+  cursor: default;
+}
+
+.nova-save:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-save--saved {
+  background: var(--nova-success);
+}
+
+.nova-save__icon {
+  position: relative;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.nova-save__disk,
+.nova-save__check {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease-spring);
+}
+
+.nova-save__check {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.nova-save--saving .nova-save__disk,
+.nova-save--saved .nova-save__disk {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.nova-save--saved .nova-save__check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nova-save__check-path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset var(--nova-duration-base) var(--nova-ease-out)
+    100ms;
+}
+
+.nova-save--saved .nova-save__check-path {
+  stroke-dashoffset: 0;
+}
+
+.nova-save__spinner {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--nova-radius-full);
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  opacity: 0;
+}
+
+.nova-save--saving .nova-save__spinner {
+  opacity: 1;
+  animation: nova-save-spin 700ms linear infinite;
+}
+
+@keyframes nova-save-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.nova-save__label {
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-save,
+  .nova-save__disk,
+  .nova-save__check,
+  .nova-save__check-path {
+    transition: none;
+  }
+  .nova-save--saving .nova-save__spinner {
+    animation: none;
+  }
+}

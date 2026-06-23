@@ -1,0 +1,44 @@
+.nova-typing-loop {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: inherit;
+  color: var(--nova-text);
+}
+
+.nova-typing-loop__text {
+  white-space: pre;
+}
+
+.nova-typing-loop__caret {
+  display: inline-block;
+  width: 0.08em;
+  min-width: 1px;
+  height: 1.1em;
+  margin-left: 0.08em;
+  background: var(--nova-primary);
+  border-radius: var(--nova-radius-xs);
+  transform: translateY(0.12em);
+  animation: nova-typing-loop-blink 1s steps(1) infinite;
+}
+
+.nova-typing-loop__caret--idle {
+  animation-duration: 1.2s;
+}
+
+@keyframes nova-typing-loop-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-typing-loop__caret {
+    animation: none;
+    opacity: 1;
+  }
+}

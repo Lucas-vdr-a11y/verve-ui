@@ -1,0 +1,19 @@
+/* Stack — flex container with a token-driven gap. */
+.nova-stack {
+  box-sizing: border-box;
+  display: flex;
+  min-width: 0;
+  gap: var(--nova-stack-gap, var(--nova-space-4));
+}
+
+.nova-stack--vertical {
+  flex-direction: column;
+}
+
+.nova-stack--horizontal {
+  flex-direction: row;
+}
+
+.nova-stack--wrap {
+  flex-wrap: wrap;
+}

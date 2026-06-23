@@ -1,0 +1,103 @@
+.nova-json-viewer {
+  font-family: var(--nova-font-mono);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+  background: var(--nova-bg-subtle);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  padding: var(--nova-space-3);
+  overflow-x: auto;
+}
+
+.nova-json-viewer__row {
+  display: flex;
+  align-items: baseline;
+}
+
+.nova-json-viewer__toggle {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--nova-space-1);
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.nova-json-viewer__toggle:disabled {
+  cursor: default;
+}
+
+.nova-json-viewer__toggle:focus-visible {
+  outline: none;
+  border-radius: var(--nova-radius-xs);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-json-viewer__caret {
+  display: inline-block;
+  width: 1em;
+  color: var(--nova-text-muted);
+  font-size: 0.85em;
+}
+
+.nova-json-viewer__leaf {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--nova-space-1);
+}
+
+.nova-json-viewer__key {
+  color: var(--nova-text);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-json-viewer__colon {
+  color: var(--nova-text-muted);
+  margin-right: var(--nova-space-1);
+}
+
+.nova-json-viewer__brace {
+  color: var(--nova-text-muted);
+}
+
+.nova-json-viewer__count {
+  color: var(--nova-text-subtle);
+  font-size: var(--nova-text-xs);
+  font-style: italic;
+  margin: 0 var(--nova-space-2);
+}
+
+.nova-json-viewer__comma {
+  color: var(--nova-text-muted);
+}
+
+/* Type-colored values (tone scale tokens permitted here). */
+.nova-json-viewer__value--string {
+  color: var(--nova-success-600);
+}
+.nova-json-viewer__value--number {
+  color: var(--nova-info-600);
+}
+.nova-json-viewer__value--boolean {
+  color: var(--nova-brand-600);
+}
+.nova-json-viewer__value--null {
+  color: var(--nova-text-subtle);
+  font-style: italic;
+}
+
+[data-theme="dark"] .nova-json-viewer__value--string {
+  color: var(--nova-success-500);
+}
+[data-theme="dark"] .nova-json-viewer__value--number {
+  color: var(--nova-info-500);
+}
+[data-theme="dark"] .nova-json-viewer__value--boolean {
+  color: var(--nova-brand-300);
+}

@@ -1,0 +1,67 @@
+.nova-stagger-reveal {
+  display: inline;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-stagger-reveal--lines {
+  display: flex;
+  flex-direction: column;
+}
+
+.nova-stagger-reveal__token {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.nova-stagger-reveal--lines .nova-stagger-reveal__token {
+  display: block;
+}
+
+.nova-stagger-reveal__space {
+  display: inline-block;
+  white-space: pre;
+}
+
+.nova-stagger-reveal__inner {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+  transition-property: transform, opacity, filter;
+  transition-duration: var(--nova-duration-slow);
+  transition-timing-function: var(--nova-ease-out);
+  transition-delay: calc(
+    var(--nova-stagger-reveal-delay) +
+      var(--nova-stagger-reveal-i) * var(--nova-stagger-reveal-step)
+  );
+}
+
+/* ---- initial (hidden) states ----------------------------------------- */
+.nova-stagger-reveal--slide .nova-stagger-reveal__inner {
+  transform: translateY(110%);
+  opacity: 0;
+}
+.nova-stagger-reveal--fade .nova-stagger-reveal__inner {
+  opacity: 0;
+}
+.nova-stagger-reveal--blur .nova-stagger-reveal__inner {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(0.2em);
+}
+
+/* ---- revealed -------------------------------------------------------- */
+.nova-stagger-reveal--in .nova-stagger-reveal__inner {
+  transform: translateY(0);
+  opacity: 1;
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-stagger-reveal__inner {
+    transition: none;
+    transform: none;
+    opacity: 1;
+    filter: none;
+  }
+}

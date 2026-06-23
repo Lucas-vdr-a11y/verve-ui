@@ -1,0 +1,108 @@
+.nova-file-tree {
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  padding: var(--nova-space-2);
+  color: var(--nova-text);
+  font-size: var(--nova-text-sm);
+  --nova-file-tree-row-pad: var(--nova-space-2);
+}
+
+.nova-file-tree--dense {
+  --nova-file-tree-row-pad: var(--nova-space-1);
+}
+
+.nova-file-tree__root,
+.nova-file-tree__group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nova-file-tree__item {
+  margin: 0;
+}
+
+.nova-file-tree__row {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding-block: var(--nova-file-tree-row-pad);
+  padding-right: var(--nova-space-2);
+  /* indent grows with depth */
+  padding-left: calc(
+    var(--nova-space-2) + var(--nova-file-tree-depth, 0) * var(--nova-space-4)
+  );
+  border-radius: var(--nova-radius-sm);
+  cursor: pointer;
+  color: var(--nova-text);
+  transition: background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-file-tree__row:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-file-tree__row--active {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-file-tree__twist {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  color: var(--nova-text-muted);
+}
+
+.nova-file-tree__chevron {
+  transition: transform var(--nova-duration-fast) var(--nova-ease);
+}
+.nova-file-tree__chevron--open {
+  transform: rotate(90deg);
+}
+
+.nova-file-tree__icon,
+.nova-file-tree__file-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.nova-file-tree__icon--folder {
+  color: var(--nova-primary);
+}
+
+/* File-type icon tints (semantic tokens only). */
+.nova-file-tree__file-icon {
+  color: var(--nova-text-muted);
+}
+.nova-file-tree__file-icon--code {
+  color: var(--nova-info);
+}
+.nova-file-tree__file-icon--style {
+  color: var(--nova-primary);
+}
+.nova-file-tree__file-icon--data {
+  color: var(--nova-warning);
+}
+.nova-file-tree__file-icon--doc {
+  color: var(--nova-text);
+}
+.nova-file-tree__file-icon--image {
+  color: var(--nova-success);
+}
+
+.nova-file-tree__name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

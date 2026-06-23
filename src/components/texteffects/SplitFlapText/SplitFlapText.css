@@ -1,0 +1,68 @@
+.nova-split-flap-text {
+  display: inline-flex;
+  font-family: var(--nova-font-mono);
+  font-weight: var(--nova-font-bold);
+  line-height: 1;
+}
+
+.nova-split-flap-text__row {
+  display: inline-flex;
+  gap: var(--nova-space-1);
+}
+
+.nova-split-flap-text__cell {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0.9em;
+  padding: var(--nova-space-2) var(--nova-space-1);
+  border-radius: var(--nova-radius-xs);
+  background: var(--nova-text);
+  color: var(--nova-bg);
+  box-shadow: var(--nova-shadow-sm);
+  overflow: hidden;
+}
+
+/* The split line across the middle of the flap. */
+.nova-split-flap-text__cell::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgb(0 0 0 / 0.55);
+  transform: translateY(-0.5px);
+  pointer-events: none;
+}
+
+.nova-split-flap-text__glyph {
+  display: inline-block;
+  will-change: transform, filter;
+}
+
+.nova-split-flap-text__cell--flipping .nova-split-flap-text__glyph {
+  animation: nova-split-flap-flip var(--nova-duration-fast) var(--nova-ease) both;
+}
+
+@keyframes nova-split-flap-flip {
+  0% {
+    transform: translateY(-42%) scaleY(0.45);
+    filter: brightness(0.55);
+  }
+  60% {
+    transform: translateY(6%) scaleY(1.05);
+    filter: brightness(1.15);
+  }
+  100% {
+    transform: translateY(0) scaleY(1);
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-split-flap-text__cell--flipping .nova-split-flap-text__glyph {
+    animation: none;
+  }
+}

@@ -1,0 +1,156 @@
+/* PricingCard — single plan tile with feature list + CTA. */
+.nova-pricing-card {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--nova-space-6);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  transition:
+    box-shadow var(--nova-duration-base) var(--nova-ease),
+    border-color var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-pricing-card--highlighted {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+/* Badge --------------------------------------------------------------------- */
+.nova-pricing-card__badge {
+  position: absolute;
+  top: 0;
+  right: var(--nova-space-6);
+  transform: translateY(-50%);
+  padding: var(--nova-space-1) var(--nova-space-3);
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Header -------------------------------------------------------------------- */
+.nova-pricing-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-pricing-card__name {
+  margin: 0;
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-pricing-card__description {
+  margin: 0;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+}
+
+/* Price --------------------------------------------------------------------- */
+.nova-pricing-card__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--nova-space-1);
+  margin-top: var(--nova-space-5);
+}
+
+.nova-pricing-card__price {
+  font-size: var(--nova-text-4xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-pricing-card__period {
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-medium);
+}
+
+/* Features ------------------------------------------------------------------ */
+.nova-pricing-card__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  margin: var(--nova-space-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-pricing-card__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-pricing-card__feature-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  margin-top: 0.1em;
+  color: var(--nova-success);
+  font-size: var(--nova-text-md);
+}
+
+.nova-pricing-card__feature--excluded {
+  color: var(--nova-text-subtle);
+}
+
+.nova-pricing-card__feature--excluded .nova-pricing-card__feature-icon {
+  color: var(--nova-text-subtle);
+}
+
+/* CTA ----------------------------------------------------------------------- */
+.nova-pricing-card__cta {
+  margin-top: var(--nova-space-6);
+}
+
+.nova-pricing-card__button {
+  margin-top: var(--nova-space-6);
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border: 1px solid var(--nova-primary);
+  border-radius: var(--nova-radius-md);
+  background-color: transparent;
+  color: var(--nova-primary-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  cursor: pointer;
+  transition:
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-pricing-card__button:hover {
+  background-color: var(--nova-primary-subtle);
+}
+
+.nova-pricing-card__button:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* Highlighted plan gets a solid CTA. */
+.nova-pricing-card--highlighted .nova-pricing-card__button {
+  background-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-pricing-card--highlighted .nova-pricing-card__button:hover {
+  background-color: var(--nova-primary-hover);
+}

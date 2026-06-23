@@ -1,0 +1,170 @@
+.nova-year-view {
+  width: 100%;
+  padding: var(--nova-space-4);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  box-sizing: border-box;
+}
+
+.nova-year-view *,
+.nova-year-view *::before,
+.nova-year-view *::after {
+  box-sizing: border-box;
+}
+
+.nova-year-view__months {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--nova-space-4);
+}
+
+@media (max-width: 64rem) {
+  .nova-year-view__months {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 48rem) {
+  .nova-year-view__months {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 30rem) {
+  .nova-year-view__months {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nova-year-view__month {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-year-view__month-title {
+  align-self: flex-start;
+  padding: 2px var(--nova-space-1);
+  margin-bottom: 2px;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-year-view__month-title:hover {
+  color: var(--nova-primary-text);
+}
+
+.nova-year-view__weekdays,
+.nova-year-view__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.nova-year-view__weekday {
+  text-align: center;
+  font-size: 0.625rem;
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-subtle);
+}
+
+.nova-year-view__grid {
+  gap: 1px;
+}
+
+.nova-year-view__day {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  min-height: 1.25rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-xs);
+  background: transparent;
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: 0.625rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-year-view__day:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-year-view__day--outside {
+  color: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+
+.nova-year-view__day--today {
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text-on-brand);
+  background: var(--nova-primary);
+}
+
+.nova-year-view__day--today:hover {
+  background: var(--nova-primary-hover);
+}
+
+/* Density dot under the date number. */
+.nova-year-view__day::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-tone, var(--nova-primary));
+}
+
+.nova-year-view__day--density-1::after {
+  width: 3px;
+  height: 3px;
+  opacity: 0.55;
+}
+.nova-year-view__day--density-2::after {
+  width: 4px;
+  height: 4px;
+  opacity: 0.8;
+}
+.nova-year-view__day--density-3::after {
+  width: 5px;
+  height: 5px;
+  opacity: 1;
+}
+
+.nova-year-view__day--today::after {
+  background: var(--nova-text-on-brand);
+}
+
+.nova-year-view__day--primary {
+  --nova-tone: var(--nova-primary);
+}
+.nova-year-view__day--success {
+  --nova-tone: var(--nova-success);
+}
+.nova-year-view__day--warning {
+  --nova-tone: var(--nova-warning);
+}
+.nova-year-view__day--danger {
+  --nova-tone: var(--nova-danger);
+}
+.nova-year-view__day--info {
+  --nova-tone: var(--nova-info);
+}

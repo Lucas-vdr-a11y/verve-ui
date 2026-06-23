@@ -1,0 +1,78 @@
+.nova-outline-text {
+  --nova-outline-text-color: var(--nova-text);
+  position: relative;
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-5xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  letter-spacing: -0.01em;
+}
+
+/* Stacked layers must overlap perfectly. */
+.nova-outline-text__outline,
+.nova-outline-text__fill {
+  display: block;
+}
+
+.nova-outline-text__fill {
+  position: absolute;
+  inset: 0;
+}
+
+.nova-outline-text__outline {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: var(--nova-outline-text-stroke)
+    var(--nova-outline-text-color);
+}
+
+.nova-outline-text__fill {
+  color: var(--nova-outline-text-color);
+  -webkit-text-fill-color: var(--nova-outline-text-color);
+}
+
+/* Screen-reader-only real text (keeps a11y while layers are aria-hidden). */
+.nova-outline-text__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- fill: none — stay hollow ----------------------------------------- */
+.nova-outline-text--fill-none .nova-outline-text__fill {
+  clip-path: inset(0 100% 0 0);
+}
+
+/* ---- fill: hover — wipe in on hover ----------------------------------- */
+.nova-outline-text--fill-hover .nova-outline-text__fill {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--nova-duration-slow) var(--nova-ease-out);
+}
+.nova-outline-text--fill-hover:hover .nova-outline-text__fill,
+.nova-outline-text--fill-hover:focus-visible .nova-outline-text__fill {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ---- fill: view — wipe in when scrolled into view --------------------- */
+.nova-outline-text--fill-view .nova-outline-text__fill {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--nova-duration-slow) var(--nova-ease-out);
+}
+.nova-outline-text--fill-view.nova-outline-text--in .nova-outline-text__fill {
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-outline-text--fill-hover .nova-outline-text__fill,
+  .nova-outline-text--fill-view .nova-outline-text__fill {
+    transition: none;
+  }
+}

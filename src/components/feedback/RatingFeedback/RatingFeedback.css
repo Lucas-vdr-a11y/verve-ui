@@ -1,0 +1,133 @@
+.nova-rating-feedback {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-rating-feedback__title {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text);
+}
+
+/* ---- Scale ------------------------------------------------------------- */
+.nova-rating-feedback__scale {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+}
+
+.nova-rating-feedback__scale--thumbs {
+  gap: var(--nova-space-2);
+}
+
+.nova-rating-feedback__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nova-space-1);
+  border: none;
+  background: transparent;
+  border-radius: var(--nova-radius-sm);
+  color: var(--nova-text-subtle);
+  cursor: pointer;
+  transition:
+    color var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-rating-feedback__item:hover {
+  transform: scale(1.12);
+}
+
+.nova-rating-feedback__item svg {
+  inline-size: var(--nova-space-6);
+  block-size: var(--nova-space-6);
+  display: block;
+}
+
+/* ---- Star / emoji active state ----------------------------------------- */
+.nova-rating-feedback__item--star.nova-rating-feedback__item--active {
+  color: var(--nova-warning);
+}
+
+.nova-rating-feedback__emoji {
+  font-size: var(--nova-text-2xl);
+  line-height: 1;
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition:
+    filter var(--nova-duration-fast) var(--nova-ease),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-rating-feedback__item--emoji.nova-rating-feedback__item--active
+  .nova-rating-feedback__emoji,
+.nova-rating-feedback__item--emoji:hover .nova-rating-feedback__emoji {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+/* ---- Thumbs ------------------------------------------------------------ */
+.nova-rating-feedback__item--thumb {
+  padding: var(--nova-space-2);
+  border: 1px solid var(--nova-border);
+  color: var(--nova-text-muted);
+}
+
+.nova-rating-feedback__item--thumb:hover {
+  border-color: var(--nova-border-strong);
+  color: var(--nova-text);
+}
+
+.nova-rating-feedback__item--thumb.nova-rating-feedback__item--selected {
+  border-color: var(--nova-primary);
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+/* ---- Comment ----------------------------------------------------------- */
+.nova-rating-feedback__comment {
+  inline-size: 100%;
+  min-inline-size: 16rem;
+  resize: vertical;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+}
+
+.nova-rating-feedback__comment::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+/* ---- Submit ------------------------------------------------------------ */
+.nova-rating-feedback__submit {
+  align-self: flex-start;
+  padding: var(--nova-space-2) var(--nova-space-4);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-on-brand);
+  background: var(--nova-primary);
+  border: none;
+  border-radius: var(--nova-radius-md);
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-rating-feedback__submit:hover {
+  background: var(--nova-primary-hover);
+}
+
+.nova-rating-feedback__submit:disabled {
+  background: var(--nova-bg-muted);
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}

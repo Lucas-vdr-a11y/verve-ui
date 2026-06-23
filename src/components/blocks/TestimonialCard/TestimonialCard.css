@@ -1,0 +1,81 @@
+/* TestimonialCard — quote + author identity + optional rating. */
+.nova-testimonial-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+  padding: var(--nova-space-6);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+}
+
+/* Rating -------------------------------------------------------------------- */
+.nova-testimonial-card__rating {
+  display: inline-flex;
+  gap: var(--nova-space-1);
+  margin-bottom: var(--nova-space-4);
+  color: var(--nova-warning);
+  font-size: var(--nova-text-lg);
+}
+
+.nova-testimonial-card__star {
+  display: inline-flex;
+}
+
+/* Quote --------------------------------------------------------------------- */
+.nova-testimonial-card__quote {
+  margin: 0;
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text);
+}
+
+/* Author -------------------------------------------------------------------- */
+.nova-testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  margin-top: var(--nova-space-5);
+}
+
+.nova-testimonial-card__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--nova-space-10);
+  height: var(--nova-space-10);
+  overflow: hidden;
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-bg-muted);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-testimonial-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nova-testimonial-card__author-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.nova-testimonial-card__author-name {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-testimonial-card__author-role {
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+  line-height: var(--nova-leading-snug);
+}

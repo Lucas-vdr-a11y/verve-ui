@@ -1,0 +1,112 @@
+/* SettingsLayout — section nav + content panel. */
+.nova-settings {
+  box-sizing: border-box;
+  display: grid;
+  min-height: 100%;
+  width: 100%;
+  color: var(--nova-text);
+  background: var(--nova-bg);
+  grid-template-columns: 1fr;
+  grid-template-areas: "main";
+}
+
+.nova-settings--has-nav {
+  grid-template-columns: var(--nova-settings-nav-w) minmax(0, 1fr);
+  grid-template-areas: "nav main";
+}
+
+.nova-settings__nav {
+  grid-area: nav;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: var(--nova-space-6) var(--nova-space-4);
+  border-right: 1px solid var(--nova-border);
+  background: var(--nova-bg-subtle);
+}
+
+.nova-settings__main {
+  grid-area: main;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: auto;
+}
+
+.nova-settings__panel {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--nova-settings-content-max-w);
+  margin-inline: auto;
+  padding: var(--nova-space-8) var(--nova-space-6);
+}
+
+.nova-settings__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--nova-space-4);
+  margin-bottom: var(--nova-space-8);
+  padding-bottom: var(--nova-space-5);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-settings__heading {
+  display: grid;
+  gap: var(--nova-space-2);
+  min-width: 0;
+}
+
+.nova-settings__title {
+  margin: 0;
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  color: var(--nova-text);
+}
+
+.nova-settings__description {
+  margin: 0;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text-muted);
+}
+
+.nova-settings__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  flex: none;
+}
+
+.nova-settings__body {
+  display: grid;
+  gap: var(--nova-space-8);
+}
+
+/* Small screens: nav becomes a horizontal scroller above the panel. */
+@media (max-width: 48rem) {
+  .nova-settings--has-nav {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "nav"
+      "main";
+  }
+
+  .nova-settings__nav {
+    display: flex;
+    gap: var(--nova-space-1);
+    overflow-x: auto;
+    padding: var(--nova-space-3) var(--nova-space-4);
+    border-right: none;
+    border-bottom: 1px solid var(--nova-border);
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nova-settings__panel {
+    padding: var(--nova-space-6) var(--nova-space-4);
+  }
+
+  .nova-settings__head {
+    flex-direction: column;
+  }
+}

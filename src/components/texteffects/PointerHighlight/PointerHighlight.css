@@ -1,0 +1,67 @@
+.nova-pointer-highlight {
+  position: relative;
+  display: inline-block;
+  padding: 0.1em 0.25em;
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-pointer-highlight__text {
+  position: relative;
+  z-index: 1;
+}
+
+.nova-pointer-highlight__box {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--nova-primary);
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-primary-subtle);
+  opacity: 0;
+  transform: scale(0.88);
+  transition:
+    opacity var(--nova-ph-duration, 0.6s) var(--nova-ease-out),
+    transform var(--nova-ph-duration, 0.6s) var(--nova-ease-spring);
+}
+
+.nova-pointer-highlight--shown .nova-pointer-highlight__box {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nova-pointer-highlight__corner {
+  position: absolute;
+  width: 0.4em;
+  height: 0.4em;
+  border: 2px solid var(--nova-primary);
+}
+
+.nova-pointer-highlight__corner--tl {
+  top: -3px;
+  left: -3px;
+  border-width: 2px 0 0 2px;
+}
+.nova-pointer-highlight__corner--tr {
+  top: -3px;
+  right: -3px;
+  border-width: 2px 2px 0 0;
+}
+.nova-pointer-highlight__corner--bl {
+  bottom: -3px;
+  left: -3px;
+  border-width: 0 0 2px 2px;
+}
+.nova-pointer-highlight__corner--br {
+  bottom: -3px;
+  right: -3px;
+  border-width: 0 2px 2px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-pointer-highlight__box {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

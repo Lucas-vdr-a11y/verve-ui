@@ -1,0 +1,99 @@
+.nova-popover {
+  position: relative;
+  display: inline-block;
+}
+
+.nova-popover__trigger {
+  display: inline-flex;
+}
+
+.nova-popover__panel {
+  position: absolute;
+  z-index: var(--nova-z-popover);
+  min-width: 12rem;
+  max-width: 20rem;
+  padding: var(--nova-space-3) var(--nova-space-4);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  box-shadow: var(--nova-shadow-lg);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  animation: nova-popover-in var(--nova-duration-fast) var(--nova-ease-out) both;
+}
+
+/* ---- Placement ---------------------------------------------------------- */
+.nova-popover__panel--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: var(--nova-space-2);
+}
+.nova-popover__panel--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: var(--nova-space-2);
+}
+.nova-popover__panel--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: var(--nova-space-2);
+}
+.nova-popover__panel--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: var(--nova-space-2);
+}
+
+/* ---- Arrow -------------------------------------------------------------- */
+.nova-popover__arrow {
+  position: absolute;
+  width: var(--nova-space-2);
+  height: var(--nova-space-2);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  transform: rotate(45deg);
+}
+
+.nova-popover__panel--bottom .nova-popover__arrow {
+  top: calc(-1 * var(--nova-space-1) - 1px);
+  left: 50%;
+  margin-left: calc(-1 * var(--nova-space-1));
+  border-right: none;
+  border-bottom: none;
+}
+.nova-popover__panel--top .nova-popover__arrow {
+  bottom: calc(-1 * var(--nova-space-1) - 1px);
+  left: 50%;
+  margin-left: calc(-1 * var(--nova-space-1));
+  border-left: none;
+  border-top: none;
+}
+.nova-popover__panel--right .nova-popover__arrow {
+  left: calc(-1 * var(--nova-space-1) - 1px);
+  top: 50%;
+  margin-top: calc(-1 * var(--nova-space-1));
+  border-right: none;
+  border-top: none;
+}
+.nova-popover__panel--left .nova-popover__arrow {
+  right: calc(-1 * var(--nova-space-1) - 1px);
+  top: 50%;
+  margin-top: calc(-1 * var(--nova-space-1));
+  border-left: none;
+  border-bottom: none;
+}
+
+@keyframes nova-popover-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

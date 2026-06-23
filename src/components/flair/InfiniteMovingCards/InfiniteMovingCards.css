@@ -1,0 +1,77 @@
+.nova-moving {
+  --nova-moving-duration: 40s;
+  --nova-moving-gap: 1rem;
+
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  gap: var(--nova-moving-gap);
+}
+
+.nova-moving--fade {
+  -webkit-mask: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.nova-moving__track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: stretch;
+  gap: var(--nova-moving-gap);
+  margin: 0;
+  padding: 0 0 0 var(--nova-moving-gap);
+  list-style: none;
+  min-width: max-content;
+  animation: nova-moving-scroll var(--nova-moving-duration) linear infinite;
+}
+
+.nova-moving--right .nova-moving__track {
+  animation-direction: reverse;
+}
+
+.nova-moving--pause-hover:hover .nova-moving__track {
+  animation-play-state: paused;
+}
+
+.nova-moving[data-paused] .nova-moving__track {
+  animation-play-state: paused;
+}
+
+.nova-moving__card {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 22rem;
+  padding: var(--nova-space-5) var(--nova-space-6);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-sm);
+}
+
+@keyframes nova-moving-scroll {
+  to {
+    /* travel one full track + the leading gap for a seamless wrap */
+    transform: translateX(calc(-100% - var(--nova-moving-gap)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-moving__track {
+    animation: none;
+  }
+}

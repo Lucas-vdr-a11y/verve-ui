@@ -1,0 +1,111 @@
+.nova-copy {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-copy:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-copy--copied {
+  border-color: var(--nova-success);
+  color: var(--nova-success);
+}
+
+.nova-copy:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-copy__icons {
+  position: relative;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.nova-copy__icon {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease-spring);
+}
+
+.nova-copy__icon--copy {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nova-copy__icon--check {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.nova-copy--copied .nova-copy__icon--copy {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.nova-copy--copied .nova-copy__icon--check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Animated check draw-in. */
+.nova-copy__check-path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset var(--nova-duration-slow) var(--nova-ease-out)
+    80ms;
+}
+
+.nova-copy--copied .nova-copy__check-path {
+  stroke-dashoffset: 0;
+}
+
+.nova-copy__tooltip {
+  position: absolute;
+  bottom: calc(100% + var(--nova-space-2));
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-gray-900);
+  color: var(--nova-gray-0);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+  z-index: var(--nova-z-tooltip);
+}
+
+.nova-copy--copied .nova-copy__tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-copy,
+  .nova-copy__icon,
+  .nova-copy__check-path,
+  .nova-copy__tooltip {
+    transition: none;
+  }
+}

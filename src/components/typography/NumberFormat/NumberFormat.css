@@ -1,0 +1,37 @@
+.nova-number-format {
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-medium);
+  font-variant-numeric: tabular-nums;
+  color: var(--nova-text);
+}
+
+/* ---- Size --------------------------------------------------------------- */
+.nova-number-format--sm {
+  font-size: var(--nova-text-sm);
+}
+.nova-number-format--md {
+  font-size: var(--nova-text-md);
+}
+.nova-number-format--lg {
+  font-size: var(--nova-text-lg);
+}
+.nova-number-format--xl {
+  font-size: var(--nova-text-2xl);
+}
+
+/* ---- Tone --------------------------------------------------------------- */
+.nova-number-format--default {
+  color: var(--nova-text);
+}
+.nova-number-format--muted {
+  color: var(--nova-text-muted);
+}
+.nova-number-format--primary {
+  color: var(--nova-primary-text);
+}
+.nova-number-format--success {
+  color: var(--nova-success);
+}
+.nova-number-format--danger {
+  color: var(--nova-danger);
+}

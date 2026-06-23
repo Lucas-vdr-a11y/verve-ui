@@ -1,0 +1,74 @@
+.nova-lens {
+  --nova-lens-size: 160px;
+  --nova-lens-zoom: 1.6;
+  --nova-lens-x: 50%;
+  --nova-lens-y: 50%;
+
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: var(--nova-radius-lg);
+  isolation: isolate;
+  line-height: 0;
+}
+
+.nova-lens__base {
+  display: block;
+}
+
+/* The circular glass clipped to the lens region. */
+.nova-lens__glass {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+  z-index: 2;
+  -webkit-mask: radial-gradient(
+    circle calc(var(--nova-lens-size) / 2) at var(--nova-lens-x) var(--nova-lens-y),
+    #000 99%,
+    transparent 100%
+  );
+  mask: radial-gradient(
+    circle calc(var(--nova-lens-size) / 2) at var(--nova-lens-x) var(--nova-lens-y),
+    #000 99%,
+    transparent 100%
+  );
+}
+
+.nova-lens--active .nova-lens__glass {
+  opacity: 1;
+}
+
+/* Zoomed copy: scale from the cursor point so the same pixel stays put. */
+.nova-lens__zoomed {
+  position: absolute;
+  inset: 0;
+  transform-origin: var(--nova-lens-x) var(--nova-lens-y);
+  transform: scale(var(--nova-lens-zoom));
+}
+
+/* Subtle glass ring for tactile feedback. */
+.nova-lens__glass::after {
+  content: "";
+  position: absolute;
+  left: var(--nova-lens-x);
+  top: var(--nova-lens-y);
+  width: var(--nova-lens-size);
+  height: var(--nova-lens-size);
+  transform: translate(-50%, -50%);
+  border-radius: var(--nova-radius-full);
+  box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.55), var(--nova-shadow-lg);
+}
+
+.nova-lens img,
+.nova-lens__base img {
+  display: block;
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-lens__glass {
+    transition: none;
+  }
+}

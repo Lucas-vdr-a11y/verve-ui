@@ -1,0 +1,109 @@
+.nova-nav-list {
+  display: block;
+  width: 100%;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-nav-list__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-nav-list__section {
+  display: block;
+}
+
+.nova-nav-list__section + .nova-nav-list__section {
+  margin-top: var(--nova-space-4);
+}
+
+.nova-nav-list__heading {
+  display: block;
+  padding: var(--nova-space-2) var(--nova-space-3) var(--nova-space-1);
+  color: var(--nova-text-subtle);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.nova-nav-list__cell {
+  display: block;
+}
+
+.nova-nav-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border-radius: var(--nova-radius-md);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-nav-list__item:hover:not(.nova-nav-list__item--disabled) {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-nav-list__item--active {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-nav-list__item--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.nova-nav-list__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-nav-list__icon svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+}
+
+.nova-nav-list__label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-nav-list__badge {
+  flex-shrink: 0;
+  min-width: 1.25rem;
+  padding: 0 var(--nova-space-2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-muted);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  line-height: 1.6;
+}
+
+.nova-nav-list__item--active .nova-nav-list__badge {
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}

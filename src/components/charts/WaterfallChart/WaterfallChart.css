@@ -1,0 +1,39 @@
+.nova-waterfall-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-waterfall-chart__baseline {
+  stroke: var(--nova-border-strong);
+  stroke-width: 1;
+}
+
+.nova-waterfall-chart__connector {
+  stroke: var(--nova-border-strong);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  opacity: 0.8;
+}
+
+.nova-waterfall-chart__bar {
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    filter var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-waterfall-chart__group:hover .nova-waterfall-chart__bar {
+  opacity: 0.85;
+  filter: brightness(1.08);
+}
+
+.nova-waterfall-chart__value {
+  fill: var(--nova-text);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-waterfall-chart__label {
+  fill: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+}

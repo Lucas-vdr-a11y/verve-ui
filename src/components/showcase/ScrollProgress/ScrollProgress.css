@@ -1,0 +1,42 @@
+/* ScrollProgress — fixed slim bar; the fill is scaled on the X axis (cheap,
+ * compositor-only) so updates stay smooth. */
+
+.nova-scroll-progress {
+  --nova-scroll-progress-thickness: 3px;
+  --nova-scroll-progress-color: linear-gradient(
+    90deg,
+    var(--nova-brand-400),
+    var(--nova-primary)
+  );
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: var(--nova-scroll-progress-thickness);
+  z-index: var(--nova-z-sticky);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nova-scroll-progress--top {
+  top: 0;
+}
+.nova-scroll-progress--bottom {
+  bottom: 0;
+}
+
+.nova-scroll-progress__bar {
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: var(--nova-scroll-progress-color);
+  box-shadow: 0 0 8px rgb(99 102 241 / 0.5);
+  transition: transform var(--nova-duration-fast) linear;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-scroll-progress__bar {
+    transition: none;
+  }
+}

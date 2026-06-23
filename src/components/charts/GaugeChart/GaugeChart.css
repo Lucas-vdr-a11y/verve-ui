@@ -1,0 +1,38 @@
+.nova-gauge-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-gauge-chart__track {
+  fill: var(--nova-bg-muted);
+}
+
+.nova-gauge-chart__fill {
+  transition: fill var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-gauge-chart__needle {
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-gauge-chart__value {
+  fill: var(--nova-text);
+  font-size: var(--nova-text-xl);
+  font-weight: var(--nova-font-bold);
+}
+
+.nova-gauge-chart__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  text-align: center;
+  color: var(--nova-text);
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+}

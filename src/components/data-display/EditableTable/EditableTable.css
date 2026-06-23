@@ -1,0 +1,182 @@
+.nova-editable-table__scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.nova-editable-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text);
+}
+
+.nova-editable-table__head th {
+  background: var(--nova-bg-subtle);
+  color: var(--nova-text-muted);
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  border-bottom: 1px solid var(--nova-border);
+  white-space: nowrap;
+}
+
+.nova-editable-table__header-cell,
+.nova-editable-table__cell,
+.nova-editable-table__empty {
+  padding: var(--nova-space-3) var(--nova-space-4);
+}
+
+.nova-editable-table--dense .nova-editable-table__header-cell,
+.nova-editable-table--dense .nova-editable-table__cell,
+.nova-editable-table--dense .nova-editable-table__empty {
+  padding: var(--nova-space-1) var(--nova-space-3);
+}
+
+.nova-editable-table__cell--left {
+  text-align: left;
+}
+.nova-editable-table__cell--center {
+  text-align: center;
+}
+.nova-editable-table__cell--right {
+  text-align: right;
+}
+
+.nova-editable-table__row {
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-editable-table__body tr:last-child {
+  border-bottom: none;
+}
+
+.nova-editable-table__cell--editable {
+  cursor: text;
+}
+
+.nova-editable-table__cell--editable:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-editable-table__cell--editable:focus-visible {
+  outline: none;
+  box-shadow: inset var(--nova-shadow-focus);
+}
+
+.nova-editable-table__cell--editing {
+  padding: var(--nova-space-1) var(--nova-space-2);
+  background: var(--nova-surface);
+}
+
+.nova-editable-table__cell--invalid {
+  box-shadow: inset 0 0 0 1px var(--nova-danger);
+}
+
+.nova-editable-table__editor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-editable-table__input {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  color: var(--nova-text);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-primary);
+  border-radius: var(--nova-radius-sm);
+  padding: var(--nova-space-1) var(--nova-space-2);
+}
+
+.nova-editable-table__input:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-editable-table__error {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-danger);
+}
+
+.nova-editable-table__actions-cell {
+  width: 1%;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.nova-editable-table__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  border-radius: var(--nova-radius-sm);
+  font-size: var(--nova-text-md);
+}
+
+.nova-editable-table__remove:hover {
+  color: var(--nova-danger);
+  background: var(--nova-danger-subtle);
+}
+
+.nova-editable-table__remove:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-editable-table__empty {
+  text-align: center;
+  color: var(--nova-text-muted);
+  padding-top: var(--nova-space-8);
+  padding-bottom: var(--nova-space-8);
+}
+
+.nova-editable-table__footer {
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border-top: 1px solid var(--nova-border);
+}
+
+.nova-editable-table__add {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-primary-text);
+  background: none;
+  border: none;
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border-radius: var(--nova-radius-sm);
+  cursor: pointer;
+}
+
+.nova-editable-table__add:hover {
+  background: var(--nova-primary-subtle);
+}
+
+.nova-editable-table__add:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-editable-table__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

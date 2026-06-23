@@ -1,0 +1,6 @@
+/* AreaChart reuses LineChart's structure; this class is a hook for
+ * area-specific overrides. The gradient fill itself is token-driven via
+ * currentColor stops defined inside LineChart. */
+.nova-area-chart .nova-line-chart__area {
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}

@@ -1,0 +1,69 @@
+/* TracingBeam — a left rail whose lit portion (beam) grows with scroll progress
+ * and a dot riding the leading edge. */
+
+.nova-tracing-beam {
+  --nova-tracing-beam-color: var(--nova-primary);
+  --nova-tracing-beam-progress: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--nova-space-6);
+}
+
+.nova-tracing-beam__rail {
+  position: relative;
+  width: 2px;
+  margin-left: var(--nova-space-2);
+  flex: 0 0 auto;
+}
+
+.nova-tracing-beam__track {
+  position: absolute;
+  inset: 0;
+  width: 2px;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-border);
+}
+
+.nova-tracing-beam__beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: calc(var(--nova-tracing-beam-progress) * 100%);
+  border-radius: var(--nova-radius-full);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--nova-tracing-beam-color)
+  );
+  box-shadow: 0 0 8px 0 var(--nova-tracing-beam-color);
+  transition: height var(--nova-duration-fast) linear;
+  will-change: height;
+}
+
+.nova-tracing-beam__dot {
+  position: absolute;
+  left: 1px;
+  top: calc(var(--nova-tracing-beam-progress) * 100%);
+  width: 0.75rem;
+  height: 0.75rem;
+  transform: translate(-50%, -50%);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-tracing-beam-color);
+  box-shadow: 0 0 0 4px rgb(99 102 241 / 0.18),
+    0 0 12px 2px var(--nova-tracing-beam-color);
+  transition: top var(--nova-duration-fast) linear;
+  will-change: top;
+}
+
+.nova-tracing-beam__content {
+  min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-tracing-beam__beam,
+  .nova-tracing-beam__dot {
+    transition: none;
+  }
+}

@@ -1,0 +1,125 @@
+.nova-tooltip {
+  position: relative;
+  display: inline-flex;
+  --nova-tooltip-gap: var(--nova-space-2);
+}
+
+.nova-tooltip__trigger {
+  display: inline-flex;
+}
+
+/* ---- Bubble ------------------------------------------------------------ */
+.nova-tooltip__bubble {
+  position: absolute;
+  z-index: var(--nova-z-tooltip);
+  inline-size: max-content;
+  max-inline-size: 16rem;
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-text);
+  color: var(--nova-bg);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  text-align: center;
+  white-space: normal;
+  box-shadow: var(--nova-shadow-md);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.96);
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease-out),
+    visibility var(--nova-duration-fast);
+}
+
+/* ---- Arrow ------------------------------------------------------------- */
+.nova-tooltip__arrow {
+  position: absolute;
+  inline-size: var(--nova-space-2);
+  block-size: var(--nova-space-2);
+  background: var(--nova-text);
+  transform: rotate(45deg);
+}
+
+/* ---- Placement: top ---------------------------------------------------- */
+.nova-tooltip--top .nova-tooltip__bubble {
+  inset-block-end: 100%;
+  inset-inline-start: 50%;
+  margin-block-end: var(--nova-tooltip-gap);
+  transform: translateX(-50%) scale(0.96);
+  transform-origin: bottom center;
+}
+.nova-tooltip--top .nova-tooltip__arrow {
+  inset-block-start: 100%;
+  inset-inline-start: 50%;
+  margin-block-start: calc(var(--nova-space-1) * -1);
+  margin-inline-start: calc(var(--nova-space-1) * -1);
+}
+
+/* ---- Placement: bottom ------------------------------------------------- */
+.nova-tooltip--bottom .nova-tooltip__bubble {
+  inset-block-start: 100%;
+  inset-inline-start: 50%;
+  margin-block-start: var(--nova-tooltip-gap);
+  transform: translateX(-50%) scale(0.96);
+  transform-origin: top center;
+}
+.nova-tooltip--bottom .nova-tooltip__arrow {
+  inset-block-end: 100%;
+  inset-inline-start: 50%;
+  margin-block-end: calc(var(--nova-space-1) * -1);
+  margin-inline-start: calc(var(--nova-space-1) * -1);
+}
+
+/* ---- Placement: left --------------------------------------------------- */
+.nova-tooltip--left .nova-tooltip__bubble {
+  inset-inline-end: 100%;
+  inset-block-start: 50%;
+  margin-inline-end: var(--nova-tooltip-gap);
+  transform: translateY(-50%) scale(0.96);
+  transform-origin: center right;
+}
+.nova-tooltip--left .nova-tooltip__arrow {
+  inset-inline-start: 100%;
+  inset-block-start: 50%;
+  margin-inline-start: calc(var(--nova-space-1) * -1);
+  margin-block-start: calc(var(--nova-space-1) * -1);
+}
+
+/* ---- Placement: right -------------------------------------------------- */
+.nova-tooltip--right .nova-tooltip__bubble {
+  inset-inline-start: 100%;
+  inset-block-start: 50%;
+  margin-inline-start: var(--nova-tooltip-gap);
+  transform: translateY(-50%) scale(0.96);
+  transform-origin: center left;
+}
+.nova-tooltip--right .nova-tooltip__arrow {
+  inset-inline-end: 100%;
+  inset-block-start: 50%;
+  margin-inline-end: calc(var(--nova-space-1) * -1);
+  margin-block-start: calc(var(--nova-space-1) * -1);
+}
+
+/* ---- Reveal on hover / focus ------------------------------------------- */
+.nova-tooltip:hover .nova-tooltip__bubble,
+.nova-tooltip:focus-within .nova-tooltip__bubble {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nova-tooltip--top:hover .nova-tooltip__bubble,
+.nova-tooltip--top:focus-within .nova-tooltip__bubble,
+.nova-tooltip--bottom:hover .nova-tooltip__bubble,
+.nova-tooltip--bottom:focus-within .nova-tooltip__bubble {
+  transform: translateX(-50%) scale(1);
+}
+
+.nova-tooltip--left:hover .nova-tooltip__bubble,
+.nova-tooltip--left:focus-within .nova-tooltip__bubble,
+.nova-tooltip--right:hover .nova-tooltip__bubble,
+.nova-tooltip--right:focus-within .nova-tooltip__bubble {
+  transform: translateY(-50%) scale(1);
+}

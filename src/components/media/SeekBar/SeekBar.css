@@ -1,0 +1,90 @@
+.nova-seek-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  inline-size: 100%;
+  block-size: var(--nova-space-4);
+  cursor: pointer;
+  touch-action: none;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-seek-bar:focus-visible {
+  outline: none;
+}
+
+.nova-seek-bar:focus-visible .nova-seek-bar__track {
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* ---- Track ------------------------------------------------------------- */
+.nova-seek-bar__track {
+  position: relative;
+  inline-size: 100%;
+  block-size: 0.25rem;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-muted);
+  overflow: hidden;
+  transition: block-size var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-seek-bar:hover .nova-seek-bar__track,
+.nova-seek-bar--dragging .nova-seek-bar__track {
+  block-size: 0.375rem;
+}
+
+.nova-seek-bar__buffered {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: var(--nova-seek-buffered, 0%);
+  background: var(--nova-border-strong);
+}
+
+.nova-seek-bar__progress {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: var(--nova-seek-progress, 0%);
+  background: var(--nova-primary);
+}
+
+/* ---- Thumb ------------------------------------------------------------- */
+.nova-seek-bar__thumb {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: var(--nova-seek-progress, 0%);
+  inline-size: var(--nova-space-3);
+  block-size: var(--nova-space-3);
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  border: 2px solid var(--nova-primary);
+  box-shadow: var(--nova-shadow-sm);
+  transition: transform var(--nova-duration-fast) var(--nova-ease);
+  pointer-events: none;
+}
+
+.nova-seek-bar:hover .nova-seek-bar__thumb,
+.nova-seek-bar:focus-visible .nova-seek-bar__thumb,
+.nova-seek-bar--dragging .nova-seek-bar__thumb {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ---- Tooltip ----------------------------------------------------------- */
+.nova-seek-bar__tooltip {
+  position: absolute;
+  inset-block-end: calc(100% + var(--nova-space-1));
+  inset-inline-start: var(--nova-seek-hover, 0%);
+  transform: translateX(-50%);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  color: var(--nova-gray-0);
+  background: var(--nova-overlay-bg);
+  border-radius: var(--nova-radius-sm);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  pointer-events: none;
+}

@@ -1,0 +1,73 @@
+.nova-gradient-card {
+  --nova-gc-duration: 6s;
+
+  position: relative;
+  display: inline-block;
+  min-width: 16rem;
+  border-radius: var(--nova-radius-xl);
+  padding: 2px;
+  isolation: isolate;
+}
+
+/* Animated colorful gradient glow behind the panel. */
+.nova-gradient-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  background: conic-gradient(
+    from 0deg,
+    var(--nova-brand-500),
+    var(--nova-info-500),
+    var(--nova-brand-300),
+    var(--nova-brand-700),
+    var(--nova-info-500),
+    var(--nova-brand-500)
+  );
+  background-size: 200% 200%;
+  filter: blur(14px);
+  opacity: 0.45;
+  transition: opacity var(--nova-duration-slow) var(--nova-ease),
+    filter var(--nova-duration-slow) var(--nova-ease);
+  animation: nova-gc-drift var(--nova-gc-duration) linear infinite;
+  animation-play-state: paused;
+}
+
+.nova-gradient-card:hover::before,
+.nova-gradient-card--always::before {
+  opacity: 0.9;
+  filter: blur(20px);
+  animation-play-state: running;
+}
+
+.nova-gradient-card__panel {
+  position: relative;
+  border-radius: calc(var(--nova-radius-xl) - 2px);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  padding: var(--nova-space-6);
+}
+
+@keyframes nova-gc-drift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-gradient-card::before {
+    animation: none;
+    transition: none;
+  }
+  .nova-gradient-card:hover::before,
+  .nova-gradient-card--always::before {
+    animation: none;
+  }
+}

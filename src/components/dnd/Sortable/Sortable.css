@@ -1,0 +1,68 @@
+.nova-sortable {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-sortable--horizontal {
+  flex-direction: row;
+}
+
+.nova-sortable--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ---- Item --------------------------------------------------------------- */
+.nova-sortable__item {
+  box-sizing: border-box;
+  display: flex;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  outline: none;
+  touch-action: pan-y;
+  transition: transform var(--nova-duration-base) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-sortable--horizontal .nova-sortable__item {
+  touch-action: pan-x;
+}
+
+.nova-sortable__item:focus-visible {
+  box-shadow: var(--nova-shadow-focus);
+  border-color: var(--nova-primary);
+}
+
+/* The lifted item: raised, highlighted gap target. */
+.nova-sortable__item--dragging {
+  position: relative;
+  z-index: var(--nova-z-overlay);
+  border-color: var(--nova-primary);
+  background: var(--nova-primary-subtle);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+/* ---- Row (default, non-handle layout) ----------------------------------- */
+.nova-sortable__row {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  width: 100%;
+  padding: var(--nova-space-2) var(--nova-space-3);
+}
+
+.nova-sortable__content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nova-sortable__handle {
+  cursor: inherit;
+}

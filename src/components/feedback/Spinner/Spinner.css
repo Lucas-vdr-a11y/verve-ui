@@ -1,0 +1,47 @@
+.nova-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nova-primary);
+  line-height: 0;
+}
+
+.nova-spinner__svg {
+  width: 1em;
+  height: 1em;
+  animation: nova-spinner-spin var(--nova-duration-slow) linear infinite;
+  animation-duration: 700ms;
+}
+
+.nova-spinner__track {
+  stroke: currentColor;
+  opacity: 0.2;
+}
+
+.nova-spinner__head {
+  stroke: currentColor;
+}
+
+.nova-spinner--sm {
+  font-size: var(--nova-text-md);
+}
+
+.nova-spinner--md {
+  font-size: var(--nova-text-2xl);
+}
+
+.nova-spinner--lg {
+  font-size: var(--nova-text-4xl);
+}
+
+@keyframes nova-spinner-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-spinner__svg {
+    animation-duration: 1.4s;
+  }
+}

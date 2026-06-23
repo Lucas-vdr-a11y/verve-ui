@@ -1,0 +1,4 @@
+/* Bleed — negative-margin escape hatch past parent padding. */
+.nova-bleed {
+  box-sizing: border-box;
+}

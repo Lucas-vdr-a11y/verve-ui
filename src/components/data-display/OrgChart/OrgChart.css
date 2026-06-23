@@ -1,0 +1,105 @@
+.nova-org-chart {
+  overflow: auto;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  padding: var(--nova-space-2);
+}
+
+.nova-org-chart__canvas {
+  position: relative;
+  margin: 0 auto;
+}
+
+.nova-org-chart__edges {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.nova-org-chart__edge {
+  stroke: var(--nova-border-strong);
+  stroke-width: 1.5;
+}
+
+.nova-org-chart__node {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--nova-space-1);
+  padding: var(--nova-space-2) var(--nova-space-3);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-top: 3px solid var(--nova-org-accent, var(--nova-primary));
+  border-radius: var(--nova-radius-md);
+  box-shadow: var(--nova-shadow-sm);
+  transition: box-shadow var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-org-chart__node--interactive {
+  cursor: pointer;
+}
+
+.nova-org-chart__node--interactive:hover {
+  box-shadow: var(--nova-shadow-md);
+  transform: translateY(-1px);
+}
+
+.nova-org-chart__node--interactive:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-org-chart__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-org-chart__subtitle {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+  line-height: var(--nova-leading-tight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-org-chart__toggle {
+  position: absolute;
+  bottom: calc(-1 * var(--nova-space-3));
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  font-size: var(--nova-text-sm);
+  line-height: 1;
+  color: var(--nova-text-muted);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-full);
+  cursor: pointer;
+  z-index: var(--nova-z-base);
+  transition: color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-org-chart__toggle:hover {
+  color: var(--nova-primary);
+  border-color: var(--nova-primary);
+}
+
+.nova-org-chart__toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}

@@ -1,0 +1,16 @@
+.nova-decrypted-text {
+  display: inline-block;
+  font-family: var(--nova-font-mono);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text);
+}
+
+.nova-decrypted-text__char {
+  display: inline-block;
+  white-space: pre;
+}
+
+.nova-decrypted-text__char--scrambling {
+  color: var(--nova-success);
+  text-shadow: 0 0 6px rgb(34 197 94 / 0.55);
+}

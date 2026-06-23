@@ -1,0 +1,47 @@
+.nova-drag-handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  padding: var(--nova-space-1);
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: var(--nova-text-subtle);
+  cursor: grab;
+  touch-action: none;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-drag-handle:hover {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text-muted);
+}
+
+.nova-drag-handle:active {
+  cursor: grabbing;
+}
+
+.nova-drag-handle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.nova-drag-handle__icon {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.nova-drag-handle--sm {
+  font-size: var(--nova-text-sm);
+}
+
+.nova-drag-handle--md {
+  font-size: var(--nova-text-md);
+}
+
+.nova-drag-handle--lg {
+  font-size: var(--nova-text-lg);
+}

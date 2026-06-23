@@ -1,0 +1,56 @@
+.nova-chat-scroll-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  font-size: var(--nova-text-lg);
+  line-height: 0;
+  cursor: pointer;
+  box-shadow: var(--nova-shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(var(--nova-space-2)) scale(0.9);
+  pointer-events: none;
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease-out),
+    visibility var(--nova-duration-base) var(--nova-ease),
+    background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-chat-scroll-button--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.nova-chat-scroll-button:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-chat-scroll-button__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.125rem;
+  height: 1.125rem;
+  padding: 0 var(--nova-space-1);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}

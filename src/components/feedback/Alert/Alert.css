@@ -1,0 +1,135 @@
+.nova-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border-radius: var(--nova-radius-lg);
+  border: 1px solid transparent;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text);
+  /* tone palette, overridden below */
+  --nova-alert-accent: var(--nova-info);
+  --nova-alert-subtle: var(--nova-info-subtle);
+}
+
+/* ---- Tones ------------------------------------------------------------- */
+.nova-alert--info {
+  --nova-alert-accent: var(--nova-info);
+  --nova-alert-subtle: var(--nova-info-subtle);
+}
+
+.nova-alert--success {
+  --nova-alert-accent: var(--nova-success);
+  --nova-alert-subtle: var(--nova-success-subtle);
+}
+
+.nova-alert--warning {
+  --nova-alert-accent: var(--nova-warning);
+  --nova-alert-subtle: var(--nova-warning-subtle);
+}
+
+.nova-alert--danger {
+  --nova-alert-accent: var(--nova-danger);
+  --nova-alert-subtle: var(--nova-danger-subtle);
+}
+
+/* ---- Variants ---------------------------------------------------------- */
+.nova-alert--soft {
+  background: var(--nova-alert-subtle);
+  border-color: transparent;
+}
+
+.nova-alert--outline {
+  background: var(--nova-surface);
+  border-color: var(--nova-alert-accent);
+}
+
+.nova-alert--solid {
+  background: var(--nova-alert-accent);
+  border-color: transparent;
+  color: var(--nova-text-on-brand);
+}
+
+/* ---- Icon -------------------------------------------------------------- */
+.nova-alert__icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1.25em;
+  block-size: 1.25em;
+  font-size: var(--nova-text-md);
+  color: var(--nova-alert-accent);
+  margin-block-start: 0.05em;
+}
+
+.nova-alert__icon svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.nova-alert--solid .nova-alert__icon {
+  color: currentColor;
+}
+
+/* ---- Content ----------------------------------------------------------- */
+.nova-alert__content {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+.nova-alert__title {
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-alert__title + .nova-alert__body {
+  margin-block-start: var(--nova-space-1);
+}
+
+.nova-alert__body {
+  color: inherit;
+}
+
+.nova-alert--soft .nova-alert__body,
+.nova-alert--outline .nova-alert__body {
+  color: var(--nova-text-muted);
+}
+
+/* ---- Dismiss ----------------------------------------------------------- */
+.nova-alert__dismiss {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--nova-space-6);
+  block-size: var(--nova-space-6);
+  margin: calc(var(--nova-space-1) * -1) calc(var(--nova-space-2) * -1)
+    calc(var(--nova-space-1) * -1) 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: currentColor;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-alert__dismiss svg {
+  inline-size: var(--nova-space-4);
+  block-size: var(--nova-space-4);
+}
+
+.nova-alert__dismiss:hover {
+  opacity: 1;
+  background: var(--nova-surface-hover);
+}
+
+.nova-alert--solid .nova-alert__dismiss:hover {
+  background: rgb(255 255 255 / 0.2);
+}

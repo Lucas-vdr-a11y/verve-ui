@@ -1,0 +1,77 @@
+@property --nova-mb-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.nova-moving-border {
+  --nova-mb-duration: 3s;
+  --nova-mb-streak: var(--nova-brand-400);
+  --nova-mb-radius: var(--nova-radius-xl);
+
+  position: relative;
+  display: inline-flex;
+  padding: 1px;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-mb-radius);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Travelling streak: rotating conic sweep masked to the rim. */
+.nova-moving-border__orbit {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--nova-mb-angle),
+    transparent 0%,
+    transparent 78%,
+    var(--nova-mb-streak) 92%,
+    #fff 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: nova-mb-spin var(--nova-mb-duration) linear infinite;
+  filter: drop-shadow(0 0 4px var(--nova-mb-streak));
+}
+
+.nova-moving-border__content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-3) var(--nova-space-6);
+  border-radius: inherit;
+  background: var(--nova-surface);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-moving-border:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+@keyframes nova-mb-spin {
+  to {
+    --nova-mb-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-moving-border__orbit {
+    animation: none;
+  }
+}

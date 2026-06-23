@@ -1,0 +1,125 @@
+.nova-coverflow {
+  --nova-coverflow-size: 220px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nova-space-3);
+}
+
+.nova-coverflow__stage {
+  position: relative;
+  width: 100%;
+  height: calc(var(--nova-coverflow-size) * 1.4);
+  perspective: calc(var(--nova-coverflow-size) * 5);
+  perspective-origin: 50% 50%;
+  outline: none;
+  touch-action: pan-y;
+  cursor: grab;
+}
+.nova-coverflow__stage:active {
+  cursor: grabbing;
+}
+.nova-coverflow__stage:focus-visible {
+  box-shadow: var(--nova-shadow-focus);
+  border-radius: var(--nova-radius-lg);
+}
+
+.nova-coverflow__track {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.nova-coverflow__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--nova-coverflow-size);
+  height: var(--nova-coverflow-size);
+  margin-top: calc(var(--nova-coverflow-size) / -2);
+  margin-left: calc(var(--nova-coverflow-size) / -2);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out),
+    filter var(--nova-duration-slow) var(--nova-ease-out);
+  /* Slide sideways, push back, then rotate away from the viewer. */
+  transform: translateX(
+      calc(
+        var(--nova-coverflow-offset) * var(--nova-coverflow-size) * 0.55
+      )
+    )
+    translateZ(calc(var(--nova-coverflow-abs) * var(--nova-coverflow-size) * -0.35))
+    rotateY(calc(var(--nova-coverflow-sign) * -55deg));
+  filter: brightness(calc(1 - var(--nova-coverflow-abs) * 0.12));
+}
+
+.nova-coverflow__item--active {
+  transform: translateX(0) translateZ(calc(var(--nova-coverflow-size) * 0.25))
+    rotateY(0deg);
+  filter: none;
+}
+
+.nova-coverflow__cover {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-lg);
+}
+.nova-coverflow__cover > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Floor reflection cue via gradient under active cover. */
+.nova-coverflow__item--active .nova-coverflow__cover {
+  box-shadow: var(--nova-shadow-xl), 0 0 32px rgb(99 102 241 / 0.2);
+}
+
+.nova-coverflow__arrows {
+  display: flex;
+  gap: var(--nova-space-4);
+}
+
+.nova-coverflow__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-space-10);
+  height: var(--nova-space-10);
+  font-size: var(--nova-text-2xl);
+  line-height: 1;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+.nova-coverflow__arrow:hover:not(:disabled) {
+  background: var(--nova-surface-hover);
+}
+.nova-coverflow__arrow:active:not(:disabled) {
+  transform: scale(0.94);
+}
+.nova-coverflow__arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-coverflow__item {
+    transition: none;
+  }
+}

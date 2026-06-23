@@ -1,0 +1,38 @@
+/* =============================================================================
+ * Nova UI — Base reset & primitives
+ * Scoped lightly: only sets sane defaults, never opinionated page styling.
+ * ========================================================================== */
+
+.nova-root,
+.nova-root * {
+  box-sizing: border-box;
+}
+
+.nova-root {
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text);
+  background: var(--nova-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Shared focus-visible treatment for interactive primitives */
+.nova-focusable:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* Visually hidden but accessible to screen readers */
+.nova-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

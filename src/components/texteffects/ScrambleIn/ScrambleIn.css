@@ -1,0 +1,16 @@
+.nova-scramble-in {
+  display: inline-block;
+  font-family: var(--nova-font-mono);
+  color: var(--nova-text);
+  white-space: pre-wrap;
+}
+
+.nova-scramble-in__char {
+  display: inline-block;
+  transition: opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-scramble-in__char--scrambling {
+  color: var(--nova-primary-text);
+  opacity: 0.85;
+}

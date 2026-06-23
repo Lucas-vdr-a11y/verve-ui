@@ -1,0 +1,160 @@
+/* FileCard — file icon, name, size/progress + actions. */
+.nova-file-card {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  width: 100%;
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-file-card *,
+.nova-file-card *::before,
+.nova-file-card *::after {
+  box-sizing: border-box;
+}
+
+.nova-file-card:hover {
+  border-color: var(--nova-border-strong);
+  box-shadow: var(--nova-shadow-xs);
+}
+
+/* Icon ---------------------------------------------------------------------- */
+.nova-file-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-bg-muted);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xl);
+}
+
+.nova-file-card__icon--image {
+  background-color: var(--nova-info-subtle);
+  color: var(--nova-info);
+}
+
+.nova-file-card__icon--video {
+  background-color: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-file-card__icon--audio {
+  background-color: var(--nova-warning-subtle);
+  color: var(--nova-warning);
+}
+
+.nova-file-card__icon--spreadsheet {
+  background-color: var(--nova-success-subtle);
+  color: var(--nova-success);
+}
+
+.nova-file-card__icon--document,
+.nova-file-card__icon--code {
+  background-color: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+/* Body ---------------------------------------------------------------------- */
+.nova-file-card__body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-file-card__name {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nova-file-card__size {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-subtle);
+}
+
+/* Progress ------------------------------------------------------------------ */
+.nova-file-card__progress {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+}
+
+.nova-file-card__progress-track {
+  flex: 1 1 auto;
+  height: 0.375rem;
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-bg-muted);
+  overflow: hidden;
+}
+
+.nova-file-card__progress-bar {
+  height: 100%;
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-primary);
+  transition: width var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-file-card__progress-label {
+  flex-shrink: 0;
+  font-size: var(--nova-text-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--nova-text-muted);
+}
+
+/* Actions ------------------------------------------------------------------- */
+.nova-file-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  flex-shrink: 0;
+}
+
+.nova-file-card__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-md);
+  background: none;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-md);
+  cursor: pointer;
+  transition:
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-file-card__action:hover {
+  background-color: var(--nova-surface-active);
+  color: var(--nova-text);
+}
+
+.nova-file-card__action--danger:hover {
+  background-color: var(--nova-danger-subtle);
+  color: var(--nova-danger);
+}
+
+.nova-file-card__action:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}

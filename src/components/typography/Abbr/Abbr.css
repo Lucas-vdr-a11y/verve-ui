@@ -1,0 +1,15 @@
+.nova-abbr {
+  font-family: inherit;
+  color: inherit;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--nova-text-subtle);
+  text-underline-offset: 0.2em;
+  cursor: help;
+  border-radius: var(--nova-radius-xs);
+  transition: text-decoration-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-abbr:hover,
+.nova-abbr:focus-visible {
+  text-decoration-color: var(--nova-primary-text);
+}

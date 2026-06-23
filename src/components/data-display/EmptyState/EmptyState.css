@@ -1,0 +1,47 @@
+.nova-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-10) var(--nova-space-6);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-empty-state__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-space-16);
+  height: var(--nova-space-16);
+  margin-bottom: var(--nova-space-1);
+  font-size: var(--nova-text-4xl);
+  color: var(--nova-text-subtle);
+  background: var(--nova-bg-muted);
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-empty-state__title {
+  margin: 0;
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-empty-state__description {
+  margin: 0;
+  max-width: 40ch;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text-muted);
+}
+
+.nova-empty-state__action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  margin-top: var(--nova-space-2);
+}

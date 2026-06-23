@@ -1,0 +1,171 @@
+.nova-slidermarks {
+  --nova-slidermarks-track-h: 0.375rem;
+  --nova-slidermarks-thumb: 1.1rem;
+  display: block;
+  width: 100%;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-slidermarks--sm {
+  --nova-slidermarks-track-h: 0.3rem;
+  --nova-slidermarks-thumb: 0.9rem;
+}
+.nova-slidermarks--lg {
+  --nova-slidermarks-track-h: 0.45rem;
+  --nova-slidermarks-thumb: 1.3rem;
+}
+
+.nova-slidermarks--disabled {
+  opacity: 0.6;
+}
+
+.nova-slidermarks__rail-wrap {
+  position: relative;
+  height: var(--nova-slidermarks-thumb);
+  display: flex;
+  align-items: center;
+}
+
+.nova-slidermarks__track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--nova-slidermarks-track-h);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-muted);
+  overflow: hidden;
+}
+
+.nova-slidermarks__fill {
+  display: block;
+  height: 100%;
+  width: var(--nova-slidermarks-fill, 0%);
+  background: var(--nova-primary);
+  border-radius: inherit;
+  transition: width var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-slidermarks--invalid .nova-slidermarks__fill {
+  background: var(--nova-danger);
+}
+
+/* ---- Ticks -------------------------------------------------------------- */
+.nova-slidermarks__tick {
+  position: absolute;
+  top: 50%;
+  width: 0.3rem;
+  height: 0.3rem;
+  transform: translate(-50%, -50%);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-border-strong);
+  pointer-events: none;
+}
+
+.nova-slidermarks__tick--passed {
+  background: var(--nova-surface);
+  box-shadow: 0 0 0 1px var(--nova-primary);
+}
+
+/* ---- Thumb -------------------------------------------------------------- */
+.nova-slidermarks__thumb-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: var(--nova-z-base);
+}
+
+.nova-slidermarks__thumb {
+  display: block;
+  width: var(--nova-slidermarks-thumb);
+  height: var(--nova-slidermarks-thumb);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  border: 2px solid var(--nova-primary);
+  box-shadow: var(--nova-shadow-sm);
+}
+
+.nova-slidermarks--invalid .nova-slidermarks__thumb {
+  border-color: var(--nova-danger);
+}
+
+.nova-slidermarks__tooltip {
+  position: absolute;
+  bottom: calc(100% + var(--nova-space-2));
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px var(--nova-space-2);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  white-space: nowrap;
+  color: var(--nova-bg);
+  background: var(--nova-text);
+  border-radius: var(--nova-radius-sm);
+  box-shadow: var(--nova-shadow-sm);
+}
+
+.nova-slidermarks__tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--nova-text);
+}
+
+/* ---- Native input (transparent, owns interaction) ----------------------- */
+.nova-slidermarks__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.nova-slidermarks__input:disabled {
+  cursor: not-allowed;
+}
+
+.nova-slidermarks__rail-wrap:has(.nova-slidermarks__input:focus-visible)
+  .nova-slidermarks__thumb {
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* ---- Labels ------------------------------------------------------------- */
+.nova-slidermarks__labels {
+  position: relative;
+  height: 1.4rem;
+  margin-top: var(--nova-space-1);
+}
+
+.nova-slidermarks__label {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-slidermarks__label:hover:not(:disabled) {
+  color: var(--nova-text);
+}
+
+.nova-slidermarks__label--active {
+  color: var(--nova-primary-text);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-slidermarks__label:disabled {
+  cursor: not-allowed;
+}

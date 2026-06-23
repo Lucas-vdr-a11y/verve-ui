@@ -1,0 +1,29 @@
+.nova-glossary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-5);
+  margin: 0;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-glossary__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-glossary__term {
+  margin: 0;
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-glossary__definition {
+  margin: 0;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text-muted);
+}

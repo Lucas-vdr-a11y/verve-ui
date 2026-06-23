@@ -1,0 +1,48 @@
+.nova-scroll-velocity-skew {
+  width: 100%;
+  overflow: hidden;
+  padding-block: var(--nova-space-4);
+}
+
+.nova-scroll-velocity-skew__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.nova-scroll-velocity-skew__set {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.nova-scroll-velocity-skew__word {
+  display: inline-block;
+  padding-inline: var(--nova-space-6);
+  font-size: clamp(var(--nova-text-4xl), 8vw, var(--nova-text-5xl));
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+  color: var(--nova-text);
+  background: linear-gradient(
+    90deg,
+    var(--nova-text),
+    var(--nova-primary-text)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Static fallback: a single non-moving row. */
+.nova-scroll-velocity-skew--static {
+  overflow: hidden;
+}
+
+.nova-scroll-velocity-skew--static .nova-scroll-velocity-skew__track {
+  transform: none !important;
+}
+
+.nova-scroll-velocity-skew--static .nova-scroll-velocity-skew__set:nth-child(2) {
+  display: none;
+}

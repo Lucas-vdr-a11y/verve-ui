@@ -1,0 +1,97 @@
+.nova-calendar-heatmap {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  --nova-heatmap-tone: var(--nova-brand-500);
+  --nova-heatmap-cell: 0.875rem;
+  --nova-heatmap-gap: var(--nova-space-1);
+}
+
+.nova-calendar-heatmap--primary {
+  --nova-heatmap-tone: var(--nova-brand-500);
+}
+.nova-calendar-heatmap--success {
+  --nova-heatmap-tone: var(--nova-success-500);
+}
+.nova-calendar-heatmap--info {
+  --nova-heatmap-tone: var(--nova-info-500);
+}
+
+.nova-calendar-heatmap__months {
+  display: flex;
+}
+
+.nova-calendar-heatmap__weekday-spacer {
+  flex: 0 0 auto;
+  width: 2rem;
+}
+
+.nova-calendar-heatmap__months-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(var(--nova-heatmap-cell) + var(--nova-heatmap-gap));
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+.nova-calendar-heatmap__month {
+  grid-row: 1;
+  white-space: nowrap;
+}
+
+.nova-calendar-heatmap__body {
+  display: flex;
+  gap: var(--nova-space-2);
+}
+
+.nova-calendar-heatmap__weekdays {
+  display: grid;
+  grid-template-rows: repeat(7, var(--nova-heatmap-cell));
+  gap: var(--nova-heatmap-gap);
+  width: 1.5rem;
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+.nova-calendar-heatmap__weekday {
+  line-height: var(--nova-heatmap-cell);
+}
+
+.nova-calendar-heatmap__grid {
+  display: flex;
+  gap: var(--nova-heatmap-gap);
+}
+
+.nova-calendar-heatmap__week {
+  display: grid;
+  grid-template-rows: repeat(7, var(--nova-heatmap-cell));
+  gap: var(--nova-heatmap-gap);
+}
+
+.nova-calendar-heatmap__cell {
+  width: var(--nova-heatmap-cell);
+  height: var(--nova-heatmap-cell);
+  border-radius: var(--nova-radius-xs);
+  background: var(--nova-bg-muted);
+  box-shadow: inset 0 0 0 1px var(--nova-border);
+}
+
+.nova-calendar-heatmap__cell--empty {
+  background: transparent;
+  box-shadow: none;
+}
+
+.nova-calendar-heatmap__cell[data-level="1"] {
+  background: color-mix(in srgb, var(--nova-heatmap-tone) 26%, transparent);
+}
+.nova-calendar-heatmap__cell[data-level="2"] {
+  background: color-mix(in srgb, var(--nova-heatmap-tone) 50%, transparent);
+}
+.nova-calendar-heatmap__cell[data-level="3"] {
+  background: color-mix(in srgb, var(--nova-heatmap-tone) 74%, transparent);
+}
+.nova-calendar-heatmap__cell[data-level="4"] {
+  background: var(--nova-heatmap-tone);
+}

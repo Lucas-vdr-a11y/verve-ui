@@ -1,0 +1,168 @@
+/* DashboardLayout — app dashboard shell on CSS grid. */
+.nova-dashboard {
+  box-sizing: border-box;
+  display: grid;
+  min-height: 100%;
+  width: 100%;
+  color: var(--nova-text);
+  background: var(--nova-bg-subtle);
+  grid-template-columns: 1fr;
+  grid-template-rows: var(--nova-dashboard-topbar-h) 1fr;
+  grid-template-areas:
+    "topbar"
+    "main";
+}
+
+.nova-dashboard--has-nav {
+  grid-template-columns: var(--nova-dashboard-sidebar-w) 1fr;
+  grid-template-areas:
+    "topbar topbar"
+    "sidebar main";
+}
+
+.nova-dashboard--has-rail:not(.nova-dashboard--has-nav) {
+  grid-template-columns: 1fr var(--nova-dashboard-rail-w);
+  grid-template-areas:
+    "topbar topbar"
+    "main rail";
+}
+
+.nova-dashboard--has-nav.nova-dashboard--has-rail {
+  grid-template-columns: var(--nova-dashboard-sidebar-w) 1fr var(--nova-dashboard-rail-w);
+  grid-template-areas:
+    "topbar topbar topbar"
+    "sidebar main rail";
+}
+
+/* Top bar */
+.nova-dashboard__topbar {
+  grid-area: topbar;
+  position: sticky;
+  top: 0;
+  z-index: var(--nova-z-sticky);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-4);
+  min-width: 0;
+  height: var(--nova-dashboard-topbar-h);
+  padding-inline: var(--nova-space-4);
+  border-bottom: 1px solid var(--nova-border);
+  background: var(--nova-surface);
+}
+
+.nova-dashboard__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  flex: none;
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-dashboard__search {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 32rem;
+}
+
+.nova-dashboard__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  flex: none;
+  margin-inline-start: auto;
+}
+
+/* Sidebar */
+.nova-dashboard__sidebar {
+  grid-area: sidebar;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: auto;
+  padding: var(--nova-space-3);
+  border-right: 1px solid var(--nova-border);
+  background: var(--nova-surface);
+  transition: transform var(--nova-duration-base) var(--nova-ease);
+}
+
+/* Right rail */
+.nova-dashboard__rail {
+  grid-area: rail;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: auto;
+  padding: var(--nova-space-5);
+  border-left: 1px solid var(--nova-border);
+  background: var(--nova-surface);
+}
+
+/* Main */
+.nova-dashboard__main {
+  grid-area: main;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+.nova-dashboard__page-header {
+  box-sizing: border-box;
+  padding: var(--nova-space-6) var(--nova-space-6) 0;
+}
+
+.nova-dashboard__content {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  padding: var(--nova-space-6);
+}
+
+/* Scrim — hidden on desktop, used for off-canvas sidebar dismissal. */
+.nova-dashboard__scrim {
+  display: none;
+}
+
+/* Small screens: single column; sidebar off-canvas; rail hidden. */
+@media (max-width: 48rem) {
+  .nova-dashboard,
+  .nova-dashboard--has-nav,
+  .nova-dashboard--has-rail:not(.nova-dashboard--has-nav),
+  .nova-dashboard--has-nav.nova-dashboard--has-rail {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "topbar"
+      "main";
+  }
+
+  .nova-dashboard--has-nav .nova-dashboard__sidebar {
+    position: fixed;
+    top: var(--nova-dashboard-topbar-h);
+    bottom: 0;
+    left: 0;
+    width: min(var(--nova-dashboard-sidebar-w), 82vw);
+    z-index: var(--nova-z-overlay);
+    box-shadow: var(--nova-shadow-lg);
+  }
+
+  .nova-dashboard--sidebar-hidden .nova-dashboard__sidebar {
+    transform: translateX(-100%);
+  }
+
+  .nova-dashboard--has-nav:not(.nova-dashboard--sidebar-hidden)
+    .nova-dashboard__scrim {
+    position: fixed;
+    inset: var(--nova-dashboard-topbar-h) 0 0 0;
+    z-index: var(--nova-z-dropdown);
+    display: block;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background: var(--nova-overlay-bg);
+  }
+
+  .nova-dashboard__rail {
+    display: none;
+  }
+}

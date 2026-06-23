@@ -1,0 +1,83 @@
+.nova-iso-card {
+  --nova-iso-depth: 24px;
+  display: inline-block;
+  perspective: 1400px;
+}
+
+.nova-iso-card__solid {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out),
+    filter var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-iso-card--left .nova-iso-card__solid {
+  transform: rotateX(52deg) rotateZ(-44deg);
+}
+.nova-iso-card--right .nova-iso-card__solid {
+  transform: rotateX(52deg) rotateZ(44deg);
+}
+
+.nova-iso-card__face {
+  position: relative;
+  z-index: 2;
+  min-width: 180px;
+  min-height: 120px;
+  padding: var(--nova-space-5);
+  box-sizing: border-box;
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-sm);
+}
+
+/* Extruded walls: rendered as gradient-filled blocks pushed under the face. */
+.nova-iso-card__side {
+  position: absolute;
+  background: var(--nova-bg-muted);
+  border-radius: var(--nova-radius-sm);
+}
+
+.nova-iso-card__side--bottom {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--nova-iso-depth);
+  transform-origin: top;
+  transform: rotateX(-90deg) translateZ(0);
+  background: linear-gradient(
+    var(--nova-border-strong),
+    var(--nova-bg-muted)
+  );
+}
+
+.nova-iso-card__side--right {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: var(--nova-iso-depth);
+  transform-origin: left;
+  transform: rotateY(90deg) translateZ(0);
+  background: linear-gradient(
+    var(--nova-border-strong),
+    var(--nova-bg-subtle)
+  );
+}
+
+/* Hover lift toward viewer. */
+.nova-iso-card--lift:hover .nova-iso-card__solid {
+  filter: drop-shadow(0 24px 30px rgb(15 23 42 / 0.22));
+}
+.nova-iso-card--lift.nova-iso-card--left:hover .nova-iso-card__solid {
+  transform: rotateX(52deg) rotateZ(-44deg) translateZ(28px);
+}
+.nova-iso-card--lift.nova-iso-card--right:hover .nova-iso-card__solid {
+  transform: rotateX(52deg) rotateZ(44deg) translateZ(28px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-iso-card__solid {
+    transition: none;
+  }
+}

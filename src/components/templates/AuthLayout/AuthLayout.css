@@ -1,0 +1,94 @@
+/* AuthLayout — centered auth card on a subtle/gradient background. */
+.nova-auth-layout {
+  box-sizing: border-box;
+  display: block;
+  min-height: 100%;
+  width: 100%;
+  color: var(--nova-text);
+  background: var(--nova-bg-subtle);
+}
+
+.nova-auth-layout--gradient {
+  background:
+    radial-gradient(
+      120% 120% at 50% 0%,
+      var(--nova-primary-subtle) 0%,
+      var(--nova-bg-subtle) 55%,
+      var(--nova-bg) 100%
+    );
+}
+
+.nova-auth-layout__main {
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  min-height: 100%;
+  padding: var(--nova-space-6) var(--nova-space-4);
+}
+
+.nova-auth-layout__inner {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--nova-space-6);
+  width: 100%;
+  max-width: var(--nova-auth-layout-max-w);
+}
+
+.nova-auth-layout__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-lg);
+  color: var(--nova-text);
+}
+
+.nova-auth-layout__card {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--nova-space-5);
+  padding: var(--nova-space-8);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-auth-layout__head {
+  display: grid;
+  gap: var(--nova-space-2);
+  text-align: center;
+}
+
+.nova-auth-layout__title {
+  margin: 0;
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  color: var(--nova-text);
+}
+
+.nova-auth-layout__subtitle {
+  margin: 0;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text-muted);
+}
+
+.nova-auth-layout__body {
+  display: grid;
+  gap: var(--nova-space-4);
+}
+
+.nova-auth-layout__footer {
+  font-size: var(--nova-text-sm);
+  text-align: center;
+  color: var(--nova-text-muted);
+}
+
+@media (max-width: 30rem) {
+  .nova-auth-layout__card {
+    padding: var(--nova-space-6);
+  }
+}

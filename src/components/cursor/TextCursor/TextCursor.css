@@ -1,0 +1,41 @@
+.nova-text-cursor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--nova-z-tooltip);
+}
+
+.nova-text-cursor__puck {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: var(--nova-text-cursor-size);
+  height: var(--nova-text-cursor-size);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  opacity: 0;
+  transform-origin: center;
+  will-change: transform, opacity;
+  transition:
+    opacity var(--nova-duration-base) var(--nova-ease),
+    scale var(--nova-duration-base) var(--nova-ease-spring);
+  scale: 0.4;
+}
+
+.nova-text-cursor__puck--active {
+  opacity: 1;
+  scale: 1;
+}
+
+.nova-text-cursor__label {
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 0 var(--nova-space-1);
+  white-space: nowrap;
+}

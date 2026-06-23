@@ -1,0 +1,58 @@
+.nova-collapsible {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+/* ---- Trigger ------------------------------------------------------------ */
+.nova-collapsible__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  box-sizing: border-box;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  text-align: start;
+  border-radius: var(--nova-radius-sm);
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-collapsible__trigger:hover:not(:disabled) {
+  color: var(--nova-primary-text);
+}
+
+.nova-collapsible__trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ---- Content (grid-template-rows height animation) ---------------------- */
+.nova-collapsible__content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-collapsible__content[data-state="open"] {
+  grid-template-rows: 1fr;
+}
+
+.nova-collapsible__content-clip {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.nova-collapsible__content-inner {
+  padding-top: var(--nova-space-2);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+}

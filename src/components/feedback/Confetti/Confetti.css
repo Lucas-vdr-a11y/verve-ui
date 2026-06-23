@@ -1,0 +1,54 @@
+.nova-confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: var(--nova-z-overlay);
+}
+
+.nova-confetti__piece {
+  position: absolute;
+  top: 0;
+  inline-size: var(--nova-space-2);
+  block-size: var(--nova-space-3);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation-name: nova-confetti-fall;
+  animation-timing-function: var(--nova-ease);
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+.nova-confetti__piece--circle {
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-confetti__piece--rect {
+  border-radius: var(--nova-radius-xs);
+}
+
+@keyframes nova-confetti-fall {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, -10%, 0) rotate(0deg)
+      scale(var(--nova-confetti-scale, 1));
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(
+        var(--nova-confetti-drift, 0),
+        110vh,
+        0
+      )
+      rotate(var(--nova-confetti-rotate, 360deg))
+      scale(var(--nova-confetti-scale, 1));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Component no-ops under reduced motion, but guard the animation too. */
+  .nova-confetti__piece {
+    animation: none;
+    display: none;
+  }
+}

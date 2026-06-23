@@ -1,0 +1,51 @@
+/* BoxPlot — box-and-whisker chart. Stroke/fill colors are applied inline per
+ * series; this file controls weights, opacities and the label/axis treatment. */
+
+.nova-box-plot {
+  width: 100%;
+  height: auto;
+  font-family: var(--nova-font-sans);
+  overflow: visible;
+}
+
+.nova-box-plot__group {
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-box-plot__whisker {
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.nova-box-plot__cap {
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.nova-box-plot__box {
+  fill-opacity: 0.18;
+  stroke-width: 1.5;
+  rx: 2;
+}
+
+.nova-box-plot__median {
+  stroke: var(--nova-surface);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.nova-box-plot__outlier {
+  fill: var(--nova-surface);
+  stroke-width: 1.5;
+}
+
+.nova-box-plot__label {
+  fill: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-box-plot__label--h {
+  text-anchor: end;
+  dominant-baseline: middle;
+}

@@ -1,0 +1,23 @@
+.nova-text-hover-fill {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-bold);
+  user-select: none;
+  touch-action: none;
+}
+
+.nova-text-hover-fill__outline {
+  fill: transparent;
+  stroke: var(--nova-border-strong);
+  stroke-width: 0.6;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+.nova-text-hover-fill__fill {
+  font-family: inherit;
+  font-weight: inherit;
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}

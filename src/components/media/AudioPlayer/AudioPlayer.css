@@ -1,0 +1,178 @@
+.nova-audio-player {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  inline-size: 100%;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  color: var(--nova-text);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-xs);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-audio-player__audio {
+  display: none;
+}
+
+/* ---- Play / pause ------------------------------------------------------ */
+.nova-audio-player__play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  inline-size: var(--nova-space-10);
+  block-size: var(--nova-space-10);
+  padding: 0;
+  color: var(--nova-text-on-brand);
+  background: var(--nova-primary);
+  border: none;
+  border-radius: var(--nova-radius-full);
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-audio-player__play:hover {
+  background: var(--nova-primary-hover);
+}
+
+.nova-audio-player__play:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* ---- Body -------------------------------------------------------------- */
+.nova-audio-player__body {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-audio-player__meta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--nova-space-2);
+  min-inline-size: 0;
+}
+
+.nova-audio-player__title {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nova-audio-player__artist {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nova-audio-player__row {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+}
+
+.nova-audio-player__time {
+  flex: none;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---- Volume group ------------------------------------------------------ */
+.nova-audio-player__volume-group {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  flex: none;
+}
+
+.nova-audio-player__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--nova-space-8);
+  block-size: var(--nova-space-8);
+  padding: 0;
+  color: var(--nova-text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-ease),
+    background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-audio-player__icon-btn:hover {
+  color: var(--nova-text);
+  background: var(--nova-surface-hover);
+}
+
+.nova-audio-player__icon-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* ---- Range sliders ----------------------------------------------------- */
+.nova-audio-player__seek,
+.nova-audio-player__volume {
+  appearance: none;
+  -webkit-appearance: none;
+  block-size: var(--nova-space-1);
+  margin: 0;
+  border-radius: var(--nova-radius-full);
+  background: linear-gradient(
+    to right,
+    var(--nova-primary) 0%,
+    var(--nova-primary) var(--nova-audio-progress, 0%),
+    var(--nova-border-strong) var(--nova-audio-progress, 0%),
+    var(--nova-border-strong) 100%
+  );
+  cursor: pointer;
+}
+
+.nova-audio-player__seek {
+  flex: 1 1 auto;
+}
+
+.nova-audio-player__volume {
+  inline-size: var(--nova-space-16);
+}
+
+.nova-audio-player__seek::-webkit-slider-thumb,
+.nova-audio-player__volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  inline-size: var(--nova-space-3);
+  block-size: var(--nova-space-3);
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  box-shadow: var(--nova-shadow-sm);
+}
+
+.nova-audio-player__seek::-moz-range-thumb,
+.nova-audio-player__volume::-moz-range-thumb {
+  inline-size: var(--nova-space-3);
+  block-size: var(--nova-space-3);
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  box-shadow: var(--nova-shadow-sm);
+}
+
+.nova-audio-player__seek:focus-visible,
+.nova-audio-player__volume:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}

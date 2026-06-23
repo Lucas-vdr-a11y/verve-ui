@@ -1,0 +1,26 @@
+.nova-colourful-text {
+  display: inline-block;
+  font-weight: var(--nova-font-bold);
+}
+
+.nova-colourful-text__char {
+  display: inline-block;
+  white-space: pre;
+  color: hsl(
+    calc(var(--nova-ct-offset, 0deg)) var(--nova-ct-sat, 85%)
+      var(--nova-ct-light, 60%)
+  );
+  animation: nova-colourful-hue var(--nova-ct-duration, 6s) linear infinite;
+}
+
+@keyframes nova-colourful-hue {
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-colourful-text__char {
+    animation: none;
+  }
+}

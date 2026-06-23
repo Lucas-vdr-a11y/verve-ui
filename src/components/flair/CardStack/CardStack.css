@@ -1,0 +1,53 @@
+.nova-cardstack {
+  --nova-cardstack-offset: 14px;
+
+  position: relative;
+  width: 18rem;
+  min-height: 11rem;
+}
+
+.nova-cardstack__card {
+  position: absolute;
+  inset: 0;
+  padding: var(--nova-space-6);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-md);
+  transform-origin: top center;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-spring),
+    opacity var(--nova-duration-slow) var(--nova-ease),
+    box-shadow var(--nova-duration-base) var(--nova-ease);
+  will-change: transform, opacity;
+}
+
+.nova-cardstack__card--front {
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-cardstack__card--hidden {
+  pointer-events: none;
+}
+
+.nova-cardstack__advance {
+  position: absolute;
+  inset: 0;
+  z-index: 9999;
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--nova-radius-xl);
+}
+.nova-cardstack__advance:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-cardstack__card {
+    transition: none;
+    will-change: auto;
+  }
+}

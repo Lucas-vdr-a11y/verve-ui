@@ -1,0 +1,80 @@
+.nova-dah {
+  --nova-dah-distance: 40px;
+
+  position: relative;
+  display: inline-block;
+  width: 16rem;
+  height: 11rem;
+  border-radius: var(--nova-radius-xl);
+  overflow: hidden;
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  isolation: isolate;
+}
+
+.nova-dah__media {
+  position: absolute;
+  inset: 0;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+.nova-dah__media > img,
+.nova-dah__media > * {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.nova-dah[data-active="true"] .nova-dah__media {
+  transform: scale(1.06);
+}
+
+.nova-dah__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: var(--nova-space-5);
+  color: var(--nova-gray-0);
+  background: linear-gradient(
+    to top,
+    rgb(2 6 23 / 0.78),
+    rgb(2 6 23 / 0.15) 60%,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-dah[data-active="true"] .nova-dah__overlay {
+  opacity: 1;
+  transform: translate(0, 0) !important;
+}
+
+.nova-dah__overlay-inner {
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+/* Resting (or exiting) offset based on entry edge. */
+.nova-dah[data-direction="top"] .nova-dah__overlay {
+  transform: translateY(calc(var(--nova-dah-distance) * -1));
+}
+.nova-dah[data-direction="bottom"] .nova-dah__overlay {
+  transform: translateY(var(--nova-dah-distance));
+}
+.nova-dah[data-direction="left"] .nova-dah__overlay {
+  transform: translateX(calc(var(--nova-dah-distance) * -1));
+}
+.nova-dah[data-direction="right"] .nova-dah__overlay {
+  transform: translateX(var(--nova-dah-distance));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-dah__media,
+  .nova-dah__overlay,
+  .nova-dah__overlay-inner {
+    transition: opacity var(--nova-duration-base) var(--nova-ease);
+    transform: none !important;
+  }
+}

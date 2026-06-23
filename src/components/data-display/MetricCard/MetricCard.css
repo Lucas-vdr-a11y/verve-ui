@@ -1,0 +1,119 @@
+.nova-metric-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  padding: var(--nova-space-5);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  --nova-metric-accent: var(--nova-primary);
+}
+
+.nova-metric-card--primary {
+  --nova-metric-accent: var(--nova-primary);
+}
+.nova-metric-card--success {
+  --nova-metric-accent: var(--nova-success);
+}
+.nova-metric-card--warning {
+  --nova-metric-accent: var(--nova-warning);
+}
+.nova-metric-card--danger {
+  --nova-metric-accent: var(--nova-danger);
+}
+.nova-metric-card--info {
+  --nova-metric-accent: var(--nova-info);
+}
+
+.nova-metric-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nova-space-2);
+}
+
+.nova-metric-card__label {
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-metric-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-primary-subtle);
+  color: var(--nova-metric-accent);
+  font-size: var(--nova-text-lg);
+  line-height: 0;
+}
+
+.nova-metric-card__value-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--nova-space-2);
+  flex-wrap: wrap;
+}
+
+.nova-metric-card__value {
+  font-size: var(--nova-text-3xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  letter-spacing: -0.01em;
+}
+
+.nova-metric-card__trend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-metric-card__trend--positive {
+  color: var(--nova-success);
+}
+.nova-metric-card__trend--negative {
+  color: var(--nova-danger);
+}
+.nova-metric-card__trend--flat {
+  color: var(--nova-text-muted);
+}
+
+.nova-metric-card__trend-icon {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.nova-metric-card__spark {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--nova-space-1);
+  height: 2.5rem;
+  margin-top: var(--nova-space-1);
+}
+
+.nova-metric-card__bar {
+  flex: 1 1 0;
+  min-width: 2px;
+  background: var(--nova-metric-accent);
+  border-radius: var(--nova-radius-xs);
+  opacity: 0.85;
+}
+
+.nova-metric-card__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

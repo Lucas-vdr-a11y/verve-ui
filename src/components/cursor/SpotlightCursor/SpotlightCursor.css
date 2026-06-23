@@ -1,0 +1,29 @@
+.nova-spotlight-cursor__overlay {
+  --nova-spotlight-cursor-overlay: rgb(2 6 23 / 0.92);
+  --nova-spotlight-cursor-x: 50%;
+  --nova-spotlight-cursor-y: 50%;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--nova-z-overlay);
+  opacity: 0;
+  transition: opacity var(--nova-duration-slow) var(--nova-ease);
+  background: radial-gradient(
+    circle var(--nova-spotlight-cursor-soft) at
+      var(--nova-spotlight-cursor-x) var(--nova-spotlight-cursor-y),
+    transparent 0,
+    transparent var(--nova-spotlight-cursor-radius),
+    var(--nova-spotlight-cursor-overlay) var(--nova-spotlight-cursor-soft)
+  );
+}
+
+/* When scoped to a container, fill the (positioned) host instead of the
+   viewport. The host element should have `position: relative` (or any
+   non-static positioning). */
+.nova-spotlight-cursor__overlay--scoped {
+  position: absolute;
+}
+
+.nova-spotlight-cursor__overlay--visible {
+  opacity: 1;
+}

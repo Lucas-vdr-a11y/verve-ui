@@ -1,0 +1,68 @@
+.nova-frame {
+  display: block;
+  box-sizing: border-box;
+  min-width: 0;
+  margin: 0;
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+/* ---- Variants ----------------------------------------------------------- */
+.nova-frame--outline {
+  border: 1px solid var(--nova-border);
+}
+
+.nova-frame--dashed {
+  border: 1px dashed var(--nova-border-strong);
+  background: transparent;
+}
+
+.nova-frame--soft {
+  border: 1px solid transparent;
+  background: var(--nova-bg-subtle);
+}
+
+/* ---- Label (legend) ----------------------------------------------------- */
+.nova-frame__label {
+  padding: 0 var(--nova-space-2);
+  margin-inline-start: var(--nova-space-2);
+  color: var(--nova-text);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+}
+
+/* ---- Body padding ------------------------------------------------------- */
+.nova-frame__body {
+  min-width: 0;
+}
+
+.nova-frame--pad-none .nova-frame__body {
+  padding: var(--nova-space-0);
+}
+.nova-frame--pad-sm .nova-frame__body {
+  padding: var(--nova-space-3);
+}
+.nova-frame--pad-md .nova-frame__body {
+  padding: var(--nova-space-4);
+}
+.nova-frame--pad-lg .nova-frame__body {
+  padding: var(--nova-space-6);
+}
+
+/*
+ * With a legend present, the native fieldset already reserves top space, so
+ * trim the body's top padding to keep spacing even. Without a label, restore
+ * full padding on all sides.
+ */
+.nova-frame--pad-sm:not(.nova-frame--no-label) .nova-frame__body {
+  padding-top: var(--nova-space-2);
+}
+.nova-frame--pad-md:not(.nova-frame--no-label) .nova-frame__body {
+  padding-top: var(--nova-space-3);
+}
+.nova-frame--pad-lg:not(.nova-frame--no-label) .nova-frame__body {
+  padding-top: var(--nova-space-4);
+}

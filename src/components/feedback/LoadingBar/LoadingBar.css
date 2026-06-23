@@ -1,0 +1,81 @@
+.nova-loading-bar {
+  inline-size: 100%;
+  block-size: var(--nova-loading-bar-thickness, 3px);
+  background: transparent;
+  overflow: hidden;
+  pointer-events: none;
+  /* tone, overridden below */
+  --nova-loading-bar-color: var(--nova-primary);
+  opacity: 1;
+  transition: opacity var(--nova-duration-slow) var(--nova-ease);
+}
+
+.nova-loading-bar--sm {
+  --nova-loading-bar-thickness: 2px;
+}
+.nova-loading-bar--md {
+  --nova-loading-bar-thickness: 3px;
+}
+.nova-loading-bar--lg {
+  --nova-loading-bar-thickness: 4px;
+}
+
+.nova-loading-bar--fixed {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: var(--nova-z-sticky);
+}
+
+/* ---- Tones ------------------------------------------------------------- */
+.nova-loading-bar--primary {
+  --nova-loading-bar-color: var(--nova-primary);
+}
+.nova-loading-bar--success {
+  --nova-loading-bar-color: var(--nova-success);
+}
+.nova-loading-bar--warning {
+  --nova-loading-bar-color: var(--nova-warning);
+}
+.nova-loading-bar--danger {
+  --nova-loading-bar-color: var(--nova-danger);
+}
+.nova-loading-bar--info {
+  --nova-loading-bar-color: var(--nova-info);
+}
+
+/* ---- Fill -------------------------------------------------------------- */
+.nova-loading-bar__fill {
+  position: relative;
+  block-size: 100%;
+  background: var(--nova-loading-bar-color);
+  border-end-end-radius: var(--nova-radius-full);
+  border-start-end-radius: var(--nova-radius-full);
+  transition: inline-size var(--nova-duration-slow) var(--nova-ease-out);
+  box-shadow: 0 0 8px 0 var(--nova-loading-bar-color);
+}
+
+/* Trailing glow / comet head. */
+.nova-loading-bar__glow {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  inline-size: var(--nova-space-20);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--nova-loading-bar-color)
+  );
+  opacity: 0.7;
+  transform: rotate(2deg) translateY(0);
+  filter: blur(1px);
+}
+
+/* On completion, swap the width transition to a quicker ease and fade out. */
+.nova-loading-bar--completing {
+  opacity: 0;
+}
+
+.nova-loading-bar--completing .nova-loading-bar__fill {
+  transition: inline-size var(--nova-duration-base) var(--nova-ease);
+}

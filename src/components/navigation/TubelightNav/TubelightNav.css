@@ -1,0 +1,138 @@
+.nova-tubelight-nav {
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-tubelight-nav__list {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  gap: var(--nova-space-1);
+  padding: var(--nova-space-1);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  box-shadow: var(--nova-shadow-sm);
+}
+
+/* The sliding tube container positions over the active item. */
+.nova-tubelight-nav__tube {
+  position: absolute;
+  top: var(--nova-space-1);
+  bottom: var(--nova-space-1);
+  left: 0;
+  pointer-events: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary-subtle);
+  transition:
+    transform var(--nova-duration-slow) var(--nova-ease-spring),
+    width var(--nova-duration-slow) var(--nova-ease-spring),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+  will-change: transform, width;
+}
+
+/* The bright glowing bar — the "filament" of the tubelight. */
+.nova-tubelight-nav__bar {
+  position: absolute;
+  left: 18%;
+  right: 18%;
+  height: 3px;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  box-shadow:
+    0 0 8px 1px var(--nova-primary),
+    0 0 16px 2px rgb(99 102 241 / 0.55);
+}
+
+.nova-tubelight-nav--glow-top .nova-tubelight-nav__bar {
+  top: -2px;
+}
+
+.nova-tubelight-nav--glow-bottom .nova-tubelight-nav__bar {
+  bottom: -2px;
+}
+
+/* Soft light bloom radiating from the bar. */
+.nova-tubelight-nav__bloom {
+  position: absolute;
+  left: 50%;
+  width: 60%;
+  height: 70%;
+  transform: translateX(-50%);
+  border-radius: var(--nova-radius-full);
+  background: radial-gradient(
+    50% 60% at 50% 50%,
+    rgb(99 102 241 / 0.45) 0%,
+    rgb(99 102 241 / 0) 70%
+  );
+  filter: blur(6px);
+}
+
+.nova-tubelight-nav--glow-top .nova-tubelight-nav__bloom {
+  top: -6px;
+}
+
+.nova-tubelight-nav--glow-bottom .nova-tubelight-nav__bloom {
+  bottom: -6px;
+}
+
+.nova-tubelight-nav__item {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-4);
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  font-weight: var(--nova-font-medium);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: var(--nova-radius-full);
+  transition: color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-tubelight-nav--sm .nova-tubelight-nav__item {
+  padding: var(--nova-space-1) var(--nova-space-3);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-tubelight-nav--lg .nova-tubelight-nav__item {
+  padding: var(--nova-space-3) var(--nova-space-5);
+  font-size: var(--nova-text-md);
+}
+
+.nova-tubelight-nav__item:hover:not([aria-disabled="true"]) {
+  color: var(--nova-text);
+}
+
+.nova-tubelight-nav__item:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-tubelight-nav__item--active {
+  color: var(--nova-primary-text);
+}
+
+.nova-tubelight-nav__item[aria-disabled="true"] {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-tubelight-nav__icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nova-tubelight-nav--reduced .nova-tubelight-nav__tube {
+  transition:
+    transform var(--nova-duration-fast) var(--nova-ease),
+    width var(--nova-duration-fast) var(--nova-ease),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+}

@@ -1,0 +1,154 @@
+/* ContactForm — name / email / subject / message block. */
+.nova-contact-form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  width: 100%;
+  max-width: 32rem;
+  padding: var(--nova-space-8);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+}
+
+.nova-contact-form *,
+.nova-contact-form *::before,
+.nova-contact-form *::after {
+  box-sizing: border-box;
+}
+
+/* Header -------------------------------------------------------------------- */
+.nova-contact-form__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  margin-bottom: var(--nova-space-2);
+}
+
+.nova-contact-form__title {
+  margin: 0;
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-contact-form__subtitle {
+  margin: 0;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+}
+
+/* Status -------------------------------------------------------------------- */
+.nova-contact-form__error,
+.nova-contact-form__success {
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border: 1px solid;
+  border-radius: var(--nova-radius-md);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-contact-form__error {
+  border-color: var(--nova-danger);
+  background-color: var(--nova-danger-subtle);
+  color: var(--nova-danger);
+}
+
+.nova-contact-form__success {
+  border-color: var(--nova-success);
+  background-color: var(--nova-success-subtle);
+  color: var(--nova-success);
+}
+
+/* Fields -------------------------------------------------------------------- */
+.nova-contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+}
+
+.nova-contact-form__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-contact-form__required {
+  color: var(--nova-danger);
+}
+
+.nova-contact-form__input,
+.nova-contact-form__textarea {
+  width: 100%;
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-contact-form__textarea {
+  resize: vertical;
+  min-height: 6rem;
+}
+
+.nova-contact-form__input::placeholder,
+.nova-contact-form__textarea::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-contact-form__input:focus-visible,
+.nova-contact-form__textarea:focus-visible {
+  outline: none;
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-contact-form__input[aria-invalid="true"],
+.nova-contact-form__textarea[aria-invalid="true"] {
+  border-color: var(--nova-danger);
+}
+
+.nova-contact-form__input:disabled,
+.nova-contact-form__textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Submit -------------------------------------------------------------------- */
+.nova-contact-form__submit {
+  align-self: flex-start;
+  padding: var(--nova-space-3) var(--nova-space-6);
+  border: 1px solid var(--nova-primary);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-contact-form__submit:hover:not(:disabled) {
+  background-color: var(--nova-primary-hover);
+  border-color: var(--nova-primary-hover);
+}
+
+.nova-contact-form__submit:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-contact-form__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

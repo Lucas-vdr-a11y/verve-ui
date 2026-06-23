@@ -1,0 +1,44 @@
+.nova-parallax {
+  display: inline-block;
+  perspective: 900px;
+}
+
+.nova-parallax__scene {
+  --nova-parallax-tilt-x: 0deg;
+  --nova-parallax-tilt-y: 0deg;
+  position: relative;
+  width: 300px;
+  height: 380px;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--nova-parallax-tilt-x))
+    rotateY(var(--nova-parallax-tilt-y));
+  transition: transform var(--nova-duration-base) var(--nova-ease-out);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  box-shadow: var(--nova-shadow-xl), 0 0 40px rgb(99 102 241 / 0.12);
+  overflow: hidden;
+}
+
+.nova-parallax__layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transform: translate3d(
+    var(--nova-parallax-shift-x, 0),
+    var(--nova-parallax-shift-y, 0),
+    var(--nova-parallax-z, 0)
+  );
+  transition: transform var(--nova-duration-base) var(--nova-ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-parallax__scene,
+  .nova-parallax__layer {
+    transition: none;
+    transform: none;
+  }
+}

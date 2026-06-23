@@ -1,0 +1,50 @@
+.nova-progress-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  --nova-progress-ring-color: var(--nova-primary);
+}
+
+.nova-progress-ring--primary {
+  --nova-progress-ring-color: var(--nova-primary);
+}
+.nova-progress-ring--success {
+  --nova-progress-ring-color: var(--nova-success);
+}
+.nova-progress-ring--warning {
+  --nova-progress-ring-color: var(--nova-warning);
+}
+.nova-progress-ring--danger {
+  --nova-progress-ring-color: var(--nova-danger);
+}
+.nova-progress-ring--info {
+  --nova-progress-ring-color: var(--nova-info);
+}
+
+.nova-progress-ring__svg {
+  display: block;
+}
+
+.nova-progress-ring__track {
+  stroke: var(--nova-border);
+}
+
+.nova-progress-ring__indicator {
+  stroke: var(--nova-progress-ring-color);
+  transition: stroke-dashoffset var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-progress-ring__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+  line-height: var(--nova-leading-tight);
+  text-align: center;
+}

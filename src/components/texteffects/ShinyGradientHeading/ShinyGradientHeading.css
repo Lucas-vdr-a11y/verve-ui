@@ -1,0 +1,66 @@
+.nova-shiny-gradient-heading {
+  position: relative;
+  margin: 0;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-5xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  letter-spacing: -0.02em;
+}
+
+.nova-shiny-gradient-heading__text {
+  position: relative;
+  display: inline-block;
+  background-image: linear-gradient(
+    100deg,
+    var(--nova-shiny-gradient-stops)
+  );
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: nova-shiny-gradient-move var(--nova-shiny-gradient-duration)
+    linear infinite;
+}
+
+/* Soft glow: a blurred copy of the gradient behind the text. */
+.nova-shiny-gradient-heading--glow .nova-shiny-gradient-heading__text::after {
+  content: "";
+  position: absolute;
+  inset: -0.15em -0.25em;
+  z-index: -1;
+  background-image: linear-gradient(
+    100deg,
+    var(--nova-shiny-gradient-stops)
+  );
+  background-size: 220% 100%;
+  background-position: inherit;
+  filter: blur(28px);
+  opacity: 0.35;
+  border-radius: var(--nova-radius-full);
+  animation: nova-shiny-gradient-move var(--nova-shiny-gradient-duration)
+    linear infinite;
+}
+
+[data-theme="dark"]
+  .nova-shiny-gradient-heading--glow
+  .nova-shiny-gradient-heading__text::after {
+  opacity: 0.45;
+}
+
+@keyframes nova-shiny-gradient-move {
+  to {
+    background-position: 220% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-shiny-gradient-heading__text,
+  .nova-shiny-gradient-heading--glow
+    .nova-shiny-gradient-heading__text::after {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}

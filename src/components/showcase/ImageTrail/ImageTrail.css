@@ -1,0 +1,59 @@
+.nova-image-trail {
+  position: relative;
+  width: 100%;
+  min-height: 28rem;
+  overflow: hidden;
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-bg-subtle);
+  isolation: isolate;
+}
+
+.nova-image-trail__surface {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: crosshair;
+}
+
+.nova-image-trail__content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  min-height: inherit;
+  padding: var(--nova-space-12);
+  text-align: center;
+  pointer-events: none;
+  color: var(--nova-text);
+}
+
+/* Tiles are created imperatively; styles live here. */
+.nova-image-trail__tile {
+  position: absolute;
+  z-index: 1;
+  width: clamp(7rem, 12vw, 10rem);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-lg);
+  transform: translate(-50%, -50%) scale(0.4)
+    rotate(var(--nova-image-trail-rot, 0deg));
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out),
+    opacity var(--nova-duration-base) var(--nova-ease);
+  will-change: transform, opacity;
+}
+
+.nova-image-trail__tile--in {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1)
+    rotate(var(--nova-image-trail-rot, 0deg));
+}
+
+.nova-image-trail__tile--out {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7)
+    rotate(var(--nova-image-trail-rot, 0deg));
+}

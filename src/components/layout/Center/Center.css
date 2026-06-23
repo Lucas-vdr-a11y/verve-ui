@@ -1,0 +1,11 @@
+/* Center — centers its child on both axes. */
+.nova-center {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-center--inline {
+  display: inline-flex;
+}

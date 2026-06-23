@@ -1,0 +1,91 @@
+.nova-chat-header {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-3) var(--nova-space-4);
+  background: var(--nova-surface);
+  border-bottom: 1px solid var(--nova-border);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-chat-header__leading {
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.nova-chat-header__avatar {
+  position: relative;
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.nova-chat-header__presence {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: var(--nova-radius-full);
+  border: 2px solid var(--nova-surface);
+  background: var(--nova-text-subtle);
+}
+
+.nova-chat-header__text {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nova-chat-header__title {
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nova-chat-header__subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nova-chat-header__dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-text-subtle);
+}
+
+.nova-chat-header__actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+}
+
+/* Presence tones (shared by dot + avatar badge). */
+.nova-chat-header__presence--online,
+.nova-chat-header__dot--online {
+  background: var(--nova-success);
+}
+.nova-chat-header__presence--away,
+.nova-chat-header__dot--away {
+  background: var(--nova-warning);
+}
+.nova-chat-header__presence--busy,
+.nova-chat-header__dot--busy {
+  background: var(--nova-danger);
+}
+.nova-chat-header__presence--offline,
+.nova-chat-header__dot--offline {
+  background: var(--nova-text-subtle);
+}

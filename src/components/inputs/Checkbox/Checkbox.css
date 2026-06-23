@@ -1,0 +1,143 @@
+.nova-checkbox {
+  --nova-checkbox-size: 1.125rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  cursor: pointer;
+  user-select: none;
+}
+
+.nova-checkbox--sm {
+  --nova-checkbox-size: 1rem;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-checkbox--md {
+  --nova-checkbox-size: 1.125rem;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-checkbox--lg {
+  --nova-checkbox-size: 1.375rem;
+  font-size: var(--nova-text-md);
+}
+
+.nova-checkbox--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ---- Control ------------------------------------------------------------ */
+.nova-checkbox__control {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: var(--nova-checkbox-size);
+  height: var(--nova-checkbox-size);
+}
+
+.nova-checkbox__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.nova-checkbox__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1.5px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-surface);
+  color: var(--nova-text-on-brand);
+  box-shadow: var(--nova-shadow-xs);
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-checkbox:hover .nova-checkbox__input:not(:disabled) ~ .nova-checkbox__box {
+  border-color: var(--nova-primary);
+}
+
+.nova-checkbox__input.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-checkbox__input.nova-focusable:focus-visible ~ .nova-checkbox__box {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* ---- Check mark --------------------------------------------------------- */
+.nova-checkbox__check {
+  width: 80%;
+  height: 80%;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease-spring);
+}
+
+.nova-checkbox__check path {
+  stroke-dasharray: 18;
+  stroke-dashoffset: 18;
+  transition: stroke-dashoffset var(--nova-duration-base) var(--nova-ease-out);
+}
+
+.nova-checkbox__dash {
+  position: absolute;
+  width: 56%;
+  height: 2px;
+  border-radius: var(--nova-radius-full);
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease-spring);
+}
+
+/* checked */
+.nova-checkbox__input:checked ~ .nova-checkbox__box {
+  background: var(--nova-primary);
+  border-color: var(--nova-primary);
+}
+
+.nova-checkbox__input:checked ~ .nova-checkbox__box .nova-checkbox__check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nova-checkbox__input:checked ~ .nova-checkbox__box .nova-checkbox__check path {
+  stroke-dashoffset: 0;
+}
+
+/* indeterminate — wins over checked visual */
+.nova-checkbox__input:indeterminate ~ .nova-checkbox__box {
+  background: var(--nova-primary);
+  border-color: var(--nova-primary);
+}
+
+.nova-checkbox__input:indeterminate ~ .nova-checkbox__box .nova-checkbox__check {
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.nova-checkbox__input:indeterminate ~ .nova-checkbox__box .nova-checkbox__dash {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.nova-checkbox__label {
+  line-height: var(--nova-leading-snug);
+}

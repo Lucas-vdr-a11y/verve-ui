@@ -1,0 +1,13 @@
+.nova-gradient-blob {
+  display: block;
+  border-radius: var(--nova-radius-full);
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--nova-gblob-tint) 0%,
+    var(--nova-gblob-tint2) 70%
+  );
+  opacity: var(--nova-gblob-opacity);
+  filter: blur(var(--nova-gblob-blur));
+  pointer-events: none;
+  will-change: transform;
+}

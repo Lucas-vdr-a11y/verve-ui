@@ -1,0 +1,31 @@
+.nova-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--nova-font-mono);
+  font-weight: var(--nova-font-medium);
+  line-height: 1;
+  color: var(--nova-text);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-sm);
+  box-shadow: 0 1px 0 1px var(--nova-border);
+  white-space: nowrap;
+}
+
+/* ---- Size --------------------------------------------------------------- */
+.nova-kbd--sm {
+  min-width: 1.25rem;
+  padding: var(--nova-space-1) var(--nova-space-1);
+  font-size: var(--nova-text-xs);
+}
+.nova-kbd--md {
+  min-width: 1.5rem;
+  padding: var(--nova-space-1) var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+.nova-kbd--lg {
+  min-width: 1.75rem;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  font-size: var(--nova-text-md);
+}

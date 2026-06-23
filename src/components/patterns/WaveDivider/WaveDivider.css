@@ -1,0 +1,48 @@
+.nova-wave-divider {
+  display: block;
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.nova-wave-divider__svg {
+  display: block;
+  width: 100%;
+}
+
+.nova-wave-divider--flip .nova-wave-divider__svg {
+  transform: scaleX(-1);
+}
+
+.nova-wave-divider__layer--main use {
+  fill: var(--nova-wave-color);
+}
+
+.nova-wave-divider__layer--back use {
+  fill: var(--nova-wave-color);
+  opacity: 0.45;
+}
+
+/* The tiled <use> copies span 2880px total; drift one tile-width (1440) then loop. */
+.nova-wave-divider--animated .nova-wave-divider__layer {
+  animation: nova-wave-drift 14s linear infinite;
+}
+
+.nova-wave-divider--animated .nova-wave-divider__layer--back {
+  animation-duration: 22s;
+}
+
+@keyframes nova-wave-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-1440px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-wave-divider--animated .nova-wave-divider__layer {
+    animation: none;
+  }
+}

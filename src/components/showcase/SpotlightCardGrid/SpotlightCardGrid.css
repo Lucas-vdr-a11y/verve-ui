@@ -1,0 +1,91 @@
+.nova-spotlight-grid {
+  --nova-spotlight-grid-x: 50%;
+  --nova-spotlight-grid-y: 50%;
+  --nova-spotlight-grid-opacity: 0;
+  --nova-spotlight-grid-color: rgb(99 102 241 / 0.35);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--nova-spotlight-grid-columns), minmax(0, 1fr));
+  gap: var(--nova-space-4);
+}
+
+[data-theme="dark"] .nova-spotlight-grid {
+  --nova-spotlight-grid-color: rgb(129 140 248 / 0.4);
+}
+
+.nova-spotlight-grid__card {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  padding: var(--nova-space-6);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface);
+  overflow: hidden;
+  isolation: isolate;
+  outline: none;
+  transition: border-color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-spotlight-grid__card:focus-visible {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* Shared spotlight: each card paints the SAME grid-relative glow position,
+   so only the card under the cursor lights up. */
+.nova-spotlight-grid__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--nova-spotlight-grid-opacity);
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+  background: radial-gradient(
+    var(--nova-spotlight-grid-radius) circle at
+      var(--nova-spotlight-grid-x) var(--nova-spotlight-grid-y),
+    var(--nova-spotlight-grid-color),
+    transparent 65%
+  );
+}
+
+.nova-spotlight-grid__card:focus-within .nova-spotlight-grid__glow {
+  opacity: 1;
+  background: radial-gradient(
+    var(--nova-spotlight-grid-radius) circle at center,
+    var(--nova-spotlight-grid-color),
+    transparent 70%
+  );
+}
+
+.nova-spotlight-grid__content {
+  position: relative;
+  z-index: 1;
+}
+
+.nova-spotlight-grid__icon {
+  display: inline-flex;
+  margin-bottom: var(--nova-space-3);
+  color: var(--nova-primary);
+}
+
+.nova-spotlight-grid__title {
+  margin: 0 0 var(--nova-space-2);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-spotlight-grid__desc {
+  margin: 0;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-spotlight-grid__glow {
+    transition: none;
+  }
+}

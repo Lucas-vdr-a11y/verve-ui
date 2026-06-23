@@ -1,0 +1,96 @@
+.nova-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-progress-list__summary {
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-muted);
+}
+
+.nova-progress-list__items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-progress-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-2) var(--nova-space-2);
+  border-radius: var(--nova-radius-md);
+}
+
+.nova-progress-list__marker {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--nova-space-6);
+  block-size: var(--nova-space-6);
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-progress-list__bullet {
+  inline-size: var(--nova-space-3);
+  block-size: var(--nova-space-3);
+  border-radius: var(--nova-radius-full);
+  border: 2px solid var(--nova-border-strong);
+}
+
+.nova-progress-list__icon {
+  inline-size: var(--nova-space-5);
+  block-size: var(--nova-space-5);
+}
+
+.nova-progress-list__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  min-inline-size: 0;
+}
+
+.nova-progress-list__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-progress-list__description {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+  line-height: var(--nova-leading-snug);
+}
+
+/* ---- Per-status styling ------------------------------------------------ */
+.nova-progress-list__item--pending {
+  color: var(--nova-text-muted);
+}
+
+.nova-progress-list__item--in-progress {
+  background: var(--nova-primary-subtle);
+}
+.nova-progress-list__item--in-progress .nova-progress-list__label {
+  color: var(--nova-text);
+}
+
+.nova-progress-list__item--done .nova-progress-list__marker {
+  color: var(--nova-success);
+  background: var(--nova-success-subtle);
+}
+
+.nova-progress-list__item--error .nova-progress-list__marker {
+  color: var(--nova-danger);
+  background: var(--nova-danger-subtle);
+}
+.nova-progress-list__item--error .nova-progress-list__label {
+  color: var(--nova-danger);
+}

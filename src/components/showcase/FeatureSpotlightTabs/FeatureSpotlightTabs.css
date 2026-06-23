@@ -1,0 +1,162 @@
+/* FeatureSpotlightTabs — vertical feature list + stacked cross-fading media
+ * panels. The active tab shows a draining progress bar tied to auto-advance. */
+
+.nova-feature-tabs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--nova-space-8);
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .nova-feature-tabs {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: var(--nova-space-12);
+  }
+  .nova-feature-tabs--media-left .nova-feature-tabs__stage {
+    order: -1;
+  }
+}
+
+/* ---- list ---------------------------------------------------------------- */
+.nova-feature-tabs__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+}
+
+.nova-feature-tabs__tab {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-3);
+  text-align: left;
+  padding: var(--nova-space-4) var(--nova-space-5);
+  border: 1px solid transparent;
+  border-radius: var(--nova-radius-lg);
+  background: transparent;
+  font-family: inherit;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  transition: background var(--nova-duration-base) var(--nova-ease),
+    border-color var(--nova-duration-base) var(--nova-ease),
+    color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-feature-tabs__tab:hover {
+  color: var(--nova-text);
+  background: var(--nova-surface-hover);
+}
+
+.nova-feature-tabs__tab--active {
+  color: var(--nova-text);
+  background: var(--nova-surface-raised);
+  border-color: var(--nova-border);
+  box-shadow: var(--nova-shadow-sm);
+}
+
+.nova-feature-tabs__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+.nova-feature-tabs__icon :where(svg) {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.nova-feature-tabs__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  min-width: 0;
+}
+
+.nova-feature-tabs__title {
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-feature-tabs__desc {
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text-muted);
+}
+
+/* draining progress bar at the bottom edge of the active tab */
+.nova-feature-tabs__progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  transform-origin: left center;
+  background: var(--nova-primary);
+  box-shadow: 0 0 8px rgb(99 102 241 / 0.5);
+  animation: nova-feature-tabs-progress
+    var(--nova-feature-tabs-interval, 5000ms) linear forwards;
+}
+
+@keyframes nova-feature-tabs-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---- media stage --------------------------------------------------------- */
+.nova-feature-tabs__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--nova-radius-2xl);
+  overflow: hidden;
+  border: 1px solid var(--nova-border);
+  background: var(--nova-surface-raised);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-feature-tabs__panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.98) translateY(0.5rem);
+  pointer-events: none;
+  transition: opacity var(--nova-duration-slow) var(--nova-ease-out),
+    transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+.nova-feature-tabs__panel--active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.nova-feature-tabs__panel :where(img, video) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-feature-tabs__tab,
+  .nova-feature-tabs__panel {
+    transition: none;
+  }
+  .nova-feature-tabs__progress {
+    display: none;
+  }
+}

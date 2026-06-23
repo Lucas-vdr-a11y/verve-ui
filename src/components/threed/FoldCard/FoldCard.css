@@ -1,0 +1,87 @@
+.nova-fold-card {
+  position: relative;
+  display: inline-block;
+  width: 260px;
+  height: 180px;
+  perspective: 1000px;
+  outline: none;
+  cursor: pointer;
+}
+.nova-fold-card:focus-visible {
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* The reveal sits behind / beneath the cover and is shown as it folds open. */
+.nova-fold-card__reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: var(--nova-space-5);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: inset 0 0 24px rgb(99 102 241 / 0.08);
+}
+
+.nova-fold-card__panel {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out);
+  will-change: transform;
+}
+
+.nova-fold-card__cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: var(--nova-space-5);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-md);
+  backface-visibility: hidden;
+}
+
+/* ---- Hinge origins ------------------------------------------------------ */
+.nova-fold-card--hinge-top .nova-fold-card__panel {
+  transform-origin: top center;
+}
+.nova-fold-card--hinge-bottom .nova-fold-card__panel {
+  transform-origin: bottom center;
+}
+.nova-fold-card--hinge-left .nova-fold-card__panel {
+  transform-origin: left center;
+}
+.nova-fold-card--hinge-right .nova-fold-card__panel {
+  transform-origin: right center;
+}
+
+/* ---- Open state: rotate the cover away from its hinge ------------------- */
+.nova-fold-card--hinge-top.nova-fold-card--open .nova-fold-card__panel {
+  transform: rotateX(-118deg);
+}
+.nova-fold-card--hinge-bottom.nova-fold-card--open .nova-fold-card__panel {
+  transform: rotateX(118deg);
+}
+.nova-fold-card--hinge-left.nova-fold-card--open .nova-fold-card__panel {
+  transform: rotateY(118deg);
+}
+.nova-fold-card--hinge-right.nova-fold-card--open .nova-fold-card__panel {
+  transform: rotateY(-118deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-fold-card__panel {
+    transition: none;
+  }
+}

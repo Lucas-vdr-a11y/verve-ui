@@ -1,0 +1,133 @@
+.nova-battery-loader {
+  --nova-loader-color: var(--nova-success);
+  display: inline-flex;
+  align-items: center;
+  height: var(--nova-batt-size, 26px);
+  color: var(--nova-loader-color);
+  line-height: 0;
+}
+
+.nova-battery-loader[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-battery-loader[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-battery-loader[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-battery-loader[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-battery-loader[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-battery-loader__body {
+  position: relative;
+  display: block;
+  width: calc(var(--nova-batt-size, 26px) * 1.9);
+  height: 100%;
+  padding: calc(var(--nova-batt-size, 26px) * 0.1);
+  border-radius: var(--nova-radius-sm);
+  box-shadow: inset 0 0 0 2px var(--nova-border-strong);
+  background: var(--nova-bg-muted);
+  overflow: hidden;
+}
+
+.nova-battery-loader__fill {
+  position: absolute;
+  left: calc(var(--nova-batt-size, 26px) * 0.1);
+  top: calc(var(--nova-batt-size, 26px) * 0.1);
+  bottom: calc(var(--nova-batt-size, 26px) * 0.1);
+  border-radius: var(--nova-radius-xs);
+  background: var(--nova-loader-color);
+  /* indeterminate: charge loops */
+  width: calc(
+    (var(--nova-batt-size, 26px) * 1.9 - var(--nova-batt-size, 26px) * 0.2)
+  );
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: nova-batt-charge 2.2s var(--nova-ease) infinite;
+}
+
+/* determinate: width driven by --nova-batt-fill, no loop */
+.nova-battery-loader[data-determinate="true"] .nova-battery-loader__fill {
+  animation: none;
+  transform: scaleX(var(--nova-batt-fill, 0));
+  transition: transform var(--nova-duration-slow) var(--nova-ease);
+}
+
+.nova-battery-loader__cap {
+  display: block;
+  width: calc(var(--nova-batt-size, 26px) * 0.16);
+  height: 42%;
+  margin-left: 2px;
+  border-radius: 0 var(--nova-radius-xs) var(--nova-radius-xs) 0;
+  background: var(--nova-border-strong);
+}
+
+.nova-battery-loader__bolt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 52%;
+  height: 52%;
+  transform: translate(-50%, -50%);
+  color: var(--nova-text-on-brand);
+  opacity: 0.92;
+  mix-blend-mode: difference;
+  animation: nova-batt-bolt 2.2s var(--nova-ease) infinite;
+}
+
+.nova-battery-loader[data-determinate="true"] .nova-battery-loader__bolt {
+  animation: none;
+}
+
+@keyframes nova-batt-charge {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.85;
+  }
+  70% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  85% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0.85;
+  }
+}
+
+@keyframes nova-batt-bolt {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  60% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-battery-loader__fill {
+    animation: nova-batt-fade 2s var(--nova-ease) infinite;
+    transform: scaleX(0.66);
+  }
+  .nova-battery-loader__bolt {
+    animation: none;
+  }
+  @keyframes nova-batt-fade {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}

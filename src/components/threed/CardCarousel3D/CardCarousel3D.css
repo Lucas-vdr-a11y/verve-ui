@@ -1,0 +1,78 @@
+.nova-carousel3d {
+  --nova-carousel3d-w: 240px;
+  --nova-carousel3d-h: 320px;
+  --nova-carousel3d-radius: 360px;
+  --nova-carousel3d-rotation: 0deg;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nova-carousel3d__stage {
+  position: relative;
+  width: var(--nova-carousel3d-w);
+  height: var(--nova-carousel3d-h);
+  perspective: calc(var(--nova-carousel3d-radius) * 3);
+  outline: none;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.nova-carousel3d__stage:active {
+  cursor: grabbing;
+}
+.nova-carousel3d__stage:focus-visible {
+  box-shadow: var(--nova-shadow-focus);
+  border-radius: var(--nova-radius-lg);
+}
+
+.nova-carousel3d__ring {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(calc(var(--nova-carousel3d-radius) * -1))
+    rotateY(var(--nova-carousel3d-rotation));
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-carousel3d__card {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateY(var(--nova-carousel3d-angle))
+    translateZ(var(--nova-carousel3d-radius));
+  cursor: pointer;
+}
+
+.nova-carousel3d__face {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-md);
+  transition: box-shadow var(--nova-duration-base) var(--nova-ease),
+    filter var(--nova-duration-base) var(--nova-ease);
+  filter: brightness(0.85);
+}
+.nova-carousel3d__face > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.nova-carousel3d__card--front .nova-carousel3d__face {
+  filter: none;
+  box-shadow: var(--nova-shadow-xl), 0 0 30px rgb(99 102 241 / 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-carousel3d__ring {
+    transition: none;
+  }
+}

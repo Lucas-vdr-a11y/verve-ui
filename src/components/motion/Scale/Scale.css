@@ -1,0 +1,31 @@
+/* Scale — scale + fade from an origin, built on the Transition lifecycle. */
+
+.nova-scale {
+  --nova-scale-from: 0.95;
+  --nova-scale-origin: center;
+  transform-origin: var(--nova-scale-origin);
+  transition:
+    opacity var(--nova-transition-duration) var(--nova-transition-ease),
+    transform var(--nova-transition-duration) var(--nova-ease-spring);
+}
+
+/* from state */
+.nova-scale[data-transition="enter"],
+.nova-scale[data-transition="exiting"],
+.nova-scale[data-transition="exited"] {
+  opacity: 0;
+  transform: scale(var(--nova-scale-from));
+}
+
+/* to state */
+.nova-scale[data-transition="entering"],
+.nova-scale[data-transition="entered"] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-scale {
+    transition-duration: 1ms !important;
+  }
+}

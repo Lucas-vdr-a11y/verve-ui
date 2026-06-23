@@ -1,0 +1,137 @@
+.nova-colorpicker {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-colorpicker--disabled {
+  opacity: 0.6;
+}
+
+/* ---- Swatch -------------------------------------------------------------- */
+.nova-swatch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  background: transparent;
+  color: var(--nova-text-on-brand);
+  cursor: pointer;
+  box-shadow: var(--nova-shadow-xs);
+  transition: transform var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-swatch__fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--nova-swatch-color, transparent);
+}
+
+.nova-swatch:hover:not(:disabled) {
+  transform: scale(1.08);
+}
+
+.nova-swatch:disabled {
+  cursor: not-allowed;
+}
+
+.nova-swatch--selected {
+  box-shadow: 0 0 0 2px var(--nova-surface),
+    0 0 0 4px var(--nova-primary);
+}
+
+/* Check mark sits above the fill when selected. */
+.nova-swatch__check {
+  position: relative;
+  z-index: var(--nova-z-base);
+  width: 60%;
+  height: 60%;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease-spring);
+  /* Contrast: rely on a subtle drop shadow so the tick reads on any color. */
+  filter: drop-shadow(0 1px 1px rgb(15 23 42 / 0.4));
+}
+
+.nova-swatch--selected .nova-swatch__check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---- Custom-color trigger ----------------------------------------------- */
+.nova-colorpicker__custom {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px dashed var(--nova-border-strong);
+  border-radius: var(--nova-radius-full);
+  color: var(--nova-text-muted);
+  background: var(--nova-swatch-color, var(--nova-surface));
+  cursor: pointer;
+  box-shadow: var(--nova-shadow-xs);
+  transition: transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-colorpicker__custom:hover {
+  transform: scale(1.08);
+}
+
+.nova-colorpicker__custom--active {
+  border-style: solid;
+  border-color: var(--nova-border);
+  box-shadow: 0 0 0 2px var(--nova-surface), 0 0 0 4px var(--nova-primary);
+}
+
+.nova-colorpicker__custom-icon {
+  position: relative;
+  z-index: var(--nova-z-base);
+  width: 55%;
+  height: 55%;
+  pointer-events: none;
+}
+
+/* Stretch the native input over the whole trigger but keep it invisible. */
+.nova-colorpicker__native {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.nova-colorpicker__native:disabled {
+  cursor: not-allowed;
+}
+
+/* ---- Sizes --------------------------------------------------------------- */
+.nova-swatch--sm {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.nova-swatch--md {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.nova-swatch--lg {
+  width: 2.25rem;
+  height: 2.25rem;
+}

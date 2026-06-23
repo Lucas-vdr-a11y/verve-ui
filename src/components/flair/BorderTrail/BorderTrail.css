@@ -1,0 +1,66 @@
+@property --nova-bt-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.nova-border-trail {
+  --nova-bt-duration: 4s;
+  --nova-bt-size: 30%;
+  --nova-bt-thickness: 2px;
+  --nova-bt-color: var(--nova-primary);
+
+  position: relative;
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  isolation: isolate;
+}
+
+/* The travelling glowing segment. A conic gradient whose bright wedge rotates,
+   clipped to a thin border ring via mask so only the perimeter shows. */
+.nova-border-trail__trail {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  padding: var(--nova-bt-thickness);
+  pointer-events: none;
+
+  background: conic-gradient(
+    from var(--nova-bt-angle),
+    transparent 0deg,
+    var(--nova-bt-color) calc(var(--nova-bt-size) * 0.5),
+    transparent var(--nova-bt-size)
+  );
+
+  /* Show only the border ring. */
+  -webkit-mask: linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+
+  filter: drop-shadow(0 0 6px var(--nova-bt-color));
+  animation: nova-border-trail-spin var(--nova-bt-duration) linear infinite;
+}
+
+.nova-border-trail__content {
+  position: relative;
+  z-index: 1;
+  border-radius: inherit;
+  padding: var(--nova-space-5);
+}
+
+@keyframes nova-border-trail-spin {
+  to {
+    --nova-bt-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-border-trail__trail {
+    animation: none;
+  }
+}

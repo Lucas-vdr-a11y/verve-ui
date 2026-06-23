@@ -1,0 +1,119 @@
+/* StatsRow — band of key stats with dividers. */
+.nova-stats-row {
+  box-sizing: border-box;
+  display: block;
+  padding: var(--nova-space-8);
+  border-radius: var(--nova-radius-xl);
+  color: var(--nova-text);
+}
+
+.nova-stats-row *,
+.nova-stats-row *::before,
+.nova-stats-row *::after {
+  box-sizing: border-box;
+}
+
+/* Variants ------------------------------------------------------------------ */
+.nova-stats-row--subtle {
+  background-color: var(--nova-bg-subtle);
+  border: 1px solid var(--nova-border);
+}
+
+.nova-stats-row--plain {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.nova-stats-row--brand {
+  background-image: linear-gradient(
+    135deg,
+    var(--nova-brand-600),
+    var(--nova-brand-800)
+  );
+  color: var(--nova-text-on-brand);
+}
+
+/* List ---------------------------------------------------------------------- */
+.nova-stats-row__list {
+  display: grid;
+  gap: var(--nova-space-6);
+  margin: 0;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 40rem) {
+  .nova-stats-row__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .nova-stats-row__list {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-template-columns: none;
+  }
+}
+
+/* Item ---------------------------------------------------------------------- */
+.nova-stats-row__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--nova-space-2) var(--nova-space-4);
+}
+
+/* Dividers ------------------------------------------------------------------ */
+.nova-stats-row--dividers .nova-stats-row__item + .nova-stats-row__item {
+  border-top: 1px solid var(--nova-border);
+}
+
+.nova-stats-row--brand.nova-stats-row--dividers
+  .nova-stats-row__item
+  + .nova-stats-row__item {
+  border-color: rgb(255 255 255 / 0.25);
+}
+
+@media (min-width: 64rem) {
+  .nova-stats-row--dividers .nova-stats-row__item + .nova-stats-row__item {
+    border-top: 0;
+    border-left: 1px solid var(--nova-border);
+  }
+  .nova-stats-row--brand.nova-stats-row--dividers
+    .nova-stats-row__item
+    + .nova-stats-row__item {
+    border-color: rgb(255 255 255 / 0.25);
+  }
+}
+
+/* Text ---------------------------------------------------------------------- */
+.nova-stats-row__value {
+  margin: 0;
+  font-size: var(--nova-text-4xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-stats-row__body {
+  margin: var(--nova-space-2) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-stats-row__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-stats-row__description {
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+}
+
+.nova-stats-row--brand .nova-stats-row__description {
+  color: inherit;
+  opacity: 0.85;
+}

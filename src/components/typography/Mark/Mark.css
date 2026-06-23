@@ -1,0 +1,29 @@
+.nova-mark {
+  background: var(--nova-warning-subtle);
+  color: var(--nova-text);
+  padding: 0.05em 0.3em;
+  margin: 0 -0.05em;
+  border-radius: var(--nova-radius-xs);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ---- Tone --------------------------------------------------------------- */
+.nova-mark--primary {
+  background: var(--nova-primary-subtle);
+}
+.nova-mark--success {
+  background: var(--nova-success-subtle);
+}
+.nova-mark--warning {
+  background: var(--nova-warning-subtle);
+}
+.nova-mark--danger {
+  background: var(--nova-danger-subtle);
+}
+.nova-mark--info {
+  background: var(--nova-info-subtle);
+}
+.nova-mark--neutral {
+  background: var(--nova-bg-muted);
+}

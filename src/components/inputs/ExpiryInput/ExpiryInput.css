@@ -1,0 +1,93 @@
+.nova-expiry {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-xs);
+  font-family: var(--nova-font-sans);
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-expiry:hover:not(.nova-expiry--disabled) {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-expiry:focus-within {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-expiry--invalid {
+  border-color: var(--nova-danger);
+}
+
+.nova-expiry--invalid:focus-within {
+  border-color: var(--nova-danger);
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+.nova-expiry--disabled {
+  opacity: 0.6;
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+/* ---- Field --------------------------------------------------------------- */
+.nova-expiry__field {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--nova-leading-normal);
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-expiry__field.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-expiry__field::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-expiry__field:disabled {
+  cursor: not-allowed;
+}
+
+/* ---- Sizes --------------------------------------------------------------- */
+.nova-expiry--sm {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+}
+
+.nova-expiry--sm .nova-expiry__field {
+  min-height: calc(2rem - 2px);
+}
+
+.nova-expiry--md {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+}
+
+.nova-expiry--md .nova-expiry__field {
+  min-height: calc(2.5rem - 2px);
+}
+
+.nova-expiry--lg {
+  font-size: var(--nova-text-md);
+  padding: 0 var(--nova-space-4);
+}
+
+.nova-expiry--lg .nova-expiry__field {
+  min-height: calc(3rem - 2px);
+}

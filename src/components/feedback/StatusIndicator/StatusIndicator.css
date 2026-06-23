@@ -1,0 +1,117 @@
+.nova-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  color: var(--nova-text);
+  /* tone, overridden per status below */
+  --nova-status-color: var(--nova-text-subtle);
+}
+
+/* ---- Sizes ------------------------------------------------------------- */
+.nova-status-indicator--sm {
+  font-size: var(--nova-text-xs);
+  gap: var(--nova-space-1);
+}
+.nova-status-indicator--sm .nova-status-indicator__dot {
+  inline-size: var(--nova-space-2);
+  block-size: var(--nova-space-2);
+}
+
+.nova-status-indicator--md {
+  font-size: var(--nova-text-sm);
+}
+.nova-status-indicator--md .nova-status-indicator__dot {
+  inline-size: 0.625rem;
+  block-size: 0.625rem;
+}
+
+.nova-status-indicator--lg {
+  font-size: var(--nova-text-md);
+}
+.nova-status-indicator--lg .nova-status-indicator__dot {
+  inline-size: var(--nova-space-3);
+  block-size: var(--nova-space-3);
+}
+
+/* ---- Dot --------------------------------------------------------------- */
+.nova-status-indicator__dot {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-status-color);
+}
+
+.nova-status-indicator__label {
+  color: inherit;
+}
+
+/* ---- Statuses ---------------------------------------------------------- */
+.nova-status-indicator--online .nova-status-indicator__dot,
+.nova-status-indicator--success .nova-status-indicator__dot {
+  --nova-status-color: var(--nova-success);
+}
+.nova-status-indicator--online,
+.nova-status-indicator--success {
+  --nova-status-color: var(--nova-success);
+}
+
+.nova-status-indicator--busy .nova-status-indicator__dot,
+.nova-status-indicator--error .nova-status-indicator__dot {
+  --nova-status-color: var(--nova-danger);
+}
+.nova-status-indicator--busy,
+.nova-status-indicator--error {
+  --nova-status-color: var(--nova-danger);
+}
+
+.nova-status-indicator--away .nova-status-indicator__dot,
+.nova-status-indicator--warning .nova-status-indicator__dot {
+  --nova-status-color: var(--nova-warning);
+}
+.nova-status-indicator--away,
+.nova-status-indicator--warning {
+  --nova-status-color: var(--nova-warning);
+}
+
+.nova-status-indicator--offline .nova-status-indicator__dot,
+.nova-status-indicator--idle .nova-status-indicator__dot {
+  --nova-status-color: var(--nova-text-subtle);
+}
+.nova-status-indicator--offline,
+.nova-status-indicator--idle {
+  --nova-status-color: var(--nova-text-subtle);
+}
+
+/* ---- Pulse ------------------------------------------------------------- */
+.nova-status-indicator__ping {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--nova-status-color);
+  animation: nova-status-indicator-ping 1400ms var(--nova-ease-out) infinite;
+  pointer-events: none;
+}
+
+@keyframes nova-status-indicator-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  75%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-status-indicator__ping {
+    animation: none;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,54 @@
+.nova-disclosure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-disclosure__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  align-self: flex-start;
+  box-sizing: border-box;
+  padding: var(--nova-space-1) var(--nova-space-2);
+  margin-inline-start: calc(-1 * var(--nova-space-2));
+  border: none;
+  background: transparent;
+  color: var(--nova-primary-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  border-radius: var(--nova-radius-sm);
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-disclosure__trigger:hover {
+  color: var(--nova-primary);
+}
+
+.nova-disclosure__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-disclosure__chevron svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+.nova-disclosure[data-state="open"] .nova-disclosure__chevron {
+  transform: rotate(180deg);
+}
+
+.nova-disclosure__content {
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+}

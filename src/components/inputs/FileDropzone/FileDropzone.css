@@ -1,0 +1,187 @@
+.nova-file-dropzone {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--nova-font-sans);
+}
+
+/* ---- Drop zone ---------------------------------------------------------- */
+.nova-file-dropzone__zone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-1);
+  box-sizing: border-box;
+  text-align: center;
+  border: 1.5px dashed var(--nova-border-strong);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-bg-subtle);
+  color: var(--nova-text);
+  cursor: pointer;
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-file-dropzone__zone:hover:not(.nova-file-dropzone__zone--disabled) {
+  border-color: var(--nova-primary);
+  background: var(--nova-surface-hover);
+}
+
+.nova-file-dropzone__zone:focus-visible {
+  outline: none;
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-file-dropzone__zone--dragover {
+  border-color: var(--nova-primary);
+  border-style: solid;
+  background: var(--nova-primary-subtle);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-file-dropzone__zone--invalid {
+  border-color: var(--nova-danger);
+}
+
+.nova-file-dropzone__zone--disabled {
+  opacity: 0.6;
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+/* ---- Zone content ------------------------------------------------------- */
+.nova-file-dropzone__icon {
+  display: inline-flex;
+  color: var(--nova-text-muted);
+}
+
+.nova-file-dropzone__icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.nova-file-dropzone__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text);
+}
+
+.nova-file-dropzone__hint {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+.nova-file-dropzone__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- File list ---------------------------------------------------------- */
+.nova-file-dropzone__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-file-dropzone__file {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-file-dropzone__file-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--nova-text-muted);
+}
+
+.nova-file-dropzone__file-icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.nova-file-dropzone__file-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-file-dropzone__file-size {
+  flex: 0 0 auto;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-file-dropzone__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-file-dropzone__remove:hover {
+  background: var(--nova-danger-subtle);
+  color: var(--nova-danger);
+}
+
+.nova-file-dropzone__remove svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-file-dropzone__zone--sm {
+  padding: var(--nova-space-4);
+}
+.nova-file-dropzone__zone--sm .nova-file-dropzone__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.nova-file-dropzone__zone--md {
+  padding: var(--nova-space-6);
+}
+.nova-file-dropzone__zone--lg {
+  padding: var(--nova-space-10);
+}
+.nova-file-dropzone__zone--lg .nova-file-dropzone__icon svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.nova-file-dropzone__zone--lg .nova-file-dropzone__label {
+  font-size: var(--nova-text-md);
+}

@@ -1,0 +1,170 @@
+.nova-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+}
+
+.nova-tabs--vertical {
+  flex-direction: row;
+}
+
+/* ---- List --------------------------------------------------------------- */
+.nova-tabs__list {
+  display: flex;
+  align-items: stretch;
+  gap: var(--nova-space-1);
+}
+
+.nova-tabs--vertical .nova-tabs__list {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ---- Tab ---------------------------------------------------------------- */
+.nova-tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: var(--nova-radius-md);
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-tabs__tab:hover:not(:disabled) {
+  color: var(--nova-text);
+}
+
+.nova-tabs__tab:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.nova-tabs__tab--selected {
+  color: var(--nova-text);
+}
+
+.nova-tabs__tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.nova-tabs__tab-icon svg {
+  display: block;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-tabs--sm .nova-tabs__tab {
+  min-height: 2rem;
+  padding: 0 var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-tabs--md .nova-tabs__tab {
+  min-height: 2.5rem;
+  padding: 0 var(--nova-space-4);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-tabs--lg .nova-tabs__tab {
+  min-height: 3rem;
+  padding: 0 var(--nova-space-5);
+  font-size: var(--nova-text-md);
+}
+
+/* ---- Variant: line ------------------------------------------------------ */
+.nova-tabs--line .nova-tabs__list {
+  gap: var(--nova-space-2);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-tabs--line.nova-tabs--vertical .nova-tabs__list {
+  border-bottom: none;
+  border-inline-start: 1px solid var(--nova-border);
+}
+
+.nova-tabs--line .nova-tabs__tab {
+  border-radius: 0;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+}
+
+.nova-tabs--line.nova-tabs--vertical .nova-tabs__tab {
+  margin-bottom: 0;
+  margin-inline-start: -1px;
+  border-bottom: none;
+  border-inline-start: 2px solid transparent;
+  justify-content: flex-start;
+}
+
+.nova-tabs--line .nova-tabs__tab--selected {
+  color: var(--nova-primary-text);
+  border-bottom-color: var(--nova-primary);
+}
+
+.nova-tabs--line.nova-tabs--vertical .nova-tabs__tab--selected {
+  border-bottom-color: transparent;
+  border-inline-start-color: var(--nova-primary);
+}
+
+/* ---- Variant: solid ----------------------------------------------------- */
+.nova-tabs--solid .nova-tabs__list {
+  padding: var(--nova-space-1);
+  background: var(--nova-bg-muted);
+  border-radius: var(--nova-radius-lg);
+}
+
+.nova-tabs--solid .nova-tabs__tab--selected {
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  box-shadow: var(--nova-shadow-xs);
+}
+
+.nova-tabs--solid .nova-tabs__tab--selected:hover:not(:disabled) {
+  color: var(--nova-text-on-brand);
+}
+
+/* ---- Variant: soft ------------------------------------------------------ */
+.nova-tabs--soft .nova-tabs__list {
+  padding: var(--nova-space-1);
+  background: var(--nova-bg-muted);
+  border-radius: var(--nova-radius-lg);
+}
+
+.nova-tabs--soft .nova-tabs__tab--selected {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-tabs--soft .nova-tabs__tab--selected:hover:not(:disabled) {
+  color: var(--nova-primary-text);
+}
+
+/* ---- Panels ------------------------------------------------------------- */
+.nova-tabs__panels {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nova-tabs__panel {
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+}

@@ -1,0 +1,72 @@
+.nova-gallery {
+  inline-size: 100%;
+}
+
+/* ---- Grid layout ------------------------------------------------------- */
+.nova-gallery--grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(var(--nova-gallery-min, 12rem), 100%), 1fr)
+  );
+  gap: var(--nova-gallery-gap, var(--nova-space-4));
+}
+
+/* ---- Masonry (CSS columns) -------------------------------------------- */
+.nova-gallery--masonry {
+  column-width: var(--nova-gallery-min, 12rem);
+  column-gap: var(--nova-gallery-gap, var(--nova-space-4));
+}
+
+.nova-gallery--masonry .nova-gallery__item {
+  inline-size: 100%;
+  margin-block-end: var(--nova-gallery-gap, var(--nova-space-4));
+  break-inside: avoid;
+}
+
+/* ---- Item -------------------------------------------------------------- */
+.nova-gallery__item {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: var(--nova-bg-muted);
+  overflow: hidden;
+  cursor: pointer;
+  line-height: 0;
+  transition: transform var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-gallery--grid .nova-gallery__item {
+  block-size: 100%;
+}
+
+.nova-gallery__item:disabled {
+  cursor: default;
+}
+
+.nova-gallery__item:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: var(--nova-shadow-md);
+}
+
+.nova-gallery__item:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-gallery--rounded .nova-gallery__item {
+  border-radius: var(--nova-radius-lg);
+}
+
+.nova-gallery__img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.nova-gallery--masonry .nova-gallery__img {
+  block-size: auto;
+}

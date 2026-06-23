@@ -1,0 +1,49 @@
+.nova-globe {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  perspective: 900px;
+  pointer-events: none;
+}
+
+.nova-globe__stage {
+  position: relative;
+  width: var(--nova-globe-size);
+  height: var(--nova-globe-size);
+  transform-style: preserve-3d;
+  transform: rotateX(-18deg);
+}
+
+.nova-globe__spin {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: nova-globe-rotate var(--nova-globe-dur) linear infinite;
+}
+
+.nova-globe__dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 3px;
+  margin: -1.5px 0 0 -1.5px;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-globe-color);
+  backface-visibility: visible;
+}
+
+@keyframes nova-globe-rotate {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-globe__spin {
+    animation: none;
+  }
+}

@@ -1,0 +1,85 @@
+/* FeatureCard — feature-grid tile with hover lift. */
+.nova-feature-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: var(--nova-space-6);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  transition:
+    box-shadow var(--nova-duration-base) var(--nova-ease),
+    border-color var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-feature-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--nova-border-strong);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+/* Icon ---------------------------------------------------------------------- */
+.nova-feature-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-space-12);
+  height: var(--nova-space-12);
+  margin-bottom: var(--nova-space-4);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+  font-size: var(--nova-text-xl);
+}
+
+/* Text ---------------------------------------------------------------------- */
+.nova-feature-card__title {
+  margin: 0;
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-feature-card__description {
+  margin: var(--nova-space-2) 0 0;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+}
+
+/* Link ---------------------------------------------------------------------- */
+.nova-feature-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  margin-top: var(--nova-space-4);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--nova-primary-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--nova-radius-xs);
+  transition: gap var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-feature-card__link:hover {
+  gap: var(--nova-space-2);
+}
+
+.nova-feature-card__link:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-feature-card__link-icon {
+  display: inline-flex;
+  font-size: var(--nova-text-md);
+}

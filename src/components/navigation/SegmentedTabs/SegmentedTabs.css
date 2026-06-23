@@ -1,0 +1,133 @@
+.nova-segmented-tabs {
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-segmented-tabs--full {
+  display: block;
+  width: 100%;
+}
+
+.nova-segmented-tabs__list {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  gap: var(--nova-space-1);
+  padding: var(--nova-space-1);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-bg-muted);
+  border: 1px solid var(--nova-border);
+}
+
+.nova-segmented-tabs--full .nova-segmented-tabs__list {
+  display: flex;
+  width: 100%;
+}
+
+/* Sliding selected thumb with a soft brand glow. */
+.nova-segmented-tabs__thumb {
+  position: absolute;
+  top: var(--nova-space-1);
+  bottom: var(--nova-space-1);
+  left: 0;
+  pointer-events: none;
+  border-radius: calc(var(--nova-radius-lg) - var(--nova-space-1));
+  background: var(--nova-surface);
+  box-shadow:
+    var(--nova-shadow-sm),
+    0 0 0 1px rgb(99 102 241 / 0.12),
+    0 0 12px 0 rgb(99 102 241 / 0.22);
+  transition:
+    transform var(--nova-duration-base) var(--nova-ease-spring),
+    width var(--nova-duration-base) var(--nova-ease-spring),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+  will-change: transform, width;
+}
+
+/* Subtle dim of the thumb glow while a segment is being pressed. */
+.nova-segmented-tabs--pressed .nova-segmented-tabs__thumb {
+  box-shadow:
+    var(--nova-shadow-xs),
+    0 0 0 1px rgb(99 102 241 / 0.18),
+    0 0 6px 0 rgb(99 102 241 / 0.28);
+}
+
+.nova-segmented-tabs__segment {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-4);
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  font-weight: var(--nova-font-medium);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: calc(var(--nova-radius-lg) - var(--nova-space-1));
+  transition:
+    color var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-segmented-tabs--full .nova-segmented-tabs__segment {
+  flex: 1 1 0;
+}
+
+.nova-segmented-tabs--stacked .nova-segmented-tabs__segment {
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-segmented-tabs--sm .nova-segmented-tabs__segment {
+  padding: var(--nova-space-1) var(--nova-space-3);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-segmented-tabs--lg .nova-segmented-tabs__segment {
+  padding: var(--nova-space-3) var(--nova-space-5);
+  font-size: var(--nova-text-md);
+}
+
+.nova-segmented-tabs__segment:hover:not([aria-disabled="true"]) {
+  color: var(--nova-text);
+}
+
+.nova-segmented-tabs__segment:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-segmented-tabs__segment:active:not([aria-disabled="true"]) {
+  transform: scale(0.96);
+}
+
+.nova-segmented-tabs__segment--active {
+  color: var(--nova-primary-text);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-segmented-tabs__segment[aria-disabled="true"] {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-segmented-tabs__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-segmented-tabs--reduced .nova-segmented-tabs__thumb,
+.nova-segmented-tabs--reduced .nova-segmented-tabs__segment {
+  transition:
+    transform var(--nova-duration-fast) var(--nova-ease),
+    width var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+}

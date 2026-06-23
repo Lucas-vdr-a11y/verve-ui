@@ -1,0 +1,110 @@
+.nova-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  border-radius: var(--nova-radius-full);
+  border: 1px solid transparent;
+  /* tone-driven palette, overridden per tone below */
+  --nova-badge-color: var(--nova-text);
+  --nova-badge-solid-bg: var(--nova-text);
+  --nova-badge-solid-fg: var(--nova-text-on-brand);
+  --nova-badge-subtle-bg: var(--nova-bg-muted);
+}
+
+/* ---- Sizes ------------------------------------------------------------- */
+.nova-badge--sm {
+  font-size: var(--nova-text-xs);
+  padding: 0 var(--nova-space-2);
+  min-height: var(--nova-space-4);
+}
+
+.nova-badge--md {
+  font-size: var(--nova-text-xs);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  min-height: var(--nova-space-5);
+}
+
+.nova-badge--lg {
+  font-size: var(--nova-text-sm);
+  padding: var(--nova-space-1) var(--nova-space-3);
+  min-height: var(--nova-space-6);
+}
+
+/* ---- Tones ------------------------------------------------------------- */
+.nova-badge--neutral {
+  --nova-badge-color: var(--nova-text-muted);
+  --nova-badge-solid-bg: var(--nova-text-muted);
+  --nova-badge-solid-fg: var(--nova-text-on-brand);
+  --nova-badge-subtle-bg: var(--nova-bg-muted);
+}
+
+.nova-badge--primary {
+  --nova-badge-color: var(--nova-primary-text);
+  --nova-badge-solid-bg: var(--nova-primary);
+  --nova-badge-solid-fg: var(--nova-text-on-brand);
+  --nova-badge-subtle-bg: var(--nova-primary-subtle);
+}
+
+.nova-badge--success {
+  --nova-badge-color: var(--nova-success);
+  --nova-badge-solid-bg: var(--nova-success);
+  --nova-badge-solid-fg: var(--nova-text-on-brand);
+  --nova-badge-subtle-bg: var(--nova-success-subtle);
+}
+
+.nova-badge--warning {
+  --nova-badge-color: var(--nova-warning);
+  --nova-badge-solid-bg: var(--nova-warning);
+  --nova-badge-solid-fg: var(--nova-text-on-brand);
+  --nova-badge-subtle-bg: var(--nova-warning-subtle);
+}
+
+.nova-badge--danger {
+  --nova-badge-color: var(--nova-danger);
+  --nova-badge-solid-bg: var(--nova-danger);
+  --nova-badge-solid-fg: var(--nova-text-on-brand);
+  --nova-badge-subtle-bg: var(--nova-danger-subtle);
+}
+
+.nova-badge--info {
+  --nova-badge-color: var(--nova-info);
+  --nova-badge-solid-bg: var(--nova-info);
+  --nova-badge-solid-fg: var(--nova-text-on-brand);
+  --nova-badge-subtle-bg: var(--nova-info-subtle);
+}
+
+/* ---- Variants ---------------------------------------------------------- */
+.nova-badge--solid {
+  background: var(--nova-badge-solid-bg);
+  color: var(--nova-badge-solid-fg);
+  border-color: transparent;
+}
+
+.nova-badge--soft {
+  background: var(--nova-badge-subtle-bg);
+  color: var(--nova-badge-color);
+  border-color: transparent;
+}
+
+.nova-badge--outline {
+  background: transparent;
+  color: var(--nova-badge-color);
+  border-color: currentColor;
+}
+
+/* ---- Dot --------------------------------------------------------------- */
+.nova-badge__dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: var(--nova-radius-full);
+  background: currentColor;
+  flex: none;
+}
+
+.nova-badge--solid .nova-badge__dot {
+  background: var(--nova-badge-solid-fg);
+}

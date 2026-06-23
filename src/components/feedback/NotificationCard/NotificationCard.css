@@ -1,0 +1,165 @@
+.nova-notification-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-4);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-md);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  overflow: hidden;
+  inline-size: 100%;
+  max-inline-size: 24rem;
+}
+
+.nova-notification-card__icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--nova-space-6);
+  block-size: var(--nova-space-6);
+  color: var(--nova-text-muted);
+}
+
+.nova-notification-card__icon svg {
+  inline-size: var(--nova-space-5);
+  block-size: var(--nova-space-5);
+}
+
+.nova-notification-card__content {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-notification-card__title {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-notification-card__description {
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+  line-height: var(--nova-leading-normal);
+}
+
+.nova-notification-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2);
+  margin-block-start: var(--nova-space-2);
+}
+
+.nova-notification-card__dismiss {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--nova-space-6);
+  block-size: var(--nova-space-6);
+  margin: calc(var(--nova-space-1) * -1);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--nova-text-subtle);
+  border-radius: var(--nova-radius-sm);
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-ease),
+    background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-notification-card__dismiss:hover {
+  color: var(--nova-text);
+  background: var(--nova-surface-hover);
+}
+
+.nova-notification-card__dismiss svg {
+  inline-size: var(--nova-space-4);
+  block-size: var(--nova-space-4);
+}
+
+/* ---- Auto-dismiss timer bar -------------------------------------------- */
+.nova-notification-card__timer {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  block-size: 3px;
+  inline-size: 100%;
+  transform-origin: left center;
+  background: var(--nova-primary);
+  animation: nova-notification-card-timer
+    var(--nova-notification-card-duration, 5000ms) linear forwards;
+}
+
+@keyframes nova-notification-card-timer {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* ---- Tones ------------------------------------------------------------- */
+.nova-notification-card--primary {
+  border-color: var(--nova-primary);
+}
+.nova-notification-card--primary .nova-notification-card__icon {
+  color: var(--nova-primary);
+}
+.nova-notification-card--primary .nova-notification-card__timer {
+  background: var(--nova-primary);
+}
+
+.nova-notification-card--success {
+  border-color: var(--nova-success);
+}
+.nova-notification-card--success .nova-notification-card__icon {
+  color: var(--nova-success);
+}
+.nova-notification-card--success .nova-notification-card__timer {
+  background: var(--nova-success);
+}
+
+.nova-notification-card--warning {
+  border-color: var(--nova-warning);
+}
+.nova-notification-card--warning .nova-notification-card__icon {
+  color: var(--nova-warning);
+}
+.nova-notification-card--warning .nova-notification-card__timer {
+  background: var(--nova-warning);
+}
+
+.nova-notification-card--danger {
+  border-color: var(--nova-danger);
+}
+.nova-notification-card--danger .nova-notification-card__icon {
+  color: var(--nova-danger);
+}
+.nova-notification-card--danger .nova-notification-card__timer {
+  background: var(--nova-danger);
+}
+
+.nova-notification-card--info {
+  border-color: var(--nova-info);
+}
+.nova-notification-card--info .nova-notification-card__icon {
+  color: var(--nova-info);
+}
+.nova-notification-card--info .nova-notification-card__timer {
+  background: var(--nova-info);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-notification-card__timer {
+    animation-timing-function: linear;
+  }
+}

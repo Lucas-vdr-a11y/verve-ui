@@ -1,0 +1,138 @@
+/* Hero — large section header with optional media split. */
+.nova-hero {
+  box-sizing: border-box;
+  display: flex;
+  gap: var(--nova-space-10);
+  align-items: center;
+  width: 100%;
+  color: var(--nova-text);
+  border-radius: var(--nova-radius-xl);
+}
+
+/* ---- Sizes (vertical rhythm) ------------------------------------------- */
+.nova-hero--sm {
+  padding-block: var(--nova-space-10);
+  padding-inline: var(--nova-space-6);
+}
+
+.nova-hero--md {
+  padding-block: var(--nova-space-16);
+  padding-inline: var(--nova-space-8);
+}
+
+.nova-hero--lg {
+  padding-block: var(--nova-space-24);
+  padding-inline: var(--nova-space-10);
+}
+
+/* ---- Backgrounds ------------------------------------------------------- */
+.nova-hero--bg-none {
+  background: transparent;
+}
+
+.nova-hero--bg-subtle {
+  background: var(--nova-bg-subtle);
+}
+
+/* Hero gradient MAY reference the brand scale per the contract. */
+.nova-hero--bg-gradient {
+  background-image: linear-gradient(
+    135deg,
+    var(--nova-brand-600),
+    var(--nova-brand-400)
+  );
+  color: var(--nova-text-on-brand);
+}
+
+.nova-hero--bg-gradient .nova-hero__eyebrow,
+.nova-hero--bg-gradient .nova-hero__subtitle {
+  color: var(--nova-text-on-brand);
+  opacity: 0.85;
+}
+
+/* ---- Content column ---------------------------------------------------- */
+.nova-hero__content {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+}
+
+.nova-hero--center {
+  justify-content: center;
+}
+
+.nova-hero--center .nova-hero__content {
+  align-items: center;
+  text-align: center;
+}
+
+.nova-hero--start .nova-hero__content {
+  align-items: flex-start;
+  text-align: start;
+}
+
+.nova-hero__eyebrow {
+  margin: 0;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--nova-primary-text);
+}
+
+.nova-hero__title {
+  margin: 0;
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  color: inherit;
+}
+
+.nova-hero--sm .nova-hero__title {
+  font-size: var(--nova-text-3xl);
+}
+
+.nova-hero--md .nova-hero__title {
+  font-size: var(--nova-text-4xl);
+}
+
+.nova-hero--lg .nova-hero__title {
+  font-size: var(--nova-text-5xl);
+}
+
+.nova-hero__subtitle {
+  margin: 0;
+  max-width: 42rem;
+  font-size: var(--nova-text-lg);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text-muted);
+}
+
+.nova-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-3);
+  margin-top: var(--nova-space-2);
+}
+
+.nova-hero--center .nova-hero__actions {
+  justify-content: center;
+}
+
+/* ---- Media split ------------------------------------------------------- */
+.nova-hero__media {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+@media (max-width: 48rem) {
+  .nova-hero--split {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nova-hero__media {
+    order: -1;
+  }
+}

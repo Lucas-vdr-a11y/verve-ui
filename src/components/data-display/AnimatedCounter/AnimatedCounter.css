@@ -1,0 +1,16 @@
+.nova-animated-counter {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--nova-space-1);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-animated-counter__value {
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-animated-counter__affix {
+  color: var(--nova-text-muted);
+}

@@ -1,0 +1,52 @@
+.nova-glowing-border {
+  --nova-glow-angle: 0deg;
+  --nova-glow-spread: 60deg;
+  --nova-glow-opacity: 0;
+  --nova-glow-border-width: 2px;
+
+  position: relative;
+  border-radius: var(--nova-radius-xl);
+  padding: var(--nova-glow-border-width);
+  background: var(--nova-border);
+  isolation: isolate;
+}
+
+/* The rotating conic glow, clipped to the border ring via a mask. */
+.nova-glowing-border__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: var(--nova-glow-opacity);
+  background: conic-gradient(
+    from var(--nova-glow-angle) at 50% 50%,
+    transparent 0deg,
+    rgb(99 102 241 / 0.9) calc(var(--nova-glow-spread) * 0.5),
+    rgb(168 85 247 / 0.9) var(--nova-glow-spread),
+    transparent calc(var(--nova-glow-spread) * 2)
+  );
+  /* Keep the glow only on the padding/border ring. */
+  -webkit-mask: linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  filter: blur(1px);
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+  pointer-events: none;
+}
+
+.nova-glowing-border__content {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(var(--nova-radius-xl) - var(--nova-glow-border-width));
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-glowing-border__glow {
+    transition: none;
+  }
+}

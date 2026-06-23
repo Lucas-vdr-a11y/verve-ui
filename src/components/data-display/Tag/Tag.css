@@ -1,0 +1,159 @@
+.nova-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  max-width: 100%;
+  border-radius: var(--nova-radius-sm);
+  border: 1px solid transparent;
+  --nova-tag-color: var(--nova-text-muted);
+  --nova-tag-solid-bg: var(--nova-text-muted);
+  --nova-tag-solid-fg: var(--nova-text-on-brand);
+  --nova-tag-subtle-bg: var(--nova-bg-muted);
+}
+
+.nova-tag__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nova-tag__leading {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+
+/* ---- Sizes ------------------------------------------------------------- */
+.nova-tag--sm {
+  font-size: var(--nova-text-xs);
+  padding: 0 var(--nova-space-2);
+  min-height: var(--nova-space-5);
+}
+
+.nova-tag--md {
+  font-size: var(--nova-text-sm);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  min-height: var(--nova-space-6);
+}
+
+.nova-tag--lg {
+  font-size: var(--nova-text-md);
+  padding: var(--nova-space-1) var(--nova-space-3);
+  min-height: var(--nova-space-8);
+}
+
+/* Tighten right padding when a remove button is present. */
+.nova-tag--removable.nova-tag--sm {
+  padding-right: var(--nova-space-1);
+}
+.nova-tag--removable.nova-tag--md {
+  padding-right: var(--nova-space-1);
+}
+.nova-tag--removable.nova-tag--lg {
+  padding-right: var(--nova-space-2);
+}
+
+/* ---- Tones ------------------------------------------------------------- */
+.nova-tag--neutral {
+  --nova-tag-color: var(--nova-text-muted);
+  --nova-tag-solid-bg: var(--nova-text-muted);
+  --nova-tag-solid-fg: var(--nova-text-on-brand);
+  --nova-tag-subtle-bg: var(--nova-bg-muted);
+}
+
+.nova-tag--primary {
+  --nova-tag-color: var(--nova-primary-text);
+  --nova-tag-solid-bg: var(--nova-primary);
+  --nova-tag-solid-fg: var(--nova-text-on-brand);
+  --nova-tag-subtle-bg: var(--nova-primary-subtle);
+}
+
+.nova-tag--success {
+  --nova-tag-color: var(--nova-success);
+  --nova-tag-solid-bg: var(--nova-success);
+  --nova-tag-solid-fg: var(--nova-text-on-brand);
+  --nova-tag-subtle-bg: var(--nova-success-subtle);
+}
+
+.nova-tag--warning {
+  --nova-tag-color: var(--nova-warning);
+  --nova-tag-solid-bg: var(--nova-warning);
+  --nova-tag-solid-fg: var(--nova-text-on-brand);
+  --nova-tag-subtle-bg: var(--nova-warning-subtle);
+}
+
+.nova-tag--danger {
+  --nova-tag-color: var(--nova-danger);
+  --nova-tag-solid-bg: var(--nova-danger);
+  --nova-tag-solid-fg: var(--nova-text-on-brand);
+  --nova-tag-subtle-bg: var(--nova-danger-subtle);
+}
+
+.nova-tag--info {
+  --nova-tag-color: var(--nova-info);
+  --nova-tag-solid-bg: var(--nova-info);
+  --nova-tag-solid-fg: var(--nova-text-on-brand);
+  --nova-tag-subtle-bg: var(--nova-info-subtle);
+}
+
+/* ---- Variants ---------------------------------------------------------- */
+.nova-tag--solid {
+  background: var(--nova-tag-solid-bg);
+  color: var(--nova-tag-solid-fg);
+  border-color: transparent;
+}
+
+.nova-tag--soft {
+  background: var(--nova-tag-subtle-bg);
+  color: var(--nova-tag-color);
+  border-color: transparent;
+}
+
+.nova-tag--outline {
+  background: transparent;
+  color: var(--nova-tag-color);
+  border-color: currentColor;
+}
+
+/* ---- Remove button ----------------------------------------------------- */
+.nova-tag__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 1.25em;
+  height: 1.25em;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: currentColor;
+  background: transparent;
+  border: none;
+  border-radius: var(--nova-radius-full);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-tag__remove:hover {
+  opacity: 1;
+  background: rgb(0 0 0 / 0.08);
+}
+
+.nova-tag--solid .nova-tag__remove:hover {
+  background: rgb(255 255 255 / 0.22);
+}
+
+.nova-tag__remove:focus-visible {
+  outline: none;
+  opacity: 1;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-tag__remove-icon {
+  display: block;
+}

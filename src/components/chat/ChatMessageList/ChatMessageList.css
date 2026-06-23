@@ -1,0 +1,58 @@
+.nova-chat-message-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: var(--nova-space-4);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  background: var(--nova-bg);
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-chat-message-list {
+    scroll-behavior: auto;
+  }
+}
+
+.nova-chat-message-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+}
+
+.nova-chat-message-list__empty {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  padding: var(--nova-space-8);
+}
+
+.nova-chat-date-separator {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  margin: var(--nova-space-2) 0;
+  color: var(--nova-text-subtle);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-chat-date-separator::before,
+.nova-chat-date-separator::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--nova-border);
+}
+
+.nova-chat-date-separator__label {
+  flex: 0 0 auto;
+  font-weight: var(--nova-font-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}

@@ -1,0 +1,51 @@
+/* BlankCenteredLayout — minimal centered single-column shell. */
+.nova-blank-centered {
+  box-sizing: border-box;
+  display: block;
+  min-height: 100%;
+  width: 100%;
+  color: var(--nova-text);
+  background: var(--nova-bg);
+}
+
+.nova-blank-centered__main {
+  box-sizing: border-box;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  min-height: 100%;
+  padding: var(--nova-space-12) var(--nova-space-6);
+}
+
+.nova-blank-centered--center-y .nova-blank-centered__main {
+  align-content: center;
+}
+
+.nova-blank-centered__inner {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--nova-space-6);
+  width: 100%;
+  max-width: var(--nova-blank-centered-max-w);
+}
+
+.nova-blank-centered__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-lg);
+  color: var(--nova-text);
+}
+
+.nova-blank-centered__content {
+  display: grid;
+  gap: var(--nova-space-4);
+}
+
+.nova-blank-centered__footer {
+  font-size: var(--nova-text-sm);
+  text-align: center;
+  color: var(--nova-text-muted);
+}

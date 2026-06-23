@@ -1,0 +1,150 @@
+/* LampHeader — two blurred conic cones meeting at a point, a hot line, and a
+ * radial glow that fans down onto the heading below. */
+
+.nova-lamp {
+  --nova-lamp-color: var(--nova-primary);
+  --nova-lamp-h: 22rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  background: var(--nova-bg);
+  padding-bottom: var(--nova-space-12);
+}
+
+.nova-lamp--sm {
+  --nova-lamp-h: 15rem;
+}
+.nova-lamp--lg {
+  --nova-lamp-h: 30rem;
+}
+
+.nova-lamp__stage {
+  position: relative;
+  width: 100%;
+  height: var(--nova-lamp-h);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* the two fanning cones */
+.nova-lamp__cone {
+  position: absolute;
+  top: 0;
+  width: min(34rem, 46%);
+  height: 100%;
+  filter: blur(0.5rem);
+  opacity: 0;
+  animation: nova-lamp-fan var(--nova-duration-slow) var(--nova-ease-out)
+    forwards;
+}
+.nova-lamp__cone--left {
+  right: 50%;
+  background-image: conic-gradient(
+    from 70deg at center top,
+    var(--nova-lamp-color),
+    transparent 72%
+  );
+  -webkit-mask-image: linear-gradient(to left, white, transparent 92%);
+  mask-image: linear-gradient(to left, white, transparent 92%);
+  transform-origin: top right;
+}
+.nova-lamp__cone--right {
+  left: 50%;
+  background-image: conic-gradient(
+    from 290deg at center top,
+    transparent 28%,
+    var(--nova-lamp-color)
+  );
+  -webkit-mask-image: linear-gradient(to right, white, transparent 92%);
+  mask-image: linear-gradient(to right, white, transparent 92%);
+  transform-origin: top left;
+  animation-delay: 60ms;
+}
+
+/* the hot horizontal line at the apex */
+.nova-lamp__line {
+  position: absolute;
+  top: 0;
+  width: min(28rem, 70%);
+  height: 2px;
+  background: var(--nova-lamp-color);
+  border-radius: var(--nova-radius-full);
+  box-shadow: 0 0 16px 2px var(--nova-lamp-color);
+  opacity: 0;
+  transform: scaleX(0.3);
+  animation: nova-lamp-line var(--nova-duration-slow) var(--nova-ease-out)
+    120ms forwards;
+}
+
+/* soft pool of light spilling downward */
+.nova-lamp__glow {
+  position: absolute;
+  top: -4rem;
+  width: min(26rem, 65%);
+  height: 16rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    var(--nova-lamp-color),
+    transparent 70%
+  );
+  opacity: 0;
+  filter: blur(2rem);
+  animation: nova-lamp-glow var(--nova-duration-slow) var(--nova-ease-out)
+    100ms forwards;
+}
+
+.nova-lamp__content {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(var(--nova-lamp-h) * -0.42);
+  text-align: center;
+  padding: 0 var(--nova-space-6);
+  color: var(--nova-text);
+}
+
+@keyframes nova-lamp-fan {
+  from {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+  to {
+    opacity: 0.85;
+    transform: scaleX(1);
+  }
+}
+@keyframes nova-lamp-line {
+  from {
+    opacity: 0;
+    transform: scaleX(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes nova-lamp-glow {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 0.55;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-lamp__cone,
+  .nova-lamp__line,
+  .nova-lamp__glow {
+    animation-duration: 1ms;
+    animation-delay: 0ms;
+  }
+}

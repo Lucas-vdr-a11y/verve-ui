@@ -1,0 +1,71 @@
+.nova-stacked-bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-stacked-bar-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nova-stacked-bar-chart__baseline {
+  stroke: var(--nova-border);
+  stroke-width: 1;
+}
+
+.nova-stacked-bar-chart__seg {
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    filter var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-stacked-bar-chart__group:hover .nova-stacked-bar-chart__seg {
+  filter: brightness(1.08);
+}
+
+.nova-stacked-bar-chart:hover
+  .nova-stacked-bar-chart__group:not(:hover)
+  .nova-stacked-bar-chart__seg {
+  opacity: 0.55;
+}
+
+.nova-stacked-bar-chart__value {
+  fill: var(--nova-text);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-stacked-bar-chart__label {
+  fill: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-stacked-bar-chart__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2) var(--nova-space-4);
+}
+
+.nova-stacked-bar-chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-stacked-bar-chart__swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--nova-radius-xs);
+  flex: none;
+}
+
+.nova-stacked-bar-chart__legend-label {
+  color: var(--nova-text);
+}

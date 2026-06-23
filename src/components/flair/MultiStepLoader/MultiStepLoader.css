@@ -1,0 +1,92 @@
+.nova-multi-step-loader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-5);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  color: var(--nova-text);
+  width: fit-content;
+  min-width: 16rem;
+}
+
+.nova-multi-step-loader__step {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-multi-step-loader__step--pending {
+  opacity: 0.45;
+}
+
+.nova-multi-step-loader__step--active {
+  opacity: 1;
+}
+
+.nova-multi-step-loader__step--active .nova-multi-step-loader__label {
+  color: var(--nova-text);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-multi-step-loader__step--done {
+  opacity: 1;
+}
+
+.nova-multi-step-loader__step--done .nova-multi-step-loader__label {
+  color: var(--nova-text-muted);
+}
+
+.nova-multi-step-loader__marker {
+  display: inline-grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-multi-step-loader__step--done .nova-multi-step-loader__marker {
+  background: var(--nova-success);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-multi-step-loader__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-border-strong);
+}
+
+.nova-multi-step-loader__step--active .nova-multi-step-loader__dot {
+  background: var(--nova-primary);
+}
+
+.nova-multi-step-loader__spinner {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: var(--nova-radius-full);
+  border: 2px solid var(--nova-primary-subtle);
+  border-top-color: var(--nova-primary);
+  animation: nova-multi-step-loader-spin 0.7s linear infinite;
+}
+
+.nova-multi-step-loader__label {
+  line-height: var(--nova-leading-snug);
+}
+
+@keyframes nova-multi-step-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-multi-step-loader__spinner {
+    animation: none;
+  }
+}

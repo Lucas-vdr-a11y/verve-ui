@@ -1,0 +1,119 @@
+.nova-hero-highlight {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 24rem;
+  padding: var(--nova-space-16) var(--nova-space-6);
+  background: var(--nova-bg);
+  --nova-hh-x: 50%;
+  --nova-hh-y: 50%;
+}
+
+.nova-hero-highlight__pattern,
+.nova-hero-highlight__reveal {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Dim base pattern. */
+.nova-hero-highlight--dot .nova-hero-highlight__pattern {
+  background-image: radial-gradient(
+    var(--nova-border-strong) 1px,
+    transparent 1px
+  );
+  background-size: 16px 16px;
+  opacity: 0.4;
+}
+.nova-hero-highlight--grid .nova-hero-highlight__pattern {
+  background-image:
+    linear-gradient(to right, var(--nova-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--nova-border) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.5;
+}
+
+/* Brighter pattern, masked to a radius under the cursor. */
+.nova-hero-highlight--dot .nova-hero-highlight__reveal {
+  background-image: radial-gradient(
+    var(--nova-primary) 1px,
+    transparent 1px
+  );
+  background-size: 16px 16px;
+}
+.nova-hero-highlight--grid .nova-hero-highlight__reveal {
+  background-image:
+    linear-gradient(to right, var(--nova-primary) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--nova-primary) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.nova-hero-highlight__reveal {
+  opacity: 0.55;
+  -webkit-mask-image: radial-gradient(
+    180px circle at var(--nova-hh-x) var(--nova-hh-y),
+    #000 0%,
+    transparent 70%
+  );
+  mask-image: radial-gradient(
+    180px circle at var(--nova-hh-x) var(--nova-hh-y),
+    #000 0%,
+    transparent 70%
+  );
+}
+
+.nova-hero-highlight__content {
+  position: relative;
+  z-index: var(--nova-z-base);
+  text-align: center;
+  color: var(--nova-text);
+}
+
+/* ---- inline Highlight ---- */
+.nova-highlight {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0 0.15em;
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-highlight__fill {
+  position: absolute;
+  left: 0;
+  bottom: 0.05em;
+  height: 0.85em;
+  width: 100%;
+  border-radius: var(--nova-radius-sm);
+  background: linear-gradient(
+    120deg,
+    rgb(99 102 241 / 0.35),
+    rgb(129 140 248 / 0.55)
+  );
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: nova-highlight-sweep var(--nova-duration-slow) var(--nova-ease-out)
+    forwards;
+  z-index: 0;
+}
+
+.nova-highlight__text {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes nova-highlight-sweep {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-highlight__fill {
+    animation: none;
+    transform: scaleX(1);
+  }
+}

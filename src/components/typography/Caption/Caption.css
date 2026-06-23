@@ -1,0 +1,27 @@
+.nova-caption {
+  margin: 0;
+  display: inline-block;
+  color: var(--nova-text-muted);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+}
+
+/* ---- Tone --------------------------------------------------------------- */
+.nova-caption--default {
+  color: var(--nova-text);
+}
+.nova-caption--muted {
+  color: var(--nova-text-muted);
+}
+.nova-caption--subtle {
+  color: var(--nova-text-subtle);
+}
+
+/* ---- Uppercase ---------------------------------------------------------- */
+.nova-caption--uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: var(--nova-font-semibold);
+}

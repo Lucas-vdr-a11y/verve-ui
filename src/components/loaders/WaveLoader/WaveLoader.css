@@ -1,0 +1,55 @@
+.nova-wave-loader {
+  --nova-loader-color: var(--nova-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--nova-wave-size, 36px) * 0.16);
+  height: var(--nova-wave-size, 36px);
+  color: var(--nova-loader-color);
+}
+
+.nova-wave-loader[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-wave-loader[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-wave-loader[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-wave-loader[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-wave-loader[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-wave-loader__bar {
+  width: calc(var(--nova-wave-size, 36px) * 0.16);
+  height: 100%;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-loader-color);
+  /* travelling sine wave: each bar lags the previous one */
+  animation: nova-wave-travel 1.1s var(--nova-ease) infinite;
+  animation-delay: calc(var(--nova-wave-i) / var(--nova-wave-n) * -1.1s);
+}
+
+@keyframes nova-wave-travel {
+  0%,
+  100% {
+    transform: scaleY(0.32);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-wave-loader__bar {
+    animation: none;
+    transform: scaleY(calc(0.4 + 0.6 * (var(--nova-wave-i) / var(--nova-wave-n))));
+    opacity: 0.8;
+  }
+}

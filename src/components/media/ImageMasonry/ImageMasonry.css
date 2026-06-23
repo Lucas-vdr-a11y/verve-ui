@@ -1,0 +1,89 @@
+.nova-image-masonry {
+  column-count: var(--nova-masonry-columns, 3);
+  column-gap: var(--nova-masonry-gap, var(--nova-space-4));
+  font-family: var(--nova-font-sans);
+}
+
+@media (max-width: 64rem) {
+  .nova-image-masonry {
+    column-count: min(var(--nova-masonry-columns, 3), 2);
+  }
+}
+
+@media (max-width: 40rem) {
+  .nova-image-masonry {
+    column-count: 1;
+  }
+}
+
+/* ---- Item -------------------------------------------------------------- */
+.nova-image-masonry__item {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  margin: 0 0 var(--nova-masonry-gap, var(--nova-space-4));
+  padding: 0;
+  border: none;
+  background: var(--nova-bg-muted);
+  overflow: hidden;
+  /* Avoid items being split across columns. */
+  break-inside: avoid;
+  line-height: 0;
+}
+
+.nova-image-masonry--rounded .nova-image-masonry__item {
+  border-radius: var(--nova-radius-md);
+}
+
+.nova-image-masonry__item--button {
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  text-align: start;
+}
+
+.nova-image-masonry__item--button:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-image-masonry__img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+  transition: transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-image-masonry__item--button:hover .nova-image-masonry__img,
+.nova-image-masonry__item--button:focus-visible .nova-image-masonry__img {
+  transform: scale(1.04);
+}
+
+/* ---- Caption ----------------------------------------------------------- */
+.nova-image-masonry__caption {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  padding: var(--nova-space-4) var(--nova-space-3) var(--nova-space-3);
+  color: var(--nova-gray-0);
+  background: linear-gradient(
+    to top,
+    rgb(15 23 42 / 0.75),
+    rgb(15 23 42 / 0)
+  );
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  opacity: 0;
+  transform: translateY(var(--nova-space-2));
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+  pointer-events: none;
+}
+
+.nova-image-masonry__item:hover .nova-image-masonry__caption,
+.nova-image-masonry__item--button:focus-visible .nova-image-masonry__caption {
+  opacity: 1;
+  transform: translateY(0);
+}

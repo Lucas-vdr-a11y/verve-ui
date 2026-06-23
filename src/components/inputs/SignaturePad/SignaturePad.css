@@ -1,0 +1,45 @@
+.nova-signature {
+  display: inline-flex;
+  flex-direction: column;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-signature__surface {
+  position: relative;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  overflow: hidden;
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-signature__surface:focus-within {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-signature__canvas {
+  display: block;
+  cursor: crosshair;
+}
+
+.nova-signature--disabled {
+  opacity: 0.6;
+}
+
+.nova-signature--disabled .nova-signature__canvas {
+  cursor: not-allowed;
+}
+
+.nova-signature__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nova-text-subtle);
+  font-size: var(--nova-text-sm);
+  pointer-events: none;
+  user-select: none;
+}

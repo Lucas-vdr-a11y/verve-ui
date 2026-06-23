@@ -1,0 +1,19 @@
+.nova-toggle-group {
+  display: inline-flex;
+  align-items: stretch;
+  gap: var(--nova-space-2);
+}
+
+.nova-toggle-group--full {
+  display: flex;
+  width: 100%;
+}
+
+.nova-toggle-group--full .nova-toggle-group__item {
+  flex: 1 1 0;
+}
+
+/* Items inherit .nova-toggle styling; only group-level tweaks live here. */
+.nova-toggle-group__item {
+  flex: 0 0 auto;
+}

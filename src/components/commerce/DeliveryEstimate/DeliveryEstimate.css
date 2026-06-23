@@ -1,0 +1,131 @@
+/* DeliveryEstimate — delivery date/window + optional shipping options. */
+.nova-delivery-estimate {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  color: var(--nova-text);
+}
+
+.nova-delivery-estimate__summary {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+}
+
+.nova-delivery-estimate__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-delivery-estimate__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.nova-delivery-estimate__label {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+.nova-delivery-estimate__date {
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-delivery-estimate__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+}
+
+.nova-delivery-estimate__option {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  box-sizing: border-box;
+  padding: var(--nova-space-3);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-delivery-estimate__option:hover:not(:disabled) {
+  border-color: var(--nova-border-strong);
+  background-color: var(--nova-surface-hover);
+}
+
+.nova-delivery-estimate__option:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+  border-color: var(--nova-primary);
+}
+
+.nova-delivery-estimate__option--selected {
+  border-color: var(--nova-primary);
+  background-color: var(--nova-primary-subtle);
+}
+
+.nova-delivery-estimate__option:disabled {
+  cursor: not-allowed;
+  color: var(--nova-text-subtle);
+  background-color: var(--nova-bg-subtle);
+}
+
+.nova-delivery-estimate__radio {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-surface);
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-delivery-estimate__option--selected .nova-delivery-estimate__radio {
+  border-color: var(--nova-primary);
+  box-shadow: inset 0 0 0 3px var(--nova-primary);
+}
+
+.nova-delivery-estimate__option-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nova-delivery-estimate__option-label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-delivery-estimate__option-detail {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+.nova-delivery-estimate__option-price {
+  flex: none;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  font-variant-numeric: tabular-nums;
+}

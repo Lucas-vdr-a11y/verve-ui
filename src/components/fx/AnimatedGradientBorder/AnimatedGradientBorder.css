@@ -1,0 +1,75 @@
+@property --nova-gborder-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.nova-gborder {
+  position: relative;
+  border-radius: var(--nova-gborder-radius);
+  background: var(--nova-surface);
+  isolation: isolate;
+}
+
+.nova-gborder__ring {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: var(--nova-gborder-width);
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--nova-gborder-angle),
+    var(--nova-gborder-stops)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: nova-gborder-spin var(--nova-gborder-duration) linear infinite;
+}
+
+/* Outer blurred halo mirroring the ring. */
+.nova-gborder__halo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: conic-gradient(
+    from var(--nova-gborder-angle),
+    var(--nova-gborder-stops)
+  );
+  filter: blur(14px);
+  transform: scale(0.96);
+  animation: nova-gborder-spin var(--nova-gborder-duration) linear infinite;
+}
+
+.nova-gborder--glow .nova-gborder__halo {
+  opacity: 0.55;
+}
+
+.nova-gborder__content {
+  position: relative;
+  z-index: 2;
+  border-radius: inherit;
+  height: 100%;
+}
+
+@keyframes nova-gborder-spin {
+  to {
+    --nova-gborder-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-gborder__ring,
+  .nova-gborder__halo {
+    animation: none;
+  }
+}

@@ -1,0 +1,103 @@
+.nova-3d-button {
+  --nova-3d-depth: 6px;
+  --nova-3d-face: var(--nova-primary);
+  --nova-3d-edge: var(--nova-brand-800);
+  --nova-3d-text: var(--nova-text-on-brand);
+
+  position: relative;
+  display: inline-flex;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  border-radius: var(--nova-radius-lg);
+  font: var(--nova-font-semibold) var(--nova-text-md) / 1 var(--nova-font-sans);
+}
+
+.nova-3d-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* The darker edge that gives the button depth. */
+.nova-3d-button__edge {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--nova-3d-edge);
+  transform: translateY(var(--nova-3d-depth));
+}
+
+.nova-3d-button__face {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-3) var(--nova-space-6);
+  border-radius: inherit;
+  background: var(--nova-3d-face);
+  color: var(--nova-3d-text);
+  transform: translateY(calc(var(--nova-3d-depth) * -1));
+  transition: transform var(--nova-duration-fast) var(--nova-ease-out);
+  will-change: transform;
+}
+
+.nova-3d-button:hover:not(:disabled) .nova-3d-button__face {
+  transform: translateY(calc(var(--nova-3d-depth) * -1.4));
+}
+
+.nova-3d-button:active:not(:disabled) .nova-3d-button__face {
+  transform: translateY(-1px);
+  transition-duration: 40ms;
+}
+
+.nova-3d-button:focus-visible {
+  outline: none;
+}
+.nova-3d-button:focus-visible .nova-3d-button__edge {
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* Sizes */
+.nova-3d-button--sm {
+  --nova-3d-depth: 4px;
+  font-size: var(--nova-text-sm);
+}
+.nova-3d-button--sm .nova-3d-button__face {
+  padding: var(--nova-space-2) var(--nova-space-4);
+}
+.nova-3d-button--lg {
+  --nova-3d-depth: 8px;
+  font-size: var(--nova-text-lg);
+}
+.nova-3d-button--lg .nova-3d-button__face {
+  padding: var(--nova-space-4) var(--nova-space-8);
+}
+
+/* Variants */
+.nova-3d-button--primary {
+  --nova-3d-face: var(--nova-primary);
+  --nova-3d-edge: var(--nova-brand-800);
+  --nova-3d-text: var(--nova-text-on-brand);
+}
+.nova-3d-button--neutral {
+  --nova-3d-face: var(--nova-surface-raised);
+  --nova-3d-edge: var(--nova-border-strong);
+  --nova-3d-text: var(--nova-text);
+}
+.nova-3d-button--danger {
+  --nova-3d-face: var(--nova-danger);
+  --nova-3d-edge: var(--nova-danger-600);
+  --nova-3d-text: var(--nova-gray-0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-3d-button__face {
+    transition: none;
+  }
+  .nova-3d-button:hover:not(:disabled) .nova-3d-button__face {
+    transform: translateY(calc(var(--nova-3d-depth) * -1));
+  }
+}

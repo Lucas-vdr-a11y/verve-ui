@@ -1,0 +1,71 @@
+.nova-spotlight {
+  --nova-spotlight-x: 50%;
+  --nova-spotlight-y: 50%;
+  --nova-spotlight-size: 220px;
+  --nova-spotlight-opacity: 0;
+  --nova-spotlight-color: rgb(99 102 241 / 0.35);
+
+  position: relative;
+  min-width: 14rem;
+  min-height: 8rem;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* The spotlight glow. */
+.nova-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    var(--nova-spotlight-size) var(--nova-spotlight-size) at
+      var(--nova-spotlight-x) var(--nova-spotlight-y),
+    var(--nova-spotlight-color),
+    transparent 70%
+  );
+  opacity: var(--nova-spotlight-opacity);
+  transition: opacity var(--nova-duration-slow) var(--nova-ease);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Border highlight tracking the cursor (masked ring). */
+.nova-spotlight--border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    calc(var(--nova-spotlight-size) * 1.1) calc(var(--nova-spotlight-size) * 1.1)
+      at var(--nova-spotlight-x) var(--nova-spotlight-y),
+    var(--nova-primary),
+    transparent 65%
+  );
+  opacity: var(--nova-spotlight-opacity);
+  transition: opacity var(--nova-duration-slow) var(--nova-ease);
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  z-index: 1;
+}
+
+.nova-spotlight__content {
+  position: relative;
+  z-index: 2;
+  padding: var(--nova-space-6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-spotlight::before,
+  .nova-spotlight--border::after {
+    transition: none;
+  }
+}

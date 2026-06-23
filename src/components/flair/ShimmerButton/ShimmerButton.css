@@ -1,0 +1,141 @@
+.nova-shimmer {
+  --nova-shimmer-color: rgb(255 255 255 / 0.85);
+  --nova-shimmer-duration: 2.5s;
+  --nova-shimmer-bg: var(--nova-gray-900);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-3) var(--nova-space-6);
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-shimmer-bg);
+  color: var(--nova-gray-0);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  cursor: pointer;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-base) var(--nova-ease);
+}
+
+[data-theme="dark"] .nova-shimmer {
+  --nova-shimmer-bg: var(--nova-gray-800);
+}
+
+.nova-shimmer--sm {
+  padding: var(--nova-space-2) var(--nova-space-4);
+  font-size: var(--nova-text-xs);
+}
+.nova-shimmer--lg {
+  padding: var(--nova-space-4) var(--nova-space-8);
+  font-size: var(--nova-text-md);
+}
+
+.nova-shimmer--glow {
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08),
+    0 6px 20px -6px rgb(99 102 241 / 0.55);
+}
+.nova-shimmer--glow:hover {
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12),
+    0 10px 32px -6px rgb(99 102 241 / 0.75);
+}
+
+.nova-shimmer:active {
+  transform: translateY(1px);
+}
+
+.nova-shimmer:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* Rotating sheen ring revealed through the rounded edge. */
+.nova-shimmer__spark {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  -webkit-mask: linear-gradient(#000, #000);
+  mask: linear-gradient(#000, #000);
+}
+
+.nova-shimmer__spark-inner {
+  position: absolute;
+  inset: -150%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    var(--nova-shimmer-color) 40deg,
+    transparent 80deg
+  );
+  animation: nova-shimmer-spin var(--nova-shimmer-duration) linear infinite;
+}
+
+/* Inner backdrop masks the spark so only a thin edge sheen shows. */
+.nova-shimmer__backdrop {
+  position: absolute;
+  inset: 1.5px;
+  z-index: 0;
+  border-radius: inherit;
+  background: var(--nova-shimmer-bg);
+}
+
+.nova-shimmer__content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+}
+
+/* A second diagonal sweep across the face for the glossy pass. */
+.nova-shimmer__content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: linear-gradient(
+    100deg,
+    transparent 25%,
+    var(--nova-shimmer-color) 50%,
+    transparent 75%
+  );
+  background-size: 250% 100%;
+  opacity: 0.3;
+  animation: nova-shimmer-sweep var(--nova-shimmer-duration) ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes nova-shimmer-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes nova-shimmer-sweep {
+  0% {
+    background-position: 150% 0;
+  }
+  60%,
+  100% {
+    background-position: -150% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-shimmer__spark-inner,
+  .nova-shimmer__content::after {
+    animation: none;
+  }
+  .nova-shimmer__content::after {
+    opacity: 0;
+  }
+}

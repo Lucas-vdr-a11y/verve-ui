@@ -1,0 +1,53 @@
+.nova-composer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-1);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-composer-toolbar__group {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+}
+
+.nova-composer-toolbar__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--nova-radius-full);
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-lg);
+  line-height: 0;
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-composer-toolbar__btn:hover:not(:disabled) {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-composer-toolbar__btn--active {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-composer-toolbar__btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.nova-composer-toolbar__selector {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}

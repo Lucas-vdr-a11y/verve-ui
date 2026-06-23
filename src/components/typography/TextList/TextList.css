@@ -1,0 +1,78 @@
+.nova-text-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-normal);
+}
+
+.nova-text-list__item {
+  position: relative;
+}
+
+.nova-text-list__item > .nova-text-list {
+  margin-top: var(--nova-space-2);
+}
+
+/* ---- Native markers (indented) ----------------------------------------- */
+.nova-text-list--marker-disc,
+.nova-text-list--marker-decimal {
+  padding-left: var(--nova-space-6);
+}
+.nova-text-list--marker-disc {
+  list-style: disc;
+}
+.nova-text-list--marker-decimal {
+  list-style: decimal;
+}
+.nova-text-list--marker-disc > .nova-text-list__item,
+.nova-text-list--marker-decimal > .nova-text-list__item {
+  display: list-item;
+}
+.nova-text-list--marker-disc > .nova-text-list__item::marker,
+.nova-text-list--marker-decimal > .nova-text-list__item::marker {
+  color: var(--nova-text-subtle);
+}
+
+/* ---- Custom markers ----------------------------------------------------- */
+.nova-text-list--marker-check > .nova-text-list__item,
+.nova-text-list--marker-dash > .nova-text-list__item {
+  padding-left: var(--nova-space-6);
+}
+.nova-text-list--marker-check > .nova-text-list__item::before,
+.nova-text-list--marker-dash > .nova-text-list__item::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--nova-space-5);
+  text-align: center;
+}
+.nova-text-list--marker-check > .nova-text-list__item::before {
+  content: "\2713"; /* ✓ */
+  color: var(--nova-success);
+  font-weight: var(--nova-font-bold);
+}
+.nova-text-list--marker-dash > .nova-text-list__item::before {
+  content: "\2013"; /* – */
+  color: var(--nova-text-subtle);
+}
+
+/* ---- None --------------------------------------------------------------- */
+.nova-text-list--marker-none {
+  padding-left: 0;
+}
+
+/* ---- Spacing ------------------------------------------------------------ */
+.nova-text-list--spacing-tight > .nova-text-list__item + .nova-text-list__item {
+  margin-top: var(--nova-space-1);
+}
+.nova-text-list--spacing-normal > .nova-text-list__item + .nova-text-list__item {
+  margin-top: var(--nova-space-2);
+}
+.nova-text-list--spacing-relaxed
+  > .nova-text-list__item
+  + .nova-text-list__item {
+  margin-top: var(--nova-space-4);
+}

@@ -1,0 +1,55 @@
+.nova-beam {
+  position: relative;
+  border-radius: inherit;
+}
+
+/* The ring sits exactly over the element's border box. The spark is a small
+   gradient nugget that travels along the perimeter via offset-path. */
+.nova-beam__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: var(--nova-z-base);
+}
+
+.nova-beam__spark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  aspect-ratio: 1;
+  width: var(--nova-beam-size);
+  offset-path: rect(0 auto auto 0 round var(--nova-beam-border));
+  offset-anchor: 0% 50%;
+  background: linear-gradient(
+    to left,
+    var(--nova-beam-from),
+    var(--nova-beam-to),
+    transparent
+  );
+  border-radius: var(--nova-radius-full);
+  filter: drop-shadow(0 0 6px var(--nova-beam-from));
+  animation: nova-beam-travel var(--nova-beam-duration) linear infinite;
+  animation-delay: var(--nova-beam-delay);
+  will-change: offset-distance;
+}
+
+.nova-beam__ring--reverse .nova-beam__spark {
+  animation-direction: reverse;
+  offset-anchor: 100% 50%;
+}
+
+@keyframes nova-beam-travel {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-beam__spark {
+    animation: none;
+  }
+}

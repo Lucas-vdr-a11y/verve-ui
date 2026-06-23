@@ -1,0 +1,132 @@
+.nova-volume-control {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-volume-control--vertical {
+  flex-direction: column-reverse;
+}
+
+/* ---- Sizes ------------------------------------------------------------- */
+.nova-volume-control--sm {
+  --nova-volume-track-length: var(--nova-space-16);
+  --nova-volume-track-thick: var(--nova-space-1);
+  --nova-volume-thumb: var(--nova-space-3);
+  font-size: var(--nova-text-md);
+}
+
+.nova-volume-control--md {
+  --nova-volume-track-length: var(--nova-space-20);
+  --nova-volume-track-thick: 0.3125rem;
+  --nova-volume-thumb: var(--nova-space-4);
+  font-size: var(--nova-text-lg);
+}
+
+.nova-volume-control--lg {
+  --nova-volume-track-length: var(--nova-space-24);
+  --nova-volume-track-thick: var(--nova-space-2);
+  --nova-volume-thumb: var(--nova-space-5);
+  font-size: var(--nova-text-xl);
+}
+
+/* ---- Mute button ------------------------------------------------------- */
+.nova-volume-control__mute {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nova-space-1);
+  color: var(--nova-text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  cursor: pointer;
+  line-height: 0;
+  transition: color var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-volume-control__mute:hover {
+  color: var(--nova-text);
+  background: var(--nova-surface-hover);
+}
+
+.nova-volume-control__mute:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* ---- Track ------------------------------------------------------------- */
+.nova-volume-control__track {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  touch-action: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-muted);
+}
+
+.nova-volume-control__track:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-volume-control--horizontal .nova-volume-control__track {
+  inline-size: var(--nova-volume-track-length);
+  block-size: var(--nova-volume-track-thick);
+}
+
+.nova-volume-control--vertical .nova-volume-control__track {
+  inline-size: var(--nova-volume-track-thick);
+  block-size: var(--nova-volume-track-length);
+}
+
+/* ---- Fill -------------------------------------------------------------- */
+.nova-volume-control__fill {
+  position: absolute;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+}
+
+.nova-volume-control--horizontal .nova-volume-control__fill {
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: var(--nova-volume-fill, 100%);
+}
+
+.nova-volume-control--vertical .nova-volume-control__fill {
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: var(--nova-volume-fill, 100%);
+}
+
+/* ---- Thumb ------------------------------------------------------------- */
+.nova-volume-control__thumb {
+  position: absolute;
+  inline-size: var(--nova-volume-thumb);
+  block-size: var(--nova-volume-thumb);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  border: 2px solid var(--nova-primary);
+  box-shadow: var(--nova-shadow-sm);
+  transition: transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-volume-control--horizontal .nova-volume-control__thumb {
+  inset-block-start: 50%;
+  inset-inline-start: var(--nova-volume-fill, 100%);
+  transform: translate(-50%, -50%);
+}
+
+.nova-volume-control--vertical .nova-volume-control__thumb {
+  inset-inline-start: 50%;
+  inset-block-end: var(--nova-volume-fill, 100%);
+  transform: translate(-50%, 50%);
+}
+
+.nova-volume-control__track:hover .nova-volume-control__thumb,
+.nova-volume-control__track--dragging .nova-volume-control__thumb {
+  box-shadow: var(--nova-shadow-md);
+}

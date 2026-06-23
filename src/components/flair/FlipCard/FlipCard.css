@@ -1,0 +1,75 @@
+.nova-flip {
+  display: inline-block;
+  width: 16rem;
+  height: 10rem;
+  perspective: 1200px;
+  background: transparent;
+  color: var(--nova-text);
+}
+
+.nova-flip--click {
+  cursor: pointer;
+}
+
+.nova-flip--click:focus-visible {
+  outline: none;
+  border-radius: var(--nova-radius-xl);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-flip__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-spring);
+}
+
+/* Hover trigger. */
+.nova-flip--hover.nova-flip--y:hover .nova-flip__inner {
+  transform: rotateY(180deg);
+}
+.nova-flip--hover.nova-flip--x:hover .nova-flip__inner {
+  transform: rotateX(180deg);
+}
+
+/* Controlled / click flipped state. */
+.nova-flip--flipped.nova-flip--y .nova-flip__inner {
+  transform: rotateY(180deg);
+}
+.nova-flip--flipped.nova-flip--x .nova-flip__inner {
+  transform: rotateX(180deg);
+}
+
+.nova-flip__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nova-space-6);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  box-shadow: var(--nova-shadow-md);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.nova-flip--y .nova-flip__face--back {
+  transform: rotateY(180deg);
+}
+.nova-flip--x .nova-flip__face--back {
+  transform: rotateX(180deg);
+}
+
+.nova-flip__face--back {
+  background: linear-gradient(
+    135deg,
+    var(--nova-primary),
+    var(--nova-brand-800)
+  );
+  color: var(--nova-text-on-brand);
+  border-color: transparent;
+}

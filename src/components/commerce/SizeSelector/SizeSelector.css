@@ -1,0 +1,100 @@
+/* SizeSelector — radiogroup of size options. */
+.nova-size-selector {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2);
+}
+
+.nova-size-selector--disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.nova-size-selector__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-weight: var(--nova-font-medium);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-size-selector__option:hover:not(:disabled) {
+  border-color: var(--nova-border-strong);
+  background-color: var(--nova-surface-hover);
+}
+
+.nova-size-selector__option:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+  border-color: var(--nova-primary);
+}
+
+.nova-size-selector__option--selected {
+  border-color: var(--nova-primary);
+  background-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-size-selector__option--selected:hover:not(:disabled) {
+  background-color: var(--nova-primary-hover);
+  border-color: var(--nova-primary-hover);
+}
+
+.nova-size-selector__option:disabled {
+  cursor: not-allowed;
+  color: var(--nova-text-subtle);
+  background-color: var(--nova-bg-subtle);
+}
+
+.nova-size-selector__option--out-of-stock {
+  position: relative;
+  overflow: hidden;
+}
+
+.nova-size-selector__option--out-of-stock::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top left,
+    transparent calc(50% - 0.5px),
+    var(--nova-border-strong) calc(50% - 0.5px),
+    var(--nova-border-strong) calc(50% + 0.5px),
+    transparent calc(50% + 0.5px)
+  );
+  pointer-events: none;
+}
+
+/* Sizes --------------------------------------------------------------------- */
+.nova-size-selector--sm .nova-size-selector__option {
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-size-selector--md .nova-size-selector__option {
+  min-width: 2.75rem;
+  height: 2.75rem;
+  padding: 0 var(--nova-space-3);
+  font-size: var(--nova-text-md);
+}
+
+.nova-size-selector--lg .nova-size-selector__option {
+  min-width: 3.25rem;
+  height: 3.25rem;
+  padding: 0 var(--nova-space-4);
+  font-size: var(--nova-text-lg);
+}

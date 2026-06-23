@@ -1,0 +1,56 @@
+.nova-bookmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: var(--nova-space-2);
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  border-radius: var(--nova-radius-md);
+}
+
+.nova-bookmark:hover {
+  color: var(--nova-text);
+}
+
+.nova-bookmark--on {
+  color: var(--nova-primary);
+}
+
+.nova-bookmark:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-bookmark__flip {
+  position: relative;
+  width: 1.25rem;
+  height: 1.5rem;
+  transform-style: preserve-3d;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-spring);
+}
+
+.nova-bookmark--on .nova-bookmark__flip {
+  transform: rotateY(180deg);
+}
+
+.nova-bookmark__face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.nova-bookmark__face--back {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-bookmark__flip {
+    transition: none;
+  }
+}

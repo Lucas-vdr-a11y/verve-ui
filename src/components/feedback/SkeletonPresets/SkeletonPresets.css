@@ -1,0 +1,141 @@
+/* Shared skeleton look — mirrors the base Skeleton component's shimmer. */
+.nova-skeleton-text__line,
+.nova-skeleton-avatar,
+.nova-skeleton-card__image,
+.nova-skeleton-card__title,
+.nova-skeleton-card__subtitle {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: var(--nova-bg-muted);
+  border-radius: var(--nova-radius-md);
+}
+
+.nova-skeleton-text__line::after,
+.nova-skeleton-avatar::after,
+.nova-skeleton-card__image::after,
+.nova-skeleton-card__title::after,
+.nova-skeleton-card__subtitle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--nova-surface-hover),
+    transparent
+  );
+  animation: nova-skeleton-presets-shimmer 1.5s var(--nova-ease) infinite;
+}
+
+/* ---- SkeletonText ------------------------------------------------------ */
+.nova-skeleton-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  inline-size: 100%;
+}
+
+.nova-skeleton-text__line {
+  block-size: 0.75em;
+  inline-size: 100%;
+  border-radius: var(--nova-radius-sm);
+}
+
+/* ---- SkeletonAvatar ---------------------------------------------------- */
+.nova-skeleton-avatar {
+  flex: none;
+}
+
+.nova-skeleton-avatar--circle {
+  border-radius: var(--nova-radius-full);
+}
+.nova-skeleton-avatar--rounded {
+  border-radius: var(--nova-radius-lg);
+}
+
+.nova-skeleton-avatar--sm {
+  inline-size: var(--nova-space-8);
+  block-size: var(--nova-space-8);
+}
+.nova-skeleton-avatar--md {
+  inline-size: var(--nova-space-10);
+  block-size: var(--nova-space-10);
+}
+.nova-skeleton-avatar--lg {
+  inline-size: var(--nova-space-16);
+  block-size: var(--nova-space-16);
+}
+
+/* ---- SkeletonCard ------------------------------------------------------ */
+.nova-skeleton-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  padding: var(--nova-space-4);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  inline-size: 100%;
+}
+
+.nova-skeleton-card__image {
+  inline-size: 100%;
+  block-size: var(--nova-space-24);
+  border-radius: var(--nova-radius-md);
+}
+
+.nova-skeleton-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+}
+
+.nova-skeleton-card__heading {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  min-inline-size: 0;
+}
+
+.nova-skeleton-card__title {
+  block-size: 0.85em;
+  inline-size: 50%;
+  border-radius: var(--nova-radius-sm);
+}
+
+.nova-skeleton-card__subtitle {
+  block-size: 0.75em;
+  inline-size: 30%;
+  border-radius: var(--nova-radius-sm);
+}
+
+@keyframes nova-skeleton-presets-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-skeleton-text__line::after,
+  .nova-skeleton-avatar::after,
+  .nova-skeleton-card__image::after,
+  .nova-skeleton-card__title::after,
+  .nova-skeleton-card__subtitle::after {
+    animation: nova-skeleton-presets-fade 1.5s ease-in-out infinite;
+    transform: none;
+    background: var(--nova-surface-hover);
+  }
+
+  @keyframes nova-skeleton-presets-fade {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+}

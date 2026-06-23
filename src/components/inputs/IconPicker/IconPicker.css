@@ -1,0 +1,187 @@
+.nova-iconpicker {
+  position: relative;
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+  --nova-iconpicker-cell: 2.25rem;
+}
+
+.nova-iconpicker--sm {
+  --nova-iconpicker-cell: 1.9rem;
+  font-size: var(--nova-text-sm);
+}
+.nova-iconpicker--lg {
+  --nova-iconpicker-cell: 2.6rem;
+}
+
+/* ---- Trigger ------------------------------------------------------------ */
+.nova-iconpicker__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  min-width: 11rem;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  cursor: pointer;
+  box-shadow: var(--nova-shadow-xs);
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-iconpicker__trigger:hover:not(:disabled) {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-iconpicker__trigger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--nova-bg-muted);
+}
+
+.nova-iconpicker__trigger-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--nova-primary);
+}
+
+.nova-iconpicker__trigger-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.nova-iconpicker__trigger-label {
+  flex: 1 1 auto;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--nova-text-muted);
+}
+
+.nova-iconpicker__chevron {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  color: var(--nova-text-subtle);
+}
+
+/* ---- Panel -------------------------------------------------------------- */
+.nova-iconpicker__panel {
+  position: absolute;
+  z-index: var(--nova-z-popover);
+  top: calc(100% + var(--nova-space-1));
+  left: 0;
+  width: 17rem;
+  max-width: 90vw;
+  padding: var(--nova-space-2);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface-raised);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-iconpicker__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--nova-space-2);
+}
+
+.nova-iconpicker__search-icon {
+  position: absolute;
+  left: var(--nova-space-2);
+  width: 1rem;
+  height: 1rem;
+  color: var(--nova-text-subtle);
+  pointer-events: none;
+}
+
+.nova-iconpicker__search-input {
+  width: 100%;
+  padding: var(--nova-space-2) var(--nova-space-2) var(--nova-space-2)
+    var(--nova-space-8);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  outline: none;
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-iconpicker__search-input::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-iconpicker__search-input:focus-visible {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-iconpicker__grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--nova-iconpicker-cell), 1fr)
+  );
+  gap: var(--nova-space-1);
+  max-height: 14rem;
+  overflow-y: auto;
+}
+
+.nova-iconpicker__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  padding: var(--nova-space-1);
+  border: 1px solid transparent;
+  border-radius: var(--nova-radius-md);
+  background: transparent;
+  color: var(--nova-text);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-iconpicker__cell:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-iconpicker__cell--selected {
+  border-color: var(--nova-primary);
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-iconpicker__cell-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 60%;
+}
+
+.nova-iconpicker__cell-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.nova-iconpicker__empty {
+  padding: var(--nova-space-6) var(--nova-space-3);
+  text-align: center;
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}

@@ -1,0 +1,72 @@
+{
+  "name": "@nova/ui",
+  "version": "0.1.0",
+  "description": "Nova UI — a modern, themeable, dependency-free React component library: 660 components across 28 categories with signature motion.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Nova UI contributors",
+  "homepage": "https://lucas-vdr-a11y.github.io/nova-ui/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lucas-vdr-a11y/nova-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lucas-vdr-a11y/nova-ui/issues"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "component-library",
+    "ui",
+    "typescript",
+    "design-system",
+    "themeable",
+    "dark-mode",
+    "accessible",
+    "ssr",
+    "motion",
+    "animation",
+    "aceternity"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --mode lib",
+    "build:site": "vite build",
+    "preview": "vite preview --outDir demo/dist",
+    "typecheck": "tsc --noEmit",
+    "typecheck:site": "tsc --noEmit -p tsconfig.demo.json",
+    "check": "npm run typecheck:site",
+    "docs:manifest": "node scripts/generate-manifest.mjs",
+    "docs:catalog": "node scripts/generate-catalog.mjs",
+    "docs": "npm run docs:manifest && npm run docs:catalog"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "typescript": "^5.5.0",
+    "vite": "^5.4.0"
+  }
+}

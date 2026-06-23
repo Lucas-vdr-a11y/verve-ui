@@ -1,0 +1,28 @@
+.nova-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--nova-z-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nova-overlay-bg);
+  animation: nova-backdrop-in var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-backdrop--blur {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.nova-backdrop--invisible {
+  background: transparent;
+}
+
+@keyframes nova-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

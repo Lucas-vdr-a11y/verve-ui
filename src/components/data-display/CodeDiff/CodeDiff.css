@@ -1,0 +1,97 @@
+.nova-code-diff {
+  display: flex;
+  flex-direction: column;
+  background: var(--nova-bg-subtle);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  overflow: hidden;
+  font-family: var(--nova-font-mono);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text);
+}
+
+.nova-code-diff__header {
+  padding: var(--nova-space-2) var(--nova-space-3);
+  background: var(--nova-bg-muted);
+  border-bottom: 1px solid var(--nova-border);
+  font-weight: var(--nova-font-medium);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-code-diff__scroll {
+  overflow-x: auto;
+}
+
+.nova-code-diff__table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: auto;
+}
+
+.nova-code-diff__row {
+  vertical-align: top;
+}
+
+/* ---- Line-number gutters -------------------------------------------------- */
+.nova-code-diff__num {
+  width: 1%;
+  white-space: nowrap;
+  padding: 0 var(--nova-space-2);
+  text-align: right;
+  color: var(--nova-text-subtle);
+  background: var(--nova-bg-muted);
+  border-right: 1px solid var(--nova-border);
+  user-select: none;
+}
+
+.nova-code-diff__sign {
+  width: 1%;
+  padding: 0 var(--nova-space-2);
+  text-align: center;
+  color: var(--nova-text-muted);
+  user-select: none;
+}
+
+.nova-code-diff__code {
+  padding: 0 var(--nova-space-3);
+  white-space: pre;
+  tab-size: 2;
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-code-diff--wrap .nova-code-diff__code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ---- Unified line tints (tone-subtle add/del backgrounds) ----------------- */
+.nova-code-diff__row--add {
+  background: var(--nova-success-subtle);
+}
+.nova-code-diff__row--add .nova-code-diff__sign {
+  color: var(--nova-success);
+}
+.nova-code-diff__row--del {
+  background: var(--nova-danger-subtle);
+}
+.nova-code-diff__row--del .nova-code-diff__sign {
+  color: var(--nova-danger);
+}
+
+/* ---- Split view ----------------------------------------------------------- */
+.nova-code-diff--split .nova-code-diff__code {
+  width: 50%;
+}
+/* Separator before the "new" side gutter in split view. */
+.nova-code-diff--split .nova-code-diff__num:nth-child(3) {
+  border-left: 1px solid var(--nova-border-strong);
+}
+.nova-code-diff__code--add {
+  background: var(--nova-success-subtle);
+}
+.nova-code-diff__code--del {
+  background: var(--nova-danger-subtle);
+}
+.nova-code-diff__code--empty {
+  background: var(--nova-bg-muted);
+}

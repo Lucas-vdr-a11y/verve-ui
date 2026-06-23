@@ -1,0 +1,66 @@
+.nova-power {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  box-shadow: var(--nova-shadow-sm);
+  transition: color var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-power:active {
+  transform: scale(0.94);
+}
+
+.nova-power:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-power--on {
+  color: var(--nova-success);
+  box-shadow: var(--nova-shadow-sm), 0 0 14px 1px rgb(34 197 94 / 0.55);
+}
+
+.nova-power__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--nova-radius-full);
+  border: 2px solid var(--nova-border);
+  transition: border-color var(--nova-duration-base) var(--nova-ease),
+    box-shadow var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-power--on .nova-power__ring {
+  border-color: var(--nova-success);
+  box-shadow: inset 0 0 8px rgb(34 197 94 / 0.45);
+}
+
+.nova-power__icon {
+  position: relative;
+  width: 1.375rem;
+  height: 1.375rem;
+}
+
+.nova-power__arc {
+  stroke-dasharray: 44;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-power,
+  .nova-power__ring,
+  .nova-power__arc {
+    transition: none;
+  }
+}

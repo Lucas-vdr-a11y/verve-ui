@@ -1,0 +1,52 @@
+.nova-link {
+  display: inline;
+  color: var(--nova-primary);
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.18em;
+  border-radius: var(--nova-radius-xs);
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-link:hover {
+  color: var(--nova-primary-hover);
+}
+
+.nova-link:active {
+  color: var(--nova-primary-active);
+}
+
+/* ---- Variants ----------------------------------------------------------- */
+.nova-link--underline {
+  text-decoration-line: underline;
+}
+
+.nova-link--hover-underline {
+  text-decoration-line: none;
+}
+.nova-link--hover-underline:hover {
+  text-decoration-line: underline;
+}
+
+.nova-link--subtle {
+  color: var(--nova-text);
+  text-decoration-line: none;
+}
+.nova-link--subtle:hover {
+  color: var(--nova-text);
+  text-decoration-line: underline;
+  text-decoration-color: var(--nova-border-strong);
+}
+
+/* ---- External affordance ------------------------------------------------ */
+.nova-link--external {
+  white-space: nowrap;
+}
+
+.nova-link__icon {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  margin-inline-start: 0.18em;
+  vertical-align: baseline;
+}

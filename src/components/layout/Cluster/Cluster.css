@@ -1,0 +1,44 @@
+.nova-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-cluster-gap, var(--nova-space-2));
+  min-width: 0;
+}
+
+.nova-cluster--nowrap {
+  flex-wrap: nowrap;
+}
+
+/* ---- Cross-axis alignment ----------------------------------------------- */
+.nova-cluster--align-start {
+  align-items: flex-start;
+}
+.nova-cluster--align-center {
+  align-items: center;
+}
+.nova-cluster--align-end {
+  align-items: flex-end;
+}
+.nova-cluster--align-stretch {
+  align-items: stretch;
+}
+.nova-cluster--align-baseline {
+  align-items: baseline;
+}
+
+/* ---- Main-axis distribution --------------------------------------------- */
+.nova-cluster--justify-start {
+  justify-content: flex-start;
+}
+.nova-cluster--justify-center {
+  justify-content: center;
+}
+.nova-cluster--justify-end {
+  justify-content: flex-end;
+}
+.nova-cluster--justify-between {
+  justify-content: space-between;
+}
+.nova-cluster--justify-around {
+  justify-content: space-around;
+}

@@ -1,0 +1,134 @@
+.nova-browser-frame {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface);
+  box-shadow: var(--nova-shadow-lg);
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+}
+
+/* Chrome variants pin the chrome surface independent of page theme. */
+.nova-browser-frame--light {
+  --nova-bf-chrome: var(--nova-gray-100);
+  --nova-bf-chrome-border: var(--nova-gray-200);
+  --nova-bf-chrome-text: var(--nova-gray-500);
+  --nova-bf-field: var(--nova-gray-0);
+}
+
+.nova-browser-frame--dark {
+  --nova-bf-chrome: var(--nova-gray-800);
+  --nova-bf-chrome-border: var(--nova-gray-700);
+  --nova-bf-chrome-text: var(--nova-gray-400);
+  --nova-bf-field: var(--nova-gray-900);
+}
+
+.nova-browser-frame__tabs {
+  display: flex;
+  gap: var(--nova-space-1);
+  align-items: flex-end;
+  padding: var(--nova-space-2) var(--nova-space-2) 0;
+  background: var(--nova-bf-chrome);
+  border-bottom: 1px solid var(--nova-bf-chrome-border);
+}
+
+.nova-browser-frame__tab {
+  max-width: 12rem;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-bf-chrome-text);
+  border-radius: var(--nova-radius-md) var(--nova-radius-md) 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nova-browser-frame__tab--active {
+  background: var(--nova-bf-field);
+  color: var(--nova-text);
+}
+
+.nova-browser-frame__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-3);
+  background: var(--nova-bf-chrome);
+  border-bottom: 1px solid var(--nova-bf-chrome-border);
+}
+
+.nova-browser-frame__lights {
+  display: inline-flex;
+  gap: var(--nova-space-2);
+  flex-shrink: 0;
+}
+
+.nova-browser-frame__light {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-browser-frame__light--close { background: #ff5f57; }
+.nova-browser-frame__light--min { background: #febc2e; }
+.nova-browser-frame__light--max { background: #28c840; }
+
+.nova-browser-frame__nav {
+  display: inline-flex;
+  gap: var(--nova-space-1);
+  flex-shrink: 0;
+  color: var(--nova-bf-chrome-text);
+}
+
+.nova-browser-frame__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: var(--nova-text-md);
+}
+
+.nova-browser-frame__url {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  flex: 1;
+  min-width: 0;
+  padding: var(--nova-space-1) var(--nova-space-3);
+  background: var(--nova-bf-field);
+  border: 1px solid var(--nova-bf-chrome-border);
+  border-radius: var(--nova-radius-full);
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+.nova-browser-frame__url-lock {
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-browser-frame__url-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-browser-frame__viewport {
+  flex: 1;
+  min-height: 0;
+  background: var(--nova-bg);
+  overflow: hidden;
+}
+
+.nova-browser-frame__viewport > img,
+.nova-browser-frame__viewport > picture > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

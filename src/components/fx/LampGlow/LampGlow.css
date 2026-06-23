@@ -1,0 +1,102 @@
+.nova-lamp {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-lamp__stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nova-lamp__cone {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 60%;
+  height: 50%;
+  opacity: var(--nova-lamp-intensity);
+  transform-origin: top center;
+  filter: blur(28px);
+}
+
+.nova-lamp__cone--left {
+  background: conic-gradient(
+    from 70deg at center top,
+    transparent 0deg,
+    color-mix(in srgb, var(--nova-lamp-color) 70%, transparent) 30deg,
+    transparent 70deg
+  );
+  transform: translateX(-100%) rotate(-2deg);
+}
+
+.nova-lamp__cone--right {
+  background: conic-gradient(
+    from 200deg at center top,
+    transparent 0deg,
+    color-mix(in srgb, var(--nova-lamp-color) 70%, transparent) 30deg,
+    transparent 70deg
+  );
+  transform: translateX(0%) rotate(2deg);
+}
+
+.nova-lamp__bar {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36%;
+  height: 3px;
+  border-radius: var(--nova-radius-full);
+  background: color-mix(in srgb, var(--nova-lamp-color) 90%, white 10%);
+  box-shadow: 0 0 24px 6px
+    color-mix(in srgb, var(--nova-lamp-color) 70%, transparent);
+  animation: nova-lamp-breathe 5s var(--nova-ease) infinite;
+}
+
+.nova-lamp__halo {
+  position: absolute;
+  top: -14%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 40%;
+  border-radius: var(--nova-radius-full);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--nova-lamp-color) 55%, transparent),
+    transparent 70%
+  );
+  filter: blur(40px);
+  opacity: var(--nova-lamp-intensity);
+}
+
+.nova-lamp__content {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes nova-lamp-breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+    width: 32%;
+  }
+  50% {
+    opacity: 1;
+    width: 40%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-lamp__bar {
+    animation: none;
+  }
+}

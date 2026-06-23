@@ -1,0 +1,43 @@
+.nova-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  width: 100%;
+}
+
+.nova-field__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-field__required {
+  color: var(--nova-danger);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-field__control {
+  display: flex;
+  flex-direction: column;
+}
+
+.nova-field__help,
+.nova-field__error {
+  margin: 0;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-field__help {
+  color: var(--nova-text-muted);
+}
+
+.nova-field__error {
+  color: var(--nova-danger);
+}

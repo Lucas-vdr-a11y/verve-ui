@@ -1,0 +1,108 @@
+.nova-pill-tabs {
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-pill-tabs--full {
+  display: block;
+  width: 100%;
+}
+
+.nova-pill-tabs__list {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  gap: var(--nova-space-1);
+  padding: var(--nova-space-1);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-muted);
+}
+
+.nova-pill-tabs--full .nova-pill-tabs__list {
+  display: flex;
+  width: 100%;
+}
+
+/* The single sliding pill background shared by all tabs (FLIP-style: one
+   element translates + resizes between the measured tab rects). */
+.nova-pill-tabs__pill {
+  position: absolute;
+  top: var(--nova-space-1);
+  bottom: var(--nova-space-1);
+  left: 0;
+  pointer-events: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  box-shadow: var(--nova-shadow-sm);
+  transition:
+    transform var(--nova-duration-base) var(--nova-ease-spring),
+    width var(--nova-duration-base) var(--nova-ease-spring),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+  will-change: transform, width;
+}
+
+.nova-pill-tabs__tab {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-4);
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  font-weight: var(--nova-font-medium);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: var(--nova-radius-full);
+  transition: color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-pill-tabs--full .nova-pill-tabs__tab {
+  flex: 1 1 0;
+}
+
+.nova-pill-tabs--sm .nova-pill-tabs__tab {
+  padding: var(--nova-space-1) var(--nova-space-3);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-pill-tabs--lg .nova-pill-tabs__tab {
+  padding: var(--nova-space-3) var(--nova-space-5);
+  font-size: var(--nova-text-md);
+}
+
+.nova-pill-tabs__tab:hover:not([aria-disabled="true"]) {
+  color: var(--nova-text);
+}
+
+.nova-pill-tabs__tab:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-pill-tabs__tab--active {
+  color: var(--nova-text);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-pill-tabs__tab[aria-disabled="true"] {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-pill-tabs__icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nova-pill-tabs--reduced .nova-pill-tabs__pill {
+  transition:
+    transform var(--nova-duration-fast) var(--nova-ease),
+    width var(--nova-duration-fast) var(--nova-ease),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+}

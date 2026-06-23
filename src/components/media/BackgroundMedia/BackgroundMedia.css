@@ -1,0 +1,74 @@
+.nova-background-media {
+  position: relative;
+  display: flex;
+  inline-size: 100%;
+  min-block-size: var(--nova-background-media-min-h, 60vh);
+  overflow: hidden;
+  isolation: isolate;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-background-media--align-start {
+  align-items: flex-start;
+}
+
+.nova-background-media--align-center {
+  align-items: center;
+}
+
+.nova-background-media--align-end {
+  align-items: flex-end;
+}
+
+/* ---- Media layer ------------------------------------------------------- */
+.nova-background-media__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--nova-bg-muted);
+}
+
+.nova-background-media__img,
+.nova-background-media__video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Overlay tint ------------------------------------------------------ */
+.nova-background-media__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.nova-background-media__overlay--scrim {
+  background: var(--nova-overlay-bg);
+}
+
+.nova-background-media__overlay--dark {
+  background: linear-gradient(
+    to top,
+    rgb(2 6 23 / 0.8),
+    rgb(2 6 23 / 0.35)
+  );
+}
+
+.nova-background-media__overlay--light {
+  background: rgb(255 255 255 / 0.55);
+}
+
+/* ---- Content slot ------------------------------------------------------ */
+.nova-background-media__content {
+  position: relative;
+  z-index: 2;
+  inline-size: 100%;
+  padding: var(--nova-space-8);
+  color: var(--nova-gray-0);
+}
+
+.nova-background-media__overlay--light ~ .nova-background-media__content {
+  color: var(--nova-text);
+}

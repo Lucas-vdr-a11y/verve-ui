@@ -1,0 +1,39 @@
+/* Masonry — CSS-columns masonry layout. */
+.nova-masonry {
+  box-sizing: border-box;
+  min-width: 0;
+  column-count: var(--nova-masonry-cols, 3);
+  column-gap: var(--nova-masonry-gap);
+}
+
+.nova-masonry__item {
+  break-inside: avoid;
+  /* The column-gap handles horizontal spacing; this adds vertical rhythm. */
+  margin-bottom: var(--nova-masonry-gap);
+}
+
+/* Responsive column counts. Each only applies when the matching CSS var was
+ * supplied, falling back to the previous breakpoint via the cascade. */
+@media (min-width: 40rem) {
+  .nova-masonry--sm {
+    column-count: var(--nova-masonry-cols-sm);
+  }
+}
+
+@media (min-width: 48rem) {
+  .nova-masonry--md {
+    column-count: var(--nova-masonry-cols-md);
+  }
+}
+
+@media (min-width: 64rem) {
+  .nova-masonry--lg {
+    column-count: var(--nova-masonry-cols-lg);
+  }
+}
+
+@media (min-width: 80rem) {
+  .nova-masonry--xl {
+    column-count: var(--nova-masonry-cols-xl);
+  }
+}

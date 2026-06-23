@@ -1,0 +1,181 @@
+.nova-cvv {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  gap: var(--nova-space-2);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-xs);
+  font-family: var(--nova-font-sans);
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-cvv:hover:not(.nova-cvv--disabled) {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-cvv:focus-within {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-cvv--invalid {
+  border-color: var(--nova-danger);
+}
+
+.nova-cvv--invalid:focus-within {
+  border-color: var(--nova-danger);
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+.nova-cvv--disabled {
+  opacity: 0.6;
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+/* ---- Field --------------------------------------------------------------- */
+.nova-cvv__field {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--nova-leading-normal);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.15em;
+}
+
+.nova-cvv__field.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-cvv__field::placeholder {
+  color: var(--nova-text-subtle);
+  letter-spacing: normal;
+}
+
+.nova-cvv__field:disabled {
+  cursor: not-allowed;
+}
+
+/* ---- Reveal toggle ------------------------------------------------------- */
+.nova-cvv__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  border-radius: var(--nova-radius-sm);
+}
+
+.nova-cvv__toggle:hover:not(:disabled) {
+  color: var(--nova-text);
+}
+
+.nova-cvv__toggle svg {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+/* ---- Help affordance ----------------------------------------------------- */
+.nova-cvv__help {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.nova-cvv__help-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: help;
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-cvv__help-trigger:hover:not(:disabled) {
+  color: var(--nova-text);
+}
+
+.nova-cvv__help-trigger svg {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.nova-cvv__tooltip {
+  position: absolute;
+  bottom: calc(100% + var(--nova-space-2));
+  right: 0;
+  z-index: var(--nova-z-tooltip);
+  width: max-content;
+  max-width: 14rem;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  box-shadow: var(--nova-shadow-lg);
+  color: var(--nova-text);
+  font-size: var(--nova-text-xs);
+  line-height: var(--nova-leading-snug);
+  letter-spacing: normal;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(var(--nova-space-1));
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease),
+    visibility var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-cvv__tooltip--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ---- Sizes --------------------------------------------------------------- */
+.nova-cvv--sm {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+}
+
+.nova-cvv--sm .nova-cvv__field {
+  min-height: calc(2rem - 2px);
+}
+
+.nova-cvv--md {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+}
+
+.nova-cvv--md .nova-cvv__field {
+  min-height: calc(2.5rem - 2px);
+}
+
+.nova-cvv--lg {
+  font-size: var(--nova-text-md);
+  padding: 0 var(--nova-space-4);
+}
+
+.nova-cvv--lg .nova-cvv__field {
+  min-height: calc(3rem - 2px);
+}

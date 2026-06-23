@@ -1,0 +1,37 @@
+.nova-horizontal-scroll {
+  position: relative;
+  height: var(--nova-horizontal-scroll-height);
+  background: var(--nova-bg);
+}
+
+.nova-horizontal-scroll__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.nova-horizontal-scroll__track {
+  display: flex;
+  gap: var(--nova-space-6);
+  padding-inline: var(--nova-space-8);
+  will-change: transform;
+  transform: translate3d(var(--nova-horizontal-scroll-x), 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-horizontal-scroll {
+    height: auto;
+  }
+  .nova-horizontal-scroll__sticky {
+    position: static;
+    height: auto;
+    overflow-x: auto;
+  }
+  .nova-horizontal-scroll__track {
+    transform: none;
+    padding-block: var(--nova-space-6);
+  }
+}

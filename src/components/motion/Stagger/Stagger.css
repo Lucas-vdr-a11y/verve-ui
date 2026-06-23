@@ -1,0 +1,44 @@
+/* Stagger — animate children in with an incremental per-child delay.
+ * Each item starts hidden + offset; when the container is active each item
+ * transitions to visible, delayed by its own custom property. */
+
+.nova-stagger {
+  --nova-stagger-distance: 0.75rem;
+  --nova-stagger-x: 0px;
+  --nova-stagger-y: 0px;
+}
+
+.nova-stagger--up {
+  --nova-stagger-y: var(--nova-stagger-distance);
+}
+.nova-stagger--down {
+  --nova-stagger-y: calc(-1 * var(--nova-stagger-distance));
+}
+.nova-stagger--left {
+  --nova-stagger-x: var(--nova-stagger-distance);
+}
+.nova-stagger--right {
+  --nova-stagger-x: calc(-1 * var(--nova-stagger-distance));
+}
+
+.nova-stagger__item {
+  opacity: 0;
+  transform: translate(var(--nova-stagger-x), var(--nova-stagger-y));
+  transition:
+    opacity var(--nova-duration-base) var(--nova-ease-out)
+      var(--nova-stagger-delay, 0ms),
+    transform var(--nova-duration-base) var(--nova-ease-out)
+      var(--nova-stagger-delay, 0ms);
+}
+
+.nova-stagger[data-active] .nova-stagger__item {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-stagger__item {
+    transition-duration: 1ms !important;
+    transition-delay: 0ms !important;
+  }
+}

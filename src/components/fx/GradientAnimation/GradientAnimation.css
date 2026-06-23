@@ -1,0 +1,108 @@
+.nova-gradient-anim {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--nova-ga-bg);
+  --nova-ga-speed: 18s;
+  --nova-ga-blur: 60px;
+}
+
+.nova-gradient-anim--speed-sm {
+  --nova-ga-speed: 28s;
+}
+.nova-gradient-anim--speed-md {
+  --nova-ga-speed: 18s;
+}
+.nova-gradient-anim--speed-lg {
+  --nova-ga-speed: 11s;
+}
+
+.nova-gradient-anim--blur-sm {
+  --nova-ga-blur: 36px;
+}
+.nova-gradient-anim--blur-md {
+  --nova-ga-blur: 60px;
+}
+.nova-gradient-anim--blur-lg {
+  --nova-ga-blur: 96px;
+}
+
+.nova-gradient-anim__field {
+  position: absolute;
+  inset: 0;
+  filter: blur(var(--nova-ga-blur));
+  pointer-events: none;
+}
+
+.nova-gradient-anim__blob {
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  border-radius: var(--nova-radius-full);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+  will-change: transform;
+}
+
+.nova-gradient-anim__blob--1 {
+  background: radial-gradient(circle at center, var(--nova-ga-c1), transparent 70%);
+  top: -10%;
+  left: -5%;
+  animation: nova-ga-drift-1 var(--nova-ga-speed) ease-in-out infinite;
+}
+.nova-gradient-anim__blob--2 {
+  background: radial-gradient(circle at center, var(--nova-ga-c2), transparent 70%);
+  top: 20%;
+  right: -10%;
+  animation: nova-ga-drift-2 calc(var(--nova-ga-speed) * 1.2) ease-in-out infinite;
+}
+.nova-gradient-anim__blob--3 {
+  background: radial-gradient(circle at center, var(--nova-ga-c3), transparent 70%);
+  bottom: -15%;
+  left: 15%;
+  animation: nova-ga-drift-3 calc(var(--nova-ga-speed) * 0.9) ease-in-out infinite;
+}
+.nova-gradient-anim__blob--4 {
+  background: radial-gradient(circle at center, var(--nova-ga-c4), transparent 70%);
+  bottom: 5%;
+  right: 10%;
+  animation: nova-ga-drift-4 calc(var(--nova-ga-speed) * 1.35) ease-in-out infinite;
+}
+.nova-gradient-anim__blob--5 {
+  background: radial-gradient(circle at center, var(--nova-ga-c5), transparent 70%);
+  top: 30%;
+  left: 30%;
+  animation: nova-ga-drift-5 calc(var(--nova-ga-speed) * 1.1) ease-in-out infinite;
+}
+
+@keyframes nova-ga-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30%, 20%) scale(1.2); }
+}
+@keyframes nova-ga-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1.1); }
+  50% { transform: translate(-25%, 25%) scale(0.9); }
+}
+@keyframes nova-ga-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20%, -25%) scale(1.25); }
+}
+@keyframes nova-ga-drift-4 {
+  0%, 100% { transform: translate(0, 0) scale(1.05); }
+  50% { transform: translate(-20%, -15%) scale(0.95); }
+}
+@keyframes nova-ga-drift-5 {
+  0%, 100% { transform: translate(0, 0) scale(0.95); }
+  50% { transform: translate(-30%, 15%) scale(1.15); }
+}
+
+.nova-gradient-anim__content {
+  position: relative;
+  z-index: var(--nova-z-base);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-gradient-anim__blob {
+    animation: none;
+  }
+}

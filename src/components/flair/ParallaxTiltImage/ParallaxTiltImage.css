@@ -1,0 +1,74 @@
+.nova-parallax-tilt {
+  --nova-pt-rx: 0deg;
+  --nova-pt-ry: 0deg;
+  --nova-pt-mx: 0;
+  --nova-pt-my: 0;
+  --nova-pt-depth: 40px;
+
+  display: inline-block;
+  width: 18rem;
+  perspective: 1000px;
+}
+
+.nova-parallax-tilt__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--nova-radius-xl);
+  overflow: hidden;
+  background: var(--nova-bg-muted);
+  box-shadow: var(--nova-shadow-lg);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--nova-pt-rx)) rotateY(var(--nova-pt-ry));
+  transition: transform var(--nova-duration-base) var(--nova-ease-out);
+}
+
+/* Background layer: slight scale + small counter-parallax shift. */
+.nova-parallax-tilt__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(
+      calc(var(--nova-pt-mx) * -8px),
+      calc(var(--nova-pt-my) * -8px)
+    )
+    translateZ(0) scale(1.08);
+  transition: transform var(--nova-duration-base) var(--nova-ease-out);
+  user-select: none;
+}
+
+/* Foreground content lifts further (more Z, more parallax). */
+.nova-parallax-tilt__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--nova-space-5);
+  color: var(--nova-gray-0);
+  background: linear-gradient(
+    to top,
+    rgb(2 6 23 / 0.7),
+    transparent 55%
+  );
+  transform: translate(
+      calc(var(--nova-pt-mx) * 16px),
+      calc(var(--nova-pt-my) * 16px)
+    )
+    translateZ(var(--nova-pt-depth));
+  transition: transform var(--nova-duration-base) var(--nova-ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-parallax-tilt__stage,
+  .nova-parallax-tilt__image,
+  .nova-parallax-tilt__content {
+    transition: none;
+    transform: none;
+  }
+  .nova-parallax-tilt__image {
+    transform: scale(1.02);
+  }
+}

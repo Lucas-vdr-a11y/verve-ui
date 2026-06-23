@@ -1,0 +1,102 @@
+.nova-dna-loader {
+  --nova-loader-color: var(--nova-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--nova-dna-size, 52px) * 0.06);
+  width: calc(var(--nova-dna-size, 52px) * 2);
+  height: var(--nova-dna-size, 52px);
+  color: var(--nova-loader-color);
+}
+
+.nova-dna-loader[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-dna-loader[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-dna-loader[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-dna-loader[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-dna-loader[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-dna-loader__rung {
+  position: relative;
+  flex: 1 1 0;
+  height: 100%;
+  /* phase offset across the strand */
+  --nova-dna-delay: calc(var(--nova-dna-i) * -0.16s);
+}
+
+.nova-dna-loader__dot {
+  position: absolute;
+  left: 50%;
+  width: 22%;
+  aspect-ratio: 1;
+  margin-left: -11%;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-loader-color);
+  box-shadow: 0 0 6px 0 currentColor;
+}
+
+.nova-dna-loader__dot--top {
+  top: 0;
+  animation: nova-dna-top 1.6s var(--nova-ease) infinite;
+  animation-delay: var(--nova-dna-delay);
+}
+
+.nova-dna-loader__dot--bottom {
+  bottom: 0;
+  animation: nova-dna-bottom 1.6s var(--nova-ease) infinite;
+  animation-delay: var(--nova-dna-delay);
+}
+
+/* the two strands cross — scale + opacity convey depth (z-order) */
+@keyframes nova-dna-top {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(calc(var(--nova-dna-size, 52px) * 0.78)) scale(0.55);
+    opacity: 0.45;
+  }
+}
+
+@keyframes nova-dna-bottom {
+  0%,
+  100% {
+    transform: translateY(0) scale(0.55);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(calc(var(--nova-dna-size, 52px) * -0.78)) scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-dna-loader__dot--top,
+  .nova-dna-loader__dot--bottom {
+    animation: nova-dna-fade 1.6s var(--nova-ease) infinite;
+    animation-delay: var(--nova-dna-delay);
+  }
+  .nova-dna-loader__dot--bottom {
+    opacity: 0.45;
+  }
+  @keyframes nova-dna-fade {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+/* ContainerScroll — perspective wrapper; the frame's rotateX and scale are
+ * derived from scroll progress (1 = flat & full size). */
+
+.nova-container-scroll {
+  --nova-container-scroll-progress: 0;
+  --nova-container-scroll-tilt: 28deg;
+  width: 100%;
+}
+
+.nova-container-scroll__header {
+  text-align: center;
+  margin-bottom: var(--nova-space-10);
+  color: var(--nova-text);
+}
+
+.nova-container-scroll__perspective {
+  perspective: 1000px;
+  width: 100%;
+}
+
+.nova-container-scroll__frame {
+  position: relative;
+  width: 100%;
+  margin-inline: auto;
+  border-radius: var(--nova-radius-2xl);
+  border: 1px solid var(--nova-border);
+  background: var(--nova-surface-raised);
+  padding: var(--nova-space-3);
+  box-shadow: var(--nova-shadow-xl);
+  transform-style: preserve-3d;
+  transform: rotateX(
+      calc(
+        var(--nova-container-scroll-tilt) *
+          (1 - var(--nova-container-scroll-progress))
+      )
+    )
+    scale(calc(0.92 + 0.08 * var(--nova-container-scroll-progress)));
+  transition: transform var(--nova-duration-fast) linear;
+  will-change: transform;
+}
+
+.nova-container-scroll__screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--nova-radius-xl);
+  overflow: hidden;
+  background: var(--nova-bg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-container-scroll__screen :where(img, video) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-container-scroll__frame {
+    transform: none;
+    transition: none;
+  }
+}

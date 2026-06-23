@@ -1,0 +1,95 @@
+/* QuantityStepper — − [n] + quantity control. */
+.nova-quantity-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  overflow: hidden;
+  user-select: none;
+}
+
+.nova-quantity-stepper:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+  border-color: var(--nova-primary);
+}
+
+.nova-quantity-stepper--disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.nova-quantity-stepper__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-quantity-stepper__btn:hover:not(:disabled) {
+  background-color: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-quantity-stepper__btn:active:not(:disabled) {
+  background-color: var(--nova-surface-active);
+}
+
+.nova-quantity-stepper__btn:disabled {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-quantity-stepper__value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--nova-font-semibold);
+  border-left: 1px solid var(--nova-border);
+  border-right: 1px solid var(--nova-border);
+}
+
+/* Sizes --------------------------------------------------------------------- */
+.nova-quantity-stepper--sm {
+  font-size: var(--nova-text-sm);
+}
+.nova-quantity-stepper--sm .nova-quantity-stepper__btn {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.nova-quantity-stepper--sm .nova-quantity-stepper__value {
+  min-width: 2rem;
+}
+
+.nova-quantity-stepper--md {
+  font-size: var(--nova-text-md);
+}
+.nova-quantity-stepper--md .nova-quantity-stepper__btn {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+.nova-quantity-stepper--md .nova-quantity-stepper__value {
+  min-width: 2.5rem;
+}
+
+.nova-quantity-stepper--lg {
+  font-size: var(--nova-text-lg);
+}
+.nova-quantity-stepper--lg .nova-quantity-stepper__btn {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+.nova-quantity-stepper--lg .nova-quantity-stepper__value {
+  min-width: 3rem;
+}

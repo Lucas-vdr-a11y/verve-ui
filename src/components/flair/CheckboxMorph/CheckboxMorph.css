@@ -1,0 +1,113 @@
+.nova-checkmorph {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--nova-radius-sm);
+}
+
+.nova-checkmorph:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-checkmorph__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-surface);
+  color: var(--nova-text-on-brand);
+  transition: background var(--nova-duration-base) var(--nova-ease),
+    border-color var(--nova-duration-base) var(--nova-ease),
+    border-radius var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease-spring);
+}
+
+.nova-checkmorph--on .nova-checkmorph__box {
+  background: var(--nova-primary);
+  border-color: var(--nova-primary);
+  border-radius: var(--nova-radius-md);
+  animation: nova-cm-pop var(--nova-duration-slow) var(--nova-ease-spring);
+}
+
+@keyframes nova-cm-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.82);
+  }
+  75% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.nova-checkmorph__tick {
+  width: 1rem;
+  height: 1rem;
+}
+
+.nova-checkmorph__tick-path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset var(--nova-duration-base) var(--nova-ease-out)
+    80ms;
+}
+
+.nova-checkmorph--on .nova-checkmorph__tick-path {
+  stroke-dashoffset: 0;
+}
+
+.nova-checkmorph__burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.nova-checkmorph__spoke {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 6px;
+  margin: -3px 0 0 -1.5px;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  opacity: 0;
+  transform: rotate(var(--nova-cm-angle)) translateY(0);
+  animation: nova-cm-burst var(--nova-duration-slow) var(--nova-ease-out)
+    forwards;
+}
+
+@keyframes nova-cm-burst {
+  0% {
+    opacity: 1;
+    transform: rotate(var(--nova-cm-angle)) translateY(-6px) scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--nova-cm-angle)) translateY(-18px) scaleY(0.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-checkmorph__box,
+  .nova-checkmorph--on .nova-checkmorph__box,
+  .nova-checkmorph__tick-path {
+    transition: none;
+    animation: none;
+  }
+}

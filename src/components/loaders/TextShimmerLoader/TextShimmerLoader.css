@@ -1,0 +1,70 @@
+.nova-text-shimmer {
+  --nova-loader-color: var(--nova-primary);
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+  line-height: 0;
+}
+
+.nova-text-shimmer[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-text-shimmer[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-text-shimmer[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-text-shimmer[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-text-shimmer[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-text-shimmer__text {
+  display: inline-block;
+  font-size: var(--nova-shimmer-size, 18px);
+  font-weight: var(--nova-font-semibold);
+  letter-spacing: 0.01em;
+  line-height: var(--nova-leading-tight);
+  /* base text color sits under a brighter highlight that sweeps across */
+  background: linear-gradient(
+    100deg,
+    var(--nova-text-subtle) 0%,
+    var(--nova-text-subtle) 40%,
+    var(--nova-loader-color) 50%,
+    var(--nova-text-subtle) 60%,
+    var(--nova-text-subtle) 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: nova-shimmer-sweep 1.8s var(--nova-ease) infinite;
+}
+
+@keyframes nova-shimmer-sweep {
+  from {
+    background-position: 140% 0;
+  }
+  to {
+    background-position: -40% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-text-shimmer__text {
+    animation: nova-shimmer-fade 1.8s var(--nova-ease) infinite;
+    background-position: 50% 0;
+  }
+  @keyframes nova-shimmer-fade {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}

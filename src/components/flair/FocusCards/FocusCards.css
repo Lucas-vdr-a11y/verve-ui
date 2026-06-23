@@ -1,0 +1,57 @@
+.nova-focus-cards {
+  display: grid;
+  grid-template-columns: repeat(var(--nova-focus-cols, 3), minmax(0, 1fr));
+  gap: var(--nova-space-4);
+}
+
+.nova-focus-cards__card {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 12rem;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  font: inherit;
+  text-align: inherit;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--nova-duration-base) var(--nova-ease-out),
+    filter var(--nova-duration-base) var(--nova-ease),
+    opacity var(--nova-duration-base) var(--nova-ease),
+    box-shadow var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-focus-cards__card:hover,
+.nova-focus-cards__card:focus-visible {
+  transform: scale(1.03);
+  box-shadow: var(--nova-shadow-lg);
+  outline: none;
+}
+
+.nova-focus-cards__card:focus-visible {
+  box-shadow: var(--nova-shadow-focus), var(--nova-shadow-lg);
+}
+
+.nova-focus-cards__card--dimmed {
+  filter: blur(3px) saturate(0.9);
+  opacity: 0.55;
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-focus-cards__card {
+    transition: opacity var(--nova-duration-base) var(--nova-ease);
+  }
+  .nova-focus-cards__card:hover,
+  .nova-focus-cards__card:focus-visible {
+    transform: none;
+  }
+  .nova-focus-cards__card--dimmed {
+    filter: none;
+    transform: none;
+  }
+}

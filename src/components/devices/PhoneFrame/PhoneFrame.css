@@ -1,0 +1,95 @@
+.nova-phone {
+  --nova-phone-w: 18rem;
+  position: relative;
+  width: var(--nova-phone-w);
+  aspect-ratio: 9 / 19.5;
+  padding: 0.7rem;
+  background: linear-gradient(150deg, var(--nova-gray-700), var(--nova-gray-900));
+  border-radius: 2.75rem;
+  box-shadow: var(--nova-shadow-xl);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-phone--sm { --nova-phone-w: 14rem; }
+.nova-phone--md { --nova-phone-w: 18rem; }
+.nova-phone--lg { --nova-phone-w: 22rem; }
+
+/* ---- Side buttons ------------------------------------------------------- */
+.nova-phone__btn {
+  position: absolute;
+  width: 0.18rem;
+  background: var(--nova-gray-600);
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-phone__btn--silent { left: -0.18rem; top: 18%; height: 4%; }
+.nova-phone__btn--vol-up { left: -0.18rem; top: 26%; height: 7%; }
+.nova-phone__btn--vol-down { left: -0.18rem; top: 35%; height: 7%; }
+.nova-phone__btn--power { right: -0.18rem; top: 28%; height: 9%; }
+
+/* ---- Screen ------------------------------------------------------------- */
+.nova-phone__screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--nova-bg);
+  border-radius: 2.1rem;
+  color: var(--nova-text);
+}
+
+.nova-phone__cutout {
+  position: absolute;
+  top: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: #000;
+}
+
+.nova-phone__cutout--island {
+  width: 32%;
+  height: 1.4rem;
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-phone__cutout--notch {
+  top: 0;
+  width: 44%;
+  height: 1.5rem;
+  border-radius: 0 0 var(--nova-radius-lg) var(--nova-radius-lg);
+}
+
+/* ---- Status bar --------------------------------------------------------- */
+.nova-phone__status {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem var(--nova-space-5) 0;
+  height: 2.6rem;
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-phone__status-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+}
+
+.nova-phone__content {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.nova-phone__content > img,
+.nova-phone__content > picture > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

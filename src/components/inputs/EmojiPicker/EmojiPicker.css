@@ -1,0 +1,139 @@
+.nova-emojipicker {
+  display: flex;
+  flex-direction: column;
+  width: 18rem;
+  max-width: 100%;
+  padding: var(--nova-space-2);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface-raised);
+  box-shadow: var(--nova-shadow-md);
+  font-family: var(--nova-font-sans);
+  --nova-emojipicker-cell: 2rem;
+}
+
+.nova-emojipicker--sm {
+  width: 15rem;
+  --nova-emojipicker-cell: 1.75rem;
+}
+.nova-emojipicker--lg {
+  width: 21rem;
+  --nova-emojipicker-cell: 2.4rem;
+}
+
+/* ---- Search ------------------------------------------------------------- */
+.nova-emojipicker__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--nova-space-2);
+}
+
+.nova-emojipicker__search-icon {
+  position: absolute;
+  left: var(--nova-space-2);
+  width: 1rem;
+  height: 1rem;
+  color: var(--nova-text-subtle);
+  pointer-events: none;
+}
+
+.nova-emojipicker__search-input {
+  width: 100%;
+  padding: var(--nova-space-2) var(--nova-space-2) var(--nova-space-2)
+    var(--nova-space-8);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  outline: none;
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-emojipicker__search-input::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-emojipicker__search-input:focus-visible {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* ---- Tabs --------------------------------------------------------------- */
+.nova-emojipicker__tabs {
+  display: flex;
+  gap: var(--nova-space-1);
+  margin-bottom: var(--nova-space-2);
+  padding-bottom: var(--nova-space-2);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-emojipicker__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  padding: var(--nova-space-1);
+  font-size: var(--nova-text-lg);
+  line-height: 1;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-emojipicker__tab:hover {
+  background: var(--nova-surface-hover);
+  opacity: 1;
+}
+
+.nova-emojipicker__tab--active {
+  background: var(--nova-primary-subtle);
+  opacity: 1;
+}
+
+/* ---- Grid --------------------------------------------------------------- */
+.nova-emojipicker__grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--nova-emojipicker-cell), 1fr)
+  );
+  gap: 2px;
+  max-height: 12rem;
+  overflow-y: auto;
+}
+
+.nova-emojipicker__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  font-size: calc(var(--nova-emojipicker-cell) * 0.7);
+  line-height: 1;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease-spring);
+}
+
+.nova-emojipicker__cell:hover {
+  background: var(--nova-surface-hover);
+  transform: scale(1.12);
+}
+
+.nova-emojipicker__empty {
+  padding: var(--nova-space-6) var(--nova-space-3);
+  text-align: center;
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}

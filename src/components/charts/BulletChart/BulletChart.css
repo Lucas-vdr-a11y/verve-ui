@@ -1,0 +1,30 @@
+.nova-bullet-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-bullet-chart__title {
+  fill: var(--nova-text);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-bullet-chart__band {
+  fill: var(--nova-text-muted);
+}
+
+.nova-bullet-chart__measure {
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-bullet-chart:hover .nova-bullet-chart__measure {
+  opacity: 0.88;
+}
+
+.nova-bullet-chart__target {
+  stroke: var(--nova-text);
+  stroke-width: 2;
+  stroke-linecap: round;
+}

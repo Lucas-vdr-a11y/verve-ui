@@ -1,0 +1,139 @@
+/* MarqueeRow — logo-row marquee. The viewport carries the edge mask so the skew
+ * wrapper can sit outside it without clipping the fade. */
+
+.nova-marquee-row {
+  --nova-marquee-row-gap: 3rem;
+  --nova-marquee-row-fade: 4rem;
+  --nova-marquee-row-speed: 30;
+  /* Larger constant than the base Marquee → calmer default for sparse logos. */
+  --nova-marquee-row-duration: calc(6000s / var(--nova-marquee-row-speed));
+  width: 100%;
+}
+
+.nova-marquee-row--skew {
+  perspective: 1200px;
+}
+
+.nova-marquee-row__viewport {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.nova-marquee-row--skew .nova-marquee-row__viewport {
+  transform: rotate3d(1, 0, 0, 12deg) rotateZ(-3deg);
+  transform-style: preserve-3d;
+}
+
+.nova-marquee-row__track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--nova-marquee-row-gap);
+  width: max-content;
+  will-change: transform;
+}
+
+.nova-marquee-row__group {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--nova-marquee-row-gap);
+  flex: 0 0 auto;
+}
+
+/* ---- horizontal ---------------------------------------------------------- */
+.nova-marquee-row--horizontal .nova-marquee-row__track {
+  flex-direction: row;
+  animation: nova-marquee-row-x var(--nova-marquee-row-duration) linear infinite;
+}
+.nova-marquee-row--horizontal.nova-marquee-row--reverse
+  .nova-marquee-row__track {
+  animation-direction: reverse;
+}
+
+/* ---- vertical ------------------------------------------------------------ */
+.nova-marquee-row--vertical .nova-marquee-row__viewport {
+  flex-direction: column;
+}
+.nova-marquee-row--vertical .nova-marquee-row__track {
+  flex-direction: column;
+  width: auto;
+  height: max-content;
+  animation: nova-marquee-row-y var(--nova-marquee-row-duration) linear infinite;
+}
+.nova-marquee-row--vertical .nova-marquee-row__group {
+  flex-direction: column;
+}
+.nova-marquee-row--vertical.nova-marquee-row--reverse
+  .nova-marquee-row__track {
+  animation-direction: reverse;
+}
+
+@keyframes nova-marquee-row-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(
+      calc(-50% - var(--nova-marquee-row-gap) / 2)
+    );
+  }
+}
+@keyframes nova-marquee-row-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(
+      calc(-50% - var(--nova-marquee-row-gap) / 2)
+    );
+  }
+}
+
+/* ---- pause --------------------------------------------------------------- */
+.nova-marquee-row--pause-hover:hover .nova-marquee-row__track {
+  animation-play-state: paused;
+}
+.nova-marquee-row[data-paused] .nova-marquee-row__track {
+  animation-play-state: paused;
+}
+
+/* ---- edge fade ----------------------------------------------------------- */
+.nova-marquee-row--horizontal .nova-marquee-row__viewport {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--nova-marquee-row-fade),
+    #000 calc(100% - var(--nova-marquee-row-fade)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--nova-marquee-row-fade),
+    #000 calc(100% - var(--nova-marquee-row-fade)),
+    transparent 100%
+  );
+}
+.nova-marquee-row--vertical .nova-marquee-row__viewport {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 var(--nova-marquee-row-fade),
+    #000 calc(100% - var(--nova-marquee-row-fade)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 var(--nova-marquee-row-fade),
+    #000 calc(100% - var(--nova-marquee-row-fade)),
+    transparent 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-marquee-row__track {
+    animation-play-state: paused !important;
+  }
+}

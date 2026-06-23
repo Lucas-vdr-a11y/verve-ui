@@ -1,0 +1,15 @@
+.nova-draggable {
+  cursor: grab;
+  border-radius: var(--nova-radius-md);
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-draggable--dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.nova-draggable--disabled {
+  cursor: default;
+}

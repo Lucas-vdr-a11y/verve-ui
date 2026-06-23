@@ -1,0 +1,57 @@
+.nova-gradient-text {
+  /* Fallback solid color first — applies where clip is unsupported. */
+  color: var(--nova-gradient-text-fallback, var(--nova-primary));
+  font-family: inherit;
+  font-weight: var(--nova-font-bold);
+  background-image: var(--nova-gradient-text-image, none);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* Only make the fill transparent where the engine actually clips to text,
+   so the fallback color shows through otherwise. */
+@supports (
+  (background-clip: text) or (-webkit-background-clip: text)
+) {
+  .nova-gradient-text {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* ---- Presets ------------------------------------------------------------ */
+.nova-gradient-text--brand {
+  --nova-gradient-text-image: linear-gradient(
+    var(--nova-gradient-text-angle, 90deg),
+    var(--nova-brand-400),
+    var(--nova-brand-600)
+  );
+}
+.nova-gradient-text--sunset {
+  --nova-gradient-text-image: linear-gradient(
+    var(--nova-gradient-text-angle, 90deg),
+    var(--nova-warning-500),
+    var(--nova-danger-500)
+  );
+}
+.nova-gradient-text--ocean {
+  --nova-gradient-text-image: linear-gradient(
+    var(--nova-gradient-text-angle, 90deg),
+    var(--nova-info-500),
+    var(--nova-brand-500)
+  );
+}
+.nova-gradient-text--candy {
+  --nova-gradient-text-image: linear-gradient(
+    var(--nova-gradient-text-angle, 90deg),
+    var(--nova-brand-400),
+    var(--nova-danger-500)
+  );
+}
+.nova-gradient-text--forest {
+  --nova-gradient-text-image: linear-gradient(
+    var(--nova-gradient-text-angle, 90deg),
+    var(--nova-success-500),
+    var(--nova-info-600)
+  );
+}

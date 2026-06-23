@@ -1,0 +1,109 @@
+.nova-play-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--nova-radius-full);
+  cursor: pointer;
+  font-family: var(--nova-font-sans);
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-play-button:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-play-button:active {
+  transform: scale(0.95);
+}
+
+.nova-play-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ---- Sizes ------------------------------------------------------------- */
+.nova-play-button--sm {
+  inline-size: var(--nova-space-8);
+  block-size: var(--nova-space-8);
+  font-size: var(--nova-text-md);
+}
+
+.nova-play-button--md {
+  inline-size: var(--nova-space-12);
+  block-size: var(--nova-space-12);
+  font-size: var(--nova-text-xl);
+}
+
+.nova-play-button--lg {
+  inline-size: var(--nova-space-16);
+  block-size: var(--nova-space-16);
+  font-size: var(--nova-text-3xl);
+}
+
+/* ---- Variants ---------------------------------------------------------- */
+.nova-play-button--filled {
+  color: var(--nova-text-on-brand);
+  background: var(--nova-primary);
+  border-color: var(--nova-primary);
+}
+
+.nova-play-button--filled:hover:not(:disabled) {
+  background: var(--nova-primary-hover);
+  border-color: var(--nova-primary-hover);
+}
+
+.nova-play-button--outline {
+  color: var(--nova-primary);
+  background: var(--nova-surface);
+  border-color: currentColor;
+}
+
+.nova-play-button--outline:hover:not(:disabled) {
+  background: var(--nova-primary-subtle);
+}
+
+/* ---- Icon -------------------------------------------------------------- */
+.nova-play-button__icon {
+  display: inline-flex;
+  line-height: 0;
+  /* nudge play triangle to optical center */
+  margin-inline-start: 0.06em;
+}
+
+/* ---- Pulse ring -------------------------------------------------------- */
+.nova-play-button__ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--nova-radius-full);
+  border: 2px solid currentColor;
+  color: var(--nova-primary);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nova-play-button--pulse .nova-play-button__ring {
+  animation: nova-play-button-pulse 1.8s var(--nova-ease-out) infinite;
+}
+
+@keyframes nova-play-button-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-play-button--pulse .nova-play-button__ring {
+    animation: none;
+  }
+}

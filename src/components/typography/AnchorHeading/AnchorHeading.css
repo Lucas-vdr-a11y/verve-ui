@@ -1,0 +1,45 @@
+.nova-anchor-heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  margin: 0;
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  scroll-margin-top: var(--nova-space-16);
+}
+
+.nova-anchor-heading__text {
+  text-wrap: balance;
+}
+
+/* ---- Anchor link -------------------------------------------------------- */
+.nova-anchor-heading__anchor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nova-text-subtle);
+  font-weight: var(--nova-font-normal);
+  text-decoration: none;
+  border-radius: var(--nova-radius-sm);
+  opacity: 0;
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-anchor-heading:hover .nova-anchor-heading__anchor,
+.nova-anchor-heading__anchor:focus-visible {
+  opacity: 1;
+}
+
+.nova-anchor-heading__anchor:hover {
+  color: var(--nova-primary-text);
+}
+
+.nova-anchor-heading__anchor[data-copied] {
+  color: var(--nova-success);
+  opacity: 1;
+}

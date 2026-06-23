@@ -1,0 +1,123 @@
+.nova-segmented {
+  display: inline-flex;
+  box-sizing: border-box;
+  max-width: 100%;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-segmented--full {
+  display: flex;
+  width: 100%;
+}
+
+.nova-segmented__track {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 0;
+  padding: var(--nova-space-1);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-bg-muted);
+}
+
+/* ---- Sliding pill -------------------------------------------------------- */
+.nova-segmented__pill {
+  position: absolute;
+  top: var(--nova-space-1);
+  bottom: var(--nova-space-1);
+  left: 0;
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  box-shadow: var(--nova-shadow-sm);
+  transition: transform var(--nova-duration-base) var(--nova-ease),
+    width var(--nova-duration-base) var(--nova-ease);
+  pointer-events: none;
+  z-index: var(--nova-z-base);
+}
+
+/* ---- Segments ------------------------------------------------------------ */
+.nova-segmented__segment {
+  position: relative;
+  z-index: calc(var(--nova-z-base) + 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  flex: 0 0 auto;
+  min-width: 0;
+  border: none;
+  border-radius: var(--nova-radius-md);
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-segmented--full .nova-segmented__segment {
+  flex: 1 1 0;
+}
+
+.nova-segmented__segment:hover:not(:disabled):not(
+    .nova-segmented__segment--selected
+  ) {
+  color: var(--nova-text);
+}
+
+.nova-segmented__segment--selected {
+  color: var(--nova-text);
+}
+
+.nova-segmented__segment:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nova-segmented__icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nova-segmented__icon svg {
+  display: block;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.nova-segmented__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- Disabled whole control --------------------------------------------- */
+.nova-segmented--disabled .nova-segmented__track {
+  opacity: 0.6;
+}
+
+.nova-segmented--disabled .nova-segmented__segment {
+  cursor: not-allowed;
+}
+
+/* ---- Sizes --------------------------------------------------------------- */
+.nova-segmented--sm .nova-segmented__segment {
+  min-height: calc(1.75rem - 2px);
+  padding: 0 var(--nova-space-3);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-segmented--md .nova-segmented__segment {
+  min-height: calc(2.25rem - 2px);
+  padding: 0 var(--nova-space-4);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-segmented--lg .nova-segmented__segment {
+  min-height: calc(2.75rem - 2px);
+  padding: 0 var(--nova-space-5);
+  font-size: var(--nova-text-md);
+}

@@ -1,0 +1,84 @@
+/* TeamMemberCard — photo, identity, bio and social links. */
+.nova-team-member-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-6);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+}
+
+.nova-team-member-card *,
+.nova-team-member-card *::before,
+.nova-team-member-card *::after {
+  box-sizing: border-box;
+}
+
+.nova-team-member-card--center {
+  align-items: center;
+  text-align: center;
+}
+
+.nova-team-member-card--start {
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Photo --------------------------------------------------------------------- */
+.nova-team-member-card__photo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-bg-muted);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-semibold);
+  overflow: hidden;
+}
+
+.nova-team-member-card__photo :where(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Identity ------------------------------------------------------------------ */
+.nova-team-member-card__identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-team-member-card__name {
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-team-member-card__role {
+  color: var(--nova-primary-text);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+}
+
+/* Bio ----------------------------------------------------------------------- */
+.nova-team-member-card__bio {
+  margin: 0;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-relaxed);
+}
+
+/* Social -------------------------------------------------------------------- */
+.nova-team-member-card__social {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  margin-top: var(--nova-space-1);
+}

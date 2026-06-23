@@ -1,0 +1,95 @@
+.nova-clock-loader {
+  --nova-loader-color: var(--nova-primary);
+  display: inline-block;
+  width: var(--nova-clock-size, 44px);
+  height: var(--nova-clock-size, 44px);
+  color: var(--nova-loader-color);
+  line-height: 0;
+}
+
+.nova-clock-loader[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-clock-loader[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-clock-loader[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-clock-loader[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-clock-loader[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-clock-loader__face {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--nova-radius-full);
+  box-shadow: inset 0 0 0 2px currentColor;
+  background: var(--nova-surface);
+}
+
+.nova-clock-loader__hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: 50% 100%;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-loader-color);
+}
+
+.nova-clock-loader__hand--hour {
+  width: 8%;
+  height: 26%;
+  margin-left: -4%;
+  opacity: 0.8;
+  animation: nova-clock-spin 6s linear infinite;
+}
+
+.nova-clock-loader__hand--minute {
+  width: 6%;
+  height: 38%;
+  margin-left: -3%;
+  animation: nova-clock-spin 1.5s linear infinite;
+}
+
+.nova-clock-loader__pivot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14%;
+  height: 14%;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-loader-color);
+  transform: translate(-50%, -50%);
+}
+
+@keyframes nova-clock-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-clock-loader__hand--hour {
+    animation: none;
+    transform: rotate(40deg);
+  }
+  .nova-clock-loader__hand--minute {
+    animation: nova-clock-pulse 1.6s var(--nova-ease) infinite;
+    transform: rotate(120deg);
+  }
+  @keyframes nova-clock-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+}

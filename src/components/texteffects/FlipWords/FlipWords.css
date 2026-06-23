@@ -1,0 +1,53 @@
+.nova-flip-words {
+  display: inline-block;
+  position: relative;
+  color: var(--nova-primary);
+  font-weight: var(--nova-font-semibold);
+  perspective: 600px;
+  white-space: nowrap;
+}
+
+.nova-flip-words__word {
+  display: inline-block;
+}
+
+.nova-flip-words__char {
+  display: inline-block;
+  white-space: pre;
+  transform-origin: center bottom;
+  animation: nova-flip-words-in var(--nova-flip-duration, 600ms)
+    var(--nova-ease-spring) both;
+}
+
+@keyframes nova-flip-words-in {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg) translateY(0.4em);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg) translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* Reduced-motion: simple cross-fade, no 3D flip. */
+.nova-flip-words--reduced .nova-flip-words__char {
+  animation: nova-flip-words-fade var(--nova-flip-duration, 600ms) ease both;
+}
+
+@keyframes nova-flip-words-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-flip-words__char {
+    animation: nova-flip-words-fade 1ms linear both !important;
+  }
+}

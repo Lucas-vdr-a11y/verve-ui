@@ -1,0 +1,99 @@
+.nova-editable {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+/* ---- Preview ------------------------------------------------------------- */
+.nova-editable__preview {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--nova-radius-md);
+  color: inherit;
+  font: inherit;
+  line-height: var(--nova-leading-normal);
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+  cursor: text;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-editable__preview:hover {
+  background: var(--nova-surface-hover);
+  border-color: var(--nova-border);
+}
+
+.nova-editable__preview--empty {
+  color: var(--nova-text-subtle);
+}
+
+/* ---- Input / textarea ---------------------------------------------------- */
+.nova-editable__input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: calc(var(--nova-space-1) - 1px) calc(var(--nova-space-2) - 1px);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: inherit;
+  font: inherit;
+  line-height: var(--nova-leading-normal);
+  box-shadow: var(--nova-shadow-xs);
+  outline: none;
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-editable__input:focus,
+.nova-editable__input.nova-focusable:focus-visible {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-editable__textarea {
+  resize: vertical;
+  min-height: 4rem;
+}
+
+.nova-editable--invalid .nova-editable__input {
+  border-color: var(--nova-danger);
+}
+
+.nova-editable--invalid .nova-editable__input:focus {
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+.nova-editable--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.nova-editable--disabled .nova-editable__preview {
+  cursor: not-allowed;
+}
+
+.nova-editable--disabled .nova-editable__preview:hover {
+  background: transparent;
+  border-color: transparent;
+}
+
+/* ---- Sizes --------------------------------------------------------------- */
+.nova-editable--sm {
+  font-size: var(--nova-text-sm);
+}
+
+.nova-editable--md {
+  font-size: var(--nova-text-sm);
+}
+
+.nova-editable--lg {
+  font-size: var(--nova-text-md);
+}

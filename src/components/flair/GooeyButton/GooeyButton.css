@@ -1,0 +1,91 @@
+.nova-gooey {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 8rem;
+  padding: var(--nova-space-3) var(--nova-space-6);
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: transparent;
+  color: var(--nova-text-on-brand);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  cursor: pointer;
+  isolation: isolate;
+}
+
+/* Gooey layer holds the body + blobs and gets the SVG filter applied. */
+.nova-gooey__goo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.nova-gooey__body {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  transition: background var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-gooey__blob {
+  --nova-gooey-i: 0;
+  --nova-gooey-n: 3;
+
+  position: absolute;
+  bottom: 50%;
+  left: calc((var(--nova-gooey-i) + 0.5) / var(--nova-gooey-n) * 100%);
+  width: 1.4rem;
+  height: 1.4rem;
+  transform: translate(-50%, 50%) scale(0);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  transition: transform var(--nova-duration-slow) var(--nova-ease-spring),
+    background var(--nova-duration-base) var(--nova-ease);
+  transition-delay: calc(var(--nova-gooey-i) * 40ms);
+}
+
+.nova-gooey:hover .nova-gooey__body,
+.nova-gooey:hover .nova-gooey__blob {
+  background: var(--nova-primary-hover);
+}
+
+.nova-gooey:hover .nova-gooey__blob {
+  transform: translate(-50%, -90%) scale(1);
+}
+
+.nova-gooey:active .nova-gooey__blob {
+  transform: translate(-50%, -40%) scale(0.85);
+}
+
+.nova-gooey__label {
+  position: relative;
+  z-index: 1;
+}
+
+.nova-gooey__filter {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.nova-gooey:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-gooey__blob {
+    transition: none;
+    transform: translate(-50%, 50%) scale(0);
+  }
+  .nova-gooey:hover .nova-gooey__blob,
+  .nova-gooey:active .nova-gooey__blob {
+    transform: translate(-50%, 50%) scale(0);
+  }
+}

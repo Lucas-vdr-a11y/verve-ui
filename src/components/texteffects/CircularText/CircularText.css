@@ -1,0 +1,41 @@
+.nova-circular-text {
+  position: relative;
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-circular-text__ring {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.nova-circular-text--spinning .nova-circular-text__ring {
+  animation: nova-circular-spin var(--nova-circ-spin, 20s) linear infinite;
+}
+
+.nova-circular-text__char {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  margin-left: -0.5ch;
+  font-size: var(--nova-text-md);
+  transform-origin: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@keyframes nova-circular-spin {
+  to {
+    transform: rotate(calc(var(--nova-circ-dir, 1) * 360deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-circular-text--spinning .nova-circular-text__ring {
+    animation: none;
+  }
+}

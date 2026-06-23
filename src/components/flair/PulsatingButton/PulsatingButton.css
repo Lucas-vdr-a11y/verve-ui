@@ -1,0 +1,79 @@
+.nova-pulsate {
+  --nova-pulsate-color: var(--nova-primary);
+  --nova-pulsate-duration: 1.8s;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-3) var(--nova-space-6);
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  cursor: pointer;
+  isolation: isolate;
+  transition: background var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-pulsate:hover {
+  background: var(--nova-primary-hover);
+}
+.nova-pulsate:active {
+  background: var(--nova-primary-active);
+}
+.nova-pulsate:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-pulsate--sm {
+  padding: var(--nova-space-2) var(--nova-space-4);
+  font-size: var(--nova-text-xs);
+}
+.nova-pulsate--lg {
+  padding: var(--nova-space-4) var(--nova-space-8);
+  font-size: var(--nova-text-md);
+}
+
+.nova-pulsate__ring {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--nova-pulsate-color);
+  animation: nova-pulsate-ring var(--nova-pulsate-duration)
+    cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.nova-pulsate__content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+}
+
+@keyframes nova-pulsate-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70%,
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-pulsate__ring {
+    animation: none;
+    opacity: 0;
+  }
+}

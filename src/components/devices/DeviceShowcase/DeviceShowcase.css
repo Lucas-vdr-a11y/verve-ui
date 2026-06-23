@@ -1,0 +1,102 @@
+.nova-device-showcase {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--nova-radius-xl);
+  padding: var(--nova-space-12);
+  background: var(--nova-bg-subtle);
+}
+
+.nova-device-showcase--pad-sm { padding: var(--nova-space-8); }
+.nova-device-showcase--pad-md { padding: var(--nova-space-12); }
+.nova-device-showcase--pad-lg { padding: var(--nova-space-20); }
+
+/* ---- Backdrops ---------------------------------------------------------- */
+.nova-device-showcase--bd-spotlight {
+  background:
+    radial-gradient(
+      120% 90% at 50% 0%,
+      var(--nova-primary-subtle) 0%,
+      transparent 60%
+    ),
+    var(--nova-bg-subtle);
+}
+
+.nova-device-showcase--bd-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--nova-primary-subtle),
+    var(--nova-bg-muted)
+  );
+}
+
+.nova-device-showcase--bd-grid {
+  background-color: var(--nova-bg-subtle);
+  background-image:
+    linear-gradient(var(--nova-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--nova-border) 1px, transparent 1px);
+  background-size: 1.5rem 1.5rem;
+}
+
+.nova-device-showcase--bd-none {
+  background: transparent;
+}
+
+/* ---- Stage -------------------------------------------------------------- */
+.nova-device-showcase__stage {
+  position: relative;
+  z-index: var(--nova-z-base);
+  max-width: 100%;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out);
+  will-change: transform;
+}
+
+.nova-device-showcase__device {
+  position: relative;
+}
+
+.nova-device-showcase--tilt {
+  perspective: 1400px;
+}
+
+.nova-device-showcase--tilt .nova-device-showcase__stage {
+  transform: rotateX(0deg) rotateY(0deg);
+  transform-style: preserve-3d;
+}
+
+.nova-device-showcase--tilt:hover .nova-device-showcase__stage {
+  transform: rotateX(4deg) rotateY(-6deg) scale(1.02);
+}
+
+/* ---- Float -------------------------------------------------------------- */
+.nova-device-showcase__stage--float {
+  animation: nova-device-float 5s var(--nova-ease) infinite;
+}
+
+@keyframes nova-device-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-0.6rem); }
+}
+
+/* ---- Reflection --------------------------------------------------------- */
+.nova-device-showcase__reflection {
+  position: absolute;
+  inset: 100% 0 auto 0;
+  transform: scaleY(-1);
+  transform-origin: top;
+  opacity: 0.18;
+  -webkit-mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.9), transparent 55%);
+  mask-image: linear-gradient(to bottom, rgb(0 0 0 / 0.9), transparent 55%);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-device-showcase__stage--float {
+    animation: none;
+  }
+  .nova-device-showcase--tilt:hover .nova-device-showcase__stage {
+    transform: none;
+  }
+}

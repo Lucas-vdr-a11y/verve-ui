@@ -1,0 +1,114 @@
+.nova-glitch-text {
+  position: relative;
+  display: inline-block;
+  color: var(--nova-text);
+  font-weight: var(--nova-font-bold);
+  letter-spacing: 0.02em;
+}
+
+/* The two coloured clip layers share the text via the data-text attribute. */
+.nova-glitch-text::before,
+.nova-glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.nova-glitch-text::before {
+  color: #00e5ff;
+  z-index: 1;
+}
+
+.nova-glitch-text::after {
+  color: #ff00d4;
+  z-index: -1;
+}
+
+/* Continuous mode (default). */
+.nova-glitch-text:not(.nova-glitch-text--hover)::before {
+  animation: nova-glitch-top var(--nova-glitch-speed, 2.5s)
+    steps(2, jump-none) infinite;
+}
+.nova-glitch-text:not(.nova-glitch-text--hover)::after {
+  animation: nova-glitch-bottom var(--nova-glitch-speed, 2.5s)
+    steps(2, jump-none) infinite;
+}
+
+/* Hover-only mode. */
+.nova-glitch-text--hover::before,
+.nova-glitch-text--hover::after {
+  opacity: 0;
+}
+.nova-glitch-text--hover:hover::before {
+  opacity: 0.85;
+  animation: nova-glitch-top calc(var(--nova-glitch-speed, 2.5s) / 4)
+    steps(2, jump-none) infinite;
+}
+.nova-glitch-text--hover:hover::after {
+  opacity: 0.85;
+  animation: nova-glitch-bottom calc(var(--nova-glitch-speed, 2.5s) / 4)
+    steps(2, jump-none) infinite;
+}
+
+@keyframes nova-glitch-top {
+  0% {
+    transform: translate(0);
+    clip-path: inset(0 0 60% 0);
+  }
+  20% {
+    transform: translate(calc(var(--nova-glitch-shift, 3px) * -1), -1px);
+    clip-path: inset(10% 0 55% 0);
+  }
+  40% {
+    transform: translate(var(--nova-glitch-shift, 3px), 1px);
+    clip-path: inset(40% 0 20% 0);
+  }
+  60% {
+    transform: translate(calc(var(--nova-glitch-shift, 3px) * -1), 0);
+    clip-path: inset(5% 0 70% 0);
+  }
+  80% {
+    transform: translate(var(--nova-glitch-shift, 3px), -1px);
+    clip-path: inset(25% 0 40% 0);
+  }
+  100% {
+    transform: translate(0);
+    clip-path: inset(0 0 60% 0);
+  }
+}
+
+@keyframes nova-glitch-bottom {
+  0% {
+    transform: translate(0);
+    clip-path: inset(60% 0 0 0);
+  }
+  20% {
+    transform: translate(var(--nova-glitch-shift, 3px), 1px);
+    clip-path: inset(70% 0 10% 0);
+  }
+  40% {
+    transform: translate(calc(var(--nova-glitch-shift, 3px) * -1), -1px);
+    clip-path: inset(45% 0 30% 0);
+  }
+  60% {
+    transform: translate(var(--nova-glitch-shift, 3px), 0);
+    clip-path: inset(80% 0 5% 0);
+  }
+  80% {
+    transform: translate(calc(var(--nova-glitch-shift, 3px) * -1), 1px);
+    clip-path: inset(55% 0 25% 0);
+  }
+  100% {
+    transform: translate(0);
+    clip-path: inset(60% 0 0 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-glitch-text::before,
+  .nova-glitch-text::after {
+    display: none;
+  }
+}

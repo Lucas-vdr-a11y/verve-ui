@@ -1,0 +1,113 @@
+.nova-code-window {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface);
+  box-shadow: var(--nova-shadow-lg);
+  color: var(--nova-text);
+}
+
+.nova-code-window__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-3);
+  background: var(--nova-bg-muted);
+  border-bottom: 1px solid var(--nova-border);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-code-window__lights {
+  display: inline-flex;
+  gap: var(--nova-space-2);
+}
+
+.nova-code-window__light {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-code-window__light--close { background: #ff5f57; }
+.nova-code-window__light--min { background: #febc2e; }
+.nova-code-window__light--max { background: #28c840; }
+
+.nova-code-window__filename {
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-muted);
+}
+
+.nova-code-window__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  margin-left: auto;
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+.nova-code-window__lang-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: var(--nova-radius-full);
+}
+
+/* ---- Tabs --------------------------------------------------------------- */
+.nova-code-window__tabs {
+  display: flex;
+  background: var(--nova-bg-subtle);
+  border-bottom: 1px solid var(--nova-border);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-code-window__tab {
+  padding: var(--nova-space-2) var(--nova-space-4);
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+  border-right: 1px solid var(--nova-border);
+}
+
+.nova-code-window__tab--active {
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  box-shadow: inset 0 -2px 0 var(--nova-primary);
+}
+
+/* ---- Body --------------------------------------------------------------- */
+.nova-code-window__body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  font-family: var(--nova-font-mono);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-relaxed);
+}
+
+.nova-code-window__gutter {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: var(--nova-space-4) var(--nova-space-3);
+  text-align: right;
+  background: var(--nova-bg-subtle);
+  border-right: 1px solid var(--nova-border);
+  color: var(--nova-text-subtle);
+  user-select: none;
+}
+
+.nova-code-window__code {
+  flex: 1;
+  min-width: 0;
+  padding: var(--nova-space-4);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.nova-code-window__code > pre {
+  margin: 0;
+  font: inherit;
+}

@@ -1,0 +1,100 @@
+.nova-hover-reveal {
+  position: relative;
+  width: max-content;
+  max-width: 100%;
+}
+
+.nova-hover-reveal__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nova-hover-reveal__row {
+  border-bottom: 1px solid var(--nova-border);
+}
+.nova-hover-reveal__row:last-child {
+  border-bottom: none;
+}
+
+.nova-hover-reveal__link {
+  display: block;
+  padding: var(--nova-space-3) var(--nova-space-2);
+  color: var(--nova-text-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease-out);
+}
+
+.nova-hover-reveal__row--active .nova-hover-reveal__link {
+  color: var(--nova-text);
+  transform: translateX(var(--nova-space-2));
+}
+
+.nova-hover-reveal__link:focus-visible {
+  outline: none;
+  color: var(--nova-primary-text);
+}
+
+.nova-hover-reveal__label {
+  font: var(--nova-font-semibold) var(--nova-text-2xl) / 1.1 var(--nova-font-sans);
+}
+
+/* The single floating preview that follows the cursor. */
+.nova-hover-reveal__preview {
+  --nova-reveal-x: 0px;
+  --nova-reveal-y: 0px;
+  --nova-reveal-w: 220px;
+  --nova-reveal-h: 150px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: var(--nova-z-popover);
+  width: var(--nova-reveal-w);
+  height: var(--nova-reveal-h);
+  border-radius: var(--nova-radius-md);
+  overflow: hidden;
+  box-shadow: var(--nova-shadow-lg);
+  opacity: 0;
+  transform: translate(
+      calc(var(--nova-reveal-x) - var(--nova-reveal-w) / 2),
+      calc(var(--nova-reveal-y) - var(--nova-reveal-h) / 2)
+    )
+    scale(0.85);
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-slow) var(--nova-ease-out);
+  pointer-events: none;
+}
+
+.nova-hover-reveal__preview--on {
+  opacity: 1;
+  transform: translate(
+      calc(var(--nova-reveal-x) - var(--nova-reveal-w) / 2),
+      calc(var(--nova-reveal-y) - var(--nova-reveal-h) / 2)
+    )
+    scale(1);
+}
+
+/* Reduced motion: snap, no glide. */
+.nova-hover-reveal__preview--static {
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-hover-reveal__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-hover-reveal__link,
+  .nova-hover-reveal__preview {
+    transition: opacity var(--nova-duration-base) var(--nova-ease);
+  }
+  .nova-hover-reveal__row--active .nova-hover-reveal__link {
+    transform: none;
+  }
+}

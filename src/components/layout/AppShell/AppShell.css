@@ -1,0 +1,130 @@
+/* AppShell — responsive application layout on CSS grid. */
+.nova-app-shell {
+  box-sizing: border-box;
+  display: grid;
+  min-height: 100%;
+  width: 100%;
+  color: var(--nova-text);
+  background: var(--nova-bg);
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+/* With a sidebar: a left rail column + main. */
+.nova-app-shell--has-sidebar {
+  grid-template-columns: var(--nova-app-shell-sidebar-w) 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}
+
+/* With an aside (and no sidebar): main + right column. */
+.nova-app-shell--has-aside:not(.nova-app-shell--has-sidebar) {
+  grid-template-columns: 1fr var(--nova-app-shell-aside-w);
+  grid-template-areas:
+    "header header"
+    "main aside"
+    "footer footer";
+}
+
+/* With both sidebar and aside. */
+.nova-app-shell--has-sidebar.nova-app-shell--has-aside {
+  grid-template-columns: var(--nova-app-shell-sidebar-w) 1fr var(--nova-app-shell-aside-w);
+  grid-template-areas:
+    "header header header"
+    "sidebar main aside"
+    "footer footer footer";
+}
+
+.nova-app-shell__header {
+  grid-area: header;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: var(--nova-app-shell-header-h);
+  padding-inline: var(--nova-space-4);
+  border-bottom: 1px solid var(--nova-border);
+  background: var(--nova-surface);
+}
+
+.nova-app-shell__header--sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--nova-z-sticky);
+}
+
+.nova-app-shell__sidebar {
+  grid-area: sidebar;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: auto;
+  border-right: 1px solid var(--nova-border);
+  background: var(--nova-surface);
+  transition:
+    width var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-app-shell__aside {
+  grid-area: aside;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: auto;
+  border-left: 1px solid var(--nova-border);
+  background: var(--nova-surface);
+}
+
+.nova-app-shell__main {
+  grid-area: main;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+.nova-app-shell__footer {
+  grid-area: footer;
+  box-sizing: border-box;
+  min-width: 0;
+  border-top: 1px solid var(--nova-border);
+  background: var(--nova-surface);
+}
+
+/* Small screens: collapse to a single column and pull the sidebar/aside
+ * off-canvas. The sidebar overlays the main region when shown. */
+@media (max-width: 48rem) {
+  .nova-app-shell,
+  .nova-app-shell--has-sidebar,
+  .nova-app-shell--has-aside:not(.nova-app-shell--has-sidebar),
+  .nova-app-shell--has-sidebar.nova-app-shell--has-aside {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+
+  .nova-app-shell--has-sidebar .nova-app-shell__sidebar {
+    position: fixed;
+    top: var(--nova-app-shell-header-h);
+    bottom: 0;
+    left: 0;
+    width: min(var(--nova-app-shell-sidebar-w), 80vw);
+    z-index: var(--nova-z-overlay);
+    box-shadow: var(--nova-shadow-lg);
+  }
+
+  .nova-app-shell--sidebar-hidden .nova-app-shell__sidebar {
+    transform: translateX(-100%);
+  }
+
+  .nova-app-shell__aside {
+    display: none;
+  }
+}

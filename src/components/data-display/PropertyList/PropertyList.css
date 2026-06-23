@@ -1,0 +1,110 @@
+.nova-property-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  width: 100%;
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-property-list__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-property-list__group-title {
+  margin: 0 0 var(--nova-space-1);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--nova-text-subtle);
+}
+
+.nova-property-list__items {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  overflow: hidden;
+  background: var(--nova-surface);
+}
+
+.nova-property-list__row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 38%) 1fr;
+  gap: var(--nova-space-3);
+  align-items: baseline;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-property-list--dense .nova-property-list__row {
+  padding: var(--nova-space-1) var(--nova-space-3);
+}
+
+.nova-property-list__row:last-child {
+  border-bottom: none;
+}
+
+.nova-property-list__row:nth-child(even) {
+  background: var(--nova-bg-subtle);
+}
+
+.nova-property-list__label {
+  margin: 0;
+  color: var(--nova-text-muted);
+  font-weight: var(--nova-font-medium);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nova-property-list__value {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: var(--nova-space-2);
+  min-width: 0;
+  color: var(--nova-text);
+  font-variant-numeric: tabular-nums;
+  word-break: break-word;
+}
+
+.nova-property-list__value-text {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.nova-property-list__copy {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: var(--nova-text-subtle);
+  cursor: pointer;
+  font-size: var(--nova-text-sm);
+  transition:
+    color var(--nova-duration-fast) var(--nova-ease),
+    background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-property-list__copy:hover {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-property-list__copy:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+  color: var(--nova-primary);
+}

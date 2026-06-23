@@ -1,0 +1,116 @@
+.nova-dock {
+  display: inline-flex;
+  --nova-dock-size: 3rem;
+}
+
+.nova-dock--sm {
+  --nova-dock-size: 2.25rem;
+}
+.nova-dock--md {
+  --nova-dock-size: 3rem;
+}
+.nova-dock--lg {
+  --nova-dock-size: 3.75rem;
+}
+
+.nova-dock__list {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--nova-space-2);
+  margin: 0;
+  padding: var(--nova-space-2);
+  list-style: none;
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-2xl);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-dock__cell {
+  display: flex;
+}
+
+.nova-dock__item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-dock-size);
+  height: var(--nova-dock-size);
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+  cursor: pointer;
+  text-decoration: none;
+  transform-origin: bottom center;
+  transition: transform var(--nova-duration-base) var(--nova-ease-spring),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-dock__item:hover:not(:disabled):not([aria-disabled="true"]) {
+  background: var(--nova-surface-active);
+}
+
+.nova-dock--magnify
+  .nova-dock__item:hover:not(:disabled):not([aria-disabled="true"]),
+.nova-dock--magnify .nova-dock__item:focus-visible {
+  transform: scale(1.35) translateY(-0.15rem);
+}
+
+.nova-dock__item:disabled,
+.nova-dock__item[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.nova-dock__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-dock__icon svg {
+  width: 60%;
+  height: 60%;
+  display: block;
+}
+
+.nova-dock__dot {
+  position: absolute;
+  bottom: -0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+}
+
+.nova-dock__tooltip {
+  position: absolute;
+  bottom: calc(100% + var(--nova-space-2));
+  left: 50%;
+  transform: translateX(-50%) translateY(0.25rem);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-text);
+  color: var(--nova-bg);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  z-index: var(--nova-z-tooltip);
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-dock__item:hover .nova-dock__tooltip,
+.nova-dock__item:focus-visible .nova-dock__tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

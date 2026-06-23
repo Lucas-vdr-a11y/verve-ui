@@ -1,0 +1,13 @@
+.nova-card-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    var(--nova-card-grid-fit, auto-fit),
+    minmax(min(var(--nova-card-grid-min, 16rem), 100%), 1fr)
+  );
+  gap: var(--nova-card-grid-gap, var(--nova-space-4));
+}
+
+/* Stretch each card to the row height so cards in the same row match. */
+.nova-card-grid--equal > * {
+  height: 100%;
+}

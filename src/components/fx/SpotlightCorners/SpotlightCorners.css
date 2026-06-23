@@ -1,0 +1,82 @@
+.nova-spot-corners {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.nova-spot-corners__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.nova-spot-corners__cone {
+  position: absolute;
+  top: -30%;
+  width: 55%;
+  height: 130%;
+  opacity: var(--nova-spot-corners-intensity);
+  filter: blur(40px);
+  background: conic-gradient(
+    from var(--nova-spot-corners-from, 120deg) at 50% 0%,
+    transparent 0deg,
+    color-mix(in srgb, var(--nova-spot-corners-color) 65%, transparent) 18deg,
+    transparent 40deg
+  );
+}
+
+.nova-spot-corners__cone--left {
+  left: -12%;
+  --nova-spot-corners-from: 150deg;
+  transform: rotate(18deg);
+  transform-origin: top center;
+}
+
+.nova-spot-corners__cone--right {
+  right: -12%;
+  --nova-spot-corners-from: 170deg;
+  transform: rotate(-18deg);
+  transform-origin: top center;
+}
+
+.nova-spot-corners--anim .nova-spot-corners__cone--left {
+  animation: nova-spot-corners-sweep-l 9s ease-in-out infinite alternate;
+}
+
+.nova-spot-corners--anim .nova-spot-corners__cone--right {
+  animation: nova-spot-corners-sweep-r 11s ease-in-out infinite alternate;
+}
+
+.nova-spot-corners__content {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes nova-spot-corners-sweep-l {
+  0% {
+    transform: rotate(12deg);
+    opacity: calc(var(--nova-spot-corners-intensity) * 0.7);
+  }
+  100% {
+    transform: rotate(24deg);
+    opacity: var(--nova-spot-corners-intensity);
+  }
+}
+
+@keyframes nova-spot-corners-sweep-r {
+  0% {
+    transform: rotate(-24deg);
+    opacity: var(--nova-spot-corners-intensity);
+  }
+  100% {
+    transform: rotate(-12deg);
+    opacity: calc(var(--nova-spot-corners-intensity) * 0.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-spot-corners__cone {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,44 @@
+.nova-rating-display {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  color: var(--nova-warning);
+  line-height: 0;
+}
+
+.nova-rating-display--sm {
+  font-size: var(--nova-text-sm);
+}
+.nova-rating-display--md {
+  font-size: var(--nova-text-lg);
+}
+.nova-rating-display--lg {
+  font-size: var(--nova-text-2xl);
+}
+
+.nova-rating-display__star {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+.nova-rating-display__star-bg {
+  display: block;
+  fill: var(--nova-border-strong);
+}
+
+.nova-rating-display__star-fill {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  width: 0;
+}
+
+.nova-rating-display__star-fill svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}

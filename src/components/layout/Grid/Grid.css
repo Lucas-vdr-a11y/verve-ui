@@ -1,0 +1,8 @@
+/* Grid — CSS Grid wrapper driven by inline custom properties. */
+.nova-grid {
+  box-sizing: border-box;
+  display: grid;
+  min-width: 0;
+  gap: var(--nova-grid-gap, var(--nova-space-4));
+  grid-template-columns: var(--nova-grid-template, repeat(12, minmax(0, 1fr)));
+}

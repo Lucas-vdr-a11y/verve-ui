@@ -1,0 +1,59 @@
+.nova-heatmap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-heatmap__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nova-heatmap__x-label,
+.nova-heatmap__y-label {
+  fill: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-heatmap__rect {
+  stroke: var(--nova-border);
+  stroke-width: 1;
+  transition: filter var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-heatmap__cell:hover .nova-heatmap__rect {
+  filter: brightness(1.1);
+  stroke: var(--nova-border-strong);
+}
+
+.nova-heatmap__value {
+  fill: var(--nova-text);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  pointer-events: none;
+}
+
+.nova-heatmap__legend {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+.nova-heatmap__legend-scale {
+  display: inline-block;
+  flex: 1;
+  max-width: 160px;
+  height: 0.5rem;
+  border-radius: var(--nova-radius-full);
+  border: 1px solid var(--nova-border);
+}
+
+.nova-heatmap__legend-min,
+.nova-heatmap__legend-max {
+  font-variant-numeric: tabular-nums;
+}

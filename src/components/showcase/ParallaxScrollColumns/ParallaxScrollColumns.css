@@ -1,0 +1,45 @@
+.nova-parallax-cols {
+  display: grid;
+  gap: var(--nova-space-4);
+  align-items: start;
+}
+
+.nova-parallax-cols--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.nova-parallax-cols--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 640px) {
+  .nova-parallax-cols {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.nova-parallax-cols__col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  will-change: transform;
+}
+
+.nova-parallax-cols__cell {
+  overflow: hidden;
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+}
+
+.nova-parallax-cols__cell > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-parallax-cols__col {
+    transform: none !important;
+    will-change: auto;
+  }
+}

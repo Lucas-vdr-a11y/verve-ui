@@ -1,0 +1,172 @@
+/* CartItem — cart line item with inline stepper + remove. */
+.nova-cart-item {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-4);
+  padding: var(--nova-space-4) 0;
+  color: var(--nova-text);
+}
+
+.nova-cart-item--disabled {
+  opacity: 0.6;
+}
+
+/* Media --------------------------------------------------------------------- */
+.nova-cart-item__media {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  overflow: hidden;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-bg-muted);
+}
+
+.nova-cart-item__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info ---------------------------------------------------------------------- */
+.nova-cart-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.nova-cart-item__title {
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-cart-item__options {
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-cart-item__unit-price {
+  color: var(--nova-text-subtle);
+  font-size: var(--nova-text-xs);
+}
+
+/* Controls ------------------------------------------------------------------ */
+.nova-cart-item__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-4);
+  flex: 0 0 auto;
+}
+
+.nova-cart-item__stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-surface);
+  overflow: hidden;
+}
+
+.nova-cart-item__step-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  cursor: pointer;
+  transition:
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-cart-item__step-btn:hover:not(:disabled) {
+  background-color: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-cart-item__step-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+  z-index: var(--nova-z-base);
+}
+
+.nova-cart-item__step-btn:disabled {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-cart-item__qty {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  font-variant-numeric: tabular-nums;
+  border-left: 1px solid var(--nova-border);
+  border-right: 1px solid var(--nova-border);
+}
+
+.nova-cart-item__total {
+  min-width: 4.5rem;
+  text-align: right;
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-bold);
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-cart-item__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--nova-radius-md);
+  background-color: transparent;
+  color: var(--nova-text-subtle);
+  font-size: var(--nova-text-md);
+  cursor: pointer;
+  transition:
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-cart-item__remove:hover:not(:disabled) {
+  background-color: var(--nova-danger-subtle);
+  color: var(--nova-danger);
+}
+
+.nova-cart-item__remove:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-cart-item__remove:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Narrow layouts ------------------------------------------------------------ */
+@media (max-width: 480px) {
+  .nova-cart-item {
+    flex-wrap: wrap;
+  }
+  .nova-cart-item__controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

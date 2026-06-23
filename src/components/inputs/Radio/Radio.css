@@ -1,0 +1,117 @@
+/* ---- Group -------------------------------------------------------------- */
+.nova-radio-group {
+  display: flex;
+  gap: var(--nova-space-2);
+}
+
+.nova-radio-group--vertical {
+  flex-direction: column;
+}
+
+.nova-radio-group--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--nova-space-4);
+}
+
+/* ---- Radio -------------------------------------------------------------- */
+.nova-radio {
+  --nova-radio-size: 1.125rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  cursor: pointer;
+  user-select: none;
+}
+
+.nova-radio--sm {
+  --nova-radio-size: 1rem;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-radio--md {
+  --nova-radio-size: 1.125rem;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-radio--lg {
+  --nova-radio-size: 1.375rem;
+  font-size: var(--nova-text-md);
+}
+
+.nova-radio--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ---- Control ------------------------------------------------------------ */
+.nova-radio__control {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: var(--nova-radio-size);
+  height: var(--nova-radio-size);
+}
+
+.nova-radio__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.nova-radio__circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1.5px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  box-shadow: var(--nova-shadow-xs);
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-radio__dot {
+  width: 50%;
+  height: 50%;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-text-on-brand);
+  transform: scale(0);
+  transition: transform var(--nova-duration-fast) var(--nova-ease-spring);
+}
+
+.nova-radio:hover .nova-radio__input:not(:disabled) ~ .nova-radio__circle {
+  border-color: var(--nova-primary);
+}
+
+.nova-radio__input.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-radio__input.nova-focusable:focus-visible ~ .nova-radio__circle {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-radio__input:checked ~ .nova-radio__circle {
+  background: var(--nova-primary);
+  border-color: var(--nova-primary);
+}
+
+.nova-radio__input:checked ~ .nova-radio__circle .nova-radio__dot {
+  transform: scale(1);
+}
+
+.nova-radio__label {
+  line-height: var(--nova-leading-snug);
+}

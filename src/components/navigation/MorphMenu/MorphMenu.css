@@ -1,0 +1,158 @@
+.nova-morph-menu {
+  position: relative;
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+}
+
+/* ---- Trigger ----------------------------------------------------------- */
+.nova-morph-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-4);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-weight: var(--nova-font-medium);
+  font-size: var(--nova-text-sm);
+  cursor: pointer;
+  transition:
+    background var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-morph-menu--sm .nova-morph-menu__trigger {
+  padding: var(--nova-space-1) var(--nova-space-3);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-morph-menu--lg .nova-morph-menu__trigger {
+  padding: var(--nova-space-3) var(--nova-space-5);
+  font-size: var(--nova-text-md);
+}
+
+.nova-morph-menu__trigger:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-morph-menu__trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-morph-menu--open .nova-morph-menu__trigger {
+  border-color: var(--nova-primary);
+}
+
+.nova-morph-menu__chevron {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform var(--nova-duration-base) var(--nova-ease-spring);
+}
+
+.nova-morph-menu--open .nova-morph-menu__chevron {
+  transform: rotate(-135deg);
+}
+
+/* ---- Panel (morphs from the trigger footprint) ------------------------- */
+.nova-morph-menu__panel {
+  position: absolute;
+  left: 0;
+  min-width: 100%;
+  z-index: var(--nova-z-dropdown);
+  overflow: hidden;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface-raised);
+  box-shadow: var(--nova-shadow-lg);
+  transform-origin: top center;
+  /* Collapsed state — morph in from a flattened pill. */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scaleY(0.85) translateY(-0.25rem);
+  transition:
+    opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease-out),
+    visibility 0s linear var(--nova-duration-base);
+}
+
+.nova-morph-menu--bottom .nova-morph-menu__panel {
+  top: calc(100% + var(--nova-space-2));
+}
+
+.nova-morph-menu--top .nova-morph-menu__panel {
+  bottom: calc(100% + var(--nova-space-2));
+  transform-origin: bottom center;
+  transform: scaleY(0.85) translateY(0.25rem);
+}
+
+.nova-morph-menu--open .nova-morph-menu__panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scaleY(1) translateY(0);
+  transition:
+    opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease-out),
+    visibility 0s;
+}
+
+.nova-morph-menu__list {
+  margin: 0;
+  padding: var(--nova-space-1);
+  list-style: none;
+}
+
+.nova-morph-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  width: 100%;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: none;
+  border-radius: var(--nova-radius-md);
+  background: transparent;
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-normal);
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-morph-menu__item:hover:not(.nova-morph-menu__item--disabled),
+.nova-morph-menu__item:focus-visible:not(.nova-morph-menu__item--disabled) {
+  background: var(--nova-surface-hover);
+  color: var(--nova-primary-text);
+}
+
+.nova-morph-menu__item:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-morph-menu__item--disabled {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-morph-menu__item-icon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--nova-text-muted);
+}
+
+.nova-morph-menu--reduced .nova-morph-menu__panel,
+.nova-morph-menu--reduced .nova-morph-menu__chevron {
+  transition-duration: var(--nova-duration-fast);
+  transition-timing-function: var(--nova-ease);
+}

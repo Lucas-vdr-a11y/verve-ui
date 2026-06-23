@@ -1,0 +1,44 @@
+.nova-wobble {
+  --nova-wobble-x: 0px;
+  --nova-wobble-y: 0px;
+  --nova-wobble-active: 0;
+  --nova-wobble-scale: 1.02;
+  --nova-wobble-parallax: 1.6;
+
+  position: relative;
+  min-width: 14rem;
+  min-height: 8rem;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-2xl);
+  background: linear-gradient(
+    135deg,
+    var(--nova-primary),
+    var(--nova-brand-800)
+  );
+  color: var(--nova-text-on-brand);
+  box-shadow: var(--nova-shadow-lg);
+  overflow: hidden;
+  transform: translate3d(var(--nova-wobble-x), var(--nova-wobble-y), 0)
+    scale(calc(1 + (var(--nova-wobble-scale) - 1) * var(--nova-wobble-active)));
+  transition: transform var(--nova-duration-slow) var(--nova-ease-spring);
+  will-change: transform;
+}
+
+.nova-wobble__content {
+  position: relative;
+  padding: var(--nova-space-8);
+  transform: translate3d(
+    calc(var(--nova-wobble-x) * (var(--nova-wobble-parallax) - 1)),
+    calc(var(--nova-wobble-y) * (var(--nova-wobble-parallax) - 1)),
+    0
+  );
+  transition: transform var(--nova-duration-slow) var(--nova-ease-spring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-wobble,
+  .nova-wobble__content {
+    transform: none;
+    will-change: auto;
+  }
+}

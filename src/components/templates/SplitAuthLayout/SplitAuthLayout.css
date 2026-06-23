@@ -1,0 +1,108 @@
+/* SplitAuthLayout — two-column auth: form + decorative panel. */
+.nova-split-auth {
+  box-sizing: border-box;
+  display: grid;
+  min-height: 100%;
+  width: 100%;
+  color: var(--nova-text);
+  background: var(--nova-bg);
+  grid-template-columns: 1fr;
+}
+
+.nova-split-auth--has-aside {
+  grid-template-columns: 1fr var(--nova-split-auth-aside-w);
+  grid-template-areas: "form aside";
+}
+
+.nova-split-auth--has-aside.nova-split-auth--reverse {
+  grid-template-columns: var(--nova-split-auth-aside-w) 1fr;
+  grid-template-areas: "aside form";
+}
+
+.nova-split-auth__form-panel {
+  grid-area: form;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: var(--nova-space-8) var(--nova-space-6);
+}
+
+.nova-split-auth__form-inner {
+  box-sizing: border-box;
+  display: grid;
+  gap: var(--nova-space-6);
+  width: 100%;
+  max-width: 24rem;
+}
+
+.nova-split-auth__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-lg);
+  color: var(--nova-text);
+}
+
+.nova-split-auth__head {
+  display: grid;
+  gap: var(--nova-space-2);
+}
+
+.nova-split-auth__title {
+  margin: 0;
+  font-size: var(--nova-text-3xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  color: var(--nova-text);
+}
+
+.nova-split-auth__subtitle {
+  margin: 0;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text-muted);
+}
+
+.nova-split-auth__body {
+  display: grid;
+  gap: var(--nova-space-4);
+}
+
+.nova-split-auth__footer {
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}
+
+.nova-split-auth__aside {
+  grid-area: aside;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0;
+  padding: var(--nova-space-12);
+  color: var(--nova-text-on-brand);
+  background:
+    linear-gradient(
+      135deg,
+      var(--nova-brand-600) 0%,
+      var(--nova-brand-800) 100%
+    );
+}
+
+/* Single column on small screens; aside drops below the form. */
+@media (max-width: 48rem) {
+  .nova-split-auth--has-aside,
+  .nova-split-auth--has-aside.nova-split-auth--reverse {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "form"
+      "aside";
+  }
+
+  .nova-split-auth__aside {
+    padding: var(--nova-space-8) var(--nova-space-6);
+  }
+}

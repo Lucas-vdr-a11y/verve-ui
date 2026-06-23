@@ -1,0 +1,81 @@
+/* Toolbar — horizontal control strip with alignment regions. */
+.nova-toolbar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  min-width: 0;
+  padding: var(--nova-space-2);
+  color: var(--nova-text);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+}
+
+.nova-toolbar--horizontal {
+  flex-direction: row;
+}
+
+.nova-toolbar--vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.nova-toolbar--wrap.nova-toolbar--horizontal {
+  flex-wrap: wrap;
+  row-gap: var(--nova-space-2);
+}
+
+/* ---- Groups + alignment regions ---------------------------------------- */
+.nova-toolbar__group {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  min-width: 0;
+}
+
+.nova-toolbar__group--start {
+  margin-inline-end: auto;
+}
+
+.nova-toolbar__group--center {
+  margin-inline: auto;
+}
+
+.nova-toolbar__group--end {
+  margin-inline-start: auto;
+}
+
+/* When stacked vertically, alignment maps to the block axis. */
+.nova-toolbar--vertical .nova-toolbar__group--start {
+  margin-inline-end: 0;
+  margin-block-end: auto;
+}
+
+.nova-toolbar--vertical .nova-toolbar__group--center {
+  margin-inline: 0;
+  margin-block: auto;
+}
+
+.nova-toolbar--vertical .nova-toolbar__group--end {
+  margin-inline-start: 0;
+  margin-block-start: auto;
+}
+
+/* ---- Separator --------------------------------------------------------- */
+.nova-toolbar__separator {
+  flex-shrink: 0;
+  align-self: stretch;
+  width: 1px;
+  min-height: var(--nova-space-5);
+  margin-inline: var(--nova-space-1);
+  background: var(--nova-border);
+}
+
+.nova-toolbar--vertical .nova-toolbar__separator {
+  width: auto;
+  min-height: 0;
+  height: 1px;
+  margin-block: var(--nova-space-1);
+  margin-inline: 0;
+}

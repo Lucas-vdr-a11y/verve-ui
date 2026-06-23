@@ -1,0 +1,27 @@
+.nova-masked-text-reveal {
+  display: block;
+}
+
+.nova-masked-text-reveal__heading {
+  margin: 0;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-4xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--nova-text);
+  clip-path: var(--nova-masked-text-reveal-hidden);
+  transition: clip-path var(--nova-duration-slow) var(--nova-ease-out);
+  will-change: clip-path;
+}
+
+.nova-masked-text-reveal--in .nova-masked-text-reveal__heading {
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-masked-text-reveal__heading {
+    transition: none;
+    clip-path: inset(0 0 0 0);
+  }
+}

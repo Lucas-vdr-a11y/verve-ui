@@ -1,0 +1,57 @@
+/* StockBadge — availability indicator with tone + dot. */
+.nova-stock-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  border-radius: var(--nova-radius-full);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  /* Tone variables resolved per status below. */
+  color: var(--nova-stock-fg, var(--nova-text));
+  background-color: var(--nova-stock-bg, var(--nova-bg-subtle));
+}
+
+.nova-stock-badge__dot {
+  flex: none;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-stock-fg, currentColor);
+}
+
+.nova-stock-badge__label {
+  display: inline-block;
+}
+
+/* Tones --------------------------------------------------------------------- */
+.nova-stock-badge--in-stock {
+  --nova-stock-fg: var(--nova-success);
+  --nova-stock-bg: var(--nova-success-subtle);
+}
+.nova-stock-badge--low-stock {
+  --nova-stock-fg: var(--nova-warning);
+  --nova-stock-bg: var(--nova-warning-subtle);
+}
+.nova-stock-badge--out-of-stock {
+  --nova-stock-fg: var(--nova-danger);
+  --nova-stock-bg: var(--nova-danger-subtle);
+}
+.nova-stock-badge--preorder {
+  --nova-stock-fg: var(--nova-info);
+  --nova-stock-bg: var(--nova-info-subtle);
+}
+
+/* Sizes --------------------------------------------------------------------- */
+.nova-stock-badge--sm {
+  padding: var(--nova-space-1) var(--nova-space-2);
+  font-size: var(--nova-text-xs);
+}
+.nova-stock-badge--md {
+  padding: var(--nova-space-1) var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+}
+.nova-stock-badge--lg {
+  padding: var(--nova-space-2) var(--nova-space-4);
+  font-size: var(--nova-text-md);
+}

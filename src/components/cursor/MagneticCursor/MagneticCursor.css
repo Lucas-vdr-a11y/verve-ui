@@ -1,0 +1,31 @@
+.nova-magnetic-cursor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--nova-z-tooltip);
+}
+
+.nova-magnetic-cursor__ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--nova-magnetic-cursor-size);
+  height: var(--nova-magnetic-cursor-size);
+  border: 1.5px solid var(--nova-primary);
+  border-radius: var(--nova-radius-full);
+  opacity: 0;
+  will-change: transform, width, height;
+  transition:
+    opacity var(--nova-duration-base) var(--nova-ease),
+    background-color var(--nova-duration-base) var(--nova-ease),
+    border-color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-magnetic-cursor__ring--visible {
+  opacity: 0.8;
+}
+
+.nova-magnetic-cursor__ring--snapped {
+  background: var(--nova-primary-subtle);
+  border-color: var(--nova-primary);
+}

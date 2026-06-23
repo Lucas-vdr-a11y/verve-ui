@@ -1,0 +1,110 @@
+.nova-window {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface);
+  box-shadow: var(--nova-shadow-lg);
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-window__titlebar {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-3) var(--nova-space-4);
+  background: var(--nova-bg-muted);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-window--windows .nova-window__titlebar {
+  padding-right: 0;
+}
+
+.nova-window__lights {
+  display: inline-flex;
+  gap: var(--nova-space-2);
+}
+
+.nova-window__light {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-window__light--close { background: #ff5f57; }
+.nova-window__light--min { background: #febc2e; }
+.nova-window__light--max { background: #28c840; }
+
+.nova-window__title {
+  flex: 1;
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-muted);
+}
+
+.nova-window--mac .nova-window__title {
+  text-align: center;
+  margin-right: 3rem; /* balance the left lights */
+}
+
+.nova-window__wincontrols {
+  display: inline-flex;
+  align-self: stretch;
+  color: var(--nova-text-muted);
+}
+
+.nova-window__wincontrols > svg {
+  width: 2.75rem;
+  height: 100%;
+  padding: var(--nova-space-3) 0;
+}
+
+.nova-window__wincontrols > svg:last-child:hover {
+  background: var(--nova-danger);
+  color: var(--nova-gray-0);
+}
+
+/* ---- Body --------------------------------------------------------------- */
+.nova-window__main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.nova-window__sidebar {
+  flex-shrink: 0;
+  width: 13rem;
+  max-width: 40%;
+  overflow: auto;
+  padding: var(--nova-space-3);
+  background: var(--nova-bg-subtle);
+  border-right: 1px solid var(--nova-border);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}
+
+.nova-window__content {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  background: var(--nova-bg);
+}
+
+/* ---- Static resize affordance ------------------------------------------ */
+.nova-window__resize {
+  position: absolute;
+  right: 0.2rem;
+  bottom: 0.2rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--nova-border-strong) 0 1px,
+    transparent 1px 3px
+  );
+  pointer-events: none;
+}

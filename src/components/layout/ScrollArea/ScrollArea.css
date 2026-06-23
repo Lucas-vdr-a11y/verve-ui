@@ -1,0 +1,83 @@
+/* ScrollArea — styled scroll container with thin, themed scrollbars. */
+.nova-scroll-area {
+  box-sizing: border-box;
+  position: relative;
+  min-width: 0;
+  /* Firefox / standard */
+  scrollbar-width: thin;
+  scrollbar-color: var(--nova-border-strong) transparent;
+}
+
+.nova-scroll-area--vertical {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.nova-scroll-area--horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.nova-scroll-area--both {
+  overflow: auto;
+}
+
+/* WebKit / Blink scrollbars */
+.nova-scroll-area::-webkit-scrollbar {
+  width: var(--nova-space-2);
+  height: var(--nova-space-2);
+}
+
+.nova-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nova-scroll-area::-webkit-scrollbar-thumb {
+  background-color: var(--nova-border-strong);
+  border-radius: var(--nova-radius-full);
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.nova-scroll-area::-webkit-scrollbar-thumb:hover {
+  background-color: var(--nova-text-subtle);
+}
+
+.nova-scroll-area::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Optional fade masks at the scrollable edges. */
+.nova-scroll-area--fades.nova-scroll-area--vertical {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 var(--nova-space-4),
+    #000 calc(100% - var(--nova-space-4)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 var(--nova-space-4),
+    #000 calc(100% - var(--nova-space-4)),
+    transparent 100%
+  );
+}
+
+.nova-scroll-area--fades.nova-scroll-area--horizontal {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--nova-space-4),
+    #000 calc(100% - var(--nova-space-4)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--nova-space-4),
+    #000 calc(100% - var(--nova-space-4)),
+    transparent 100%
+  );
+}

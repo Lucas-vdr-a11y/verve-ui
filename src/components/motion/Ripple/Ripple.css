@@ -1,0 +1,49 @@
+/* Ripple — Material-style click ripple wrapper. Decorative; clips to host. */
+
+.nova-ripple {
+  --nova-ripple-color: var(--nova-text);
+  --nova-ripple-duration: 600ms;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  /* Establish a clipping/stacking context without affecting layout. */
+  isolation: isolate;
+}
+
+.nova-ripple--disabled {
+  /* Spawning is blocked in JS; nothing visual needed, but keep a hook. */
+}
+
+.nova-ripple__layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.nova-ripple__wave {
+  position: absolute;
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-ripple-color);
+  opacity: 0.3;
+  transform: scale(0);
+  pointer-events: none;
+  animation: nova-ripple-expand var(--nova-ripple-duration) var(--nova-ease-out)
+    forwards;
+}
+
+@keyframes nova-ripple-expand {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Ripples are not spawned under reduced motion; guard any in-flight ones. */
+  .nova-ripple__wave {
+    animation-duration: 1ms !important;
+  }
+}

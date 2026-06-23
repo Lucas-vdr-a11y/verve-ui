@@ -1,0 +1,53 @@
+.nova-beams {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  --nova-beams-color: var(--nova-primary);
+  --nova-beams-angle: -45deg;
+}
+
+.nova-beams__field {
+  position: absolute;
+  inset: -30%;
+  pointer-events: none;
+  transform: rotate(var(--nova-beams-angle));
+}
+
+.nova-beams__beam {
+  position: absolute;
+  top: -20%;
+  height: 140%;
+  border-radius: var(--nova-radius-full);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--nova-beams-color),
+    transparent
+  );
+  filter: blur(14px);
+  animation-name: nova-beams-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  will-change: transform, opacity;
+}
+
+@keyframes nova-beams-drift {
+  0% {
+    transform: translateX(-12%) scaleY(0.9);
+  }
+  100% {
+    transform: translateX(12%) scaleY(1.05);
+  }
+}
+
+.nova-beams__content {
+  position: relative;
+  z-index: var(--nova-z-base);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-beams__beam {
+    animation: none;
+  }
+}

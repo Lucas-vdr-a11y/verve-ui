@@ -1,0 +1,108 @@
+.nova-carousel {
+  position: relative;
+  inline-size: 100%;
+}
+
+.nova-carousel__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  border-radius: var(--nova-radius-lg);
+  outline: none;
+}
+
+.nova-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.nova-carousel__track:focus-visible {
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-carousel__slide {
+  flex: 0 0 100%;
+  inline-size: 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+/* ---- Arrows ------------------------------------------------------------ */
+.nova-carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--nova-space-10);
+  block-size: var(--nova-space-10);
+  padding: 0;
+  color: var(--nova-text);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  box-shadow: var(--nova-shadow-md);
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-carousel__arrow:hover:not(:disabled) {
+  background: var(--nova-surface-hover);
+}
+
+.nova-carousel__arrow:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-carousel__arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.nova-carousel__arrow--prev {
+  inset-inline-start: var(--nova-space-3);
+}
+
+.nova-carousel__arrow--next {
+  inset-inline-end: var(--nova-space-3);
+}
+
+/* ---- Dots -------------------------------------------------------------- */
+.nova-carousel__dots {
+  display: flex;
+  gap: var(--nova-space-2);
+  justify-content: center;
+  align-items: center;
+  margin-block-start: var(--nova-space-3);
+}
+
+.nova-carousel__dot {
+  inline-size: var(--nova-space-2);
+  block-size: var(--nova-space-2);
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-border-strong);
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    inline-size var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-carousel__dot:hover {
+  background: var(--nova-text-subtle);
+}
+
+.nova-carousel__dot:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-carousel__dot--active {
+  inline-size: var(--nova-space-5);
+  background: var(--nova-primary);
+}

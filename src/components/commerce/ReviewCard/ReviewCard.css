@@ -1,0 +1,159 @@
+/* ReviewCard — a single customer review. */
+.nova-review-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-4);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+}
+
+.nova-review-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-3);
+}
+
+.nova-review-card__avatar {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--nova-radius-full);
+  overflow: hidden;
+  background-color: var(--nova-bg-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-review-card__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.nova-review-card__initials {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text-muted);
+}
+
+.nova-review-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.nova-review-card__author-row {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  flex-wrap: wrap;
+}
+
+.nova-review-card__author {
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-review-card__verified {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-success);
+}
+
+.nova-review-card__verified-icon {
+  display: inline-flex;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-review-card__rating {
+  display: inline-flex;
+  gap: 0.05rem;
+  color: var(--nova-warning);
+  font-size: var(--nova-text-md);
+}
+
+.nova-review-card__star {
+  display: inline-flex;
+}
+
+.nova-review-card__date {
+  flex: none;
+  margin-left: auto;
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+  white-space: nowrap;
+}
+
+.nova-review-card__title {
+  margin: 0;
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-review-card__body {
+  margin: 0;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text);
+}
+
+.nova-review-card__footer {
+  display: flex;
+  align-items: center;
+}
+
+.nova-review-card__helpful {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-1) var(--nova-space-3);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-surface);
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  cursor: pointer;
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-review-card__helpful:hover {
+  border-color: var(--nova-border-strong);
+  color: var(--nova-text);
+}
+
+.nova-review-card__helpful:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+  border-color: var(--nova-primary);
+}
+
+.nova-review-card__helpful--active {
+  border-color: var(--nova-primary);
+  background-color: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-review-card__helpful-icon {
+  display: inline-flex;
+  font-size: var(--nova-text-md);
+}
+
+.nova-review-card__helpful-count {
+  font-variant-numeric: tabular-nums;
+}

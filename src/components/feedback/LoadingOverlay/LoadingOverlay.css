@@ -1,0 +1,46 @@
+.nova-loading-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nova-overlay-bg);
+  z-index: var(--nova-z-overlay);
+  animation: nova-loading-overlay-in var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-loading-overlay--fullscreen {
+  position: fixed;
+  z-index: var(--nova-z-modal);
+}
+
+.nova-loading-overlay--blur {
+  backdrop-filter: blur(4px);
+}
+
+.nova-loading-overlay__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-6);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-loading-overlay__message {
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  text-align: center;
+  color: var(--nova-text-on-brand);
+}
+
+@keyframes nova-loading-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,108 @@
+.nova-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--nova-z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nova-space-12) var(--nova-space-16);
+  background: var(--nova-overlay-bg);
+  outline: none;
+  font-family: var(--nova-font-sans);
+  animation: nova-lightbox-in var(--nova-duration-base) var(--nova-ease) both;
+}
+
+.nova-lightbox__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nova-space-3);
+  margin: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.nova-lightbox__image {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - var(--nova-space-24));
+  object-fit: contain;
+  border-radius: var(--nova-radius-md);
+  box-shadow: var(--nova-shadow-xl);
+}
+
+.nova-lightbox__caption {
+  max-width: 40rem;
+  text-align: center;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-lightbox__close,
+.nova-lightbox__nav {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nova-text-on-brand);
+  background: rgb(15 23 42 / 0.4);
+  border: 1px solid rgb(248 250 252 / 0.2);
+  border-radius: var(--nova-radius-full);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-lightbox__close:hover,
+.nova-lightbox__nav:hover {
+  background: rgb(15 23 42 / 0.65);
+}
+
+.nova-lightbox__close:focus-visible,
+.nova-lightbox__nav:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-lightbox__close {
+  top: var(--nova-space-4);
+  right: var(--nova-space-4);
+  width: var(--nova-space-10);
+  height: var(--nova-space-10);
+}
+
+.nova-lightbox__nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--nova-space-12);
+  height: var(--nova-space-12);
+}
+
+.nova-lightbox__nav--prev {
+  left: var(--nova-space-4);
+}
+.nova-lightbox__nav--next {
+  right: var(--nova-space-4);
+}
+
+.nova-lightbox__counter {
+  position: absolute;
+  bottom: var(--nova-space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--nova-space-1) var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-on-brand);
+  background: rgb(15 23 42 / 0.5);
+  border-radius: var(--nova-radius-full);
+}
+
+@keyframes nova-lightbox-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

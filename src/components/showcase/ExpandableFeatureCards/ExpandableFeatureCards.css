@@ -1,0 +1,117 @@
+.nova-expandable-feature-cards {
+  display: flex;
+  gap: var(--nova-space-3);
+  width: 100%;
+  height: clamp(20rem, 40vw, 28rem);
+}
+
+.nova-expandable-feature-cards__panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-2xl);
+  overflow: hidden;
+  cursor: pointer;
+  color: var(--nova-gray-0);
+  background-color: var(--nova-bg-muted);
+  background-image: var(--nova-efc-img);
+  background-size: cover;
+  background-position: center;
+  box-shadow: var(--nova-shadow-sm);
+  transition: flex-grow var(--nova-duration-slow) var(--nova-ease),
+    box-shadow var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-expandable-feature-cards__panel[data-active] {
+  flex-grow: 6;
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-expandable-feature-cards__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgb(15 23 42 / 0.82) 0%,
+    rgb(15 23 42 / 0.3) 50%,
+    rgb(15 23 42 / 0.08) 100%
+  );
+}
+
+/* Collapsed label: rotated rail along the bottom. */
+.nova-expandable-feature-cards__label {
+  position: absolute;
+  left: 50%;
+  bottom: var(--nova-space-5);
+  transform: translateX(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  opacity: 0.92;
+  transition: opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-expandable-feature-cards__panel[data-active] .nova-expandable-feature-cards__label {
+  opacity: 0;
+}
+
+/* Expanded detail block. */
+.nova-expandable-feature-cards__detail {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-6);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+  pointer-events: none;
+}
+
+.nova-expandable-feature-cards__panel[data-active] .nova-expandable-feature-cards__detail {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: var(--nova-duration-fast);
+}
+
+.nova-expandable-feature-cards__detail-title {
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-expandable-feature-cards__detail-content {
+  max-width: 28rem;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-relaxed);
+  opacity: 0.9;
+}
+
+/* Stack vertically on narrow viewports. */
+@media (max-width: 640px) {
+  .nova-expandable-feature-cards {
+    flex-direction: column;
+    height: auto;
+  }
+  .nova-expandable-feature-cards__panel {
+    height: 6rem;
+    transition: height var(--nova-duration-slow) var(--nova-ease);
+  }
+  .nova-expandable-feature-cards__panel[data-active] {
+    height: 20rem;
+  }
+  .nova-expandable-feature-cards__label {
+    writing-mode: horizontal-tb;
+    transform: translateX(-50%);
+    left: var(--nova-space-5);
+    bottom: var(--nova-space-4);
+  }
+}

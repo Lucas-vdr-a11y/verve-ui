@@ -1,0 +1,151 @@
+/* TimelineSection — vertical / alternating milestone timeline. */
+.nova-timeline {
+  box-sizing: border-box;
+  display: block;
+  color: var(--nova-text);
+}
+
+.nova-timeline *,
+.nova-timeline *::before,
+.nova-timeline *::after {
+  box-sizing: border-box;
+}
+
+/* Header -------------------------------------------------------------------- */
+.nova-timeline__header {
+  max-width: 42rem;
+  margin: 0 0 var(--nova-space-10);
+}
+
+.nova-timeline__title {
+  margin: 0;
+  font-size: var(--nova-text-3xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-timeline__subtitle {
+  margin: var(--nova-space-3) 0 0;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-lg);
+  line-height: var(--nova-leading-normal);
+}
+
+/* List ---------------------------------------------------------------------- */
+.nova-timeline__list {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The spine */
+.nova-timeline__list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--nova-space-5) - 1px);
+  width: 2px;
+  background-color: var(--nova-border);
+}
+
+.nova-timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--nova-space-10) 1fr;
+  gap: var(--nova-space-4);
+  padding-bottom: var(--nova-space-8);
+}
+
+.nova-timeline__item:last-child {
+  padding-bottom: 0;
+}
+
+/* Marker -------------------------------------------------------------------- */
+.nova-timeline__marker {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.nova-timeline__icon,
+.nova-timeline__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-space-10);
+  height: var(--nova-space-10);
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+  font-size: var(--nova-text-md);
+  box-shadow: 0 0 0 4px var(--nova-bg);
+}
+
+.nova-timeline__dot {
+  width: var(--nova-space-4);
+  height: var(--nova-space-4);
+  margin: var(--nova-space-3);
+  background-color: var(--nova-primary);
+}
+
+/* Content ------------------------------------------------------------------- */
+.nova-timeline__content {
+  min-width: 0;
+  padding-top: var(--nova-space-1);
+}
+
+.nova-timeline__date {
+  margin: 0;
+  color: var(--nova-primary-text);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  letter-spacing: 0.02em;
+}
+
+.nova-timeline__item-title {
+  margin: var(--nova-space-1) 0 0;
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-timeline__description {
+  margin: var(--nova-space-2) 0 0;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+}
+
+/* Alternating layout -------------------------------------------------------- */
+@media (min-width: 48rem) {
+  .nova-timeline--alternating .nova-timeline__list::before {
+    left: 50%;
+    transform: translateX(-1px);
+  }
+
+  .nova-timeline--alternating .nova-timeline__item {
+    grid-template-columns: 1fr var(--nova-space-10) 1fr;
+    align-items: start;
+  }
+
+  .nova-timeline--alternating .nova-timeline__marker {
+    grid-column: 2;
+  }
+
+  .nova-timeline--alternating .nova-timeline__content {
+    grid-column: 1;
+    text-align: end;
+    padding-right: var(--nova-space-6);
+  }
+
+  .nova-timeline--alternating
+    .nova-timeline__item:nth-child(even)
+    .nova-timeline__content {
+    grid-column: 3;
+    text-align: start;
+    padding-right: 0;
+    padding-left: var(--nova-space-6);
+  }
+}

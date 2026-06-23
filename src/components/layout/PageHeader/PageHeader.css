@@ -1,0 +1,78 @@
+/* PageHeader — page title block with breadcrumbs, actions and footer slots. */
+.nova-page-header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  min-width: 0;
+  color: var(--nova-text);
+}
+
+.nova-page-header__breadcrumbs {
+  min-width: 0;
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}
+
+.nova-page-header__row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-4);
+  min-width: 0;
+}
+
+.nova-page-header__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-page-header__heading {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+}
+
+.nova-page-header__title {
+  margin: 0;
+  font-size: var(--nova-text-3xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  color: var(--nova-text);
+}
+
+.nova-page-header__description {
+  margin: 0;
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text-muted);
+}
+
+.nova-page-header__actions {
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nova-space-2);
+}
+
+.nova-page-header__footer {
+  min-width: 0;
+}
+
+@media (max-width: 40rem) {
+  .nova-page-header__row {
+    flex-wrap: wrap;
+  }
+
+  .nova-page-header__actions {
+    width: 100%;
+  }
+
+  .nova-page-header__title {
+    font-size: var(--nova-text-2xl);
+  }
+}

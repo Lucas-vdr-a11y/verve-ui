@@ -1,0 +1,123 @@
+/* Marquee — seamless continuous scroll via a duplicated track translated by 50%.
+ * The track holds two identical groups; translating it by -50% (horizontal) or
+ * the equivalent on the cross axis loops without a visible seam. */
+
+.nova-marquee {
+  --nova-marquee-gap: 2rem;
+  --nova-marquee-fade: 2rem;
+  --nova-marquee-speed: 40;
+  /* Duration scales inversely with speed. 4000 is a tuning constant chosen so
+     the default speed (40) yields a calm ~100s-per-full-loop feel on wide
+     content; perceived px/sec stays roughly constant across content widths. */
+  --nova-marquee-duration: calc(4000s / var(--nova-marquee-speed));
+  position: relative;
+  overflow: hidden;
+  display: flex;
+}
+
+.nova-marquee__track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--nova-marquee-gap);
+  width: max-content;
+  will-change: transform;
+}
+
+.nova-marquee__group {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--nova-marquee-gap);
+  flex: 0 0 auto;
+}
+
+/* ---- horizontal ---------------------------------------------------------- */
+.nova-marquee--horizontal .nova-marquee__track {
+  flex-direction: row;
+  animation: nova-marquee-x var(--nova-marquee-duration) linear infinite;
+}
+.nova-marquee--horizontal.nova-marquee--end .nova-marquee__track {
+  animation-direction: reverse;
+}
+
+/* ---- vertical ------------------------------------------------------------ */
+.nova-marquee--vertical {
+  flex-direction: column;
+}
+.nova-marquee--vertical .nova-marquee__track {
+  flex-direction: column;
+  width: auto;
+  height: max-content;
+  animation: nova-marquee-y var(--nova-marquee-duration) linear infinite;
+}
+.nova-marquee--vertical.nova-marquee--end .nova-marquee__track {
+  animation-direction: reverse;
+}
+
+@keyframes nova-marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Half the track + half the inter-group gap = one full group. */
+    transform: translateX(calc(-50% - var(--nova-marquee-gap) / 2));
+  }
+}
+
+@keyframes nova-marquee-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-50% - var(--nova-marquee-gap) / 2));
+  }
+}
+
+/* ---- pause on hover ------------------------------------------------------ */
+.nova-marquee--pause-hover:hover .nova-marquee__track {
+  animation-play-state: paused;
+}
+
+/* ---- reduced motion / explicit pause ------------------------------------- */
+.nova-marquee[data-paused] .nova-marquee__track {
+  animation-play-state: paused;
+}
+
+/* ---- edge fade ----------------------------------------------------------- */
+.nova-marquee--fade.nova-marquee--horizontal {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--nova-marquee-fade),
+    #000 calc(100% - var(--nova-marquee-fade)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--nova-marquee-fade),
+    #000 calc(100% - var(--nova-marquee-fade)),
+    transparent 100%
+  );
+}
+.nova-marquee--fade.nova-marquee--vertical {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 var(--nova-marquee-fade),
+    #000 calc(100% - var(--nova-marquee-fade)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 var(--nova-marquee-fade),
+    #000 calc(100% - var(--nova-marquee-fade)),
+    transparent 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-marquee__track {
+    animation-play-state: paused !important;
+  }
+}

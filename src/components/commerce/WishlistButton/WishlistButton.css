@@ -1,0 +1,107 @@
+/* WishlistButton — heart toggle with animated fill. */
+.nova-wishlist-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-surface);
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  font-weight: var(--nova-font-medium);
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-wishlist-button:hover:not(:disabled) {
+  border-color: var(--nova-border-strong);
+  color: var(--nova-danger);
+}
+
+.nova-wishlist-button:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+  border-color: var(--nova-primary);
+}
+
+.nova-wishlist-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.nova-wishlist-button--active {
+  color: var(--nova-danger);
+  border-color: var(--nova-danger);
+  background-color: var(--nova-danger-subtle);
+}
+
+.nova-wishlist-button__icon {
+  display: inline-flex;
+  /* Empty heart: show only the outline by hiding the fill. */
+  color: currentColor;
+}
+
+.nova-wishlist-button__icon svg {
+  fill: none;
+  transition: transform var(--nova-duration-base) var(--nova-ease-spring);
+}
+
+.nova-wishlist-button--active .nova-wishlist-button__icon svg {
+  fill: currentColor;
+  animation: nova-wishlist-pop var(--nova-duration-base) var(--nova-ease-spring);
+}
+
+.nova-wishlist-button__count {
+  font-variant-numeric: tabular-nums;
+  color: var(--nova-text);
+}
+
+@keyframes nova-wishlist-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-wishlist-button--active .nova-wishlist-button__icon svg {
+    animation: none;
+  }
+}
+
+/* Sizes --------------------------------------------------------------------- */
+.nova-wishlist-button--sm {
+  padding: var(--nova-space-1) var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+.nova-wishlist-button--sm .nova-wishlist-button__icon {
+  font-size: var(--nova-text-md);
+}
+
+.nova-wishlist-button--md {
+  padding: var(--nova-space-2) var(--nova-space-3);
+  font-size: var(--nova-text-md);
+}
+.nova-wishlist-button--md .nova-wishlist-button__icon {
+  font-size: var(--nova-text-lg);
+}
+
+.nova-wishlist-button--lg {
+  padding: var(--nova-space-3) var(--nova-space-4);
+  font-size: var(--nova-text-lg);
+}
+.nova-wishlist-button--lg .nova-wishlist-button__icon {
+  font-size: var(--nova-text-xl);
+}

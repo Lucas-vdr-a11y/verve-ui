@@ -1,0 +1,96 @@
+.nova-nps {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-nps__scale {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-1);
+}
+
+.nova-nps__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+/* Zone accents (top border tint) when colored. */
+.nova-nps__btn--detractor {
+  border-top-color: var(--nova-danger);
+}
+.nova-nps__btn--passive {
+  border-top-color: var(--nova-warning);
+}
+.nova-nps__btn--promoter {
+  border-top-color: var(--nova-success);
+}
+
+.nova-nps__btn:hover:not(:disabled) {
+  background: var(--nova-surface-hover);
+}
+
+/* Selected fill by zone. */
+.nova-nps__btn--selected {
+  color: var(--nova-text-on-brand);
+  transform: translateY(-1px);
+}
+.nova-nps__btn--detractor.nova-nps__btn--selected {
+  background: var(--nova-danger);
+  border-color: var(--nova-danger);
+}
+.nova-nps__btn--passive.nova-nps__btn--selected {
+  background: var(--nova-warning);
+  border-color: var(--nova-warning);
+}
+.nova-nps__btn--promoter.nova-nps__btn--selected {
+  background: var(--nova-success);
+  border-color: var(--nova-success);
+}
+
+/* Monochrome: ignore zone coloring entirely. */
+.nova-nps--monochrome .nova-nps__btn {
+  border-top-color: var(--nova-border);
+}
+.nova-nps--monochrome .nova-nps__btn--selected {
+  background: var(--nova-primary);
+  border-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-nps__btn:disabled {
+  cursor: not-allowed;
+}
+
+.nova-nps--disabled {
+  opacity: 0.6;
+}
+
+.nova-nps__endpoints {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nova-nps__endpoint {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}

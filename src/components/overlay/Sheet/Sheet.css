@@ -1,0 +1,91 @@
+.nova-sheet__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--nova-z-modal);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: var(--nova-overlay-bg);
+  animation: nova-sheet-overlay-in var(--nova-duration-base) var(--nova-ease)
+    both;
+}
+
+.nova-sheet {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 32rem;
+  max-height: calc(100vh - var(--nova-space-12));
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-bottom: none;
+  border-top-left-radius: var(--nova-radius-2xl);
+  border-top-right-radius: var(--nova-radius-2xl);
+  box-shadow: var(--nova-shadow-xl);
+  outline: none;
+  font-family: var(--nova-font-sans);
+  animation: nova-sheet-in var(--nova-duration-slow) var(--nova-ease-out) both;
+}
+
+.nova-sheet__handle-area {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nova-space-3) 0 var(--nova-space-1);
+  cursor: grab;
+  touch-action: none;
+}
+.nova-sheet__handle-area:active {
+  cursor: grabbing;
+}
+
+.nova-sheet__handle {
+  width: var(--nova-space-10);
+  height: var(--nova-space-1);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-border-strong);
+}
+
+.nova-sheet__header {
+  flex: 0 0 auto;
+  padding: var(--nova-space-2) var(--nova-space-6) var(--nova-space-3);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-sheet__title {
+  margin: 0;
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-sheet__body {
+  flex: 1 1 auto;
+  padding: var(--nova-space-5) var(--nova-space-6) var(--nova-space-8);
+  overflow-y: auto;
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text);
+}
+
+@keyframes nova-sheet-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nova-sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

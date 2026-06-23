@@ -1,0 +1,30 @@
+.nova-flip-text {
+  --nova-flip-text-duration: 600ms;
+  display: inline-block;
+  perspective: 600px;
+}
+
+.nova-flip-text__char {
+  display: inline-block;
+  white-space: pre;
+  transform-origin: center 60%;
+  transform: rotateX(-90deg);
+  opacity: 0;
+  transition:
+    transform var(--nova-flip-text-duration) var(--nova-ease-spring),
+    opacity var(--nova-flip-text-duration) var(--nova-ease-out);
+  will-change: transform, opacity;
+}
+
+.nova-flip-text--active .nova-flip-text__char {
+  transform: rotateX(0deg);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-flip-text__char {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+}

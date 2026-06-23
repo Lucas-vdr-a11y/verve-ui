@@ -1,0 +1,89 @@
+.nova-stat {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-3);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-stat__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--nova-space-10);
+  height: var(--nova-space-10);
+  font-size: var(--nova-text-xl);
+  color: var(--nova-primary-text);
+  background: var(--nova-primary-subtle);
+  border-radius: var(--nova-radius-md);
+}
+
+.nova-stat__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  min-width: 0;
+}
+
+.nova-stat__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-muted);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-stat__value-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2);
+}
+
+.nova-stat__value {
+  font-size: var(--nova-text-3xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  color: var(--nova-text);
+}
+
+.nova-stat__help {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+  line-height: var(--nova-leading-snug);
+}
+
+/* ---- Trend ------------------------------------------------------------- */
+.nova-stat__trend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: 1;
+}
+
+.nova-stat__trend-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nova-stat__trend--positive {
+  color: var(--nova-success);
+}
+
+.nova-stat__trend--negative {
+  color: var(--nova-danger);
+}
+
+.nova-stat__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

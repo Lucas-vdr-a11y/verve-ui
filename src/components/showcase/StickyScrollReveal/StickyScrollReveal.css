@@ -1,0 +1,100 @@
+/* StickyScrollReveal — text column scrolls, visual panel sticks and cross-fades
+ * its stacked visuals as the active section changes. */
+
+.nova-sticky-reveal {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--nova-space-10);
+  align-items: start;
+}
+
+@media (min-width: 860px) {
+  .nova-sticky-reveal {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--nova-space-16);
+  }
+  .nova-sticky-reveal--panel-left .nova-sticky-reveal__panel {
+    order: -1;
+  }
+}
+
+/* ---- text column --------------------------------------------------------- */
+.nova-sticky-reveal__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.nova-sticky-reveal__section {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--nova-space-3);
+  opacity: 0.4;
+  transition: opacity var(--nova-duration-slow) var(--nova-ease-out);
+}
+.nova-sticky-reveal__section--active {
+  opacity: 1;
+}
+
+.nova-sticky-reveal__title {
+  margin: 0;
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  color: var(--nova-text);
+}
+
+.nova-sticky-reveal__desc {
+  margin: 0;
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text-muted);
+}
+
+/* ---- sticky panel -------------------------------------------------------- */
+.nova-sticky-reveal__panel {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-sticky-reveal__panel-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 80vh;
+  border-radius: var(--nova-radius-2xl);
+  overflow: hidden;
+  border: 1px solid var(--nova-border);
+  background: var(--nova-surface-raised);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-sticky-reveal__visual {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity var(--nova-duration-slow) var(--nova-ease-out),
+    transform var(--nova-duration-slow) var(--nova-ease-out);
+  pointer-events: none;
+}
+.nova-sticky-reveal__visual--active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-sticky-reveal__section,
+  .nova-sticky-reveal__visual {
+    transition: none;
+  }
+}

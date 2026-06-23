@@ -1,0 +1,10 @@
+/* CurrencyInput reuses .nova-input for its shell; tweaks only here. */
+.nova-currency__symbol {
+  color: var(--nova-text-muted);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-currency .nova-input__field {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}

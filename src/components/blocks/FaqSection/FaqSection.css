@@ -1,0 +1,103 @@
+/* FaqSection — heading + self-contained accordion. */
+.nova-faq {
+  box-sizing: border-box;
+  display: block;
+  color: var(--nova-text);
+}
+
+.nova-faq *,
+.nova-faq *::before,
+.nova-faq *::after {
+  box-sizing: border-box;
+}
+
+/* Header -------------------------------------------------------------------- */
+.nova-faq__header {
+  max-width: 42rem;
+  margin: 0 auto var(--nova-space-8);
+  text-align: center;
+}
+
+.nova-faq__title {
+  margin: 0;
+  font-size: var(--nova-text-3xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-faq__subtitle {
+  margin: var(--nova-space-3) 0 0;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-lg);
+  line-height: var(--nova-leading-normal);
+}
+
+/* List ---------------------------------------------------------------------- */
+.nova-faq__list {
+  max-width: 48rem;
+  margin: 0 auto;
+  border-top: 1px solid var(--nova-border);
+}
+
+.nova-faq__item {
+  border-bottom: 1px solid var(--nova-border);
+}
+
+/* Question ------------------------------------------------------------------ */
+.nova-faq__question-heading {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.nova-faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nova-space-4);
+  width: 100%;
+  padding: var(--nova-space-5) var(--nova-space-1);
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  text-align: start;
+  cursor: pointer;
+  border-radius: var(--nova-radius-sm);
+}
+
+.nova-faq__question:hover {
+  color: var(--nova-primary-text);
+}
+
+.nova-faq__question:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-faq__question-text {
+  min-width: 0;
+}
+
+.nova-faq__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-lg);
+  transition: transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-faq__item--open .nova-faq__icon {
+  transform: rotate(180deg);
+}
+
+/* Panel --------------------------------------------------------------------- */
+.nova-faq__answer {
+  padding: 0 var(--nova-space-1) var(--nova-space-5);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-relaxed);
+}

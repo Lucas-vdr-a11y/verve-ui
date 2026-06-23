@@ -1,0 +1,83 @@
+.nova-tilt {
+  --nova-tilt-perspective: 800px;
+  --nova-tilt-rx: 0deg;
+  --nova-tilt-ry: 0deg;
+  --nova-tilt-px: 50%;
+  --nova-tilt-py: 50%;
+  --nova-tilt-scale: 1;
+  --nova-tilt-glare: 0;
+
+  perspective: var(--nova-tilt-perspective);
+  display: inline-block;
+}
+
+.nova-tilt__inner {
+  position: relative;
+  min-width: 14rem;
+  min-height: 8rem;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-md);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--nova-tilt-rx)) rotateY(var(--nova-tilt-ry))
+    scale(var(--nova-tilt-scale));
+  transition: transform var(--nova-duration-base) var(--nova-ease-out),
+    box-shadow var(--nova-duration-base) var(--nova-ease);
+  will-change: transform;
+}
+
+.nova-tilt:hover .nova-tilt__inner {
+  box-shadow: var(--nova-shadow-xl);
+}
+
+/* Light highlight following the cursor. */
+.nova-tilt__inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    18rem 18rem at var(--nova-tilt-px) var(--nova-tilt-py),
+    rgb(255 255 255 / 0.22),
+    transparent 60%
+  );
+  opacity: var(--nova-tilt-glare);
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+  pointer-events: none;
+}
+
+.nova-tilt__content {
+  position: relative;
+  padding: var(--nova-space-6);
+  transform: translateZ(40px);
+}
+
+.nova-tilt__glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgb(255 255 255 / 0.35) 50%,
+    transparent 70%
+  );
+  background-size: 250% 250%;
+  background-position: var(--nova-tilt-px) var(--nova-tilt-py);
+  mix-blend-mode: overlay;
+  opacity: calc(var(--nova-tilt-glare) * 0.7);
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-tilt__inner {
+    transform: none;
+    will-change: auto;
+  }
+  .nova-tilt__inner::before,
+  .nova-tilt__glare {
+    display: none;
+  }
+}

@@ -1,0 +1,23 @@
+.nova-droppable {
+  border-radius: var(--nova-radius-md);
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease),
+    outline-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-droppable--over {
+  background: var(--nova-primary-subtle);
+  outline: 2px solid var(--nova-primary);
+  outline-offset: -2px;
+}
+
+.nova-droppable--reject {
+  background: var(--nova-danger-subtle);
+  outline: 2px solid var(--nova-danger);
+  outline-offset: -2px;
+  cursor: no-drop;
+}
+
+.nova-droppable--disabled {
+  opacity: 0.6;
+}

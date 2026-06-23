@@ -1,0 +1,104 @@
+.nova-scroll-timeline {
+  position: relative;
+  width: 100%;
+  padding-left: var(--nova-space-10);
+}
+
+/* Connecting spine. */
+.nova-scroll-timeline__spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--nova-space-2) + 1px);
+  width: 2px;
+  background: var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  overflow: hidden;
+}
+
+.nova-scroll-timeline__spine-fill {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: calc(var(--nova-scroll-timeline-progress, 0) * 100%);
+  background: linear-gradient(
+    to bottom,
+    var(--nova-primary),
+    var(--nova-brand-400)
+  );
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-scroll-timeline__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-12);
+}
+
+.nova-scroll-timeline__entry {
+  position: relative;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--nova-duration-slow) var(--nova-ease-out),
+    transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-scroll-timeline__entry[data-visible] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nova-scroll-timeline__dot {
+  position: absolute;
+  top: var(--nova-space-1);
+  left: calc(var(--nova-space-10) * -1 + var(--nova-space-2) - 6px);
+  width: 14px;
+  height: 14px;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  border: 2px solid var(--nova-border-strong);
+  transition: border-color var(--nova-duration-base) var(--nova-ease),
+    box-shadow var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-scroll-timeline__entry[data-visible] .nova-scroll-timeline__dot {
+  border-color: var(--nova-primary);
+  box-shadow: 0 0 0 4px rgb(99 102 241 / 0.18);
+}
+
+.nova-scroll-timeline__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+}
+
+.nova-scroll-timeline__date {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-primary-text);
+  letter-spacing: 0.04em;
+}
+
+.nova-scroll-timeline__title {
+  margin: 0;
+  font-size: var(--nova-text-xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-scroll-timeline__media {
+  width: 100%;
+  max-width: 32rem;
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-md);
+}
+
+.nova-scroll-timeline__content {
+  max-width: 36rem;
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text-muted);
+}

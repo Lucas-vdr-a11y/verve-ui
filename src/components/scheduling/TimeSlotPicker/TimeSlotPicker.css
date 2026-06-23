@@ -1,0 +1,90 @@
+.nova-time-slot-picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  width: 100%;
+  padding: var(--nova-space-4);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  box-sizing: border-box;
+}
+
+.nova-time-slot-picker *,
+.nova-time-slot-picker *::before,
+.nova-time-slot-picker *::after {
+  box-sizing: border-box;
+}
+
+.nova-time-slot-picker__heading {
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-time-slot-picker__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+}
+
+.nova-time-slot-picker__group-label {
+  margin: 0;
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--nova-text-subtle);
+}
+
+.nova-time-slot-picker__slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  gap: var(--nova-space-2);
+}
+
+.nova-time-slot-picker__slot {
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  text-align: center;
+  cursor: pointer;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-time-slot-picker__slot:hover {
+  border-color: var(--nova-primary);
+  background: var(--nova-surface-hover);
+}
+
+.nova-time-slot-picker__slot--selected,
+.nova-time-slot-picker__slot--selected:hover {
+  border-color: var(--nova-primary);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-time-slot-picker__slot--disabled,
+.nova-time-slot-picker__slot--disabled:hover {
+  border-color: var(--nova-border);
+  background: var(--nova-bg-subtle);
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.nova-time-slot-picker__empty {
+  padding: var(--nova-space-8) var(--nova-space-4);
+  text-align: center;
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-subtle);
+}

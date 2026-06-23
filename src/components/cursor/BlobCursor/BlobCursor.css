@@ -1,0 +1,33 @@
+.nova-blob-cursor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--nova-z-tooltip);
+}
+
+.nova-blob-cursor__defs {
+  position: absolute;
+}
+
+.nova-blob-cursor__goo {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-blob-cursor--visible .nova-blob-cursor__goo {
+  opacity: 1;
+}
+
+.nova-blob-cursor__ball {
+  --nova-blob-cursor-color: var(--nova-primary);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--nova-blob-cursor-size);
+  height: var(--nova-blob-cursor-size);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-blob-cursor-color);
+  will-change: transform;
+}

@@ -1,0 +1,63 @@
+.nova-media-object {
+  display: flex;
+  flex-direction: row;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-media-object--reverse {
+  flex-direction: row-reverse;
+}
+
+/* ---- Alignment --------------------------------------------------------- */
+.nova-media-object--align-start {
+  align-items: flex-start;
+}
+
+.nova-media-object--align-center {
+  align-items: center;
+}
+
+.nova-media-object--align-end {
+  align-items: flex-end;
+}
+
+/* ---- Gap --------------------------------------------------------------- */
+.nova-media-object--gap-sm {
+  gap: var(--nova-space-2);
+}
+
+.nova-media-object--gap-md {
+  gap: var(--nova-space-4);
+}
+
+.nova-media-object--gap-lg {
+  gap: var(--nova-space-6);
+}
+
+/* ---- Media slot -------------------------------------------------------- */
+.nova-media-object__media {
+  flex: none;
+  line-height: 0;
+}
+
+/* ---- Content ----------------------------------------------------------- */
+.nova-media-object__content {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+.nova-media-object__heading {
+  margin: 0;
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-media-object__body {
+  margin-block-start: var(--nova-space-1);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text-muted);
+}

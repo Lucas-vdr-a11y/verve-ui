@@ -1,0 +1,38 @@
+.nova-drag-scroll {
+  overflow: auto;
+  cursor: grab;
+  /* Let pointer-drag own the gesture; native touch panning is handled by JS. */
+  touch-action: none;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.nova-drag-scroll--horizontal {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.nova-drag-scroll--vertical {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.nova-drag-scroll--both {
+  overflow: auto;
+}
+
+.nova-drag-scroll--dragging {
+  cursor: grabbing;
+  user-select: none;
+  scroll-behavior: auto;
+}
+
+.nova-drag-scroll--dragging * {
+  /* Prevent text/image selection and accidental drags while panning. */
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.nova-drag-scroll--disabled {
+  cursor: default;
+}

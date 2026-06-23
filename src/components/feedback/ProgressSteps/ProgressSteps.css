@@ -1,0 +1,128 @@
+.nova-progress-steps {
+  position: relative;
+  display: block;
+  font-family: var(--nova-font-sans);
+  /* tone, overridden below */
+  --nova-progress-steps-color: var(--nova-primary);
+  --nova-progress-steps-marker: var(--nova-space-4);
+  --nova-progress-steps-track: 4px;
+}
+
+.nova-progress-steps--sm {
+  --nova-progress-steps-marker: var(--nova-space-3);
+  --nova-progress-steps-track: 3px;
+  font-size: var(--nova-text-xs);
+}
+.nova-progress-steps--md {
+  --nova-progress-steps-marker: var(--nova-space-4);
+  --nova-progress-steps-track: 4px;
+  font-size: var(--nova-text-xs);
+}
+.nova-progress-steps--lg {
+  --nova-progress-steps-marker: var(--nova-space-5);
+  --nova-progress-steps-track: 6px;
+  font-size: var(--nova-text-sm);
+}
+
+/* ---- Tones ------------------------------------------------------------- */
+.nova-progress-steps--primary {
+  --nova-progress-steps-color: var(--nova-primary);
+}
+.nova-progress-steps--success {
+  --nova-progress-steps-color: var(--nova-success);
+}
+.nova-progress-steps--warning {
+  --nova-progress-steps-color: var(--nova-warning);
+}
+.nova-progress-steps--danger {
+  --nova-progress-steps-color: var(--nova-danger);
+}
+.nova-progress-steps--info {
+  --nova-progress-steps-color: var(--nova-info);
+}
+
+/* ---- Track + fill ------------------------------------------------------ */
+.nova-progress-steps__track {
+  position: absolute;
+  inset-inline: calc(var(--nova-progress-steps-marker) / 2);
+  inset-block-start: calc(
+    (var(--nova-progress-steps-marker) - var(--nova-progress-steps-track)) / 2
+  );
+  block-size: var(--nova-progress-steps-track);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-muted);
+  overflow: hidden;
+}
+
+.nova-progress-steps__fill {
+  block-size: 100%;
+  border-radius: inherit;
+  background: var(--nova-progress-steps-color);
+  transition: inline-size var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+/* ---- Steps ------------------------------------------------------------- */
+.nova-progress-steps__list {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-progress-steps__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nova-space-1);
+  flex: 1 1 0;
+  min-inline-size: 0;
+  text-align: center;
+}
+
+.nova-progress-steps__step:first-child {
+  align-items: flex-start;
+}
+.nova-progress-steps__step:last-child {
+  align-items: flex-end;
+}
+.nova-progress-steps__step:first-child .nova-progress-steps__label {
+  text-align: start;
+}
+.nova-progress-steps__step:last-child .nova-progress-steps__label {
+  text-align: end;
+}
+
+.nova-progress-steps__marker {
+  inline-size: var(--nova-progress-steps-marker);
+  block-size: var(--nova-progress-steps-marker);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  border: 2px solid var(--nova-border-strong);
+  box-sizing: border-box;
+  transition:
+    background var(--nova-duration-base) var(--nova-ease),
+    border-color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-progress-steps__step--complete .nova-progress-steps__marker {
+  background: var(--nova-progress-steps-color);
+  border-color: var(--nova-progress-steps-color);
+}
+
+.nova-progress-steps__step--active .nova-progress-steps__marker {
+  border-color: var(--nova-progress-steps-color);
+  box-shadow: 0 0 0 3px var(--nova-bg);
+}
+
+.nova-progress-steps__label {
+  color: var(--nova-text-muted);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-progress-steps__step--active .nova-progress-steps__label,
+.nova-progress-steps__step--complete .nova-progress-steps__label {
+  color: var(--nova-text);
+  font-weight: var(--nova-font-medium);
+}

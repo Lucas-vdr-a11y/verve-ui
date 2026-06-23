@@ -1,0 +1,90 @@
+.nova-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-4);
+  border: 1px solid var(--nova-border);
+  border-inline-start: 3px solid var(--nova-callout-accent);
+  border-radius: var(--nova-radius-md);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text);
+  /* tone palette, overridden below */
+  --nova-callout-accent: var(--nova-info);
+  --nova-callout-subtle: var(--nova-info-subtle);
+  background: var(--nova-callout-subtle);
+}
+
+/* ---- Tones ------------------------------------------------------------- */
+.nova-callout--info {
+  --nova-callout-accent: var(--nova-info);
+  --nova-callout-subtle: var(--nova-info-subtle);
+}
+
+.nova-callout--success {
+  --nova-callout-accent: var(--nova-success);
+  --nova-callout-subtle: var(--nova-success-subtle);
+}
+
+.nova-callout--warning {
+  --nova-callout-accent: var(--nova-warning);
+  --nova-callout-subtle: var(--nova-warning-subtle);
+}
+
+.nova-callout--danger {
+  --nova-callout-accent: var(--nova-danger);
+  --nova-callout-subtle: var(--nova-danger-subtle);
+}
+
+.nova-callout--neutral {
+  --nova-callout-accent: var(--nova-border-strong);
+  --nova-callout-subtle: var(--nova-bg-subtle);
+}
+
+/* ---- Icon -------------------------------------------------------------- */
+.nova-callout__icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1.25em;
+  block-size: 1.25em;
+  font-size: var(--nova-text-md);
+  color: var(--nova-callout-accent);
+  margin-block-start: 0.1em;
+}
+
+.nova-callout__icon svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+/* ---- Content ----------------------------------------------------------- */
+.nova-callout__content {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+.nova-callout__title {
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-callout__title + .nova-callout__body {
+  margin-block-start: var(--nova-space-1);
+}
+
+.nova-callout__body {
+  color: var(--nova-text-muted);
+}
+
+.nova-callout__body > :first-child {
+  margin-block-start: 0;
+}
+
+.nova-callout__body > :last-child {
+  margin-block-end: 0;
+}

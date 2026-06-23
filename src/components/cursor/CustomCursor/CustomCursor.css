@@ -1,0 +1,54 @@
+.nova-custom-cursor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--nova-z-tooltip);
+}
+
+.nova-custom-cursor__dot,
+.nova-custom-cursor__ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--nova-radius-full);
+  opacity: 0;
+  will-change: transform;
+}
+
+.nova-custom-cursor__dot {
+  width: var(--nova-custom-cursor-dot);
+  height: var(--nova-custom-cursor-dot);
+  background: var(--nova-primary);
+  transition: opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-custom-cursor__ring {
+  width: var(--nova-custom-cursor-ring);
+  height: var(--nova-custom-cursor-ring);
+  border: 1.5px solid var(--nova-primary);
+  transition:
+    opacity var(--nova-duration-base) var(--nova-ease),
+    background-color var(--nova-duration-base) var(--nova-ease),
+    width var(--nova-duration-base) var(--nova-ease-spring),
+    height var(--nova-duration-base) var(--nova-ease-spring);
+}
+
+.nova-custom-cursor__dot--visible {
+  opacity: 1;
+}
+
+.nova-custom-cursor__ring--visible {
+  opacity: 0.7;
+}
+
+.nova-custom-cursor__ring--hover {
+  background: var(--nova-primary-subtle);
+  transform-origin: center;
+}
+
+/* Grow the ring on hover via an inline scale on the transform-driven node:
+   we scale through a nested approach using box dimensions for crispness. */
+.nova-custom-cursor__ring--hover {
+  width: calc(var(--nova-custom-cursor-ring) * var(--nova-custom-cursor-hover-scale));
+  height: calc(var(--nova-custom-cursor-ring) * var(--nova-custom-cursor-hover-scale));
+}

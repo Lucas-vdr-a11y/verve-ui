@@ -1,0 +1,15 @@
+.nova-slant-divider {
+  display: block;
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.nova-slant-divider__svg {
+  display: block;
+  width: 100%;
+}
+
+.nova-slant-divider__path {
+  fill: var(--nova-slant-color);
+}

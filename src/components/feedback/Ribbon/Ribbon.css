@@ -1,0 +1,67 @@
+.nova-ribbon {
+  position: relative;
+  overflow: hidden;
+  /* tone, overridden below */
+  --nova-ribbon-bg: var(--nova-primary);
+  --nova-ribbon-fg: var(--nova-text-on-brand);
+}
+
+/* ---- Tones ------------------------------------------------------------- */
+.nova-ribbon--neutral {
+  --nova-ribbon-bg: var(--nova-text-muted);
+  --nova-ribbon-fg: var(--nova-text-on-brand);
+}
+.nova-ribbon--primary {
+  --nova-ribbon-bg: var(--nova-primary);
+}
+.nova-ribbon--success {
+  --nova-ribbon-bg: var(--nova-success);
+}
+.nova-ribbon--warning {
+  --nova-ribbon-bg: var(--nova-warning);
+}
+.nova-ribbon--danger {
+  --nova-ribbon-bg: var(--nova-danger);
+}
+.nova-ribbon--info {
+  --nova-ribbon-bg: var(--nova-info);
+}
+
+/* ---- Band -------------------------------------------------------------- */
+.nova-ribbon__band {
+  position: absolute;
+  inset-block-start: 0;
+  inline-size: 8.5rem;
+  padding-block: var(--nova-space-1);
+  text-align: center;
+  background: var(--nova-ribbon-bg);
+  color: var(--nova-ribbon-fg);
+  box-shadow: var(--nova-shadow-sm);
+  z-index: var(--nova-z-base);
+  pointer-events: none;
+}
+
+.nova-ribbon__text {
+  display: block;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ---- Placement: top-end ------------------------------------------------ */
+.nova-ribbon--top-end .nova-ribbon__band {
+  inset-inline-end: 0;
+  transform: translate(29.5%, 38%) rotate(45deg);
+  transform-origin: center;
+}
+
+/* ---- Placement: top-start ---------------------------------------------- */
+.nova-ribbon--top-start .nova-ribbon__band {
+  inset-inline-start: 0;
+  transform: translate(-29.5%, 38%) rotate(-45deg);
+  transform-origin: center;
+}

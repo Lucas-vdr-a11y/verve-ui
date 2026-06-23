@@ -1,0 +1,91 @@
+/* GlowMenu — sliding glow pill positioned/sized from the active item's measured
+ * offset, animated via translate + width. */
+
+.nova-glow-menu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  padding: var(--nova-space-1);
+  border-radius: var(--nova-radius-full);
+  border: 1px solid var(--nova-border);
+  background: var(--nova-surface);
+  box-shadow: var(--nova-shadow-xs);
+}
+
+/* the sliding pill */
+.nova-glow-menu__pill {
+  position: absolute;
+  top: var(--nova-space-1);
+  bottom: var(--nova-space-1);
+  left: 0;
+  width: var(--nova-glow-menu-w, 0);
+  transform: translateX(var(--nova-glow-menu-x, 0));
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary-subtle);
+  box-shadow: 0 0 0 1px rgb(99 102 241 / 0.25),
+    0 0 18px 1px rgb(99 102 241 / 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform var(--nova-duration-base) var(--nova-ease-out),
+    width var(--nova-duration-base) var(--nova-ease-out),
+    opacity var(--nova-duration-base) var(--nova-ease-out);
+}
+.nova-glow-menu__pill--ready {
+  opacity: 1;
+}
+
+.nova-glow-menu__item {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-4);
+  border: 0;
+  background: transparent;
+  border-radius: var(--nova-radius-full);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: 1;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-glow-menu--sm .nova-glow-menu__item {
+  padding: var(--nova-space-1) var(--nova-space-3);
+  font-size: var(--nova-text-xs);
+}
+.nova-glow-menu--lg .nova-glow-menu__item {
+  padding: var(--nova-space-3) var(--nova-space-5);
+  font-size: var(--nova-text-md);
+}
+
+.nova-glow-menu__item:hover:not(:disabled) {
+  color: var(--nova-text);
+}
+.nova-glow-menu__item--active {
+  color: var(--nova-primary-text);
+}
+.nova-glow-menu__item:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.nova-glow-menu__icon {
+  display: inline-flex;
+}
+.nova-glow-menu__icon :where(svg) {
+  width: 1rem;
+  height: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-glow-menu__pill,
+  .nova-glow-menu__item {
+    transition: none;
+  }
+}

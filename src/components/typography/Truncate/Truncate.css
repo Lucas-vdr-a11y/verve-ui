@@ -1,0 +1,22 @@
+.nova-truncate {
+  color: inherit;
+  font-family: inherit;
+}
+
+/* ---- Single line -------------------------------------------------------- */
+.nova-truncate--single {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- Multi-line clamp --------------------------------------------------- */
+.nova-truncate--clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--nova-truncate-lines, 2);
+  line-clamp: var(--nova-truncate-lines, 2);
+  overflow: hidden;
+}

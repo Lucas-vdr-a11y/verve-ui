@@ -1,0 +1,165 @@
+.nova-filter-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-3);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  font-family: var(--nova-font-sans);
+}
+
+/* ---- Label + count ------------------------------------------------------ */
+.nova-filter-bar__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  color: var(--nova-text);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  white-space: nowrap;
+}
+
+.nova-filter-bar__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 var(--nova-space-1);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  line-height: 1;
+}
+
+/* ---- Pills container ---------------------------------------------------- */
+.nova-filter-bar__pills {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ---- Clear all ---------------------------------------------------------- */
+.nova-filter-bar__clear {
+  flex: 0 0 auto;
+  margin-inline-start: auto;
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: var(--nova-primary-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-filter-bar__clear:hover {
+  background: var(--nova-surface-hover);
+}
+
+/* ---- Pill --------------------------------------------------------------- */
+.nova-filter-bar__pill {
+  display: inline-flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  border-radius: var(--nova-radius-full);
+  overflow: hidden;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-filter-bar__pill--outline {
+  border: 1px solid var(--nova-border-strong);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+}
+
+.nova-filter-bar__pill--soft {
+  border: 1px solid transparent;
+  background: var(--nova-bg-muted);
+  color: var(--nova-text);
+}
+
+.nova-filter-bar__pill--active {
+  border-color: var(--nova-primary);
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-filter-bar__pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  padding: var(--nova-space-1) var(--nova-space-3);
+  cursor: pointer;
+}
+
+.nova-filter-bar__pill-btn:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-filter-bar__pill--active .nova-filter-bar__pill-btn:hover {
+  background: transparent;
+}
+
+.nova-filter-bar__pill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.nova-filter-bar__pill-icon svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+/* ---- Remove affordance -------------------------------------------------- */
+.nova-filter-bar__pill-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.75rem;
+  border: none;
+  border-inline-start: 1px solid var(--nova-border);
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-filter-bar__pill-remove:hover {
+  background: var(--nova-surface-hover);
+  color: var(--nova-danger);
+}
+
+.nova-filter-bar__pill--active .nova-filter-bar__pill-remove {
+  border-inline-start-color: var(--nova-primary);
+}
+
+.nova-filter-bar__pill-remove svg {
+  display: block;
+  width: 0.875rem;
+  height: 0.875rem;
+}

@@ -1,0 +1,40 @@
+/* Typewriter — typed text with a blinking caret. */
+
+.nova-typewriter {
+  display: inline;
+  color: var(--nova-text);
+}
+
+.nova-typewriter__text {
+  white-space: pre-wrap;
+}
+
+.nova-typewriter__caret {
+  display: inline-block;
+  margin-inline-start: 0.05em;
+  color: var(--nova-primary);
+  font-weight: var(--nova-font-normal);
+  animation: nova-typewriter-blink 1s steps(1, end) infinite;
+}
+
+/* Under reduced motion the caret is shown solid (no blink). */
+.nova-typewriter__caret[data-static] {
+  animation: none;
+}
+
+@keyframes nova-typewriter-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-typewriter__caret {
+    animation: none;
+  }
+}

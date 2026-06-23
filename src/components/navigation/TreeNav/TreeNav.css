@@ -1,0 +1,143 @@
+.nova-tree-nav {
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-tree-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-tree-nav__list--nested {
+  margin-top: var(--nova-space-1);
+}
+
+.nova-tree-nav__item {
+  margin: 0;
+}
+
+/* ---- Row ---------------------------------------------------------------- */
+.nova-tree-nav__row {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  width: 100%;
+  box-sizing: border-box;
+  /* Indent grows with depth. */
+  padding: var(--nova-space-2) var(--nova-space-3);
+  padding-inline-start: calc(
+    var(--nova-space-3) + var(--nova-tree-nav-level, 0) * var(--nova-space-5)
+  );
+  border: none;
+  border-radius: var(--nova-radius-md);
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-tree-nav__row:hover {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-tree-nav__row--active {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-tree-nav__row--active:hover {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-tree-nav__row--disabled,
+.nova-tree-nav__row:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.nova-tree-nav__row--disabled:hover,
+.nova-tree-nav__row:disabled:hover {
+  background: transparent;
+  color: var(--nova-text-muted);
+}
+
+/* ---- Parts -------------------------------------------------------------- */
+.nova-tree-nav__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--nova-text-subtle);
+}
+
+.nova-tree-nav__row--active .nova-tree-nav__icon {
+  color: var(--nova-primary-text);
+}
+
+.nova-tree-nav__icon svg {
+  display: block;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.nova-tree-nav__label {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-tree-nav__badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 var(--nova-space-2);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-muted);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  line-height: 1;
+}
+
+.nova-tree-nav__row--active .nova-tree-nav__badge {
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-tree-nav__chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--nova-text-subtle);
+  transition: transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-tree-nav__chevron svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}
+
+.nova-tree-nav__row[aria-expanded="true"] .nova-tree-nav__chevron {
+  transform: rotate(90deg);
+}

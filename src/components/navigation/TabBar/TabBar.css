@@ -1,0 +1,89 @@
+.nova-tab-bar {
+  display: block;
+  width: 100%;
+}
+
+.nova-tab-bar__list {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: var(--nova-space-1);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-tab-bar--full .nova-tab-bar__list {
+  width: 100%;
+}
+
+.nova-tab-bar__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-normal);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-tab-bar--full .nova-tab-bar__tab {
+  flex: 1 1 0;
+}
+
+.nova-tab-bar--sm .nova-tab-bar__tab {
+  padding: var(--nova-space-1) var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-tab-bar--md .nova-tab-bar__tab {
+  font-size: var(--nova-text-sm);
+}
+
+.nova-tab-bar--lg .nova-tab-bar__tab {
+  padding: var(--nova-space-3) var(--nova-space-4);
+  font-size: var(--nova-text-md);
+}
+
+.nova-tab-bar__tab:hover {
+  color: var(--nova-text);
+}
+
+.nova-tab-bar__tab:focus-visible {
+  outline: none;
+  border-radius: var(--nova-radius-sm);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-tab-bar__tab--active {
+  color: var(--nova-primary-text);
+}
+
+.nova-tab-bar__tab[aria-disabled="true"] {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-tab-bar__tab-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nova-tab-bar__indicator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  transition:
+    transform var(--nova-duration-base) var(--nova-ease),
+    width var(--nova-duration-base) var(--nova-ease),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+  will-change: transform, width;
+}

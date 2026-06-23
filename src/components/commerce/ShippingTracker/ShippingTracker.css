@@ -1,0 +1,164 @@
+/* ShippingTracker — order-state stepper. */
+.nova-shipping-tracker {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--nova-text);
+}
+
+.nova-shipping-tracker__step {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+/* Marker -------------------------------------------------------------------- */
+.nova-shipping-tracker__marker {
+  position: relative;
+  z-index: var(--nova-z-base);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--nova-radius-full);
+  border: 2px solid var(--nova-border-strong);
+  background-color: var(--nova-surface);
+  color: var(--nova-text-muted);
+  transition:
+    background-color var(--nova-duration-base) var(--nova-ease),
+    border-color var(--nova-duration-base) var(--nova-ease),
+    color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-shipping-tracker__icon {
+  display: inline-flex;
+  font-size: var(--nova-text-md);
+}
+
+/* Connector ----------------------------------------------------------------- */
+.nova-shipping-tracker__connector {
+  position: absolute;
+  background-color: var(--nova-border-strong);
+  transition: background-color var(--nova-duration-base) var(--nova-ease);
+}
+
+/* Body ---------------------------------------------------------------------- */
+.nova-shipping-tracker__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-shipping-tracker__date {
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-shipping-tracker__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Status: complete ---------------------------------------------------------- */
+.nova-shipping-tracker__step--complete .nova-shipping-tracker__marker {
+  background-color: var(--nova-success);
+  border-color: var(--nova-success);
+  color: var(--nova-text-on-brand);
+}
+.nova-shipping-tracker__step--complete .nova-shipping-tracker__connector {
+  background-color: var(--nova-success);
+}
+
+/* Status: current ----------------------------------------------------------- */
+.nova-shipping-tracker__step--current .nova-shipping-tracker__marker {
+  background-color: var(--nova-primary);
+  border-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* Status: upcoming (default styling already covers it) ---------------------- */
+.nova-shipping-tracker__step--upcoming .nova-shipping-tracker__label {
+  color: var(--nova-text-muted);
+}
+
+/* Horizontal layout --------------------------------------------------------- */
+.nova-shipping-tracker--horizontal {
+  flex-direction: row;
+}
+
+.nova-shipping-tracker--horizontal .nova-shipping-tracker__step {
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--nova-space-2);
+}
+
+.nova-shipping-tracker--horizontal .nova-shipping-tracker__connector {
+  top: 1.125rem;
+  left: calc(-50% + 1.125rem);
+  width: calc(100% - 2.25rem);
+  height: 2px;
+  transform: translateY(-1px);
+}
+
+.nova-shipping-tracker--horizontal
+  .nova-shipping-tracker__step:first-child
+  .nova-shipping-tracker__connector {
+  display: none;
+}
+
+.nova-shipping-tracker--horizontal .nova-shipping-tracker__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  padding: 0 var(--nova-space-1);
+}
+
+/* Vertical layout ----------------------------------------------------------- */
+.nova-shipping-tracker--vertical {
+  flex-direction: column;
+}
+
+.nova-shipping-tracker--vertical .nova-shipping-tracker__step {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--nova-space-3);
+  padding-bottom: var(--nova-space-6);
+}
+
+.nova-shipping-tracker--vertical .nova-shipping-tracker__step:last-child {
+  padding-bottom: 0;
+}
+
+.nova-shipping-tracker--vertical .nova-shipping-tracker__connector {
+  top: 2.25rem;
+  left: 1.125rem;
+  width: 2px;
+  height: calc(100% - 2.25rem);
+  transform: translateX(-1px);
+}
+
+.nova-shipping-tracker--vertical
+  .nova-shipping-tracker__step:last-child
+  .nova-shipping-tracker__connector {
+  display: none;
+}
+
+.nova-shipping-tracker--vertical .nova-shipping-tracker__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  padding-top: var(--nova-space-1);
+}

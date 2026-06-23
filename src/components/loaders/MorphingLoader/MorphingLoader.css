@@ -1,0 +1,84 @@
+.nova-morphing-loader {
+  --nova-loader-color: var(--nova-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-morph-size, 36px);
+  height: var(--nova-morph-size, 36px);
+  color: var(--nova-loader-color);
+}
+
+.nova-morphing-loader[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-morphing-loader[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-morphing-loader[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-morphing-loader[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-morphing-loader[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-morphing-loader__shape {
+  width: 100%;
+  height: 100%;
+  background: var(--nova-loader-color);
+  box-shadow: 0 0 10px -2px currentColor;
+  animation: nova-morph-shape 3s var(--nova-ease-spring) infinite,
+    nova-morph-spin 3s var(--nova-ease) infinite;
+}
+
+/* square -> circle -> triangle -> back, via border-radius + clip-path */
+@keyframes nova-morph-shape {
+  0% {
+    border-radius: var(--nova-radius-md);
+    clip-path: inset(0 round var(--nova-radius-md));
+  }
+  30% {
+    border-radius: var(--nova-radius-full);
+    clip-path: inset(0 round 50%);
+  }
+  33% {
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  }
+  63% {
+    border-radius: 0;
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  }
+  66% {
+    clip-path: inset(0 round var(--nova-radius-md));
+  }
+  100% {
+    border-radius: var(--nova-radius-md);
+    clip-path: inset(0 round var(--nova-radius-md));
+  }
+}
+
+@keyframes nova-morph-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-morphing-loader__shape {
+    animation: nova-morph-pulse 2s var(--nova-ease) infinite;
+    border-radius: var(--nova-radius-md);
+  }
+  @keyframes nova-morph-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(0.85);
+    }
+  }
+}

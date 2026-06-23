@@ -1,0 +1,163 @@
+.nova-steps {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-steps--horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.nova-steps--vertical {
+  flex-direction: column;
+}
+
+/* ---- Item --------------------------------------------------------------- */
+.nova-steps__item {
+  display: flex;
+  position: relative;
+}
+
+.nova-steps--horizontal .nova-steps__item {
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.nova-steps--horizontal .nova-steps__item:last-child {
+  flex: 0 0 auto;
+}
+
+.nova-steps--vertical .nova-steps__item {
+  flex-direction: row;
+  gap: var(--nova-space-3);
+  padding-bottom: var(--nova-space-6);
+}
+
+.nova-steps--vertical .nova-steps__item:last-child {
+  padding-bottom: 0;
+}
+
+/* ---- Indicator ---------------------------------------------------------- */
+.nova-steps__indicator {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.nova-steps--horizontal .nova-steps__indicator {
+  flex-direction: row;
+  width: 100%;
+}
+
+.nova-steps--vertical .nova-steps__indicator {
+  flex-direction: column;
+}
+
+.nova-steps__circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--nova-radius-full);
+  border: 2px solid var(--nova-border-strong);
+  background: var(--nova-surface);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: 1;
+  transition: background-color var(--nova-duration-base) var(--nova-ease),
+    border-color var(--nova-duration-base) var(--nova-ease),
+    color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-steps__circle svg {
+  display: block;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.nova-steps__number {
+  display: inline-flex;
+}
+
+/* ---- Connector ---------------------------------------------------------- */
+.nova-steps__connector {
+  flex: 1 1 auto;
+  background: var(--nova-border);
+  transition: background-color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-steps--horizontal .nova-steps__connector {
+  height: 2px;
+  margin: 0 var(--nova-space-2);
+}
+
+.nova-steps--vertical .nova-steps__connector {
+  width: 2px;
+  margin: var(--nova-space-2) 0;
+  min-height: var(--nova-space-6);
+}
+
+/* ---- Content ------------------------------------------------------------ */
+.nova-steps__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-steps--horizontal .nova-steps__content {
+  padding-top: var(--nova-space-2);
+  padding-right: var(--nova-space-4);
+}
+
+.nova-steps--vertical .nova-steps__content {
+  padding-top: var(--nova-space-1);
+}
+
+.nova-steps__title {
+  color: var(--nova-text);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-steps__description {
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+  line-height: var(--nova-leading-snug);
+}
+
+/* ---- Status: complete --------------------------------------------------- */
+.nova-steps__item--complete .nova-steps__circle {
+  background: var(--nova-primary);
+  border-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-steps__item--complete .nova-steps__connector {
+  background: var(--nova-primary);
+}
+
+/* ---- Status: current ---------------------------------------------------- */
+.nova-steps__item--current .nova-steps__circle {
+  border-color: var(--nova-primary);
+  color: var(--nova-primary-text);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-steps__item--current .nova-steps__title {
+  color: var(--nova-primary-text);
+}
+
+/* ---- Status: upcoming --------------------------------------------------- */
+.nova-steps__item--upcoming .nova-steps__title {
+  color: var(--nova-text-muted);
+}

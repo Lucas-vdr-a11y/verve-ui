@@ -1,0 +1,19 @@
+.nova-curve-divider {
+  display: block;
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.nova-curve-divider__svg {
+  display: block;
+  width: 100%;
+}
+
+.nova-curve-divider__path {
+  fill: var(--nova-curve-color);
+}
+
+.nova-curve-divider--flip .nova-curve-divider__svg {
+  transform: scaleX(-1);
+}

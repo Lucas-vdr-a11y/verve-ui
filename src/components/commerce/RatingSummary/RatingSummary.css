@@ -1,0 +1,97 @@
+/* RatingSummary — average + stars + per-star distribution bars. */
+.nova-rating-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nova-space-6);
+  color: var(--nova-text);
+}
+
+/* Overview ------------------------------------------------------------------ */
+.nova-rating-summary__overview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nova-space-1);
+  flex: 0 0 auto;
+}
+
+.nova-rating-summary__average {
+  font-size: var(--nova-text-5xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-rating-summary__stars {
+  display: inline-flex;
+  gap: 0.1em;
+  color: var(--nova-warning);
+  font-size: var(--nova-text-xl);
+}
+
+.nova-rating-summary__star {
+  display: inline-block;
+}
+
+.nova-rating-summary__star-bg {
+  color: var(--nova-border-strong);
+}
+
+.nova-rating-summary__star-fill {
+  color: var(--nova-warning);
+}
+
+.nova-rating-summary__count {
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+}
+
+/* Breakdown ----------------------------------------------------------------- */
+.nova-rating-summary__breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  flex: 1 1 12rem;
+  min-width: 12rem;
+}
+
+.nova-rating-summary__bar-row {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-rating-summary__bar-label {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15em;
+  min-width: 2.25rem;
+  color: var(--nova-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-rating-summary__bar-track {
+  flex: 1 1 auto;
+  height: 0.5rem;
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-bg-muted);
+  overflow: hidden;
+}
+
+.nova-rating-summary__bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-warning);
+  transition: width var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-rating-summary__bar-count {
+  flex: 0 0 auto;
+  min-width: 2.5rem;
+  text-align: right;
+  color: var(--nova-text-muted);
+  font-variant-numeric: tabular-nums;
+}

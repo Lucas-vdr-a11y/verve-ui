@@ -1,0 +1,85 @@
+.nova-progress {
+  position: relative;
+  inline-size: 100%;
+  overflow: hidden;
+  background: var(--nova-bg-muted);
+  border-radius: var(--nova-radius-full);
+  /* tone, overridden below */
+  --nova-progress-fill: var(--nova-primary);
+}
+
+/* ---- Sizes ------------------------------------------------------------- */
+.nova-progress--sm {
+  block-size: var(--nova-space-1);
+}
+
+.nova-progress--md {
+  block-size: var(--nova-space-2);
+}
+
+.nova-progress--lg {
+  block-size: var(--nova-space-3);
+}
+
+/* ---- Tones ------------------------------------------------------------- */
+.nova-progress--primary {
+  --nova-progress-fill: var(--nova-primary);
+}
+
+.nova-progress--success {
+  --nova-progress-fill: var(--nova-success);
+}
+
+.nova-progress--warning {
+  --nova-progress-fill: var(--nova-warning);
+}
+
+.nova-progress--danger {
+  --nova-progress-fill: var(--nova-danger);
+}
+
+.nova-progress--info {
+  --nova-progress-fill: var(--nova-info);
+}
+
+/* ---- Bar --------------------------------------------------------------- */
+.nova-progress__bar {
+  block-size: 100%;
+  inline-size: 0;
+  background: var(--nova-progress-fill);
+  border-radius: inherit;
+  transition: inline-size var(--nova-duration-base) var(--nova-ease);
+}
+
+/* ---- Indeterminate ----------------------------------------------------- */
+.nova-progress--indeterminate .nova-progress__bar {
+  inline-size: 40%;
+  transition: none;
+  animation: nova-progress-slide 1.2s var(--nova-ease) infinite;
+}
+
+@keyframes nova-progress-slide {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(310%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-progress--indeterminate .nova-progress__bar {
+    inline-size: 100%;
+    animation: nova-progress-pulse 1.4s ease-in-out infinite;
+  }
+
+  @keyframes nova-progress-pulse {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}

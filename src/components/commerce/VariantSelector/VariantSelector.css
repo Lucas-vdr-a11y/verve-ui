@@ -1,0 +1,98 @@
+/* VariantSelector — labeled group of single-select pill options. */
+.nova-variant-selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  color: var(--nova-text);
+}
+
+.nova-variant-selector--disabled {
+  opacity: 0.55;
+}
+
+.nova-variant-selector__header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--nova-space-2);
+}
+
+.nova-variant-selector__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-variant-selector__selection {
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}
+
+.nova-variant-selector__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2);
+}
+
+.nova-variant-selector__pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-weight: var(--nova-font-medium);
+  cursor: pointer;
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-variant-selector__pill:hover:not(:disabled) {
+  border-color: var(--nova-border-strong);
+  background-color: var(--nova-surface-hover);
+}
+
+.nova-variant-selector__pill:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+  border-color: var(--nova-primary);
+}
+
+.nova-variant-selector__pill--selected {
+  border-color: var(--nova-primary);
+  background-color: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-variant-selector__pill:disabled {
+  cursor: not-allowed;
+  color: var(--nova-text-subtle);
+  background-color: var(--nova-bg-subtle);
+}
+
+.nova-variant-selector__pill--out-of-stock {
+  text-decoration: line-through;
+  text-decoration-color: var(--nova-text-subtle);
+}
+
+/* Sizes --------------------------------------------------------------------- */
+.nova-variant-selector--sm .nova-variant-selector__pill {
+  min-height: 2rem;
+  padding: 0 var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+}
+.nova-variant-selector--md .nova-variant-selector__pill {
+  min-height: 2.5rem;
+  padding: 0 var(--nova-space-4);
+  font-size: var(--nova-text-md);
+}
+.nova-variant-selector--lg .nova-variant-selector__pill {
+  min-height: 3rem;
+  padding: 0 var(--nova-space-5);
+  font-size: var(--nova-text-lg);
+}

@@ -1,0 +1,58 @@
+.nova-card-stack {
+  --nova-stack-depth: 60px;
+  --nova-stack-offset: 24px;
+  display: inline-block;
+  perspective: 1200px;
+  perspective-origin: 50% 30%;
+}
+
+.nova-card-stack__scene {
+  position: relative;
+  width: 260px;
+  height: 340px;
+  transform-style: preserve-3d;
+}
+
+.nova-card-stack__card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: var(--nova-space-5);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  box-shadow: var(--nova-shadow-lg);
+  transform-style: preserve-3d;
+  transform: translateY(calc(var(--nova-stack-pos) * var(--nova-stack-offset)))
+    translateZ(calc(var(--nova-stack-pos) * var(--nova-stack-depth) * -1))
+    scale(calc(1 - var(--nova-stack-pos) * 0.05));
+  filter: brightness(calc(1 - var(--nova-stack-pos) * 0.08));
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out),
+    filter var(--nova-duration-slow) var(--nova-ease-out),
+    box-shadow var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-card-stack__card--top {
+  cursor: pointer;
+  outline: none;
+}
+.nova-card-stack__card--top:focus-visible {
+  box-shadow: var(--nova-shadow-lg), var(--nova-shadow-focus);
+}
+
+/* Peel the top card forward and tilt on hover. */
+.nova-card-stack:not(.nova-card-stack--reduced)
+  .nova-card-stack__card--top:hover {
+  transform: translateY(-16px) translateZ(48px) rotateX(6deg) scale(1.02);
+  box-shadow: var(--nova-shadow-xl), 0 0 32px rgb(99 102 241 / 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-card-stack__card {
+    transition: none;
+  }
+}

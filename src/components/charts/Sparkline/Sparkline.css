@@ -1,0 +1,16 @@
+.nova-sparkline {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  overflow: visible;
+}
+
+.nova-sparkline__line {
+  transition: stroke var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-sparkline__dot {
+  transition: fill var(--nova-duration-base) var(--nova-ease);
+}

@@ -1,0 +1,36 @@
+/* Container — centered, max-width-capped page wrapper. */
+.nova-container {
+  box-sizing: border-box;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.nova-container--sm {
+  max-width: 40rem;
+}
+
+.nova-container--md {
+  max-width: 48rem;
+}
+
+.nova-container--lg {
+  max-width: 64rem;
+}
+
+.nova-container--xl {
+  max-width: 80rem;
+}
+
+.nova-container--full {
+  max-width: none;
+}
+
+.nova-container--padded {
+  padding-inline: var(--nova-space-4);
+}
+
+@media (min-width: 48rem) {
+  .nova-container--padded {
+    padding-inline: var(--nova-space-6);
+  }
+}

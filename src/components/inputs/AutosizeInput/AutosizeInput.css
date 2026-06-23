@@ -1,0 +1,74 @@
+.nova-autosize {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+/* ---- Field --------------------------------------------------------------- */
+.nova-autosize__field {
+  box-sizing: content-box;
+  min-width: 0;
+  max-width: 100%;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--nova-leading-normal);
+}
+
+.nova-autosize__field.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-autosize__field::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-autosize__field:disabled {
+  cursor: not-allowed;
+}
+
+.nova-autosize--invalid {
+  color: var(--nova-danger);
+}
+
+.nova-autosize--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---- Hidden mirror used to measure content width ------------------------- */
+.nova-autosize__mirror {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  white-space: pre;
+  pointer-events: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--nova-leading-normal);
+}
+
+/* ---- Sizes --------------------------------------------------------------- */
+.nova-autosize--sm {
+  font-size: var(--nova-text-sm);
+}
+
+.nova-autosize--md {
+  font-size: var(--nova-text-sm);
+}
+
+.nova-autosize--lg {
+  font-size: var(--nova-text-md);
+}

@@ -1,0 +1,87 @@
+.nova-table__scroll {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--nova-radius-md);
+}
+
+.nova-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text);
+  background: var(--nova-surface);
+  text-align: left;
+}
+
+.nova-table__head {
+  background: var(--nova-bg-subtle);
+}
+
+.nova-table__header-cell {
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-xs);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--nova-text-muted);
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border-bottom: 1px solid var(--nova-border);
+  white-space: nowrap;
+}
+
+.nova-table__cell {
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border-bottom: 1px solid var(--nova-border);
+  vertical-align: middle;
+}
+
+.nova-table__body .nova-table__row:last-child .nova-table__cell {
+  border-bottom: none;
+}
+
+/* ---- Alignment --------------------------------------------------------- */
+.nova-table__cell--left {
+  text-align: left;
+}
+.nova-table__cell--center {
+  text-align: center;
+}
+.nova-table__cell--right {
+  text-align: right;
+}
+
+/* ---- Dense ------------------------------------------------------------- */
+.nova-table--dense .nova-table__header-cell,
+.nova-table--dense .nova-table__cell {
+  padding: var(--nova-space-2) var(--nova-space-3);
+}
+
+/* ---- Striped ----------------------------------------------------------- */
+.nova-table--striped .nova-table__body .nova-table__row:nth-child(even) {
+  background: var(--nova-bg-subtle);
+}
+
+/* ---- Hoverable --------------------------------------------------------- */
+.nova-table--hoverable .nova-table__body .nova-table__row {
+  transition: background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-table--hoverable .nova-table__body .nova-table__row:hover {
+  background: var(--nova-surface-hover);
+}
+
+/* ---- Selected ---------------------------------------------------------- */
+.nova-table__row--selected,
+.nova-table--striped
+  .nova-table__body
+  .nova-table__row--selected:nth-child(even) {
+  background: var(--nova-primary-subtle);
+}
+
+/* ---- Sticky header ----------------------------------------------------- */
+.nova-table--sticky-header .nova-table__head .nova-table__header-cell {
+  position: sticky;
+  top: 0;
+  z-index: var(--nova-z-sticky);
+  background: var(--nova-bg-subtle);
+}

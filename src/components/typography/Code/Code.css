@@ -1,0 +1,33 @@
+.nova-code {
+  font-family: var(--nova-font-mono);
+  font-size: 0.875em;
+}
+
+/* ---- Inline ------------------------------------------------------------- */
+.nova-code--inline {
+  padding: 0.125em var(--nova-space-1);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-bg-muted);
+  color: var(--nova-text);
+  white-space: break-spaces;
+  word-break: break-word;
+}
+
+/* ---- Block -------------------------------------------------------------- */
+.nova-code--block {
+  margin: 0;
+  padding: var(--nova-space-4);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-bg-subtle);
+  color: var(--nova-text);
+  line-height: var(--nova-leading-normal);
+  overflow-x: auto;
+}
+
+.nova-code--block .nova-code__inner {
+  font-family: inherit;
+  font-size: inherit;
+  white-space: pre;
+}

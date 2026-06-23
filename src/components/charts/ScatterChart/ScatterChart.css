@@ -1,0 +1,71 @@
+.nova-scatter-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-scatter-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nova-scatter-chart__grid {
+  stroke: var(--nova-border);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.nova-scatter-chart__axis {
+  stroke: var(--nova-border-strong);
+  stroke-width: 1;
+}
+
+.nova-scatter-chart__tick {
+  fill: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-scatter-chart__point {
+  fill-opacity: 0.8;
+  transition: fill-opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-scatter-chart__point:hover {
+  fill-opacity: 1;
+}
+
+.nova-scatter-chart__svg:hover
+  .nova-scatter-chart__series:not(:hover)
+  .nova-scatter-chart__point {
+  fill-opacity: 0.35;
+}
+
+.nova-scatter-chart__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2) var(--nova-space-4);
+}
+
+.nova-scatter-chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-scatter-chart__swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--nova-radius-full);
+  flex: none;
+}
+
+.nova-scatter-chart__legend-label {
+  color: var(--nova-text);
+}

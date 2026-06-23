@@ -1,0 +1,37 @@
+.nova-blur-fade-text {
+  --nova-blur-fade-duration: 600ms;
+  --nova-blur-fade-blur: 10px;
+  display: inline;
+  color: inherit;
+}
+
+.nova-blur-fade-text__space {
+  white-space: pre;
+}
+
+.nova-blur-fade-text__word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(var(--nova-blur-fade-blur));
+  transform: translateY(0.5em);
+  transition:
+    opacity var(--nova-blur-fade-duration) var(--nova-ease-out),
+    filter var(--nova-blur-fade-duration) var(--nova-ease-out),
+    transform var(--nova-blur-fade-duration) var(--nova-ease-out);
+  will-change: opacity, filter, transform;
+}
+
+.nova-blur-fade-text--active .nova-blur-fade-text__word {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-blur-fade-text__word {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}

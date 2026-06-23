@@ -1,0 +1,95 @@
+.nova-orbit-loader {
+  --nova-loader-color: var(--nova-primary);
+  position: relative;
+  display: inline-block;
+  width: var(--nova-orbit-size, 44px);
+  height: var(--nova-orbit-size, 44px);
+  color: var(--nova-loader-color);
+  line-height: 0;
+}
+
+.nova-orbit-loader[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-orbit-loader[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-orbit-loader[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-orbit-loader[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-orbit-loader[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-orbit-loader__nucleus {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22%;
+  height: 22%;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-loader-color);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px 0 currentColor;
+  animation: nova-orbit-pulse 1.6s var(--nova-ease) infinite;
+}
+
+.nova-orbit-loader__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--nova-radius-full);
+  /* each ring is an ellipse rotated to its own plane */
+  transform: rotate(calc(var(--nova-orbit-i) * 180deg / var(--nova-orbit-n)));
+  animation: nova-orbit-spin 1.4s linear infinite;
+  animation-delay: calc(var(--nova-orbit-i) * -0.18s);
+}
+
+.nova-orbit-loader__planet {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16%;
+  height: 16%;
+  margin-top: -8%;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-loader-color);
+  box-shadow: 0 0 6px 0 currentColor;
+  opacity: 0.9;
+}
+
+/* squash the ring vertically so the planet travels an ellipse */
+.nova-orbit-loader__ring {
+  scale: 1 0.42;
+}
+
+@keyframes nova-orbit-spin {
+  to {
+    transform: rotate(calc(var(--nova-orbit-i) * 180deg / var(--nova-orbit-n) + 360deg));
+  }
+}
+
+@keyframes nova-orbit-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-orbit-loader__ring,
+  .nova-orbit-loader__nucleus {
+    animation: none;
+  }
+  .nova-orbit-loader__ring {
+    transform: rotate(calc(var(--nova-orbit-i) * 60deg));
+    scale: 1 0.42;
+  }
+}

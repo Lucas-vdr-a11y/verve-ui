@@ -1,0 +1,103 @@
+.nova-wizard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-6);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+/* ---- Progress indicator ------------------------------------------------- */
+.nova-wizard__progress {
+  display: flex;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-wizard__progress-step {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nova-space-2);
+  text-align: center;
+  min-width: 0;
+}
+
+/* connector line between markers */
+.nova-wizard__progress-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0.875rem;
+  left: calc(50% + 1.25rem);
+  right: calc(-50% + 1.25rem);
+  height: 2px;
+  background: var(--nova-border);
+}
+
+.nova-wizard__progress-step--complete:not(:last-child)::after {
+  background: var(--nova-primary);
+}
+
+.nova-wizard__progress-marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 2px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-wizard__progress-marker svg {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+}
+
+.nova-wizard__progress-step--current .nova-wizard__progress-marker {
+  border-color: var(--nova-primary);
+  color: var(--nova-primary);
+}
+
+.nova-wizard__progress-step--complete .nova-wizard__progress-marker {
+  border-color: var(--nova-primary);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-wizard__progress-title {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-muted);
+  line-height: var(--nova-leading-snug);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.nova-wizard__progress-step--current .nova-wizard__progress-title,
+.nova-wizard__progress-step--complete .nova-wizard__progress-title {
+  color: var(--nova-text);
+}
+
+/* ---- Body / panels ------------------------------------------------------ */
+.nova-wizard__body {
+  display: block;
+}
+
+.nova-wizard__step {
+  display: block;
+}

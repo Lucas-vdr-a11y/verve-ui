@@ -1,0 +1,53 @@
+.nova-message-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-message-actions__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  font-size: var(--nova-text-md);
+  line-height: 0;
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-message-actions__btn:hover {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-message-actions__btn--active {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+/* Reveal-on-hover: hidden until the parent bubble is hovered/focused. */
+.nova-message-actions--reveal {
+  opacity: 0;
+  transition: opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-chat-bubble:hover .nova-message-actions--reveal,
+.nova-chat-bubble:focus-within .nova-message-actions--reveal,
+.nova-message-actions--reveal:focus-within,
+.nova-message-actions--reveal:hover {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-message-actions--reveal {
+    transition: none;
+  }
+}

@@ -1,0 +1,136 @@
+.nova-hamburger {
+  --nova-ham-size: 2.75rem;
+  --nova-ham-line: 2px;
+  --nova-ham-box: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-ham-size);
+  height: var(--nova-ham-size);
+  padding: 0;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  cursor: pointer;
+  transition:
+    background var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-hamburger--sm {
+  --nova-ham-size: 2.25rem;
+  --nova-ham-box: 1rem;
+}
+
+.nova-hamburger--lg {
+  --nova-ham-size: 3.25rem;
+  --nova-ham-box: 1.5rem;
+}
+
+.nova-hamburger:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-hamburger:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-hamburger__box {
+  position: relative;
+  display: block;
+  width: var(--nova-ham-box);
+  height: var(--nova-ham-box);
+}
+
+.nova-hamburger__line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--nova-ham-line);
+  border-radius: var(--nova-radius-full);
+  background: currentColor;
+  transition:
+    transform var(--nova-duration-base) var(--nova-ease-spring),
+    opacity var(--nova-duration-fast) var(--nova-ease),
+    top var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-hamburger__line--top {
+  top: 15%;
+}
+
+.nova-hamburger__line--mid {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nova-hamburger__line--bottom {
+  top: 85%;
+}
+
+/* ---- squeeze: outer lines pinch to center & cross, middle fades --------- */
+.nova-hamburger--squeeze.nova-hamburger--open .nova-hamburger__line--top {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.nova-hamburger--squeeze.nova-hamburger--open .nova-hamburger__line--mid {
+  opacity: 0;
+  transform: translateY(-50%) scaleX(0.2);
+}
+
+.nova-hamburger--squeeze.nova-hamburger--open .nova-hamburger__line--bottom {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* ---- spin: full box rotates 90° while the lines cross ------------------- */
+.nova-hamburger--spin .nova-hamburger__box {
+  transition: transform var(--nova-duration-base) var(--nova-ease-spring);
+}
+
+.nova-hamburger--spin.nova-hamburger--open .nova-hamburger__box {
+  transform: rotate(90deg);
+}
+
+.nova-hamburger--spin.nova-hamburger--open .nova-hamburger__line--top {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.nova-hamburger--spin.nova-hamburger--open .nova-hamburger__line--mid {
+  opacity: 0;
+}
+
+.nova-hamburger--spin.nova-hamburger--open .nova-hamburger__line--bottom {
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+/* ---- arrow: collapse into a back-chevron ------------------------------- */
+.nova-hamburger--arrow.nova-hamburger--open .nova-hamburger__line--top {
+  top: 50%;
+  width: 55%;
+  transform: translateY(-50%) rotate(-45deg);
+  transform-origin: left center;
+}
+
+.nova-hamburger--arrow.nova-hamburger--open .nova-hamburger__line--mid {
+  width: 80%;
+}
+
+.nova-hamburger--arrow.nova-hamburger--open .nova-hamburger__line--bottom {
+  top: 50%;
+  width: 55%;
+  transform: translateY(-50%) rotate(45deg);
+  transform-origin: left center;
+}
+
+/* Reduced motion: keep the end states but remove easing/spring. */
+.nova-hamburger--reduced .nova-hamburger__line,
+.nova-hamburger--reduced .nova-hamburger__box {
+  transition-duration: var(--nova-duration-fast);
+  transition-timing-function: var(--nova-ease);
+}

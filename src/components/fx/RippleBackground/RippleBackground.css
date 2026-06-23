@@ -1,0 +1,50 @@
+.nova-ripple {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  --nova-ripple-color: var(--nova-primary);
+  --nova-ripple-duration: 4s;
+}
+
+.nova-ripple__field {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.nova-ripple__ring {
+  position: absolute;
+  border-radius: var(--nova-radius-full);
+  border-width: 1px;
+  border-color: var(--nova-ripple-color);
+  background: color-mix(in srgb, var(--nova-ripple-color) 6%, transparent);
+  box-shadow: 0 0 24px -8px var(--nova-ripple-color);
+  animation: nova-ripple-pulse var(--nova-ripple-duration) var(--nova-ease-out)
+    infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes nova-ripple-pulse {
+  0% {
+    transform: scale(0.85);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(0.85);
+  }
+}
+
+.nova-ripple__content {
+  position: relative;
+  z-index: var(--nova-z-base);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-ripple__ring {
+    animation: none;
+  }
+}

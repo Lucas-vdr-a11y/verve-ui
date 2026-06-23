@@ -1,0 +1,111 @@
+.nova-three-d-marquee {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  overflow: hidden;
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-bg-subtle);
+  perspective: 1200px;
+}
+
+.nova-three-d-marquee__stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+}
+
+.nova-three-d-marquee__grid {
+  display: flex;
+  gap: var(--nova-space-4);
+  width: 150%;
+  height: 150%;
+  transform: rotateX(45deg) rotateZ(-35deg) scale(0.9);
+  transform-style: preserve-3d;
+}
+
+.nova-three-d-marquee__col {
+  flex: 1 1 0;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.nova-three-d-marquee__track {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  animation: nova-three-d-marquee-up var(--nova-three-d-marquee-duration, 40s)
+    linear infinite;
+}
+
+.nova-three-d-marquee__col[data-dir="down"] .nova-three-d-marquee__track {
+  animation-name: nova-three-d-marquee-down;
+}
+
+.nova-three-d-marquee[data-reduced] .nova-three-d-marquee__track {
+  animation: none;
+}
+
+.nova-three-d-marquee__tile {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--nova-radius-lg);
+  overflow: hidden;
+  background: var(--nova-bg-muted);
+  box-shadow: var(--nova-shadow-md);
+  transition: transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-three-d-marquee__tile:hover {
+  transform: translateZ(40px) scale(1.04);
+}
+
+.nova-three-d-marquee__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+}
+
+/* Soft vignette so tiles fade at the edges of the wall. */
+.nova-three-d-marquee::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 45%,
+    rgb(15 23 42 / 0.18) 100%
+  );
+}
+
+[data-theme="dark"] .nova-three-d-marquee::after {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgb(2 6 23 / 0.55) 100%
+  );
+}
+
+@keyframes nova-three-d-marquee-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes nova-three-d-marquee-down {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

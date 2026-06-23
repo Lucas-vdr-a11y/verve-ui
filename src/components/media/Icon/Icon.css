@@ -1,0 +1,17 @@
+.nova-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  color: currentColor;
+  fill: currentColor;
+  vertical-align: middle;
+  /* Inherit text color; size flows from font-size via em units. */
+}
+
+.nova-icon path,
+.nova-icon circle,
+.nova-icon rect,
+.nova-icon polygon,
+.nova-icon polyline,
+.nova-icon line {
+  vector-effect: non-scaling-stroke;
+}

@@ -1,0 +1,36 @@
+.nova-stat-group {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(var(--nova-stat-group-min, 12rem), 1fr)
+  );
+  gap: var(--nova-space-4) var(--nova-space-6);
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  padding: var(--nova-space-5) var(--nova-space-6);
+}
+
+.nova-stat-group > * {
+  min-width: 0;
+}
+
+.nova-stat-group--dividers > * + * {
+  position: relative;
+}
+
+.nova-stat-group--dividers > * + *::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: calc(var(--nova-space-6) / -2);
+  width: 1px;
+  background: var(--nova-border);
+}
+
+/* Drop dividers when items wrap to a single column. */
+@media (max-width: 32rem) {
+  .nova-stat-group--dividers > * + *::before {
+    display: none;
+  }
+}

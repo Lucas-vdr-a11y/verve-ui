@@ -1,0 +1,57 @@
+.nova-dl {
+  margin: 0;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text);
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+}
+
+.nova-dl__row {
+  margin: 0;
+}
+
+.nova-dl__term {
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-muted);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-dl__desc {
+  margin: 0;
+  color: var(--nova-text);
+  line-height: var(--nova-leading-normal);
+}
+
+/* ---- Vertical ---------------------------------------------------------- */
+.nova-dl--vertical .nova-dl__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+/* ---- Horizontal -------------------------------------------------------- */
+.nova-dl--horizontal .nova-dl__row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 30%) 1fr;
+  gap: var(--nova-space-4);
+  align-items: baseline;
+}
+
+.nova-dl--horizontal .nova-dl__term {
+  margin: 0;
+}
+
+/* ---- Divided ----------------------------------------------------------- */
+.nova-dl--divided {
+  gap: 0;
+}
+
+.nova-dl--divided .nova-dl__row {
+  padding: var(--nova-space-3) 0;
+}
+
+.nova-dl--divided .nova-dl__row + .nova-dl__row {
+  border-top: 1px solid var(--nova-border);
+}

@@ -1,0 +1,216 @@
+.nova-timepicker {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--nova-font-sans);
+}
+
+/* ---- Control (matches Input) -------------------------------------------- */
+.nova-timepicker__control {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  gap: var(--nova-space-2);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-xs);
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-timepicker__control:hover:not(.nova-timepicker__control--disabled) {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-timepicker__control:focus-within {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-timepicker__control--invalid {
+  border-color: var(--nova-danger);
+}
+
+.nova-timepicker__control--invalid:focus-within {
+  border-color: var(--nova-danger);
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+.nova-timepicker__control--disabled {
+  opacity: 0.6;
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+/* ---- Icon --------------------------------------------------------------- */
+.nova-timepicker__icon {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  color: var(--nova-text-muted);
+}
+
+.nova-timepicker__icon svg {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+/* ---- Segments ----------------------------------------------------------- */
+.nova-timepicker__segments {
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  line-height: var(--nova-leading-normal);
+}
+
+.nova-timepicker__segment {
+  width: 1.75em;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  padding: 0;
+  border-radius: var(--nova-radius-xs);
+}
+
+.nova-timepicker__segment::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-timepicker__segment.nova-focusable:focus-visible {
+  box-shadow: none;
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+.nova-timepicker__segment:disabled {
+  cursor: not-allowed;
+}
+
+.nova-timepicker__colon {
+  color: var(--nova-text-muted);
+}
+
+.nova-timepicker__period {
+  margin-left: var(--nova-space-1);
+  padding: 0 var(--nova-space-1);
+  border: none;
+  border-radius: var(--nova-radius-xs);
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  font-size: 0.85em;
+  font-weight: var(--nova-font-semibold);
+  cursor: pointer;
+}
+
+.nova-timepicker__period:hover {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-timepicker__period.nova-focusable:focus-visible {
+  box-shadow: none;
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+}
+
+/* ---- Toggle ------------------------------------------------------------- */
+.nova-timepicker__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-timepicker__toggle:hover:not(:disabled) {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-timepicker__toggle:disabled {
+  cursor: not-allowed;
+}
+
+.nova-timepicker__toggle svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ---- Dropdown list ------------------------------------------------------ */
+.nova-timepicker__list {
+  position: absolute;
+  top: calc(100% + var(--nova-space-1));
+  left: 0;
+  right: 0;
+  z-index: var(--nova-z-dropdown);
+  margin: 0;
+  padding: var(--nova-space-1);
+  list-style: none;
+  max-height: 14rem;
+  overflow-y: auto;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface-raised);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-timepicker__option {
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border-radius: var(--nova-radius-sm);
+  color: var(--nova-text);
+  font-size: var(--nova-text-sm);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--nova-leading-snug);
+  cursor: pointer;
+  user-select: none;
+}
+
+.nova-timepicker__option:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-timepicker__option--selected {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+  font-weight: var(--nova-font-medium);
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-timepicker__control--sm {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+  min-height: calc(2rem - 2px);
+}
+.nova-timepicker__control--md {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+  min-height: calc(2.5rem - 2px);
+}
+.nova-timepicker__control--lg {
+  font-size: var(--nova-text-md);
+  padding: 0 var(--nova-space-4);
+  min-height: calc(3rem - 2px);
+}

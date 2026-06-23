@@ -1,0 +1,51 @@
+.nova-hex {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  color: var(--nova-border-strong);
+}
+
+.nova-hex__cell {
+  fill: transparent;
+  stroke: currentColor;
+  transition: fill var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-hex__cell:hover {
+  fill: var(--nova-primary-subtle);
+}
+
+.nova-hex__twinkle {
+  fill: var(--nova-primary);
+  opacity: 0;
+  animation: nova-hex-twinkle 3.2s var(--nova-ease) infinite;
+  pointer-events: none;
+}
+
+.nova-hex--fade {
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    #000 0%,
+    transparent 75%
+  );
+  mask-image: radial-gradient(ellipse at center, #000 0%, transparent 75%);
+}
+
+@keyframes nova-hex-twinkle {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-hex__twinkle {
+    animation: none;
+    opacity: 0.25;
+  }
+}

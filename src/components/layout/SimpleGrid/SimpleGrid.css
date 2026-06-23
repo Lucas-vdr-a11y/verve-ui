@@ -1,0 +1,11 @@
+/* SimpleGrid — responsive CSS Grid for the common case. */
+.nova-simple-grid {
+  box-sizing: border-box;
+  display: grid;
+  min-width: 0;
+  gap: var(--nova-simple-grid-gap, var(--nova-space-4));
+  grid-template-columns: var(
+    --nova-simple-grid-template,
+    repeat(2, minmax(0, 1fr))
+  );
+}

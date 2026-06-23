@@ -1,0 +1,128 @@
+.nova-spotlight-feature-card {
+  --nova-spotlight-x: 50%;
+  --nova-spotlight-y: 0px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 22rem;
+  padding: var(--nova-space-8);
+  overflow: hidden;
+  border-radius: var(--nova-radius-2xl);
+  border: 1px solid var(--nova-border);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-md);
+  isolation: isolate;
+  transition: box-shadow var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-spotlight-feature-card:hover,
+.nova-spotlight-feature-card:focus-visible {
+  box-shadow: var(--nova-shadow-xl);
+  transform: translateY(-3px);
+}
+
+/* Cursor-following spotlight wash. */
+.nova-spotlight-feature-card__glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  background: radial-gradient(
+    var(--nova-spotlight-radius, 260px) circle at var(--nova-spotlight-x)
+      var(--nova-spotlight-y),
+    rgb(99 102 241 / 0.28),
+    transparent 70%
+  );
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-spotlight-feature-card[data-spot] .nova-spotlight-feature-card__glow,
+.nova-spotlight-feature-card:focus-visible .nova-spotlight-feature-card__glow {
+  opacity: 1;
+}
+
+.nova-spotlight-feature-card--reduced .nova-spotlight-feature-card__glow {
+  opacity: 1;
+  background: radial-gradient(
+    var(--nova-spotlight-radius, 260px) circle at 50% 20%,
+    rgb(99 102 241 / 0.2),
+    transparent 70%
+  );
+}
+
+.nova-spotlight-feature-card__base {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-spotlight-feature-card:hover .nova-spotlight-feature-card__base,
+.nova-spotlight-feature-card:focus-visible .nova-spotlight-feature-card__base {
+  transform: translateY(calc(var(--nova-space-12) * -1));
+}
+
+.nova-spotlight-feature-card--reduced:hover .nova-spotlight-feature-card__base,
+.nova-spotlight-feature-card--reduced:focus-visible
+  .nova-spotlight-feature-card__base {
+  transform: none;
+}
+
+.nova-spotlight-feature-card__eyebrow {
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--nova-primary-text);
+}
+
+.nova-spotlight-feature-card__title {
+  margin: 0;
+  font-size: var(--nova-text-3xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-spotlight-feature-card__desc {
+  margin: 0;
+  max-width: 32rem;
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text-muted);
+}
+
+/* Secondary reveal layer. */
+.nova-spotlight-feature-card__reveal {
+  position: absolute;
+  inset-inline: var(--nova-space-8);
+  bottom: var(--nova-space-8);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nova-space-4);
+  align-items: center;
+  opacity: 0;
+  transform: translateY(var(--nova-space-6));
+  transition: opacity var(--nova-duration-slow) var(--nova-ease-out),
+    transform var(--nova-duration-slow) var(--nova-ease-out);
+  pointer-events: none;
+}
+
+.nova-spotlight-feature-card:hover .nova-spotlight-feature-card__reveal,
+.nova-spotlight-feature-card:focus-visible
+  .nova-spotlight-feature-card__reveal {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nova-spotlight-feature-card--reduced .nova-spotlight-feature-card__reveal {
+  position: static;
+  inset: auto;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  margin-top: var(--nova-space-5);
+}

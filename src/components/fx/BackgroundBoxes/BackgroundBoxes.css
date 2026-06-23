@@ -1,0 +1,44 @@
+.nova-boxes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  pointer-events: none;
+}
+
+.nova-boxes__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--nova-boxes-cols), minmax(36px, 1fr));
+  grid-template-rows: repeat(var(--nova-boxes-rows), 36px);
+  pointer-events: auto;
+}
+
+.nova-boxes--skew .nova-boxes__grid {
+  transform: rotateX(45deg) rotateZ(-30deg) translateZ(-80px) scale(1.4);
+  transform-origin: center;
+}
+
+.nova-boxes__cell {
+  border-right: 1px solid var(--nova-border);
+  border-bottom: 1px solid var(--nova-border);
+  background: transparent;
+  transition: background-color var(--nova-duration-slow) var(--nova-ease);
+}
+
+.nova-boxes__cell:hover {
+  background: color-mix(
+    in srgb,
+    var(--nova-boxes-color) 55%,
+    transparent
+  );
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-boxes__cell {
+    transition: none;
+  }
+}

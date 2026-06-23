@@ -1,0 +1,29 @@
+.nova-wavy-text {
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-bold);
+  color: var(--nova-text);
+}
+
+.nova-wavy-text__char {
+  display: inline-block;
+  white-space: pre;
+  animation: nova-wavy-bob var(--nova-wt-duration, 1.6s) ease-in-out infinite;
+}
+
+@keyframes nova-wavy-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(calc(var(--nova-wt-amp, 0.32em) * -1));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-wavy-text__char {
+    animation: none;
+    transform: none;
+  }
+}

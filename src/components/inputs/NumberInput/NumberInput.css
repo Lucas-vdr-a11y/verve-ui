@@ -1,0 +1,138 @@
+.nova-number {
+  display: inline-flex;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-xs);
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+  overflow: hidden;
+}
+
+.nova-number:hover:not(.nova-number--disabled) {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-number:focus-within {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-number--invalid {
+  border-color: var(--nova-danger);
+}
+
+.nova-number--invalid:focus-within {
+  border-color: var(--nova-danger);
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+.nova-number--disabled {
+  opacity: 0.6;
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+/* ---- Field -------------------------------------------------------------- */
+.nova-number__field {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: var(--nova-font-sans);
+  font-size: inherit;
+  line-height: var(--nova-leading-normal);
+}
+
+.nova-number__field.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-number__field::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-number__field:disabled {
+  cursor: not-allowed;
+}
+
+/* ---- Steppers ----------------------------------------------------------- */
+.nova-number__steppers {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  border-left: 1px solid var(--nova-border);
+}
+
+.nova-number__step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 50%;
+  width: 1.75em;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: var(--nova-surface);
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-number__step--up {
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-number__step:hover:not(:disabled) {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-number__step:active:not(:disabled) {
+  background: var(--nova-surface-active);
+}
+
+.nova-number__step:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.nova-number__step svg {
+  display: block;
+  width: 0.85em;
+  height: 0.85em;
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-number--sm {
+  font-size: var(--nova-text-sm);
+}
+.nova-number--sm .nova-number__field {
+  min-height: calc(2rem - 2px);
+  padding: 0 var(--nova-space-3);
+}
+
+.nova-number--md {
+  font-size: var(--nova-text-sm);
+}
+.nova-number--md .nova-number__field {
+  min-height: calc(2.5rem - 2px);
+  padding: 0 var(--nova-space-3);
+}
+
+.nova-number--lg {
+  font-size: var(--nova-text-md);
+}
+.nova-number--lg .nova-number__field {
+  min-height: calc(3rem - 2px);
+  padding: 0 var(--nova-space-4);
+}

@@ -1,0 +1,106 @@
+.nova-image {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  inline-size: 100%;
+  line-height: 0;
+  background: var(--nova-bg-muted);
+}
+
+.nova-image--ratio {
+  aspect-ratio: var(--nova-image-ratio, 16 / 9);
+}
+
+.nova-image--rounded {
+  border-radius: var(--nova-radius-lg);
+}
+
+.nova-image__img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.nova-image--ratio .nova-image__img {
+  position: absolute;
+  inset: 0;
+}
+
+.nova-image--cover .nova-image__img {
+  object-fit: cover;
+}
+
+.nova-image--contain .nova-image__img {
+  object-fit: contain;
+}
+
+/* Hide the img until it has loaded so the skeleton shows through. */
+.nova-image[data-state="loading"] .nova-image__img {
+  opacity: 0;
+}
+
+.nova-image[data-state="loaded"] .nova-image__img {
+  opacity: 1;
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+/* ---- Shimmer skeleton -------------------------------------------------- */
+.nova-image__skeleton {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  background: var(--nova-bg-muted);
+}
+
+.nova-image__skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--nova-surface-hover),
+    transparent
+  );
+  animation: nova-image-shimmer 1.5s var(--nova-ease) infinite;
+}
+
+/* ---- Node fallback ----------------------------------------------------- */
+.nova-image__fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  block-size: 100%;
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text-muted);
+  background: var(--nova-bg-muted);
+}
+
+@keyframes nova-image-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-image__skeleton::after {
+    animation: nova-image-fade 1.5s ease-in-out infinite;
+    transform: none;
+    background: var(--nova-surface-hover);
+  }
+
+  @keyframes nova-image-fade {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+}

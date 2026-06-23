@@ -1,0 +1,109 @@
+.nova-cc {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  gap: var(--nova-space-2);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-xs);
+  font-family: var(--nova-font-sans);
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-cc:hover:not(.nova-cc--disabled) {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-cc:focus-within {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-cc--invalid {
+  border-color: var(--nova-danger);
+}
+
+.nova-cc--invalid:focus-within {
+  border-color: var(--nova-danger);
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+.nova-cc--disabled {
+  opacity: 0.6;
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+/* ---- Field --------------------------------------------------------------- */
+.nova-cc__field {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--nova-leading-normal);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.nova-cc__field.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-cc__field::placeholder {
+  color: var(--nova-text-subtle);
+  letter-spacing: normal;
+}
+
+.nova-cc__field:disabled {
+  cursor: not-allowed;
+}
+
+/* ---- Brand icon ---------------------------------------------------------- */
+.nova-cc__brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.nova-cc__brand-svg {
+  display: block;
+  width: 2.25rem;
+  height: 1.5rem;
+}
+
+/* ---- Sizes --------------------------------------------------------------- */
+.nova-cc--sm {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+}
+
+.nova-cc--sm .nova-cc__field {
+  min-height: calc(2rem - 2px);
+}
+
+.nova-cc--md {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+}
+
+.nova-cc--md .nova-cc__field {
+  min-height: calc(2.5rem - 2px);
+}
+
+.nova-cc--lg {
+  font-size: var(--nova-text-md);
+  padding: 0 var(--nova-space-4);
+}
+
+.nova-cc--lg .nova-cc__field {
+  min-height: calc(3rem - 2px);
+}

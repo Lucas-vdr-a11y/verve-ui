@@ -1,0 +1,109 @@
+.nova-switch {
+  --nova-switch-w: 2.5rem;
+  --nova-switch-h: 1.5rem;
+  --nova-switch-pad: 0.1875rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  cursor: pointer;
+  user-select: none;
+}
+
+.nova-switch--sm {
+  --nova-switch-w: 2rem;
+  --nova-switch-h: 1.25rem;
+  --nova-switch-pad: 0.1563rem;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-switch--md {
+  --nova-switch-w: 2.5rem;
+  --nova-switch-h: 1.5rem;
+  --nova-switch-pad: 0.1875rem;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-switch--lg {
+  --nova-switch-w: 3rem;
+  --nova-switch-h: 1.75rem;
+  --nova-switch-pad: 0.2188rem;
+  font-size: var(--nova-text-md);
+}
+
+.nova-switch--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ---- Control ------------------------------------------------------------ */
+.nova-switch__control {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: var(--nova-switch-w);
+  height: var(--nova-switch-h);
+}
+
+.nova-switch__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.nova-switch__track {
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-border-strong);
+  box-shadow: inset 0 1px 2px rgb(15 23 42 / 0.12);
+  transition: background-color var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-switch__thumb {
+  position: absolute;
+  top: var(--nova-switch-pad);
+  left: var(--nova-switch-pad);
+  width: calc(var(--nova-switch-h) - 2 * var(--nova-switch-pad));
+  height: calc(var(--nova-switch-h) - 2 * var(--nova-switch-pad));
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-text-on-brand);
+  box-shadow: var(--nova-shadow-sm);
+  transition: transform var(--nova-duration-base) var(--nova-ease-spring);
+}
+
+/* checked */
+.nova-switch__input:checked ~ .nova-switch__track {
+  background: var(--nova-primary);
+}
+
+.nova-switch__input:checked ~ .nova-switch__track .nova-switch__thumb {
+  transform: translateX(
+    calc(var(--nova-switch-w) - var(--nova-switch-h))
+  );
+}
+
+/* focus */
+.nova-switch__input.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-switch__input.nova-focusable:focus-visible ~ .nova-switch__track {
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-switch:hover .nova-switch__input:not(:checked):not(:disabled) ~ .nova-switch__track {
+  background: var(--nova-text-subtle);
+}
+
+.nova-switch__label {
+  line-height: var(--nova-leading-snug);
+}

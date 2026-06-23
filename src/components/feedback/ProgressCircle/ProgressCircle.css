@@ -1,0 +1,75 @@
+.nova-progress-circle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nova-primary);
+  line-height: 0;
+}
+
+.nova-progress-circle--primary {
+  color: var(--nova-primary);
+}
+.nova-progress-circle--success {
+  color: var(--nova-success);
+}
+.nova-progress-circle--warning {
+  color: var(--nova-warning);
+}
+.nova-progress-circle--danger {
+  color: var(--nova-danger);
+}
+.nova-progress-circle--info {
+  color: var(--nova-info);
+}
+
+.nova-progress-circle__svg {
+  transform: rotate(-90deg);
+  display: block;
+}
+
+.nova-progress-circle__track {
+  stroke: var(--nova-border);
+}
+
+.nova-progress-circle__indicator {
+  stroke: currentColor;
+  transition: stroke-dashoffset var(--nova-duration-slow) var(--nova-ease);
+}
+
+.nova-progress-circle__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  color: var(--nova-text);
+}
+
+/* ---- Indeterminate spin ------------------------------------------------ */
+.nova-progress-circle--indeterminate .nova-progress-circle__svg {
+  animation: nova-progress-circle-spin 900ms linear infinite;
+}
+
+.nova-progress-circle--indeterminate .nova-progress-circle__indicator {
+  transition: none;
+}
+
+@keyframes nova-progress-circle-spin {
+  to {
+    transform: rotate(270deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-progress-circle--indeterminate .nova-progress-circle__svg {
+    animation-duration: 1.8s;
+  }
+  .nova-progress-circle__indicator {
+    transition: none;
+  }
+}

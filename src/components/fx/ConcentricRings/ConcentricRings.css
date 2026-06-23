@@ -1,0 +1,42 @@
+.nova-rings {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.nova-rings__ring {
+  position: absolute;
+  top: var(--nova-rings-y);
+  left: var(--nova-rings-x);
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: var(--nova-radius-full);
+  border: 1.5px solid var(--nova-rings-color);
+  opacity: 0;
+  transform: scale(0.2);
+  animation: nova-rings-pulse var(--nova-rings-dur) var(--nova-ease-out) infinite;
+}
+
+@keyframes nova-rings-pulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.2);
+  }
+  80% {
+    opacity: 0.08;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(14);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-rings__ring {
+    animation: none;
+    opacity: 0.25;
+    transform: scale(1);
+  }
+}

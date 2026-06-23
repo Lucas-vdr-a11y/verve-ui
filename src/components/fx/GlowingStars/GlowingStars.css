@@ -1,0 +1,75 @@
+.nova-stars {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  --nova-stars-x: 50%;
+  --nova-stars-y: 50%;
+  --nova-stars-glow: 0;
+  --nova-stars-reach: 120px;
+}
+
+.nova-stars__field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.nova-stars__star {
+  position: absolute;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-stars-color);
+  opacity: 0.35;
+  animation-name: nova-stars-twinkle;
+  animation-timing-function: var(--nova-ease);
+  animation-iteration-count: infinite;
+  will-change: opacity, transform;
+}
+
+/* The bright copy is revealed only inside a radial mask at the cursor. */
+.nova-stars__field--glow {
+  opacity: var(--nova-stars-glow);
+  transition: opacity var(--nova-duration-slow) var(--nova-ease);
+  -webkit-mask-image: radial-gradient(
+    var(--nova-stars-reach) circle at var(--nova-stars-x) var(--nova-stars-y),
+    #000 0%,
+    transparent 70%
+  );
+  mask-image: radial-gradient(
+    var(--nova-stars-reach) circle at var(--nova-stars-x) var(--nova-stars-y),
+    #000 0%,
+    transparent 70%
+  );
+}
+
+.nova-stars__field--glow .nova-stars__star {
+  opacity: 1;
+  transform: scale(1.6);
+  box-shadow: 0 0 6px 1px var(--nova-stars-color);
+}
+
+.nova-stars__content {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes nova-stars-twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-stars__star {
+    animation: none;
+  }
+  .nova-stars__field--glow {
+    transition: none;
+  }
+}

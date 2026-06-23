@@ -1,0 +1,105 @@
+.nova-image-compare {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  overflow: hidden;
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-bg-muted);
+  touch-action: none;
+  user-select: none;
+  cursor: ew-resize;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-image-compare--ratio {
+  aspect-ratio: var(--nova-image-compare-ratio, 16 / 9);
+}
+
+.nova-image-compare__img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.nova-image-compare--ratio .nova-image-compare__img {
+  position: absolute;
+  inset: 0;
+}
+
+/* Before image, clipped to the divider position. */
+.nova-image-compare__before {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden;
+  clip-path: inset(0 calc(100% - var(--nova-image-compare-pos, 50%)) 0 0);
+}
+
+.nova-image-compare__before .nova-image-compare__img {
+  position: absolute;
+  inset: 0;
+}
+
+/* ---- Labels ------------------------------------------------------------ */
+.nova-image-compare__label {
+  position: absolute;
+  inset-block-start: var(--nova-space-3);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  color: var(--nova-gray-0);
+  background: var(--nova-overlay-bg);
+  border-radius: var(--nova-radius-sm);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  pointer-events: none;
+}
+
+.nova-image-compare__label--before {
+  inset-inline-start: var(--nova-space-3);
+}
+
+.nova-image-compare__label--after {
+  inset-inline-end: var(--nova-space-3);
+}
+
+/* ---- Divider + handle -------------------------------------------------- */
+.nova-image-compare__divider {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: var(--nova-image-compare-pos, 50%);
+  inline-size: 2px;
+  transform: translateX(-50%);
+  background: var(--nova-gray-0);
+  box-shadow: var(--nova-shadow-sm);
+  pointer-events: none;
+}
+
+.nova-image-compare__handle {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--nova-space-10);
+  block-size: var(--nova-space-10);
+  color: var(--nova-text);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  box-shadow: var(--nova-shadow-md);
+  cursor: ew-resize;
+  pointer-events: auto;
+}
+
+.nova-image-compare__handle:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-image-compare--dragging {
+  cursor: ew-resize;
+}

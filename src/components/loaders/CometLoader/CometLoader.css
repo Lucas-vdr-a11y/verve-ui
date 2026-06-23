@@ -1,0 +1,98 @@
+.nova-comet-loader {
+  --nova-loader-color: var(--nova-primary);
+  display: inline-block;
+  width: var(--nova-comet-size, 48px);
+  height: var(--nova-comet-size, 48px);
+  color: var(--nova-loader-color);
+}
+
+.nova-comet-loader[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-comet-loader[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-comet-loader[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-comet-loader[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-comet-loader[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-comet-loader__orbit {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--nova-radius-full);
+  /* faint track the comet circles */
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 14%, transparent);
+}
+
+/* the fading tail is a conic gradient sweeping around the ring */
+.nova-comet-loader__tail {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--nova-radius-full);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    color-mix(in srgb, var(--nova-loader-color) 12%, transparent) 180deg,
+    var(--nova-loader-color) 340deg,
+    var(--nova-loader-color) 360deg
+  );
+  /* punch out the center so only a ring-width tail shows */
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 12%),
+    #000 calc(100% - 12%)
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 12%),
+    #000 calc(100% - 12%)
+  );
+}
+
+.nova-comet-loader__comet {
+  position: absolute;
+  inset: 0;
+  animation: nova-comet-spin 1.2s linear infinite;
+}
+
+/* the bright leading head */
+.nova-comet-loader__head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 12%;
+  height: 12%;
+  margin-left: -6%;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-loader-color);
+  box-shadow: 0 0 8px 1px currentColor;
+}
+
+@keyframes nova-comet-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-comet-loader__comet {
+    animation: nova-comet-pulse 2s var(--nova-ease) infinite;
+  }
+  @keyframes nova-comet-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.45;
+    }
+  }
+}

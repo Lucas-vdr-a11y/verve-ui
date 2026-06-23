@@ -1,0 +1,19 @@
+.nova-aspect-ratio {
+  position: relative;
+  inline-size: 100%;
+  aspect-ratio: var(--nova-aspect-ratio, 16 / 9);
+}
+
+/* Children fill the frame. */
+.nova-aspect-ratio > * {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+/* Media children default to covering the frame without distortion. */
+.nova-aspect-ratio > img,
+.nova-aspect-ratio > video {
+  object-fit: cover;
+}

@@ -1,0 +1,90 @@
+.nova-macbook {
+  display: inline-block;
+  width: 100%;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-macbook--tilt {
+  perspective: 1600px;
+}
+
+.nova-macbook--tilt .nova-macbook__lid {
+  transform: rotateX(8deg);
+  transform-origin: center bottom;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-macbook--tilt:hover .nova-macbook__lid {
+  transform: rotateX(2deg);
+}
+
+/* ---- Lid / screen ------------------------------------------------------- */
+.nova-macbook__lid {
+  padding: 0.6rem;
+  background: linear-gradient(var(--nova-gray-700), var(--nova-gray-800));
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-xl);
+}
+
+.nova-macbook__bezel {
+  position: relative;
+  background: #000;
+  border-radius: var(--nova-radius-md);
+  padding: 0.4rem;
+  padding-top: 1.1rem;
+}
+
+.nova-macbook__notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28%;
+  max-width: 9rem;
+  height: 0.75rem;
+  background: #000;
+  border-radius: 0 0 var(--nova-radius-sm) var(--nova-radius-sm);
+}
+
+.nova-macbook__screen {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--nova-bg);
+  border-radius: var(--nova-radius-xs);
+}
+
+.nova-macbook__screen > img,
+.nova-macbook__screen > picture > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Base wedge --------------------------------------------------------- */
+.nova-macbook__base {
+  position: relative;
+  width: 112%;
+  margin-left: -6%;
+  height: 0.85rem;
+  background: linear-gradient(var(--nova-gray-300), var(--nova-gray-500));
+  border-radius: 0 0 var(--nova-radius-lg) var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-md);
+}
+
+[data-theme="dark"] .nova-macbook__base {
+  background: linear-gradient(var(--nova-gray-600), var(--nova-gray-800));
+}
+
+.nova-macbook__notch-cut {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16%;
+  max-width: 7rem;
+  height: 0.4rem;
+  background: var(--nova-gray-600);
+  border-radius: 0 0 var(--nova-radius-full) var(--nova-radius-full);
+}

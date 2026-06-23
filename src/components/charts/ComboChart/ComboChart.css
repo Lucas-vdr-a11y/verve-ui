@@ -1,0 +1,46 @@
+.nova-combo-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-combo-chart__grid {
+  stroke: var(--nova-border);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+  opacity: 0.7;
+}
+
+.nova-combo-chart__baseline {
+  stroke: var(--nova-border);
+  stroke-width: 1;
+}
+
+.nova-combo-chart__bar {
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    filter var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-combo-chart__group:hover .nova-combo-chart__bar {
+  opacity: 0.85;
+  filter: brightness(1.08);
+}
+
+.nova-combo-chart__line {
+  transition: stroke-width var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-combo-chart__point {
+  transition: r var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-combo-chart__label {
+  fill: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-combo-chart__legend-text {
+  fill: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+}

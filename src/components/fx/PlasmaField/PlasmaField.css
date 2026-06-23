@@ -1,0 +1,111 @@
+.nova-plasma {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.nova-plasma__field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(var(--nova-plasma-blur));
+  animation: nova-plasma-hue var(--nova-plasma-dur) linear infinite;
+}
+
+.nova-plasma__blob {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  border-radius: var(--nova-radius-full);
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.nova-plasma__blob--a {
+  background: radial-gradient(
+    circle at center,
+    var(--nova-plasma-a),
+    transparent 65%
+  );
+  top: -10%;
+  left: -5%;
+  animation: nova-plasma-drift-a var(--nova-plasma-dur) ease-in-out infinite;
+}
+
+.nova-plasma__blob--b {
+  background: radial-gradient(
+    circle at center,
+    var(--nova-plasma-b),
+    transparent 65%
+  );
+  bottom: -15%;
+  right: -10%;
+  animation: nova-plasma-drift-b calc(var(--nova-plasma-dur) * 1.3) ease-in-out
+    infinite;
+}
+
+.nova-plasma__blob--c {
+  background: radial-gradient(
+    circle at center,
+    var(--nova-plasma-c),
+    transparent 65%
+  );
+  top: 20%;
+  left: 30%;
+  animation: nova-plasma-drift-c calc(var(--nova-plasma-dur) * 0.8) ease-in-out
+    infinite;
+}
+
+.nova-plasma__content {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes nova-plasma-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30%, 20%) scale(1.2);
+  }
+  66% {
+    transform: translate(10%, 40%) scale(0.9);
+  }
+}
+
+@keyframes nova-plasma-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  50% {
+    transform: translate(-30%, -25%) scale(0.85);
+  }
+}
+
+@keyframes nova-plasma-drift-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(0.9);
+  }
+  50% {
+    transform: translate(-20%, 25%) scale(1.25);
+  }
+}
+
+@keyframes nova-plasma-hue {
+  to {
+    filter: blur(var(--nova-plasma-blur)) hue-rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-plasma__field {
+    animation: none;
+  }
+  .nova-plasma__blob {
+    animation: none !important;
+  }
+}

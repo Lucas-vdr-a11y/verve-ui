@@ -1,0 +1,71 @@
+.nova-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--nova-space-2) var(--nova-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-tag-cloud__item {
+  display: inline-flex;
+}
+
+.nova-tag-cloud__tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  border-radius: var(--nova-radius-sm);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  transition:
+    color var(--nova-duration-fast) var(--nova-ease),
+    background var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+/* Weight buckets: size scales up, color deepens toward the primary tone. */
+.nova-tag-cloud__tag--level-0 {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-subtle);
+}
+.nova-tag-cloud__tag--level-1 {
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}
+.nova-tag-cloud__tag--level-2 {
+  font-size: var(--nova-text-md);
+  color: var(--nova-text);
+}
+.nova-tag-cloud__tag--level-3 {
+  font-size: var(--nova-text-xl);
+  color: var(--nova-primary-text);
+}
+.nova-tag-cloud__tag--level-4 {
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-primary);
+}
+
+.nova-tag-cloud__tag--interactive {
+  cursor: pointer;
+}
+
+.nova-tag-cloud__tag--interactive:hover {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary);
+}
+
+.nova-tag-cloud__tag--interactive:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-tag-cloud__tag--interactive:active {
+  transform: translateY(1px);
+}

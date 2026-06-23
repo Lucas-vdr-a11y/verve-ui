@@ -1,0 +1,19 @@
+.nova-trail-cursor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--nova-z-tooltip);
+}
+
+.nova-trail-cursor__dot {
+  --nova-trail-cursor-color: var(--nova-primary);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--nova-trail-cursor-size);
+  height: var(--nova-trail-cursor-size);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-trail-cursor-color);
+  opacity: 0;
+  will-change: transform, opacity;
+}

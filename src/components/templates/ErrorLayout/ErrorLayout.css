@@ -1,0 +1,74 @@
+/* ErrorLayout — centered full-page error / empty screen. */
+.nova-error-layout {
+  box-sizing: border-box;
+  display: block;
+  min-height: 100%;
+  width: 100%;
+  color: var(--nova-text);
+  background: var(--nova-bg);
+}
+
+.nova-error-layout__main {
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  min-height: 100%;
+  padding: var(--nova-space-12) var(--nova-space-6);
+}
+
+.nova-error-layout__inner {
+  box-sizing: border-box;
+  display: grid;
+  justify-items: center;
+  gap: var(--nova-space-4);
+  width: 100%;
+  max-width: var(--nova-error-layout-max-w);
+  text-align: center;
+}
+
+.nova-error-layout__code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--nova-space-2);
+  font-size: var(--nova-text-5xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--nova-primary);
+}
+
+.nova-error-layout__title {
+  margin: 0;
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  color: var(--nova-text);
+}
+
+.nova-error-layout__description {
+  margin: 0;
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text-muted);
+}
+
+.nova-error-layout__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-3);
+  margin-top: var(--nova-space-2);
+}
+
+.nova-error-layout__support {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-4);
+  margin-top: var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}

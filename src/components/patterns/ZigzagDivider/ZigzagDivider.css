@@ -1,0 +1,15 @@
+.nova-zigzag-divider {
+  display: block;
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.nova-zigzag-divider__svg {
+  display: block;
+  width: 100%;
+}
+
+.nova-zigzag-divider__path {
+  fill: var(--nova-zigzag-color);
+}

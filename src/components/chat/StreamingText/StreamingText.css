@@ -1,0 +1,30 @@
+.nova-streaming-text {
+  display: inline;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.nova-streaming-text__caret {
+  display: inline-block;
+  width: 0.5em;
+  height: 1.05em;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  background: var(--nova-primary);
+  border-radius: var(--nova-radius-xs);
+  animation: nova-streaming-text-blink 1s steps(2, start) infinite;
+}
+
+@keyframes nova-streaming-text-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-streaming-text__caret {
+    animation: none;
+  }
+}

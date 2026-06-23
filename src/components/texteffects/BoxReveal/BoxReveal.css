@@ -1,0 +1,127 @@
+.nova-box-reveal {
+  --nova-box-reveal-duration: 700ms;
+  --nova-box-reveal-color: var(--nova-primary);
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.nova-box-reveal__content {
+  display: inline-block;
+  opacity: 0;
+}
+
+.nova-box-reveal__box {
+  position: absolute;
+  inset: 0;
+  background: var(--nova-box-reveal-color);
+  transform: scaleX(0);
+}
+
+/* Per-direction transform origins drive the wipe + retract. */
+.nova-box-reveal--left .nova-box-reveal__box {
+  transform-origin: left center;
+}
+.nova-box-reveal--right .nova-box-reveal__box {
+  transform-origin: right center;
+}
+.nova-box-reveal--up .nova-box-reveal__box {
+  transform: scaleY(0);
+  transform-origin: center bottom;
+}
+.nova-box-reveal--down .nova-box-reveal__box {
+  transform: scaleY(0);
+  transform-origin: center top;
+}
+
+/* ---- Active: run the reveal -------------------------------------------- */
+.nova-box-reveal--active .nova-box-reveal__content {
+  animation: nova-box-reveal-show 1ms linear
+    calc(var(--nova-box-reveal-duration) / 2) forwards;
+}
+
+.nova-box-reveal--left.nova-box-reveal--active .nova-box-reveal__box,
+.nova-box-reveal--right.nova-box-reveal--active .nova-box-reveal__box {
+  animation: nova-box-reveal-wipe-x var(--nova-box-reveal-duration)
+    var(--nova-ease) forwards;
+}
+
+.nova-box-reveal--up.nova-box-reveal--active .nova-box-reveal__box,
+.nova-box-reveal--down.nova-box-reveal--active .nova-box-reveal__box {
+  animation: nova-box-reveal-wipe-y var(--nova-box-reveal-duration)
+    var(--nova-ease) forwards;
+}
+
+@keyframes nova-box-reveal-wipe-x {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right center;
+  }
+}
+
+/* `right` direction retracts toward the left at the end. */
+.nova-box-reveal--right.nova-box-reveal--active .nova-box-reveal__box {
+  animation-name: nova-box-reveal-wipe-x-right;
+}
+@keyframes nova-box-reveal-wipe-x-right {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+}
+
+@keyframes nova-box-reveal-wipe-y {
+  0% {
+    transform: scaleY(0);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: center top;
+  }
+}
+.nova-box-reveal--down.nova-box-reveal--active .nova-box-reveal__box {
+  animation-name: nova-box-reveal-wipe-y-down;
+}
+@keyframes nova-box-reveal-wipe-y-down {
+  0% {
+    transform: scaleY(0);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: center bottom;
+  }
+}
+
+@keyframes nova-box-reveal-show {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-box-reveal__content {
+    opacity: 1;
+    animation: none;
+  }
+  .nova-box-reveal__box {
+    display: none;
+  }
+}

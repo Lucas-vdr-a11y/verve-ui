@@ -1,0 +1,49 @@
+.nova-line-shadow-text {
+  --nova-line-shadow-color: var(--nova-primary);
+  --nova-line-shadow-duration: 5s;
+
+  position: relative;
+  display: inline-block;
+  font-weight: var(--nova-font-bold);
+  color: var(--nova-text);
+}
+
+/* The striped shadow is a duplicate of the text, offset and filled with a
+   repeating diagonal gradient clipped to the glyphs. */
+.nova-line-shadow-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0.06em;
+  top: 0.06em;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--nova-line-shadow-color) 0,
+    var(--nova-line-shadow-color) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  animation: nova-line-shadow-drift var(--nova-line-shadow-duration) linear
+    infinite;
+}
+
+@keyframes nova-line-shadow-drift {
+  to {
+    background-position: 200% 200%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-line-shadow-text::after {
+    animation: none;
+  }
+}

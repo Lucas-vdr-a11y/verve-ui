@@ -1,0 +1,201 @@
+.nova-fab-menu {
+  --nova-fab-size: 3.5rem;
+  --nova-fab-action-size: 2.75rem;
+  position: relative;
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-fab-menu--sm {
+  --nova-fab-size: 2.75rem;
+  --nova-fab-action-size: 2.25rem;
+}
+
+.nova-fab-menu--lg {
+  --nova-fab-size: 4rem;
+  --nova-fab-action-size: 3.25rem;
+}
+
+/* ---- Trigger ----------------------------------------------------------- */
+.nova-fab-menu__trigger {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-fab-size);
+  height: var(--nova-fab-size);
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  cursor: pointer;
+  box-shadow:
+    var(--nova-shadow-lg),
+    0 0 0 0 rgb(99 102 241 / 0.4);
+  transition:
+    transform var(--nova-duration-base) var(--nova-ease-spring),
+    background var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-fab-menu__trigger:hover {
+  background: var(--nova-primary-hover);
+}
+
+.nova-fab-menu__trigger:focus-visible {
+  outline: none;
+  box-shadow:
+    var(--nova-shadow-lg),
+    var(--nova-shadow-focus);
+}
+
+.nova-fab-menu--open .nova-fab-menu__trigger {
+  transform: rotate(135deg);
+  box-shadow:
+    var(--nova-shadow-lg),
+    0 0 0 6px rgb(99 102 241 / 0.18);
+}
+
+/* Plus sign drawn from two bars so it can rotate into an X. */
+.nova-fab-menu__plus {
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.nova-fab-menu__plus::before,
+.nova-fab-menu__plus::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: currentColor;
+  border-radius: var(--nova-radius-full);
+  transform: translate(-50%, -50%);
+}
+
+.nova-fab-menu__plus::before {
+  width: 100%;
+  height: 2px;
+}
+
+.nova-fab-menu__plus::after {
+  width: 2px;
+  height: 100%;
+}
+
+/* ---- Fanned list ------------------------------------------------------- */
+.nova-fab-menu__list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 0;
+  height: 0;
+  z-index: 1;
+}
+
+.nova-fab-menu__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform var(--nova-duration-base) var(--nova-ease-spring),
+    opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-fab-menu--open .nova-fab-menu__item {
+  transform: translate(
+      calc(-50% + var(--nova-fab-x)),
+      calc(-50% + var(--nova-fab-y))
+    )
+    scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: var(--nova-fab-delay);
+}
+
+.nova-fab-menu__action {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-fab-action-size);
+  height: var(--nova-fab-action-size);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  cursor: pointer;
+  box-shadow: var(--nova-shadow-md);
+  transition:
+    background var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-fab-menu__action:hover:not([aria-disabled="true"]) {
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+  transform: scale(1.08);
+}
+
+.nova-fab-menu__action:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-fab-menu__action[aria-disabled="true"] {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-fab-menu__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Caption pill beside each action. */
+.nova-fab-menu__caption {
+  position: absolute;
+  left: calc(100% + var(--nova-space-2));
+  top: 50%;
+  transform: translateY(-50%);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-text);
+  color: var(--nova-bg);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: var(--nova-shadow-sm);
+}
+
+.nova-fab-menu__caption--left {
+  left: auto;
+  right: calc(100% + var(--nova-space-2));
+}
+
+/* Reduced motion: skip the spring + rotation, fade only. */
+.nova-fab-menu--reduced .nova-fab-menu__trigger,
+.nova-fab-menu--reduced .nova-fab-menu__item {
+  transition:
+    opacity var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-fab-menu--reduced.nova-fab-menu--open .nova-fab-menu__trigger {
+  transform: none;
+}
+
+.nova-fab-menu--reduced.nova-fab-menu--open .nova-fab-menu__item {
+  transition-delay: 0ms;
+}

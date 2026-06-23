@@ -1,0 +1,51 @@
+.nova-gradient-underline {
+  position: relative;
+  display: inline-block;
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-bold);
+  color: var(--nova-text);
+}
+
+.nova-gradient-underline__text {
+  position: relative;
+  z-index: 1;
+}
+
+.nova-gradient-underline__line {
+  position: absolute;
+  left: 0;
+  bottom: -0.12em;
+  height: 0.16em;
+  width: 100%;
+  border-radius: var(--nova-radius-full);
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(
+    90deg,
+    var(--nova-brand-400),
+    var(--nova-brand-600),
+    var(--nova-info-500),
+    var(--nova-brand-400)
+  );
+  background-size: 300% 100%;
+  transition: transform var(--nova-gu-duration, 0.7s) var(--nova-ease-out);
+}
+
+.nova-gradient-underline--drawn .nova-gradient-underline__line {
+  transform: scaleX(1);
+  animation: nova-gradient-underline-shimmer 3s linear infinite;
+}
+
+@keyframes nova-gradient-underline-shimmer {
+  to {
+    background-position: 300% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-gradient-underline__line {
+    transform: scaleX(1);
+    transition: none;
+    animation: none;
+  }
+}

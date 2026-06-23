@@ -1,0 +1,37 @@
+.nova-bar-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-bar-chart__baseline {
+  stroke: var(--nova-border);
+  stroke-width: 1;
+}
+
+.nova-bar-chart__bar {
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    filter var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-bar-chart__group:hover .nova-bar-chart__bar {
+  opacity: 0.85;
+  filter: brightness(1.08);
+}
+
+/* Dim sibling bars on hover to highlight the focused bar. */
+.nova-bar-chart:hover .nova-bar-chart__group:not(:hover) .nova-bar-chart__bar {
+  opacity: 0.55;
+}
+
+.nova-bar-chart__value {
+  fill: var(--nova-text);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-bar-chart__label {
+  fill: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+}

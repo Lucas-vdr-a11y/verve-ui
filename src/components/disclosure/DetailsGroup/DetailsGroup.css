@@ -1,0 +1,65 @@
+.nova-details-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  overflow: hidden;
+}
+
+/* ---- Item --------------------------------------------------------------- */
+.nova-details-group__item + .nova-details-group__item {
+  border-top: 1px solid var(--nova-border);
+}
+
+/* ---- Summary (toggle) --------------------------------------------------- */
+.nova-details-group__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-4);
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-details-group__summary::-webkit-details-marker {
+  display: none;
+}
+
+.nova-details-group__summary:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-details-group__summary-label {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ---- Marker ------------------------------------------------------------- */
+.nova-details-group__marker {
+  flex: none;
+  color: var(--nova-text-muted);
+  transition: transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-details-group__item[open] .nova-details-group__marker {
+  transform: rotate(180deg);
+}
+
+/* ---- Content ------------------------------------------------------------ */
+.nova-details-group__content {
+  padding: 0 var(--nova-space-4) var(--nova-space-4);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-relaxed);
+}

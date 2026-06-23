@@ -1,0 +1,96 @@
+.nova-terminal {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-gray-950);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-3);
+  background: var(--nova-gray-800);
+  border-bottom: 1px solid var(--nova-gray-700);
+}
+
+.nova-terminal__lights {
+  display: inline-flex;
+  gap: var(--nova-space-2);
+}
+
+.nova-terminal__light {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-terminal__light--close { background: #ff5f57; }
+.nova-terminal__light--min { background: #febc2e; }
+.nova-terminal__light--max { background: #28c840; }
+
+.nova-terminal__title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-gray-400);
+  /* offset the lights so the title is visually centered */
+  margin-right: 3rem;
+}
+
+.nova-terminal__body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--nova-space-4);
+  font-family: var(--nova-font-mono);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-gray-100);
+}
+
+.nova-terminal__line {
+  display: flex;
+  align-items: baseline;
+  gap: var(--nova-space-2);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.nova-terminal__prompt {
+  flex-shrink: 0;
+  color: var(--nova-success-500);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-terminal__line--muted { color: var(--nova-gray-400); }
+.nova-terminal__line--success .nova-terminal__text { color: var(--nova-success-500); }
+.nova-terminal__line--warning .nova-terminal__text { color: var(--nova-warning-500); }
+.nova-terminal__line--danger .nova-terminal__text { color: var(--nova-danger-500); }
+
+.nova-terminal__caret {
+  display: inline-block;
+  width: 0.5rem;
+  height: 1.05em;
+  margin-left: 0.15rem;
+  transform: translateY(0.18em);
+  background: var(--nova-gray-100);
+  animation: nova-terminal-blink 1s steps(1) infinite;
+}
+
+@keyframes nova-terminal-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-terminal__caret {
+    animation: none;
+    opacity: 1;
+  }
+}

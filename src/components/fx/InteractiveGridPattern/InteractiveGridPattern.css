@@ -1,0 +1,25 @@
+.nova-igrid {
+  pointer-events: auto;
+  color: var(--nova-border);
+}
+
+.nova-igrid__cell {
+  fill: transparent;
+  stroke: currentColor;
+  stroke-width: 1;
+  transition: fill var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-igrid__cell--active {
+  fill: var(--nova-primary-subtle);
+  transition-duration: var(--nova-duration-fast);
+}
+
+.nova-igrid--fade {
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    #000 0%,
+    transparent 80%
+  );
+  mask-image: radial-gradient(ellipse at center, #000 0%, transparent 80%);
+}

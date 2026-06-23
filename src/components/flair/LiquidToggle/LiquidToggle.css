@@ -1,0 +1,82 @@
+.nova-liquid {
+  --nova-liquid-w: 3.5rem;
+  --nova-liquid-h: 1.875rem;
+  --nova-liquid-thumb: 1.375rem;
+  --nova-liquid-pad: 0.25rem;
+  position: relative;
+  display: inline-block;
+  width: var(--nova-liquid-w);
+  height: var(--nova-liquid-h);
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-full);
+  cursor: pointer;
+  background: var(--nova-border-strong);
+  transition: background var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-liquid--on {
+  background: var(--nova-primary);
+}
+
+.nova-liquid:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-liquid__goo {
+  position: absolute;
+  inset: 0;
+}
+
+.nova-liquid__thumb,
+.nova-liquid__drip {
+  position: absolute;
+  top: 50%;
+  width: var(--nova-liquid-thumb);
+  height: var(--nova-liquid-thumb);
+  margin-top: calc(var(--nova-liquid-thumb) / -2);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-gray-0);
+}
+
+.nova-liquid__thumb {
+  left: var(--nova-liquid-pad);
+  transition: transform var(--nova-duration-slow) var(--nova-ease-spring);
+}
+
+.nova-liquid--on .nova-liquid__thumb {
+  transform: translateX(
+    calc(
+      var(--nova-liquid-w) - var(--nova-liquid-thumb) - var(--nova-liquid-pad) *
+        2
+    )
+  );
+}
+
+/* The drip is a smaller blob that lags behind, creating the stretch. */
+.nova-liquid__drip {
+  left: var(--nova-liquid-pad);
+  width: calc(var(--nova-liquid-thumb) * 0.7);
+  height: calc(var(--nova-liquid-thumb) * 0.7);
+  margin-top: calc(var(--nova-liquid-thumb) * -0.35);
+  transition: transform var(--nova-duration-slow) var(--nova-ease)
+    var(--nova-duration-fast);
+}
+
+.nova-liquid--on .nova-liquid__drip {
+  transform: translateX(
+    calc(
+      var(--nova-liquid-w) - var(--nova-liquid-thumb) - var(--nova-liquid-pad) *
+        2 + var(--nova-liquid-thumb) * 0.15
+    )
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-liquid,
+  .nova-liquid__thumb,
+  .nova-liquid__drip {
+    transition: none;
+  }
+}

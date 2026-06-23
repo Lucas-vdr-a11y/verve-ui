@@ -1,0 +1,68 @@
+.nova-spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: var(--nova-z-overlay);
+  font-family: var(--nova-font-sans);
+  pointer-events: none;
+}
+
+/*
+ * Dim layer. When a target rect exists we punch a rounded-rectangle hole out of
+ * it with a CSS mask, so the dim is a single clickable surface and the hole is
+ * genuinely transparent. With no target it dims the whole viewport.
+ */
+.nova-spotlight__backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--nova-overlay-bg);
+  pointer-events: auto;
+}
+
+.nova-spotlight--has-target .nova-spotlight__backdrop {
+  /* A solid block for the cutout (subtracted) plus a full cover, combined with
+     the "exclude" composite to leave the cutout transparent. */
+  -webkit-mask:
+    linear-gradient(#000 0 0) var(--nova-spotlight-left)
+      var(--nova-spotlight-top) / var(--nova-spotlight-width)
+      var(--nova-spotlight-height) no-repeat,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) var(--nova-spotlight-left)
+      var(--nova-spotlight-top) / var(--nova-spotlight-width)
+      var(--nova-spotlight-height) no-repeat,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  transition: -webkit-mask-position var(--nova-duration-base) var(--nova-ease),
+    mask-position var(--nova-duration-base) var(--nova-ease);
+}
+
+/*
+ * Cutout overlay. Provides the rounded corners (the mask above is a sharp
+ * rectangle) via a ring, and governs whether the target underneath is
+ * clickable.
+ */
+.nova-spotlight__cutout {
+  position: absolute;
+  top: var(--nova-spotlight-top);
+  left: var(--nova-spotlight-left);
+  width: var(--nova-spotlight-width);
+  height: var(--nova-spotlight-height);
+  border-radius: var(--nova-spotlight-radius);
+  /* Soften the sharp masked rectangle corners with a matching shadow ring. */
+  box-shadow: 0 0 0 1px var(--nova-overlay-bg);
+  transition: top var(--nova-duration-base) var(--nova-ease),
+    left var(--nova-duration-base) var(--nova-ease),
+    width var(--nova-duration-base) var(--nova-ease),
+    height var(--nova-duration-base) var(--nova-ease);
+}
+
+/* Interactive: clicks fall through the hole to the highlighted element. */
+.nova-spotlight__cutout--interactive {
+  pointer-events: none;
+}
+
+/* Blocking: the hole swallows clicks but still reports them as "outside". */
+.nova-spotlight__cutout--blocking {
+  pointer-events: auto;
+}

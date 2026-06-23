@@ -1,0 +1,64 @@
+.nova-infinity-loader {
+  --nova-loader-color: var(--nova-primary);
+  display: inline-block;
+  width: var(--nova-inf-size, 72px);
+  color: var(--nova-loader-color);
+  line-height: 0;
+}
+
+.nova-infinity-loader[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-infinity-loader[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-infinity-loader[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-infinity-loader[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-infinity-loader[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-infinity-loader__svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.nova-infinity-loader__track {
+  stroke: currentColor;
+  opacity: 0.18;
+}
+
+.nova-infinity-loader__trace {
+  stroke: currentColor;
+  /* a short bright segment chasing around the lemniscate */
+  stroke-dasharray: 42 158;
+  filter: drop-shadow(0 0 3px currentColor);
+  animation: nova-infinity-trace 1.6s linear infinite;
+}
+
+@keyframes nova-infinity-trace {
+  to {
+    stroke-dashoffset: -200;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-infinity-loader__trace {
+    animation: nova-infinity-glow 2s var(--nova-ease) infinite;
+    stroke-dasharray: none;
+  }
+  @keyframes nova-infinity-glow {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+.nova-ripple {
+  --nova-ripple-color: rgb(255 255 255 / 0.5);
+  --nova-ripple-duration: 600ms;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-3) var(--nova-space-6);
+  border: none;
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition: background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-ripple:hover {
+  background: var(--nova-primary-hover);
+}
+
+.nova-ripple:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-ripple__label {
+  position: relative;
+  z-index: 1;
+}
+
+.nova-ripple__layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.nova-ripple__wave {
+  position: absolute;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-ripple-color);
+  transform: translate(-50%, -50%) scale(0);
+  animation: nova-ripple-out var(--nova-ripple-duration) var(--nova-ease-out)
+    forwards;
+}
+
+@keyframes nova-ripple-out {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-ripple {
+    transition: none;
+  }
+  .nova-ripple__wave {
+    animation: none;
+    display: none;
+  }
+}

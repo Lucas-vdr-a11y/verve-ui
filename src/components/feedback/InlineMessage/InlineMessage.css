@@ -1,0 +1,54 @@
+.nova-inline-message {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--nova-space-1);
+  margin: 0;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  line-height: var(--nova-leading-snug);
+  /* tone color, overridden below */
+  --nova-inline-message-color: var(--nova-text-muted);
+  color: var(--nova-inline-message-color);
+}
+
+/* ---- Tones ------------------------------------------------------------- */
+.nova-inline-message--neutral {
+  --nova-inline-message-color: var(--nova-text-muted);
+}
+
+.nova-inline-message--info {
+  --nova-inline-message-color: var(--nova-info);
+}
+
+.nova-inline-message--success {
+  --nova-inline-message-color: var(--nova-success);
+}
+
+.nova-inline-message--warning {
+  --nova-inline-message-color: var(--nova-warning);
+}
+
+.nova-inline-message--danger {
+  --nova-inline-message-color: var(--nova-danger);
+}
+
+/* ---- Icon -------------------------------------------------------------- */
+.nova-inline-message__icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1em;
+  block-size: 1em;
+  margin-block-start: 0.1em;
+  color: var(--nova-inline-message-color);
+}
+
+.nova-inline-message__icon svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.nova-inline-message__text {
+  min-inline-size: 0;
+}

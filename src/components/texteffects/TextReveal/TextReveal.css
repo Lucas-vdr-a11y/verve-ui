@@ -1,0 +1,38 @@
+.nova-text-reveal {
+  --nova-text-reveal-duration: 500ms;
+  display: inline;
+  color: inherit;
+}
+
+.nova-text-reveal__unit {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.nova-text-reveal__space {
+  white-space: pre;
+}
+
+.nova-text-reveal__inner {
+  display: inline-block;
+  transform: translateY(0.9em);
+  opacity: 0;
+  transition:
+    transform var(--nova-text-reveal-duration) var(--nova-ease-out),
+    opacity var(--nova-text-reveal-duration) var(--nova-ease-out);
+  will-change: transform, opacity;
+}
+
+.nova-text-reveal--active .nova-text-reveal__inner {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-text-reveal__inner {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+}

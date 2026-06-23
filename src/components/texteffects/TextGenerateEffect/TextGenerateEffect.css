@@ -1,0 +1,30 @@
+.nova-text-generate {
+  color: var(--nova-text);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-relaxed);
+}
+
+.nova-text-generate__word {
+  display: inline-block;
+  opacity: 0;
+  transition:
+    opacity var(--nova-tg-duration, 600ms) var(--nova-ease-out),
+    filter var(--nova-tg-duration, 600ms) var(--nova-ease-out);
+}
+
+.nova-text-generate--blur .nova-text-generate__word {
+  filter: blur(8px);
+}
+
+.nova-text-generate--active .nova-text-generate__word {
+  opacity: 1;
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-text-generate__word {
+    opacity: 1 !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,189 @@
+.nova-gantt {
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-surface);
+  overflow: hidden;
+}
+
+.nova-gantt__scroll {
+  overflow: auto;
+}
+
+.nova-gantt__inner {
+  position: relative;
+}
+
+/* Header */
+.nova-gantt__header {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: var(--nova-z-sticky);
+  background: var(--nova-bg-subtle);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-gantt__corner {
+  flex: none;
+  position: sticky;
+  left: 0;
+  z-index: var(--nova-z-base);
+  background: var(--nova-bg-subtle);
+  border-right: 1px solid var(--nova-border);
+}
+
+.nova-gantt__axis {
+  position: relative;
+  flex: none;
+}
+
+.nova-gantt__tick {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding-left: var(--nova-space-1);
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+  white-space: nowrap;
+}
+
+/* Body */
+.nova-gantt__body {
+  display: flex;
+}
+
+.nova-gantt__rail {
+  flex: none;
+  position: sticky;
+  left: 0;
+  z-index: var(--nova-z-base);
+  background: var(--nova-surface);
+  border-right: 1px solid var(--nova-border);
+}
+
+.nova-gantt__rail-group {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--nova-space-3);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--nova-text-muted);
+  background: var(--nova-bg-subtle);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-gantt__rail-task {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text);
+  border-bottom: 1px solid var(--nova-border);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-gantt__plot {
+  position: relative;
+  flex: none;
+}
+
+/* Gridlines */
+.nova-gantt__grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.nova-gantt__gridline {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--nova-border);
+  opacity: 0.5;
+}
+
+.nova-gantt__deps {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.nova-gantt__dep {
+  stroke: var(--nova-border-strong);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+}
+
+/* Bars */
+.nova-gantt__bar {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border-radius: var(--nova-radius-sm);
+  background: color-mix(in srgb, var(--nova-gantt-bar) 28%, var(--nova-surface));
+  border: 1px solid var(--nova-gantt-bar);
+  overflow: hidden;
+}
+
+.nova-gantt__bar--interactive {
+  cursor: pointer;
+  transition: filter var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-gantt__bar--interactive:hover {
+  filter: brightness(1.04);
+}
+
+.nova-gantt__bar--interactive:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-gantt__bar-fill {
+  position: absolute;
+  inset: 0;
+  right: auto;
+  background: var(--nova-gantt-bar);
+  border-radius: inherit;
+}
+
+.nova-gantt__bar-label {
+  position: relative;
+  z-index: var(--nova-z-base);
+  margin-left: var(--nova-space-2);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text);
+  mix-blend-mode: luminosity;
+}
+
+/* Today marker */
+.nova-gantt__today {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--nova-danger);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.nova-gantt__today-dot {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-danger);
+}

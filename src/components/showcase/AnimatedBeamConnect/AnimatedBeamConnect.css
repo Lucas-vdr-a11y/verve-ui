@@ -1,0 +1,53 @@
+.nova-animated-beam {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Animate the gradient sweep along the path by translating its coordinate box.
+   x1/x2/y1/y2 on an SVG linearGradient are animatable via CSS. */
+.nova-animated-beam__gradient {
+  --nova-beam-duration: 3s;
+  animation: nova-beam-travel var(--nova-beam-duration) linear infinite;
+}
+
+.nova-animated-beam__gradient--reverse {
+  animation-name: nova-beam-travel-reverse;
+}
+
+@keyframes nova-beam-travel {
+  0% {
+    x1: -20%;
+    x2: 0%;
+    y1: 0%;
+    y2: 0%;
+  }
+  100% {
+    x1: 100%;
+    x2: 120%;
+    y1: 0%;
+    y2: 0%;
+  }
+}
+
+@keyframes nova-beam-travel-reverse {
+  0% {
+    x1: 100%;
+    x2: 120%;
+    y1: 0%;
+    y2: 0%;
+  }
+  100% {
+    x1: -20%;
+    x2: 0%;
+    y1: 0%;
+    y2: 0%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-animated-beam__gradient {
+    animation: none;
+  }
+}

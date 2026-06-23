@@ -1,0 +1,99 @@
+.nova-bottom-nav {
+  width: 100%;
+  background: var(--nova-surface-raised);
+  border-top: 1px solid var(--nova-border);
+}
+
+.nova-bottom-nav--fixed {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: var(--nova-z-sticky);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  box-shadow: var(--nova-shadow-lg);
+}
+
+.nova-bottom-nav__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-bottom-nav__cell {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.nova-bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-1);
+  width: 100%;
+  padding: var(--nova-space-2) var(--nova-space-1);
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-bottom-nav__item:hover:not(:disabled):not([aria-disabled="true"]) {
+  color: var(--nova-text);
+}
+
+.nova-bottom-nav__item--active {
+  color: var(--nova-primary);
+}
+
+.nova-bottom-nav__item:disabled,
+.nova-bottom-nav__item[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nova-bottom-nav__icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nova-bottom-nav__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+}
+
+.nova-bottom-nav__label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-bottom-nav__badge {
+  position: absolute;
+  top: -0.35rem;
+  inset-inline-start: 100%;
+  transform: translateX(-50%);
+  min-width: 1.05rem;
+  height: 1.05rem;
+  padding: 0 var(--nova-space-1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-danger);
+  color: var(--nova-text-on-brand);
+  font-size: 0.625rem;
+  font-weight: var(--nova-font-bold);
+  line-height: 1;
+}

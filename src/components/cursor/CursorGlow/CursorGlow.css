@@ -1,0 +1,40 @@
+.nova-cursor-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: var(--nova-z-base);
+}
+
+/* When scoped, clip to the (positioned) host. The host should be
+   `position: relative` and ideally `overflow: hidden`. */
+.nova-cursor-glow--scoped {
+  position: absolute;
+}
+
+.nova-cursor-glow__light {
+  --nova-cursor-glow-color: var(--nova-brand-500);
+  --nova-cursor-glow-intensity: 0.35;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--nova-cursor-glow-size);
+  height: var(--nova-cursor-glow-size);
+  border-radius: var(--nova-radius-full);
+  opacity: 0;
+  will-change: transform, opacity;
+  background: radial-gradient(
+    circle at center,
+    var(--nova-cursor-glow-color) 0%,
+    transparent 70%
+  );
+  transition: opacity var(--nova-duration-slow) var(--nova-ease);
+}
+
+.nova-cursor-glow__light--additive {
+  mix-blend-mode: screen;
+}
+
+.nova-cursor-glow__light--visible {
+  opacity: var(--nova-cursor-glow-intensity);
+}

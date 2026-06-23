@@ -1,0 +1,184 @@
+/* SignupForm — self-contained registration block. */
+.nova-signup-form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  width: 100%;
+  max-width: 24rem;
+  padding: var(--nova-space-8);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+}
+
+.nova-signup-form *,
+.nova-signup-form *::before,
+.nova-signup-form *::after {
+  box-sizing: border-box;
+}
+
+/* Header -------------------------------------------------------------------- */
+.nova-signup-form__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  margin-bottom: var(--nova-space-2);
+}
+
+.nova-signup-form__title {
+  margin: 0;
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-signup-form__subtitle {
+  margin: 0;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+}
+
+/* Social + divider ---------------------------------------------------------- */
+.nova-signup-form__social {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+}
+
+.nova-signup-form__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  color: var(--nova-text-subtle);
+  font-size: var(--nova-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.nova-signup-form__divider::before,
+.nova-signup-form__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--nova-border);
+}
+
+/* Error --------------------------------------------------------------------- */
+.nova-signup-form__error {
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border: 1px solid var(--nova-danger);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-danger-subtle);
+  color: var(--nova-danger);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+}
+
+/* Fields -------------------------------------------------------------------- */
+.nova-signup-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+}
+
+.nova-signup-form__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-signup-form__input {
+  width: 100%;
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-signup-form__input::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-signup-form__input:focus-visible {
+  outline: none;
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-signup-form__input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Terms --------------------------------------------------------------------- */
+.nova-signup-form__terms {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text-muted);
+  cursor: pointer;
+}
+
+.nova-signup-form__checkbox {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin: 0.15em 0 0;
+  accent-color: var(--nova-primary);
+  cursor: pointer;
+}
+
+.nova-signup-form__checkbox:focus-visible {
+  outline: none;
+  border-radius: var(--nova-radius-xs);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* Submit -------------------------------------------------------------------- */
+.nova-signup-form__submit {
+  width: 100%;
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border: 1px solid var(--nova-primary);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-signup-form__submit:hover:not(:disabled) {
+  background-color: var(--nova-primary-hover);
+  border-color: var(--nova-primary-hover);
+}
+
+.nova-signup-form__submit:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-signup-form__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Footer -------------------------------------------------------------------- */
+.nova-signup-form__footer {
+  margin-top: var(--nova-space-1);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  text-align: center;
+}

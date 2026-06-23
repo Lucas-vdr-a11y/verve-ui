@@ -1,0 +1,57 @@
+.nova-heading {
+  margin: 0;
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  line-height: var(--nova-leading-tight);
+  text-wrap: balance;
+}
+
+/* ---- Visual size scale -------------------------------------------------- */
+.nova-heading--xs {
+  font-size: var(--nova-text-xs);
+}
+.nova-heading--sm {
+  font-size: var(--nova-text-sm);
+}
+.nova-heading--md {
+  font-size: var(--nova-text-md);
+}
+.nova-heading--lg {
+  font-size: var(--nova-text-lg);
+}
+.nova-heading--xl {
+  font-size: var(--nova-text-xl);
+}
+.nova-heading--2xl {
+  font-size: var(--nova-text-2xl);
+}
+.nova-heading--3xl {
+  font-size: var(--nova-text-3xl);
+}
+.nova-heading--4xl {
+  font-size: var(--nova-text-4xl);
+}
+.nova-heading--5xl {
+  font-size: var(--nova-text-5xl);
+}
+
+/* ---- Weight ------------------------------------------------------------- */
+.nova-heading--normal {
+  font-weight: var(--nova-font-normal);
+}
+.nova-heading--medium {
+  font-weight: var(--nova-font-medium);
+}
+.nova-heading--semibold {
+  font-weight: var(--nova-font-semibold);
+}
+.nova-heading--bold {
+  font-weight: var(--nova-font-bold);
+}
+
+/* ---- Truncate ----------------------------------------------------------- */
+.nova-heading--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

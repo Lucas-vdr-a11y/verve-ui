@@ -1,0 +1,39 @@
+.nova-histogram {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-histogram__axis {
+  stroke: var(--nova-border);
+  stroke-width: 1;
+}
+
+.nova-histogram__bar {
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    filter var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-histogram__bar:hover {
+  filter: brightness(1.08);
+}
+
+.nova-histogram:hover .nova-histogram__bar:not(:hover) {
+  opacity: 0.55;
+}
+
+.nova-histogram__density {
+  fill: none;
+  stroke: var(--nova-text);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.7;
+}
+
+.nova-histogram__tick {
+  fill: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+  font-variant-numeric: tabular-nums;
+}

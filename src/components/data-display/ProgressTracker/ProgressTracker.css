@@ -1,0 +1,113 @@
+.nova-progress-tracker {
+  --nova-track-marker: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-progress-tracker--sm {
+  --nova-track-marker: 1.25rem;
+}
+
+.nova-progress-tracker--lg {
+  --nova-track-marker: 2.25rem;
+}
+
+.nova-progress-tracker__step {
+  display: grid;
+  grid-template-columns: var(--nova-track-marker) 1fr;
+  column-gap: var(--nova-space-3);
+}
+
+.nova-progress-tracker__gutter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nova-progress-tracker__marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--nova-track-marker);
+  height: var(--nova-track-marker);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-bold);
+  line-height: 1;
+  color: var(--nova-text-on-brand);
+  background: var(--nova-track-tone);
+  border-radius: var(--nova-radius-full);
+  box-shadow: 0 0 0 4px var(--nova-surface);
+}
+
+/* todo marker is hollow */
+.nova-progress-tracker__step--todo .nova-progress-tracker__marker {
+  background: var(--nova-surface);
+  border: 2px solid var(--nova-track-tone);
+  color: var(--nova-text-muted);
+}
+
+.nova-progress-tracker__step--active .nova-progress-tracker__marker {
+  box-shadow: 0 0 0 4px var(--nova-primary-subtle);
+}
+
+.nova-progress-tracker__connector {
+  flex: 1;
+  width: 2px;
+  min-height: var(--nova-space-4);
+  margin: var(--nova-space-1) 0;
+  background: var(--nova-border-strong);
+}
+
+/* completed steps colour their trailing connector */
+.nova-progress-tracker__step--done .nova-progress-tracker__connector {
+  background: var(--nova-success);
+}
+
+.nova-progress-tracker__content {
+  padding-bottom: var(--nova-space-5);
+  min-width: 0;
+}
+
+.nova-progress-tracker__step--last .nova-progress-tracker__content {
+  padding-bottom: 0;
+}
+
+.nova-progress-tracker__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--nova-space-3);
+}
+
+.nova-progress-tracker__title {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-progress-tracker__step--todo .nova-progress-tracker__title {
+  color: var(--nova-text-muted);
+}
+
+.nova-progress-tracker__time {
+  flex: none;
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-subtle);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-progress-tracker__desc {
+  margin-top: var(--nova-space-1);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text-muted);
+}
+
+.nova-progress-tracker--lg .nova-progress-tracker__title {
+  font-size: var(--nova-text-md);
+}

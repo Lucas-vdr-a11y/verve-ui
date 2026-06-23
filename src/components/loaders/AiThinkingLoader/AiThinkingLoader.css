@@ -1,0 +1,117 @@
+.nova-ai-thinking {
+  --nova-loader-color: var(--nova-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  color: var(--nova-loader-color);
+  font-family: var(--nova-font-sans);
+  line-height: 0;
+}
+
+.nova-ai-thinking[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-ai-thinking[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-ai-thinking[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-ai-thinking[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-ai-thinking[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-ai-thinking__pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--nova-ait-size, 28px);
+  padding: 0 calc(var(--nova-ait-size, 28px) * 0.42);
+  border-radius: var(--nova-radius-full);
+  overflow: hidden;
+  background: var(--nova-bg-muted);
+  box-shadow: inset 0 0 0 1px var(--nova-border);
+}
+
+/* gradient sweep shimmering across the pill */
+.nova-ai-thinking__sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    color-mix(in srgb, var(--nova-loader-color) 28%, transparent) 50%,
+    transparent 80%
+  );
+  background-size: 220% 100%;
+  animation: nova-ait-sweep 1.6s var(--nova-ease) infinite;
+}
+
+.nova-ai-thinking__dots {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--nova-ait-size, 28px) * 0.18);
+}
+
+.nova-ai-thinking__dot {
+  width: calc(var(--nova-ait-size, 28px) * 0.2);
+  height: calc(var(--nova-ait-size, 28px) * 0.2);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-loader-color);
+  opacity: 0.55;
+  animation: nova-ait-drift 1.2s var(--nova-ease) infinite;
+  animation-delay: calc(var(--nova-ait-i) * 0.16s);
+}
+
+.nova-ai-thinking__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text-muted);
+}
+
+@keyframes nova-ait-sweep {
+  from {
+    background-position: 140% 0;
+  }
+  to {
+    background-position: -40% 0;
+  }
+}
+
+@keyframes nova-ait-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(calc(var(--nova-ait-size, 28px) * -0.18));
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-ai-thinking__sweep {
+    animation: nova-ait-fade 1.6s var(--nova-ease) infinite;
+    background-position: 50% 0;
+  }
+  .nova-ai-thinking__dot {
+    animation: nova-ait-fade 1.4s var(--nova-ease) infinite;
+    transform: none;
+  }
+  @keyframes nova-ait-fade {
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}

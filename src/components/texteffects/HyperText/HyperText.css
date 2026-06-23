@@ -1,0 +1,9 @@
+.nova-hyper-text {
+  display: inline-block;
+  font-family: var(--nova-font-mono);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+  /* Stop layout from jittering as glyphs swap widths. */
+  font-variant-numeric: tabular-nums;
+  white-space: pre;
+}

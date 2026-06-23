@@ -1,0 +1,89 @@
+.nova-comet-card {
+  perspective: 1200px;
+  display: inline-block;
+}
+
+.nova-comet-card__inner {
+  --nova-comet-rx: 0deg;
+  --nova-comet-ry: 0deg;
+  --nova-comet-x: 50%;
+  --nova-comet-y: 50%;
+  --nova-comet-sx: 0px;
+  --nova-comet-sy: 0px;
+
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  color: var(--nova-text);
+  padding: var(--nova-space-6);
+  transform: rotateX(var(--nova-comet-rx)) rotateY(var(--nova-comet-ry));
+  transform-style: preserve-3d;
+  transition: transform var(--nova-duration-base) var(--nova-ease-out),
+    box-shadow var(--nova-duration-base) var(--nova-ease-out);
+  box-shadow: calc(var(--nova-comet-sx) * 1.5) calc(18px + var(--nova-comet-sy))
+      40px -12px rgb(15 23 42 / 0.35),
+    var(--nova-shadow-md);
+}
+
+.nova-comet-card__content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Soft radial sheen that follows the pointer position. */
+.nova-comet-card__sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    18rem 18rem at var(--nova-comet-x) var(--nova-comet-y),
+    rgb(255 255 255 / 0.22),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+/* The comet streak: a diagonal light band that crosses toward the pointer. */
+.nova-comet-card__streak {
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 38%,
+    rgb(165 180 252 / 0.0) 44%,
+    rgb(199 210 254 / 0.55) 50%,
+    rgb(129 140 248 / 0.0) 56%,
+    transparent 62%
+  );
+  transform: translate(
+    calc((var(--nova-comet-x) - 50%) * 0.4),
+    calc((var(--nova-comet-y) - 50%) * 0.4)
+  );
+  opacity: 0;
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease-out);
+}
+
+.nova-comet-card:hover .nova-comet-card__sheen,
+.nova-comet-card:hover .nova-comet-card__streak {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-comet-card__inner {
+    transform: none;
+    transition: none;
+  }
+  .nova-comet-card__streak {
+    display: none;
+  }
+}

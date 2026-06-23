@@ -1,0 +1,60 @@
+.nova-hover-card {
+  position: relative;
+  display: inline-block;
+}
+
+.nova-hover-card__trigger {
+  display: inline-flex;
+}
+
+.nova-hover-card__panel {
+  position: absolute;
+  z-index: var(--nova-z-popover);
+  min-width: 12rem;
+  max-width: 20rem;
+  padding: var(--nova-space-3) var(--nova-space-4);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  box-shadow: var(--nova-shadow-lg);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  animation: nova-hover-card-in var(--nova-duration-fast) var(--nova-ease-out)
+    both;
+}
+
+.nova-hover-card__panel--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: var(--nova-space-2);
+}
+.nova-hover-card__panel--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: var(--nova-space-2);
+}
+.nova-hover-card__panel--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: var(--nova-space-2);
+}
+.nova-hover-card__panel--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: var(--nova-space-2);
+}
+
+@keyframes nova-hover-card-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

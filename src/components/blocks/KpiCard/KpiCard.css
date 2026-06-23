@@ -1,0 +1,138 @@
+/* KpiCard — dashboard KPI tile with sparkline + period. */
+.nova-kpi-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--nova-space-5);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+}
+
+.nova-kpi-card *,
+.nova-kpi-card *::before,
+.nova-kpi-card *::after {
+  box-sizing: border-box;
+}
+
+/* Top row ------------------------------------------------------------------- */
+.nova-kpi-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nova-space-3);
+}
+
+.nova-kpi-card__label {
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-kpi-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--nova-space-8);
+  height: var(--nova-space-8);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+  font-size: var(--nova-text-md);
+}
+
+/* Body: value + sparkline --------------------------------------------------- */
+.nova-kpi-card__body {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--nova-space-4);
+  margin-top: var(--nova-space-3);
+}
+
+.nova-kpi-card__value-block {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--nova-space-2);
+  min-width: 0;
+}
+
+.nova-kpi-card__value {
+  font-size: var(--nova-text-3xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+}
+
+/* Delta --------------------------------------------------------------------- */
+.nova-kpi-card__delta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border-radius: var(--nova-radius-full);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-kpi-card__delta--positive {
+  background-color: var(--nova-success-subtle);
+  color: var(--nova-success);
+}
+
+.nova-kpi-card__delta--negative {
+  background-color: var(--nova-danger-subtle);
+  color: var(--nova-danger);
+}
+
+.nova-kpi-card__delta-icon {
+  display: inline-flex;
+  font-size: var(--nova-text-sm);
+}
+
+/* Sparkline ----------------------------------------------------------------- */
+.nova-kpi-card__spark {
+  flex-shrink: 0;
+  width: 6rem;
+  height: 2rem;
+  color: var(--nova-text-subtle);
+}
+
+.nova-kpi-card__spark-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.nova-kpi-card__spark-svg--positive {
+  color: var(--nova-success);
+}
+
+.nova-kpi-card__spark-svg--negative {
+  color: var(--nova-danger);
+}
+
+/* Period note --------------------------------------------------------------- */
+.nova-kpi-card__period {
+  margin: var(--nova-space-3) 0 0;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+  line-height: var(--nova-leading-snug);
+}
+
+/* Visually hidden ----------------------------------------------------------- */
+.nova-kpi-card__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

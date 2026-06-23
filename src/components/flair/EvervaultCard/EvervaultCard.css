@@ -1,0 +1,71 @@
+.nova-evervault-card {
+  --nova-evervault-x: 50%;
+  --nova-evervault-y: 50%;
+
+  position: relative;
+  width: 18rem;
+  height: 18rem;
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Brand gradient backdrop, revealed under the cipher mask. */
+.nova-evervault-card__gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  background: radial-gradient(
+    220px circle at var(--nova-evervault-x) var(--nova-evervault-y),
+    rgb(99 102 241 / 0.5),
+    rgb(168 85 247 / 0.3) 45%,
+    transparent 75%
+  );
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+  pointer-events: none;
+}
+
+.nova-evervault-card:hover .nova-evervault-card__gradient {
+  opacity: 1;
+}
+
+/* The scrambling character field, only visible through the radial mask. */
+.nova-evervault-card__cipher {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: var(--nova-space-2);
+  font: var(--nova-font-medium) var(--nova-text-xs) / 1.1 var(--nova-font-mono);
+  color: var(--nova-text);
+  word-break: break-all;
+  overflow: hidden;
+  user-select: none;
+  pointer-events: none;
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+[data-theme="dark"] .nova-evervault-card__cipher {
+  color: var(--nova-brand-200);
+}
+
+.nova-evervault-card__content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: var(--nova-space-6);
+  text-align: center;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-evervault-card__gradient,
+  .nova-evervault-card__cipher {
+    transition: none;
+  }
+}

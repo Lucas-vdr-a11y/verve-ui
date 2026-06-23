@@ -1,0 +1,68 @@
+.nova-textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  line-height: var(--nova-leading-normal);
+  box-shadow: var(--nova-shadow-xs);
+  resize: vertical;
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-textarea:hover:not(:disabled) {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-textarea:focus-visible {
+  outline: none;
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-textarea::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-textarea--invalid {
+  border-color: var(--nova-danger);
+}
+
+.nova-textarea--invalid:focus-visible {
+  border-color: var(--nova-danger);
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+.nova-textarea:disabled {
+  opacity: 0.6;
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+.nova-textarea--auto {
+  resize: none;
+  overflow: hidden;
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-textarea--sm {
+  min-height: 4rem;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-textarea--md {
+  min-height: 5rem;
+  padding: var(--nova-space-3) var(--nova-space-3);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-textarea--lg {
+  min-height: 6rem;
+  padding: var(--nova-space-3) var(--nova-space-4);
+  font-size: var(--nova-text-md);
+}

@@ -1,0 +1,109 @@
+.nova-square-loader {
+  --nova-loader-color: var(--nova-primary);
+  position: relative;
+  display: inline-block;
+  width: var(--nova-sq-size, 40px);
+  height: var(--nova-sq-size, 40px);
+  color: var(--nova-loader-color);
+  transform: rotateZ(45deg);
+  line-height: 0;
+}
+
+.nova-square-loader[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-square-loader[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-square-loader[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-square-loader[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-square-loader[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-square-loader__cube {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  transform: scale(1.05);
+  transform-origin: 100% 100%;
+}
+
+.nova-square-loader__cube::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--nova-loader-color);
+  animation: nova-sq-fold 2.4s var(--nova-ease) infinite both;
+  transform-origin: 100% 100%;
+}
+
+.nova-square-loader__cube--2 {
+  transform: scale(1.05) rotateZ(90deg);
+}
+.nova-square-loader__cube--3 {
+  transform: scale(1.05) rotateZ(180deg);
+}
+.nova-square-loader__cube--4 {
+  transform: scale(1.05) rotateZ(270deg);
+}
+
+.nova-square-loader__cube--2::before {
+  animation-delay: 0.3s;
+}
+.nova-square-loader__cube--3::before {
+  animation-delay: 0.6s;
+}
+.nova-square-loader__cube--4::before {
+  animation-delay: 0.9s;
+}
+
+@keyframes nova-sq-fold {
+  0%,
+  10% {
+    transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
+  }
+  25%,
+  75% {
+    transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  }
+  90%,
+  100% {
+    transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-square-loader__cube::before {
+    animation: nova-sq-fade 2s var(--nova-ease) infinite;
+    transform: none;
+    opacity: 1;
+  }
+  .nova-square-loader__cube--2::before {
+    animation-delay: 0.25s;
+  }
+  .nova-square-loader__cube--3::before {
+    animation-delay: 0.5s;
+  }
+  .nova-square-loader__cube--4::before {
+    animation-delay: 0.75s;
+  }
+  @keyframes nova-sq-fade {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}

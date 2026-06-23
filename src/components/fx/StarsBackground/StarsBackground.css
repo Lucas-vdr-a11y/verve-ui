@@ -1,0 +1,53 @@
+.nova-stars-bg {
+  position: relative;
+  overflow: hidden;
+  --nova-stars-color: var(--nova-text-subtle);
+}
+
+.nova-stars-bg__field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.nova-stars-bg__layer {
+  position: absolute;
+  inset: 0;
+}
+
+.nova-stars-bg__star {
+  position: absolute;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-stars-color);
+  box-shadow: 0 0 4px 0 var(--nova-stars-color);
+  will-change: opacity, transform;
+}
+
+.nova-stars-bg--twinkle .nova-stars-bg__star {
+  animation-name: nova-stars-twinkle;
+  animation-timing-function: var(--nova-ease);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.nova-stars-bg__content {
+  position: relative;
+  z-index: var(--nova-z-base);
+}
+
+@keyframes nova-stars-twinkle {
+  0% {
+    opacity: var(--nova-star-min, 0.2);
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-stars-bg--twinkle .nova-stars-bg__star {
+    animation: none;
+  }
+}

@@ -1,0 +1,36 @@
+.nova-candlestick-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: var(--nova-font-sans);
+}
+
+.nova-candlestick-chart__grid {
+  stroke: var(--nova-border);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+  opacity: 0.7;
+}
+
+.nova-candlestick-chart__baseline {
+  stroke: var(--nova-border);
+  stroke-width: 1;
+}
+
+.nova-candlestick-chart__wick {
+  stroke-width: 1;
+}
+
+.nova-candlestick-chart__body {
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    filter var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-candlestick-chart__group:hover .nova-candlestick-chart__body,
+.nova-candlestick-chart__group:hover .nova-candlestick-chart__volume {
+  filter: brightness(1.1);
+}
+
+.nova-candlestick-chart__volume {
+  opacity: 0.45;
+}

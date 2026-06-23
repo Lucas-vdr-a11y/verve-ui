@@ -1,0 +1,124 @@
+.nova-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-xs);
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-select:hover:not(.nova-select--disabled) {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-select:focus-within {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-select--invalid {
+  border-color: var(--nova-danger);
+}
+
+.nova-select--invalid:focus-within {
+  border-color: var(--nova-danger);
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+.nova-select--disabled {
+  opacity: 0.6;
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+/* ---- Field -------------------------------------------------------------- */
+.nova-select__field {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: var(--nova-font-sans);
+  font-size: inherit;
+  line-height: var(--nova-leading-normal);
+  cursor: pointer;
+  /* Hide the native chevron; we render our own. */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.nova-select__field.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-select__field:disabled {
+  cursor: not-allowed;
+}
+
+/* Option list is OS-rendered; keep colors sane in dark mode. */
+.nova-select__field option {
+  color: var(--nova-text);
+  background: var(--nova-surface);
+}
+
+/* Placeholder / empty value appears muted. */
+.nova-select__field:invalid,
+.nova-select__field option[value=""][disabled] {
+  color: var(--nova-text-subtle);
+}
+
+/* ---- Chevron ------------------------------------------------------------ */
+.nova-select__chevron {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  pointer-events: none;
+  color: var(--nova-text-muted);
+}
+
+.nova-select__chevron svg {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-select--sm {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+  gap: var(--nova-space-2);
+}
+
+.nova-select--sm .nova-select__field {
+  min-height: calc(2rem - 2px);
+}
+
+.nova-select--md {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+  gap: var(--nova-space-2);
+}
+
+.nova-select--md .nova-select__field {
+  min-height: calc(2.5rem - 2px);
+}
+
+.nova-select--lg {
+  font-size: var(--nova-text-md);
+  padding: 0 var(--nova-space-4);
+  gap: var(--nova-space-2);
+}
+
+.nova-select--lg .nova-select__field {
+  min-height: calc(3rem - 2px);
+}

@@ -1,0 +1,100 @@
+.nova-breadcrumbs {
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}
+
+.nova-breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nova-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.nova-breadcrumbs__link,
+.nova-breadcrumbs__current,
+.nova-breadcrumbs__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  border-radius: var(--nova-radius-sm);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  line-height: var(--nova-leading-tight);
+  max-width: 16rem;
+}
+
+.nova-breadcrumbs__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-breadcrumbs__link {
+  color: var(--nova-text-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-breadcrumbs__link:hover {
+  color: var(--nova-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.nova-breadcrumbs__current {
+  color: var(--nova-text);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-breadcrumbs__ellipsis {
+  border: none;
+  background: transparent;
+  color: var(--nova-text-muted);
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-breadcrumbs__ellipsis:hover {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-breadcrumbs__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.nova-breadcrumbs__icon svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+.nova-breadcrumbs__separator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nova-text-subtle);
+}
+
+.nova-breadcrumbs__separator svg {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+}

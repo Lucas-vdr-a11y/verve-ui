@@ -1,0 +1,118 @@
+.nova-testimonials-marquee {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  overflow: hidden;
+  width: 100%;
+}
+
+.nova-testimonials-marquee--fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.nova-testimonials-marquee__row {
+  --nova-tm-speed: 40s;
+  display: flex;
+  overflow: hidden;
+}
+
+.nova-testimonials-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: nova-testimonials-marquee-scroll var(--nova-tm-speed) linear infinite;
+}
+
+.nova-testimonials-marquee__row--reverse .nova-testimonials-marquee__track {
+  animation-direction: reverse;
+}
+
+.nova-testimonials-marquee--pausable:hover .nova-testimonials-marquee__track {
+  animation-play-state: paused;
+}
+
+.nova-testimonials-marquee__group {
+  display: flex;
+  gap: var(--nova-space-4);
+  padding-right: var(--nova-space-4);
+}
+
+.nova-testimonials-marquee__card {
+  flex: none;
+  width: 20rem;
+  margin: 0;
+  padding: var(--nova-space-5);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  box-shadow: var(--nova-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+}
+
+.nova-testimonials-marquee__quote {
+  margin: 0;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-relaxed);
+  color: var(--nova-text);
+}
+
+.nova-testimonials-marquee__author {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+}
+
+.nova-testimonials-marquee__avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--nova-radius-full);
+  object-fit: cover;
+  flex: none;
+  border: 1px solid var(--nova-border);
+}
+
+.nova-testimonials-marquee__meta {
+  display: flex;
+  flex-direction: column;
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-testimonials-marquee__name {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-testimonials-marquee__role {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+@keyframes nova-testimonials-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-testimonials-marquee__track {
+    animation: none;
+  }
+}

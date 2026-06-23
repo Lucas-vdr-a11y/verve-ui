@@ -1,0 +1,79 @@
+.nova-pin {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+}
+
+/* ---- Segment ------------------------------------------------------------ */
+.nova-pin__field {
+  box-sizing: border-box;
+  text-align: center;
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-semibold);
+  box-shadow: var(--nova-shadow-xs);
+  outline: none;
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+  /* hide native number spinners if numeric inputMode shows them */
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.nova-pin__field:hover:not(:disabled) {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-pin__field:focus-visible {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-pin__field::placeholder {
+  color: var(--nova-text-subtle);
+  font-weight: var(--nova-font-normal);
+}
+
+/* ---- Invalid ------------------------------------------------------------ */
+.nova-pin--invalid .nova-pin__field {
+  border-color: var(--nova-danger);
+}
+
+.nova-pin--invalid .nova-pin__field:focus-visible {
+  border-color: var(--nova-danger);
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+/* ---- Disabled ----------------------------------------------------------- */
+.nova-pin--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.nova-pin__field:disabled {
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-pin--sm .nova-pin__field {
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-pin--md .nova-pin__field {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: var(--nova-text-md);
+}
+
+.nova-pin--lg .nova-pin__field {
+  width: 3rem;
+  height: 3rem;
+  font-size: var(--nova-text-lg);
+}

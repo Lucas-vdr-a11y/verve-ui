@@ -1,0 +1,49 @@
+.nova-shiny-text {
+  --nova-shiny-base: var(--nova-text-muted);
+  --nova-shiny-shine: var(--nova-text);
+  --nova-shiny-duration: 4s;
+
+  display: inline-block;
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-shiny-base);
+
+  background: linear-gradient(
+    110deg,
+    var(--nova-shiny-base) 0%,
+    var(--nova-shiny-base) 40%,
+    var(--nova-shiny-shine) 50%,
+    var(--nova-shiny-base) 60%,
+    var(--nova-shiny-base) 100%
+  );
+  background-size: 220% 100%;
+  background-position: 100% 0;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+@supports (
+  (background-clip: text) or (-webkit-background-clip: text)
+) {
+  .nova-shiny-text {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: nova-shiny-sweep var(--nova-shiny-duration) linear infinite;
+  }
+}
+
+.nova-shiny-text--paused {
+  animation-play-state: paused;
+}
+
+@keyframes nova-shiny-sweep {
+  to {
+    background-position: -120% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-shiny-text {
+    animation: none;
+    background-position: 50% 0;
+  }
+}

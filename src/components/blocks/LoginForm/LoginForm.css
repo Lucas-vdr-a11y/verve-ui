@@ -1,0 +1,215 @@
+/* LoginForm — self-contained sign-in block. */
+.nova-login-form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  width: 100%;
+  max-width: 24rem;
+  padding: var(--nova-space-8);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-xl);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+}
+
+.nova-login-form *,
+.nova-login-form *::before,
+.nova-login-form *::after {
+  box-sizing: border-box;
+}
+
+/* Header -------------------------------------------------------------------- */
+.nova-login-form__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  margin-bottom: var(--nova-space-2);
+}
+
+.nova-login-form__title {
+  margin: 0;
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-login-form__subtitle {
+  margin: 0;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+}
+
+/* Social + divider ---------------------------------------------------------- */
+.nova-login-form__social {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+}
+
+.nova-login-form__divider {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+  color: var(--nova-text-subtle);
+  font-size: var(--nova-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.nova-login-form__divider::before,
+.nova-login-form__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--nova-border);
+}
+
+/* Error --------------------------------------------------------------------- */
+.nova-login-form__error {
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border: 1px solid var(--nova-danger);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-danger-subtle);
+  color: var(--nova-danger);
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+}
+
+/* Fields -------------------------------------------------------------------- */
+.nova-login-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+}
+
+.nova-login-form__label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--nova-space-2);
+}
+
+.nova-login-form__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-login-form__input {
+  width: 100%;
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-normal);
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-login-form__input::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-login-form__input:focus-visible {
+  outline: none;
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-login-form__input[aria-invalid="true"] {
+  border-color: var(--nova-danger);
+}
+
+.nova-login-form__input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.nova-login-form__forgot {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--nova-primary-text);
+  font-family: inherit;
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nova-login-form__forgot:hover {
+  text-decoration: underline;
+}
+
+.nova-login-form__forgot:focus-visible {
+  outline: none;
+  border-radius: var(--nova-radius-xs);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* Remember ------------------------------------------------------------------ */
+.nova-login-form__remember {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+  cursor: pointer;
+}
+
+.nova-login-form__checkbox {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  accent-color: var(--nova-primary);
+  cursor: pointer;
+}
+
+.nova-login-form__checkbox:focus-visible {
+  outline: none;
+  border-radius: var(--nova-radius-xs);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* Submit -------------------------------------------------------------------- */
+.nova-login-form__submit {
+  width: 100%;
+  padding: var(--nova-space-3) var(--nova-space-4);
+  border: 1px solid var(--nova-primary);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-login-form__submit:hover:not(:disabled) {
+  background-color: var(--nova-primary-hover);
+  border-color: var(--nova-primary-hover);
+}
+
+.nova-login-form__submit:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-login-form__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Footer -------------------------------------------------------------------- */
+.nova-login-form__footer {
+  margin-top: var(--nova-space-1);
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-sm);
+  text-align: center;
+}

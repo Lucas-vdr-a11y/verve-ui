@@ -1,0 +1,121 @@
+.nova-expandable-search {
+  --nova-search-h: 2.75rem;
+  --nova-search-w: 16rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: var(--nova-search-h);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  border: 1px solid transparent;
+  font-family: var(--nova-font-sans);
+  transition:
+    border-color var(--nova-duration-base) var(--nova-ease),
+    background var(--nova-duration-base) var(--nova-ease),
+    box-shadow var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-expandable-search--sm {
+  --nova-search-h: 2.25rem;
+}
+
+.nova-expandable-search--lg {
+  --nova-search-h: 3.25rem;
+}
+
+.nova-expandable-search--open {
+  background: var(--nova-surface);
+  border-color: var(--nova-border);
+  box-shadow: var(--nova-shadow-sm);
+}
+
+/* ---- Icon button ------------------------------------------------------- */
+.nova-expandable-search__button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: var(--nova-search-h);
+  height: var(--nova-search-h);
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  transition:
+    color var(--nova-duration-fast) var(--nova-ease),
+    background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-expandable-search:not(.nova-expandable-search--open)
+  .nova-expandable-search__button {
+  background: var(--nova-bg-muted);
+}
+
+.nova-expandable-search__button:hover {
+  color: var(--nova-text);
+}
+
+.nova-expandable-search__button:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-expandable-search--open .nova-expandable-search__button {
+  color: var(--nova-primary-text);
+}
+
+.nova-expandable-search__icon {
+  display: block;
+}
+
+/* ---- Input ------------------------------------------------------------- */
+.nova-expandable-search__input {
+  width: 0;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    width var(--nova-duration-slow) var(--nova-ease-out),
+    opacity var(--nova-duration-base) var(--nova-ease),
+    padding var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-expandable-search--lg .nova-expandable-search__input {
+  font-size: var(--nova-text-md);
+}
+
+.nova-expandable-search--open .nova-expandable-search__input {
+  width: var(--nova-search-w);
+  padding-right: var(--nova-space-4);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nova-expandable-search__input::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+/* Hide the native search clear/decoration so the control stays clean. */
+.nova-expandable-search__input::-webkit-search-decoration,
+.nova-expandable-search__input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.nova-expandable-search--reduced .nova-expandable-search__input {
+  transition:
+    opacity var(--nova-duration-fast) var(--nova-ease),
+    width var(--nova-duration-fast) var(--nova-ease),
+    padding var(--nova-duration-fast) var(--nova-ease);
+}

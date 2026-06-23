@@ -1,0 +1,103 @@
+.nova-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-12) var(--nova-space-6);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  /* tone, overridden below */
+  --nova-result-color: var(--nova-info);
+  --nova-result-subtle: var(--nova-info-subtle);
+}
+
+.nova-result--success {
+  --nova-result-color: var(--nova-success);
+  --nova-result-subtle: var(--nova-success-subtle);
+}
+.nova-result--danger {
+  --nova-result-color: var(--nova-danger);
+  --nova-result-subtle: var(--nova-danger-subtle);
+}
+.nova-result--warning {
+  --nova-result-color: var(--nova-warning);
+  --nova-result-subtle: var(--nova-warning-subtle);
+}
+.nova-result--info {
+  --nova-result-color: var(--nova-info);
+  --nova-result-subtle: var(--nova-info-subtle);
+}
+
+/* ---- Icon -------------------------------------------------------------- */
+.nova-result__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--nova-space-16);
+  block-size: var(--nova-space-16);
+  margin-block-end: var(--nova-space-1);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-result-subtle);
+  color: var(--nova-result-color);
+}
+
+.nova-result__icon svg {
+  inline-size: var(--nova-space-8);
+  block-size: var(--nova-space-8);
+}
+
+/* Numeric status codes (404/403/500) render large, no chip background. */
+.nova-result--404 .nova-result__icon,
+.nova-result--403 .nova-result__icon,
+.nova-result--500 .nova-result__icon {
+  inline-size: auto;
+  block-size: auto;
+  background: transparent;
+}
+
+.nova-result__code {
+  font-size: var(--nova-text-5xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  letter-spacing: -0.02em;
+  color: var(--nova-result-color);
+}
+
+/* ---- Text -------------------------------------------------------------- */
+.nova-result__title {
+  margin: 0;
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+  color: var(--nova-text);
+}
+
+.nova-result__subtitle {
+  margin: 0;
+  max-inline-size: 42ch;
+  font-size: var(--nova-text-md);
+  line-height: var(--nova-leading-normal);
+  color: var(--nova-text-muted);
+}
+
+.nova-result__body {
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text-muted);
+}
+
+/* ---- Actions + extra --------------------------------------------------- */
+.nova-result__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-3);
+  margin-block-start: var(--nova-space-2);
+}
+
+.nova-result__extra {
+  inline-size: 100%;
+  margin-block-start: var(--nova-space-4);
+  text-align: start;
+}

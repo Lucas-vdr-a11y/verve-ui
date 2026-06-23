@@ -1,0 +1,82 @@
+.nova-radial-bar-chart {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nova-space-5);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-radial-bar-chart__figure {
+  position: relative;
+  flex: none;
+  width: 220px;
+  max-width: 100%;
+}
+
+.nova-radial-bar-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nova-radial-bar-chart__track {
+  fill: var(--nova-bg-muted);
+}
+
+.nova-radial-bar-chart__bar {
+  transition: opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-radial-bar-chart__svg:hover .nova-radial-bar-chart__bar:not(:hover) {
+  opacity: 0.6;
+}
+
+.nova-radial-bar-chart__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-radial-bar-chart__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  min-width: 0;
+}
+
+.nova-radial-bar-chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-radial-bar-chart__swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--nova-radius-full);
+  flex: none;
+}
+
+.nova-radial-bar-chart__legend-label {
+  color: var(--nova-text);
+}
+
+.nova-radial-bar-chart__legend-value {
+  margin-left: auto;
+  color: var(--nova-text-muted);
+  font-variant-numeric: tabular-nums;
+  padding-left: var(--nova-space-3);
+}

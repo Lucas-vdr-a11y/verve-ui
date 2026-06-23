@@ -1,0 +1,18 @@
+/* Spacer — fixed or flexible spacing element for flex/grid contexts. */
+.nova-spacer {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+}
+
+/* Flexible: consume free space along the main axis. */
+.nova-spacer--grow {
+  flex: 1 1 auto;
+  align-self: stretch;
+}
+
+/* Fixed: reserve a token-sized block in both axes. */
+.nova-spacer--fixed {
+  flex: 0 0 var(--nova-spacer-size, var(--nova-space-4));
+  width: var(--nova-spacer-size, var(--nova-space-4));
+  height: var(--nova-spacer-size, var(--nova-space-4));
+}

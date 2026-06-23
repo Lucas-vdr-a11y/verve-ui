@@ -1,0 +1,57 @@
+.nova-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.nova-shapes__shape {
+  position: absolute;
+  display: block;
+  opacity: 0.35;
+  filter: blur(2px);
+  will-change: transform;
+  animation-name: nova-shapes-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.nova-shapes__shape--circle {
+  border-radius: var(--nova-radius-full);
+  background: radial-gradient(
+    circle at 35% 30%,
+    color-mix(in srgb, var(--nova-shapes-color) 70%, transparent),
+    transparent 70%
+  );
+}
+
+.nova-shapes__shape--blob {
+  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+  background: radial-gradient(
+    circle at 40% 35%,
+    color-mix(in srgb, var(--nova-shapes-color) 70%, transparent),
+    transparent 72%
+  );
+}
+
+.nova-shapes__shape--triangle {
+  background: color-mix(in srgb, var(--nova-shapes-color) 55%, transparent);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+@keyframes nova-shapes-float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(var(--nova-shapes-drift), calc(var(--nova-shapes-drift) * -1.2))
+      rotate(18deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-shapes__shape {
+    animation: none;
+  }
+}

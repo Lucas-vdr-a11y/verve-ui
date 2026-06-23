@@ -1,0 +1,109 @@
+.nova-avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  vertical-align: middle;
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-medium);
+  line-height: 1;
+  color: var(--nova-text-muted);
+  background: var(--nova-bg-muted);
+  border-radius: var(--nova-radius-full);
+  overflow: visible;
+  user-select: none;
+  --nova-avatar-size: var(--nova-space-10);
+  --nova-avatar-font: var(--nova-text-sm);
+  width: var(--nova-avatar-size);
+  height: var(--nova-avatar-size);
+  font-size: var(--nova-avatar-font);
+}
+
+/* ---- Shapes ------------------------------------------------------------ */
+.nova-avatar--circle {
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-avatar--square {
+  border-radius: var(--nova-radius-md);
+}
+
+/* ---- Sizes ------------------------------------------------------------- */
+.nova-avatar--xs {
+  --nova-avatar-size: var(--nova-space-5);
+  --nova-avatar-font: var(--nova-text-xs);
+}
+
+.nova-avatar--sm {
+  --nova-avatar-size: var(--nova-space-8);
+  --nova-avatar-font: var(--nova-text-xs);
+}
+
+.nova-avatar--md {
+  --nova-avatar-size: var(--nova-space-10);
+  --nova-avatar-font: var(--nova-text-sm);
+}
+
+.nova-avatar--lg {
+  --nova-avatar-size: var(--nova-space-12);
+  --nova-avatar-font: var(--nova-text-md);
+}
+
+.nova-avatar--xl {
+  --nova-avatar-size: var(--nova-space-16);
+  --nova-avatar-font: var(--nova-text-xl);
+}
+
+/* ---- Image / fallback -------------------------------------------------- */
+.nova-avatar__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+
+.nova-avatar__fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+/* ---- Status dot -------------------------------------------------------- */
+.nova-avatar__status {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 28%;
+  height: 28%;
+  min-width: var(--nova-space-2);
+  min-height: var(--nova-space-2);
+  border-radius: var(--nova-radius-full);
+  box-shadow: 0 0 0 2px var(--nova-surface);
+  background: var(--nova-text-subtle);
+}
+
+.nova-avatar--square .nova-avatar__status {
+  right: -2px;
+  bottom: -2px;
+}
+
+.nova-avatar__status--online {
+  background: var(--nova-success);
+}
+
+.nova-avatar__status--offline {
+  background: var(--nova-text-subtle);
+}
+
+.nova-avatar__status--busy {
+  background: var(--nova-danger);
+}
+
+.nova-avatar__status--away {
+  background: var(--nova-warning);
+}

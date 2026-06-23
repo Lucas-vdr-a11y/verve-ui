@@ -1,0 +1,128 @@
+.nova-avatar-uploader {
+  position: relative;
+  display: inline-block;
+}
+
+/* ---- Sizes ----------------------------------------------------------- */
+.nova-avatar-uploader--sm {
+  --nova-avatar-uploader-size: var(--nova-space-12);
+}
+.nova-avatar-uploader--md {
+  --nova-avatar-uploader-size: var(--nova-space-20);
+}
+.nova-avatar-uploader--lg {
+  --nova-avatar-uploader-size: var(--nova-space-24);
+}
+
+.nova-avatar-uploader__button {
+  position: relative;
+  display: block;
+  width: var(--nova-avatar-uploader-size);
+  height: var(--nova-avatar-uploader-size);
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: var(--nova-radius-full);
+  border: 2px dashed var(--nova-border-strong);
+  background: var(--nova-bg-muted);
+  color: var(--nova-text-muted);
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    background var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-avatar-uploader__button:hover {
+  border-color: var(--nova-primary);
+}
+
+.nova-avatar-uploader--dragover .nova-avatar-uploader__button {
+  border-color: var(--nova-primary);
+  background: var(--nova-primary-subtle);
+}
+
+.nova-avatar-uploader--disabled .nova-avatar-uploader__button {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.nova-avatar-uploader__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nova-avatar-uploader__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--nova-text-subtle);
+}
+
+.nova-avatar-uploader__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nova-overlay-bg);
+  color: var(--nova-gray-0);
+  opacity: 0;
+  transition: opacity var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-avatar-uploader__button:hover .nova-avatar-uploader__overlay,
+.nova-avatar-uploader__button:focus-visible .nova-avatar-uploader__overlay,
+.nova-avatar-uploader--dragover .nova-avatar-uploader__overlay {
+  opacity: 1;
+}
+
+.nova-avatar-uploader__overlay-text {
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nova-avatar-uploader--disabled .nova-avatar-uploader__overlay {
+  display: none;
+}
+
+.nova-avatar-uploader__remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-space-6);
+  height: var(--nova-space-6);
+  padding: 0;
+  cursor: pointer;
+  color: var(--nova-text-on-brand);
+  background: var(--nova-danger);
+  border: 2px solid var(--nova-surface);
+  border-radius: var(--nova-radius-full);
+  font-size: var(--nova-text-md);
+  line-height: 1;
+  box-shadow: var(--nova-shadow-sm);
+  transition: filter var(--nova-duration-fast) var(--nova-ease);
+}
+.nova-avatar-uploader__remove:hover {
+  filter: brightness(1.1);
+}
+
+.nova-avatar-uploader__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

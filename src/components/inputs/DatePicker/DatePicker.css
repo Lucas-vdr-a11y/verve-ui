@@ -1,0 +1,176 @@
+.nova-datepicker {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--nova-font-sans);
+}
+
+/* ---- Control (matches Input) -------------------------------------------- */
+.nova-datepicker__control {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  gap: var(--nova-space-2);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  box-shadow: var(--nova-shadow-xs);
+  transition: border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease),
+    background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-datepicker__control:hover:not(.nova-datepicker__control--disabled) {
+  border-color: var(--nova-text-subtle);
+}
+
+.nova-datepicker__control:focus-within {
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-datepicker__control--invalid {
+  border-color: var(--nova-danger);
+}
+
+.nova-datepicker__control--invalid:focus-within {
+  border-color: var(--nova-danger);
+  box-shadow: 0 0 0 3px var(--nova-danger-subtle);
+}
+
+.nova-datepicker__control--disabled {
+  opacity: 0.6;
+  background: var(--nova-bg-muted);
+  cursor: not-allowed;
+}
+
+/* ---- Icon --------------------------------------------------------------- */
+.nova-datepicker__icon {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  color: var(--nova-text-muted);
+}
+
+.nova-datepicker__icon svg {
+  display: block;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+/* ---- Field (button) ----------------------------------------------------- */
+.nova-datepicker__field {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: var(--nova-leading-normal);
+  text-align: left;
+  cursor: pointer;
+}
+
+.nova-datepicker__field.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+.nova-datepicker__field:disabled {
+  cursor: not-allowed;
+}
+
+.nova-datepicker__value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-datepicker__placeholder {
+  color: var(--nova-text-subtle);
+}
+
+/* ---- Clear button ------------------------------------------------------- */
+.nova-datepicker__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-datepicker__clear:hover {
+  background: var(--nova-surface-active);
+  color: var(--nova-text);
+}
+
+.nova-datepicker__clear svg {
+  display: block;
+  width: 0.85em;
+  height: 0.85em;
+}
+
+/* ---- Panel -------------------------------------------------------------- */
+.nova-datepicker__panel {
+  position: absolute;
+  top: calc(100% + var(--nova-space-1));
+  left: 0;
+  z-index: var(--nova-z-popover);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-surface-raised);
+  box-shadow: var(--nova-shadow-lg);
+  animation: nova-datepicker-in var(--nova-duration-fast) var(--nova-ease-out)
+    both;
+}
+
+@keyframes nova-datepicker-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-datepicker__control--sm {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+}
+.nova-datepicker__control--sm .nova-datepicker__field {
+  min-height: calc(2rem - 2px);
+}
+
+.nova-datepicker__control--md {
+  font-size: var(--nova-text-sm);
+  padding: 0 var(--nova-space-3);
+}
+.nova-datepicker__control--md .nova-datepicker__field {
+  min-height: calc(2.5rem - 2px);
+}
+
+.nova-datepicker__control--lg {
+  font-size: var(--nova-text-md);
+  padding: 0 var(--nova-space-4);
+}
+.nova-datepicker__control--lg .nova-datepicker__field {
+  min-height: calc(3rem - 2px);
+}

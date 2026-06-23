@@ -1,0 +1,44 @@
+.nova-avatar-group {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  /* negative gap via per-item margin so avatars overlap */
+  --nova-avatar-group-overlap: var(--nova-space-3);
+}
+
+.nova-avatar-group__item {
+  display: inline-flex;
+  border-radius: var(--nova-radius-full);
+  box-shadow: 0 0 0 2px var(--nova-surface);
+}
+
+.nova-avatar-group__item + .nova-avatar-group__item {
+  margin-left: calc(-1 * var(--nova-avatar-group-overlap));
+}
+
+/* Overlap scales with size so larger avatars overlap proportionally. */
+.nova-avatar-group--xs {
+  --nova-avatar-group-overlap: var(--nova-space-2);
+}
+
+.nova-avatar-group--sm {
+  --nova-avatar-group-overlap: var(--nova-space-2);
+}
+
+.nova-avatar-group--md {
+  --nova-avatar-group-overlap: var(--nova-space-3);
+}
+
+.nova-avatar-group--lg {
+  --nova-avatar-group-overlap: var(--nova-space-4);
+}
+
+.nova-avatar-group--xl {
+  --nova-avatar-group-overlap: var(--nova-space-5);
+}
+
+.nova-avatar-group__overflow {
+  background: var(--nova-bg-muted);
+  color: var(--nova-text-muted);
+  font-weight: var(--nova-font-semibold);
+}

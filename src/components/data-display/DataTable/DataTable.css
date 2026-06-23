@@ -1,0 +1,134 @@
+.nova-data-table__scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.nova-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text);
+}
+
+.nova-data-table__head th {
+  background: var(--nova-bg-subtle);
+  color: var(--nova-text-muted);
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  border-bottom: 1px solid var(--nova-border);
+  white-space: nowrap;
+}
+
+.nova-data-table__header-cell,
+.nova-data-table__cell,
+.nova-data-table__select-cell,
+.nova-data-table__empty {
+  padding: var(--nova-space-3) var(--nova-space-4);
+}
+
+.nova-data-table--dense .nova-data-table__header-cell,
+.nova-data-table--dense .nova-data-table__cell,
+.nova-data-table--dense .nova-data-table__select-cell,
+.nova-data-table--dense .nova-data-table__empty {
+  padding: var(--nova-space-1) var(--nova-space-3);
+}
+
+.nova-data-table__cell--left {
+  text-align: left;
+}
+.nova-data-table__cell--center {
+  text-align: center;
+}
+.nova-data-table__cell--right {
+  text-align: right;
+}
+
+.nova-data-table__row {
+  border-bottom: 1px solid var(--nova-border);
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-data-table__row:hover {
+  background: var(--nova-surface-hover);
+}
+
+.nova-data-table__row--selected {
+  background: var(--nova-primary-subtle);
+}
+
+.nova-data-table__row--selected:hover {
+  background: var(--nova-primary-subtle);
+}
+
+.nova-data-table__sort-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  cursor: pointer;
+  border-radius: var(--nova-radius-xs);
+}
+
+.nova-data-table__sort-button:hover {
+  color: var(--nova-text);
+}
+
+.nova-data-table__sort-button:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-data-table__cell--right .nova-data-table__sort-button {
+  flex-direction: row-reverse;
+}
+
+.nova-data-table__sort-icon {
+  display: inline-flex;
+  font-size: var(--nova-text-md);
+  line-height: 0;
+}
+
+.nova-data-table__header-cell--sortable[aria-sort="ascending"],
+.nova-data-table__header-cell--sortable[aria-sort="descending"] {
+  color: var(--nova-text);
+}
+
+.nova-data-table__select-cell {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.nova-data-table__checkbox {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--nova-primary);
+  cursor: pointer;
+}
+
+.nova-data-table__checkbox:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+  border-radius: var(--nova-radius-xs);
+}
+
+.nova-data-table__empty {
+  text-align: center;
+  color: var(--nova-text-muted);
+  padding-top: var(--nova-space-8);
+  padding-bottom: var(--nova-space-8);
+}
+
+.nova-data-table__body tr:last-child {
+  border-bottom: none;
+}

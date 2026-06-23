@@ -1,0 +1,42 @@
+.nova-otp-resend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  color: var(--nova-text);
+}
+
+.nova-otp-resend__btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--nova-primary-text);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  cursor: pointer;
+  border-radius: var(--nova-radius-sm);
+  transition: color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-otp-resend__btn:hover:not(:disabled) {
+  color: var(--nova-primary-hover);
+  text-decoration: underline;
+}
+
+.nova-otp-resend__btn:disabled {
+  color: var(--nova-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-otp-resend__countdown {
+  color: var(--nova-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-otp-resend--disabled {
+  opacity: 0.6;
+}

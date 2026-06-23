@@ -1,0 +1,177 @@
+.nova-speed-dial {
+  position: fixed;
+  z-index: var(--nova-z-sticky);
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-3);
+}
+
+.nova-speed-dial--absolute {
+  position: absolute;
+}
+
+/* ---- Placements ------------------------------------------------------ */
+.nova-speed-dial--bottom-right {
+  bottom: var(--nova-space-6);
+  right: var(--nova-space-6);
+}
+.nova-speed-dial--bottom-left {
+  bottom: var(--nova-space-6);
+  left: var(--nova-space-6);
+}
+.nova-speed-dial--top-right {
+  top: var(--nova-space-6);
+  right: var(--nova-space-6);
+}
+.nova-speed-dial--top-left {
+  top: var(--nova-space-6);
+  left: var(--nova-space-6);
+}
+
+/* ---- Direction layout: order trigger vs actions --------------------- */
+.nova-speed-dial--up,
+.nova-speed-dial--down {
+  flex-direction: column;
+}
+.nova-speed-dial--up {
+  flex-direction: column-reverse;
+}
+.nova-speed-dial--left {
+  flex-direction: row-reverse;
+}
+.nova-speed-dial--right {
+  flex-direction: row;
+}
+
+.nova-speed-dial__actions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--nova-space-3);
+}
+.nova-speed-dial--up .nova-speed-dial__actions {
+  flex-direction: column-reverse;
+}
+.nova-speed-dial--down .nova-speed-dial__actions {
+  flex-direction: column;
+}
+.nova-speed-dial--left .nova-speed-dial__actions {
+  flex-direction: row-reverse;
+}
+.nova-speed-dial--right .nova-speed-dial__actions {
+  flex-direction: row;
+}
+
+.nova-speed-dial__action-item {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  /* Staggered reveal */
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity var(--nova-duration-base) var(--nova-ease-out),
+    transform var(--nova-duration-base) var(--nova-ease-spring);
+  transition-delay: calc(var(--nova-speed-dial-i) * 40ms);
+  pointer-events: none;
+}
+.nova-speed-dial--open .nova-speed-dial__action-item {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  /* Reverse stagger order on open so nearest reveals first */
+  transition-delay: calc(
+    (var(--nova-speed-dial-n) - 1 - var(--nova-speed-dial-i)) * 40ms
+  );
+}
+
+/* Keep the label after the icon for left/right rows */
+.nova-speed-dial--left .nova-speed-dial__action-item,
+.nova-speed-dial--right .nova-speed-dial__action-item {
+  flex-direction: column;
+}
+
+.nova-speed-dial__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-space-12);
+  height: var(--nova-space-12);
+  border: none;
+  cursor: pointer;
+  color: var(--nova-text-on-brand);
+  background: var(--nova-primary);
+  border-radius: var(--nova-radius-full);
+  box-shadow: var(--nova-shadow-lg);
+  font-size: var(--nova-text-xl);
+  transition: background var(--nova-duration-fast) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+}
+.nova-speed-dial__trigger:hover {
+  background: var(--nova-primary-hover);
+}
+.nova-speed-dial--open .nova-speed-dial__trigger-icon {
+  transform: rotate(45deg);
+}
+.nova-speed-dial__trigger-icon {
+  display: inline-flex;
+  transition: transform var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-speed-dial__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-space-10);
+  height: var(--nova-space-10);
+  border: 1px solid var(--nova-border);
+  cursor: pointer;
+  color: var(--nova-text);
+  background: var(--nova-surface-raised);
+  border-radius: var(--nova-radius-full);
+  box-shadow: var(--nova-shadow-md);
+  font-size: var(--nova-text-lg);
+  transition: background var(--nova-duration-fast) var(--nova-ease);
+}
+.nova-speed-dial__action:hover {
+  background: var(--nova-surface-hover);
+}
+.nova-speed-dial__action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.nova-speed-dial__action-icon {
+  display: inline-flex;
+}
+
+/* ---- Tooltip / label ------------------------------------------------- */
+.nova-speed-dial__tooltip {
+  white-space: nowrap;
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-sm);
+  box-shadow: var(--nova-shadow-sm);
+  padding: var(--nova-space-1) var(--nova-space-2);
+}
+
+/* Hide tooltip when the dial fans vertically and place beside the button */
+.nova-speed-dial--up .nova-speed-dial__action-item,
+.nova-speed-dial--down .nova-speed-dial__action-item {
+  flex-direction: row;
+}
+.nova-speed-dial--bottom-left.nova-speed-dial--up .nova-speed-dial__action-item,
+.nova-speed-dial--bottom-left.nova-speed-dial--down .nova-speed-dial__action-item,
+.nova-speed-dial--top-left.nova-speed-dial--up .nova-speed-dial__action-item,
+.nova-speed-dial--top-left.nova-speed-dial--down .nova-speed-dial__action-item {
+  flex-direction: row-reverse;
+}
+
+/* For left/right rows, hide tooltip to avoid overlap */
+.nova-speed-dial--left .nova-speed-dial__tooltip,
+.nova-speed-dial--right .nova-speed-dial__tooltip {
+  display: none;
+}

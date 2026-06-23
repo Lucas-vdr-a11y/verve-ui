@@ -1,0 +1,69 @@
+.nova-radar-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nova-space-3);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-radar-chart__svg {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+}
+
+.nova-radar-chart__ring {
+  fill: none;
+  stroke: var(--nova-border);
+  stroke-width: 1;
+}
+
+.nova-radar-chart__spoke {
+  stroke: var(--nova-border);
+  stroke-width: 1;
+}
+
+.nova-radar-chart__area {
+  stroke-width: 2;
+  stroke-linejoin: round;
+  transition: fill-opacity var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-radar-chart__svg:hover .nova-radar-chart__area:not(:hover) {
+  fill-opacity: 0.08;
+}
+
+.nova-radar-chart__axis-label {
+  fill: var(--nova-text-muted);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-radar-chart__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--nova-space-2) var(--nova-space-4);
+}
+
+.nova-radar-chart__legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-radar-chart__swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--nova-radius-xs);
+  flex: none;
+}
+
+.nova-radar-chart__legend-label {
+  color: var(--nova-text);
+}

@@ -1,0 +1,11 @@
+.nova-highlighter {
+  font-family: inherit;
+  color: inherit;
+}
+
+.nova-highlighter__mark {
+  padding: 0 0.1em;
+  border-radius: var(--nova-radius-xs);
+  background: var(--nova-warning-subtle);
+  color: var(--nova-text);
+}

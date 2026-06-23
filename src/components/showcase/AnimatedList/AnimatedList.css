@@ -1,0 +1,83 @@
+/* AnimatedList — items spring in (slide + fade). Index-based stagger via a CSS
+ * custom property; layout shifts of existing rows are eased. */
+
+.nova-anim-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+}
+
+.nova-anim-list__item {
+  /* Smoothly reflow when items above/below are inserted or removed. */
+  transition: transform var(--nova-duration-slow) var(--nova-ease-spring);
+}
+
+.nova-anim-list__item--enter {
+  animation: nova-anim-list-in var(--nova-duration-slow) var(--nova-ease-spring)
+    both;
+  animation-delay: calc(var(--nova-anim-list-i, 0) * var(--nova-anim-list-stagger));
+}
+
+.nova-anim-list--top .nova-anim-list__item--enter {
+  transform-origin: top center;
+}
+.nova-anim-list--bottom .nova-anim-list__item--enter {
+  transform-origin: bottom center;
+}
+
+@keyframes nova-anim-list-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.75rem) scale(0.96);
+    filter: blur(2px);
+  }
+  60% {
+    filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.nova-anim-list--bottom .nova-anim-list__item--enter {
+  animation-name: nova-anim-list-in-up;
+}
+
+@keyframes nova-anim-list-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.96);
+    filter: blur(2px);
+  }
+  60% {
+    filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-anim-list__item {
+    transition: none;
+  }
+  .nova-anim-list__item--enter {
+    animation: nova-anim-list-fade var(--nova-duration-base) linear both;
+    animation-delay: 0ms;
+  }
+  @keyframes nova-anim-list-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

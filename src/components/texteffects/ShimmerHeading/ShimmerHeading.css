@@ -1,0 +1,42 @@
+.nova-shimmer-heading {
+  display: inline-block;
+  margin: 0;
+  font-size: var(--nova-text-5xl);
+  font-weight: var(--nova-font-bold);
+  line-height: var(--nova-leading-tight);
+  letter-spacing: -0.02em;
+
+  /* Base text colour + a moving silver highlight band on top. */
+  background-image: linear-gradient(
+    100deg,
+    var(--nova-text) 0%,
+    var(--nova-text) 40%,
+    var(--nova-text-subtle) 48%,
+    #ffffff 50%,
+    var(--nova-text-subtle) 52%,
+    var(--nova-text) 60%,
+    var(--nova-text) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  animation: nova-shimmer-heading-sweep var(--nova-shimmer-duration, 4s)
+    var(--nova-ease) infinite;
+}
+
+@keyframes nova-shimmer-heading-sweep {
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-shimmer-heading {
+    animation: none;
+    background-position: 50% 0;
+  }
+}

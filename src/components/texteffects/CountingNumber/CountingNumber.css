@@ -1,0 +1,46 @@
+.nova-counting-number {
+  display: inline-flex;
+  align-items: baseline;
+  font-weight: var(--nova-font-bold);
+  color: var(--nova-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-counting-number__digits {
+  display: inline-flex;
+}
+
+.nova-counting-number__col {
+  display: inline-block;
+  height: 1em;
+  line-height: 1;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.nova-counting-number__roll {
+  display: flex;
+  flex-direction: column;
+  /* The strip slides up so the target digit (var --nova-counting-d) shows. */
+  transform: translateY(calc(var(--nova-counting-d, 0) * -1em));
+  transition: transform var(--nova-duration-fast) var(--nova-ease-out);
+  will-change: transform;
+}
+
+.nova-counting-number__cell {
+  display: block;
+  height: 1em;
+  line-height: 1;
+  text-align: center;
+}
+
+.nova-counting-number__sep,
+.nova-counting-number__affix {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-counting-number__roll {
+    transition: none;
+  }
+}

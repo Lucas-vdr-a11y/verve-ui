@@ -1,0 +1,86 @@
+.nova-text {
+  margin: 0;
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  line-height: var(--nova-leading-normal);
+}
+
+/* ---- Size --------------------------------------------------------------- */
+.nova-text--xs {
+  font-size: var(--nova-text-xs);
+}
+.nova-text--sm {
+  font-size: var(--nova-text-sm);
+}
+.nova-text--md {
+  font-size: var(--nova-text-md);
+}
+.nova-text--lg {
+  font-size: var(--nova-text-lg);
+}
+.nova-text--xl {
+  font-size: var(--nova-text-xl);
+}
+
+/* ---- Weight ------------------------------------------------------------- */
+.nova-text--normal {
+  font-weight: var(--nova-font-normal);
+}
+.nova-text--medium {
+  font-weight: var(--nova-font-medium);
+}
+.nova-text--semibold {
+  font-weight: var(--nova-font-semibold);
+}
+.nova-text--bold {
+  font-weight: var(--nova-font-bold);
+}
+
+/* ---- Tone --------------------------------------------------------------- */
+.nova-text--default {
+  color: var(--nova-text);
+}
+.nova-text--muted {
+  color: var(--nova-text-muted);
+}
+.nova-text--subtle {
+  color: var(--nova-text-subtle);
+}
+.nova-text--primary {
+  color: var(--nova-primary-text);
+}
+.nova-text--danger {
+  color: var(--nova-danger);
+}
+.nova-text--success {
+  color: var(--nova-success);
+}
+
+/* ---- Align -------------------------------------------------------------- */
+.nova-text--align-start {
+  text-align: start;
+}
+.nova-text--align-center {
+  text-align: center;
+}
+.nova-text--align-end {
+  text-align: end;
+}
+.nova-text--align-justify {
+  text-align: justify;
+}
+
+/* ---- Truncate / clamp --------------------------------------------------- */
+.nova-text--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nova-text--clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--nova-text-clamp, 1);
+  line-clamp: var(--nova-text-clamp, 1);
+  overflow: hidden;
+}

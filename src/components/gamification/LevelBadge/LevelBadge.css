@@ -1,0 +1,84 @@
+.nova-level-badge {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  font-family: var(--nova-font-sans);
+  --nova-level-from: #f4c89a;
+  --nova-level-to: #cd7f32;
+}
+.nova-level-badge--bronze {
+  --nova-level-from: #f4c89a;
+  --nova-level-to: #cd7f32;
+}
+.nova-level-badge--silver {
+  --nova-level-from: #e6ebf1;
+  --nova-level-to: #8d97a4;
+}
+.nova-level-badge--gold {
+  --nova-level-from: #ffe48a;
+  --nova-level-to: #e0a90b;
+}
+.nova-level-badge--platinum {
+  --nova-level-from: #e8f3fb;
+  --nova-level-to: #9bbbd4;
+}
+.nova-level-badge--diamond {
+  --nova-level-from: #b6f0ff;
+  --nova-level-to: #5aa9e6;
+}
+
+.nova-level-badge__ring {
+  display: block;
+  transform: rotate(0);
+}
+.nova-level-badge__track {
+  stroke: var(--nova-bg-muted);
+}
+.nova-level-badge__progress {
+  stroke: var(--nova-level-to);
+  transition: stroke-dashoffset var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-level-badge__inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.nova-level-badge__num {
+  font-weight: var(--nova-font-bold);
+  background: linear-gradient(
+    135deg,
+    var(--nova-level-from),
+    var(--nova-level-to)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.nova-level-badge--sm .nova-level-badge__num {
+  font-size: var(--nova-text-lg);
+}
+.nova-level-badge--md .nova-level-badge__num {
+  font-size: var(--nova-text-2xl);
+}
+.nova-level-badge--lg .nova-level-badge__num {
+  font-size: var(--nova-text-3xl);
+}
+.nova-level-badge__caption {
+  margin-top: var(--nova-space-1);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nova-text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-level-badge__progress {
+    transition: none;
+  }
+}

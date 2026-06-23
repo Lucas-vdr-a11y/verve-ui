@@ -1,0 +1,61 @@
+.nova-meteors {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  --nova-meteor-angle: 215deg;
+}
+
+.nova-meteors__meteor {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-brand-300);
+  box-shadow: 0 0 6px 1px var(--nova-brand-300);
+  transform: rotate(var(--nova-meteor-angle));
+  animation-name: nova-meteor-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+/* The glowing tail trailing behind the head. */
+.nova-meteors__meteor::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 80px;
+  height: 1px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    90deg,
+    var(--nova-brand-300),
+    transparent
+  );
+}
+
+@keyframes nova-meteor-fall {
+  0% {
+    transform: rotate(var(--nova-meteor-angle)) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--nova-meteor-angle)) translateX(-700px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-meteors__meteor {
+    animation: none;
+    opacity: 0.4;
+  }
+}

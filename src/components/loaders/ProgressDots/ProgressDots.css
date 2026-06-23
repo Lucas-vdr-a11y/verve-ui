@@ -1,0 +1,73 @@
+.nova-progress-dots {
+  --nova-loader-color: var(--nova-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--nova-pd-size, 11px) * 0.7);
+  color: var(--nova-loader-color);
+  line-height: 0;
+}
+
+.nova-progress-dots[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-progress-dots[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-progress-dots[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-progress-dots[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-progress-dots[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-progress-dots__dot {
+  width: var(--nova-pd-size, 11px);
+  height: var(--nova-pd-size, 11px);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-border-strong);
+  transition: background-color var(--nova-duration-base) var(--nova-ease),
+    transform var(--nova-duration-base) var(--nova-ease);
+}
+
+/* determinate: filled dots take the tone color */
+.nova-progress-dots__dot--on {
+  background: var(--nova-loader-color);
+  transform: scale(1.08);
+}
+
+/* indeterminate: marching pulse sweeps left to right */
+.nova-progress-dots:not([data-determinate="true"]) .nova-progress-dots__dot {
+  animation: nova-pd-march 1.2s var(--nova-ease) infinite;
+  animation-delay: calc(var(--nova-pd-i) * 0.12s);
+}
+
+@keyframes nova-pd-march {
+  0%,
+  100% {
+    background: var(--nova-border-strong);
+    transform: scale(1);
+  }
+  40% {
+    background: var(--nova-loader-color);
+    transform: scale(1.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-progress-dots:not([data-determinate="true"])
+    .nova-progress-dots__dot {
+    animation: nova-pd-fade 1.4s var(--nova-ease) infinite;
+  }
+  @keyframes nova-pd-fade {
+    0%,
+    100% {
+      background: var(--nova-border-strong);
+    }
+    50% {
+      background: var(--nova-loader-color);
+    }
+  }
+}

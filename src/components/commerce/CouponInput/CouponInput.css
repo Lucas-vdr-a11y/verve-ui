@@ -1,0 +1,171 @@
+/* CouponInput — promo code input + apply, with applied/error states. */
+.nova-coupon-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  color: var(--nova-text);
+}
+
+.nova-coupon-input__label {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-muted);
+}
+
+.nova-coupon-input__field {
+  display: flex;
+  align-items: stretch;
+  gap: var(--nova-space-2);
+}
+
+.nova-coupon-input__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    box-shadow var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-coupon-input__input::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-coupon-input__input:focus-visible {
+  outline: none;
+  border-color: var(--nova-primary);
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-coupon-input__input:disabled {
+  background-color: var(--nova-bg-subtle);
+  cursor: not-allowed;
+}
+
+.nova-coupon-input--error .nova-coupon-input__input {
+  border-color: var(--nova-danger);
+}
+
+.nova-coupon-input__apply {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5rem;
+  padding: var(--nova-space-2) var(--nova-space-4);
+  border: 0;
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-coupon-input__apply:hover:not(:disabled) {
+  background-color: var(--nova-primary-hover);
+}
+
+.nova-coupon-input__apply:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-coupon-input__apply:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.nova-coupon-input__error {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-danger);
+}
+
+/* Applied state ------------------------------------------------------------- */
+.nova-coupon-input__applied {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: 1px solid var(--nova-success);
+  border-radius: var(--nova-radius-md);
+  background-color: var(--nova-success-subtle);
+}
+
+.nova-coupon-input__applied-icon {
+  display: inline-flex;
+  color: var(--nova-success);
+  font-size: var(--nova-text-md);
+}
+
+.nova-coupon-input__applied-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-coupon-input__applied-code {
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.nova-coupon-input__applied-message {
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-muted);
+}
+
+.nova-coupon-input__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--nova-radius-sm);
+  background-color: transparent;
+  color: var(--nova-text-muted);
+  font-size: var(--nova-text-md);
+  cursor: pointer;
+  transition:
+    background-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-coupon-input__remove:hover:not(:disabled) {
+  background-color: var(--nova-surface-hover);
+  color: var(--nova-text);
+}
+
+.nova-coupon-input__remove:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* Spinner ------------------------------------------------------------------- */
+.nova-coupon-input__apply-icon {
+  display: inline-flex;
+  font-size: var(--nova-text-md);
+}
+
+.nova-coupon-input__spinner {
+  animation: nova-coupon-input-spin var(--nova-duration-slow) linear infinite;
+}
+
+@keyframes nova-coupon-input-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

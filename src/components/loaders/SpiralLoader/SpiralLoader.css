@@ -1,0 +1,87 @@
+@property --nova-spiral-r {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 40%;
+}
+
+.nova-spiral-loader {
+  --nova-loader-color: var(--nova-primary);
+  position: relative;
+  display: inline-block;
+  width: var(--nova-spiral-size, 48px);
+  height: var(--nova-spiral-size, 48px);
+  color: var(--nova-loader-color);
+  animation: nova-spiral-rotate 2.4s linear infinite;
+}
+
+.nova-spiral-loader[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-spiral-loader[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-spiral-loader[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-spiral-loader[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-spiral-loader[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-spiral-loader__dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14%;
+  height: 14%;
+  margin: -7% 0 0 -7%;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-loader-color);
+  box-shadow: 0 0 5px 0 currentColor;
+  /* dot fans out at its own angle; radius breathes in/out per-dot to spiral */
+  transform: rotate(calc(var(--nova-spiral-i) * 360deg / var(--nova-spiral-n)))
+    translateX(var(--nova-spiral-r, 40%));
+  animation: nova-spiral-breathe 1.8s var(--nova-ease) infinite;
+  animation-delay: calc(var(--nova-spiral-i) / var(--nova-spiral-n) * -1.8s);
+}
+
+@keyframes nova-spiral-breathe {
+  0%,
+  100% {
+    --nova-spiral-r: 10%;
+    opacity: 0.35;
+  }
+  50% {
+    --nova-spiral-r: 46%;
+    opacity: 1;
+  }
+}
+
+@keyframes nova-spiral-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-spiral-loader {
+    animation: none;
+  }
+  .nova-spiral-loader__dot {
+    animation: nova-spiral-fade 1.8s var(--nova-ease) infinite;
+    animation-delay: calc(var(--nova-spiral-i) / var(--nova-spiral-n) * -1.8s);
+    transform: rotate(calc(var(--nova-spiral-i) * 360deg / var(--nova-spiral-n)))
+      translateX(40%);
+  }
+  @keyframes nova-spiral-fade {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}

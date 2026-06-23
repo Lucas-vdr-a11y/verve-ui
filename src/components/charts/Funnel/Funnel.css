@@ -1,0 +1,38 @@
+.nova-funnel {
+  display: block;
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+}
+
+.nova-funnel__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nova-funnel__seg {
+  transition: opacity var(--nova-duration-base) var(--nova-ease),
+    filter var(--nova-duration-base) var(--nova-ease);
+}
+
+.nova-funnel__group:hover .nova-funnel__seg {
+  filter: brightness(1.08);
+}
+
+.nova-funnel__svg:hover .nova-funnel__group:not(:hover) .nova-funnel__seg {
+  opacity: 0.55;
+}
+
+.nova-funnel__label {
+  fill: var(--nova-text-on-brand);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  pointer-events: none;
+}
+
+.nova-funnel__value {
+  fill: var(--nova-text-on-brand);
+  font-size: var(--nova-text-xs);
+  opacity: 0.9;
+  pointer-events: none;
+}

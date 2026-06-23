@@ -1,0 +1,35 @@
+.nova-draggable-card {
+  display: inline-block;
+  perspective: 1000px;
+}
+
+.nova-draggable-card__body {
+  position: relative;
+  display: inline-block;
+  border-radius: var(--nova-radius-xl);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  color: var(--nova-text);
+  padding: var(--nova-space-6);
+  box-shadow: var(--nova-shadow-lg);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  will-change: transform;
+}
+
+.nova-draggable-card__body:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus), var(--nova-shadow-lg);
+}
+
+.nova-draggable-card--grabbing {
+  cursor: grabbing;
+  box-shadow: var(--nova-shadow-xl);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-draggable-card__body {
+    cursor: default;
+  }
+}

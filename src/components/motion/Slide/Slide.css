@@ -1,0 +1,45 @@
+/* Slide — slide + fade from a direction, built on the Transition lifecycle.
+ * The "from" state lives on the enter/exit/exited phases; "to" is the rest. */
+
+.nova-slide {
+  --nova-slide-distance: 0.75rem;
+  --nova-slide-x: 0;
+  --nova-slide-y: 0;
+  transition:
+    opacity var(--nova-transition-duration) var(--nova-transition-ease),
+    transform var(--nova-transition-duration) var(--nova-transition-ease);
+}
+
+.nova-slide--up {
+  --nova-slide-y: var(--nova-slide-distance);
+}
+.nova-slide--down {
+  --nova-slide-y: calc(-1 * var(--nova-slide-distance));
+}
+.nova-slide--left {
+  --nova-slide-x: var(--nova-slide-distance);
+}
+.nova-slide--right {
+  --nova-slide-x: calc(-1 * var(--nova-slide-distance));
+}
+
+/* from state */
+.nova-slide[data-transition="enter"],
+.nova-slide[data-transition="exiting"],
+.nova-slide[data-transition="exited"] {
+  opacity: 0;
+  transform: translate(var(--nova-slide-x), var(--nova-slide-y));
+}
+
+/* to state */
+.nova-slide[data-transition="entering"],
+.nova-slide[data-transition="entered"] {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-slide {
+    transition-duration: 1ms !important;
+  }
+}

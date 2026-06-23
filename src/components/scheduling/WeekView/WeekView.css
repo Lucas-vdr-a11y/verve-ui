@@ -1,0 +1,249 @@
+.nova-week-view {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--nova-surface);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  font-family: var(--nova-font-sans);
+  color: var(--nova-text);
+  overflow: hidden;
+  box-sizing: border-box;
+
+  /* tone palette shared by event chips */
+  --nova-wv-gutter: 3.5rem;
+}
+
+.nova-week-view *,
+.nova-week-view *::before,
+.nova-week-view *::after {
+  box-sizing: border-box;
+}
+
+/* ---- Header row ---------------------------------------------------------- */
+.nova-week-view__head {
+  display: grid;
+  grid-template-columns: var(--nova-wv-gutter) repeat(7, 1fr);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-week-view__gutter-head {
+  border-right: 1px solid var(--nova-border);
+}
+
+.nova-week-view__day-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--nova-space-2) var(--nova-space-1);
+  border-left: 1px solid var(--nova-border);
+}
+
+.nova-week-view__dow {
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  color: var(--nova-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.nova-week-view__daynum {
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+}
+
+.nova-week-view__day-head--today .nova-week-view__daynum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-week-view__day-head--today .nova-week-view__dow {
+  color: var(--nova-primary-text);
+}
+
+/* ---- All-day row --------------------------------------------------------- */
+.nova-week-view__allday {
+  display: grid;
+  grid-template-columns: var(--nova-wv-gutter) repeat(7, 1fr);
+  border-bottom: 1px solid var(--nova-border);
+  background: var(--nova-bg-subtle);
+}
+
+.nova-week-view__allday-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--nova-space-1) var(--nova-space-2);
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-subtle);
+  border-right: 1px solid var(--nova-border);
+}
+
+.nova-week-view__allday-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--nova-space-1);
+  border-left: 1px solid var(--nova-border);
+  min-height: 1.5rem;
+}
+
+.nova-week-view__allday-event {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 2px var(--nova-space-1);
+  border: none;
+  border-radius: var(--nova-radius-xs);
+  font-family: inherit;
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: var(--nova-event-subtle);
+  color: var(--nova-event);
+}
+
+/* ---- Body / time grid ---------------------------------------------------- */
+.nova-week-view__body {
+  display: grid;
+  grid-template-columns: var(--nova-wv-gutter) 1fr;
+  max-height: 32rem;
+  overflow-y: auto;
+}
+
+.nova-week-view__gutter {
+  position: relative;
+  border-right: 1px solid var(--nova-border);
+}
+
+.nova-week-view__hour-label {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nova-week-view__hour-label span {
+  transform: translateY(-50%);
+  padding-right: var(--nova-space-2);
+  font-size: var(--nova-text-xs);
+  color: var(--nova-text-subtle);
+  white-space: nowrap;
+}
+
+.nova-week-view__hour-label:first-child span {
+  transform: none;
+}
+
+.nova-week-view__cols {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.nova-week-view__col {
+  position: relative;
+  border-left: 1px solid var(--nova-border);
+  cursor: pointer;
+}
+
+.nova-week-view__gridline {
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-week-view__gridline:last-child {
+  border-bottom: none;
+}
+
+/* ---- Current-time indicator --------------------------------------------- */
+.nova-week-view__now {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: 2px solid var(--nova-danger);
+  z-index: var(--nova-z-base);
+  pointer-events: none;
+}
+
+.nova-week-view__now-dot {
+  position: absolute;
+  left: -4px;
+  top: -4px;
+  width: 7px;
+  height: 7px;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-danger);
+}
+
+/* ---- Event chips --------------------------------------------------------- */
+.nova-week-view__event {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  overflow: hidden;
+  padding: 2px var(--nova-space-1);
+  border: none;
+  border-left: 3px solid var(--nova-event);
+  border-radius: var(--nova-radius-xs);
+  background: var(--nova-event-subtle);
+  color: var(--nova-event);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  z-index: calc(var(--nova-z-base) + 1);
+  transition: filter var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-week-view__event:hover {
+  filter: brightness(0.97);
+}
+
+.nova-week-view__event-time {
+  font-size: 0.625rem;
+  font-weight: var(--nova-font-medium);
+  opacity: 0.85;
+  line-height: 1.1;
+}
+
+.nova-week-view__event-title {
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-semibold);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--nova-text);
+}
+
+/* ---- Tone tokens --------------------------------------------------------- */
+.nova-week-view__event--primary {
+  --nova-event: var(--nova-primary);
+  --nova-event-subtle: var(--nova-primary-subtle);
+}
+.nova-week-view__event--success {
+  --nova-event: var(--nova-success);
+  --nova-event-subtle: var(--nova-success-subtle);
+}
+.nova-week-view__event--warning {
+  --nova-event: var(--nova-warning);
+  --nova-event-subtle: var(--nova-warning-subtle);
+}
+.nova-week-view__event--danger {
+  --nova-event: var(--nova-danger);
+  --nova-event-subtle: var(--nova-danger-subtle);
+}
+.nova-week-view__event--info {
+  --nova-event: var(--nova-info);
+  --nova-event-subtle: var(--nova-info-subtle);
+}

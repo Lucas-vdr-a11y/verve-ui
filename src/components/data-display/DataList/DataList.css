@@ -1,0 +1,84 @@
+.nova-data-list {
+  margin: 0;
+  color: var(--nova-text);
+  font-size: var(--nova-text-sm);
+  --nova-data-list-pad: var(--nova-space-3);
+}
+
+.nova-data-list--dense {
+  --nova-data-list-pad: var(--nova-space-2);
+}
+
+.nova-data-list__row {
+  padding-block: var(--nova-data-list-pad);
+}
+
+.nova-data-list--divided .nova-data-list__row + .nova-data-list__row {
+  border-top: 1px solid var(--nova-border);
+}
+
+/* ---- Row layout: label beside value --------------------------------------- */
+.nova-data-list--row .nova-data-list__row {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) 2fr;
+  gap: var(--nova-space-4);
+  align-items: baseline;
+}
+
+/* ---- Stacked layout: label above value ------------------------------------ */
+.nova-data-list--stacked .nova-data-list__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+}
+
+.nova-data-list__label {
+  margin: 0;
+  color: var(--nova-text-muted);
+  font-weight: var(--nova-font-medium);
+}
+
+.nova-data-list__value {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  min-width: 0;
+  color: var(--nova-text);
+}
+
+.nova-data-list__value-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.nova-data-list__copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: var(--nova-radius-sm);
+  background: transparent;
+  color: var(--nova-text-muted);
+  cursor: pointer;
+  font-size: var(--nova-text-md);
+  opacity: 0;
+  transition: opacity var(--nova-duration-fast) var(--nova-ease),
+    background var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-data-list__row:hover .nova-data-list__copy,
+.nova-data-list__copy:focus-visible {
+  opacity: 1;
+}
+
+.nova-data-list__copy:hover {
+  background: var(--nova-surface-hover);
+  color: var(--nova-text);
+  border-color: var(--nova-border);
+}

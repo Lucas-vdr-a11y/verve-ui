@@ -1,0 +1,173 @@
+.nova-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  /* thumb diameter, set per size */
+  --nova-slider-thumb: 1rem;
+  --nova-slider-rail: 0.375rem;
+  min-height: var(--nova-slider-thumb);
+  padding: calc(var(--nova-slider-thumb) / 2) 0;
+}
+
+/* ---- Track + fill ------------------------------------------------------- */
+.nova-slider__track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--nova-slider-rail);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-muted);
+  pointer-events: none;
+}
+
+.nova-slider__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--nova-slider-fill, 0%);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  transition: width var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-slider--invalid .nova-slider__fill {
+  background: var(--nova-danger);
+}
+
+/* ---- Visual thumb ------------------------------------------------------- */
+.nova-slider__thumb-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.nova-slider__thumb {
+  display: block;
+  width: var(--nova-slider-thumb);
+  height: var(--nova-slider-thumb);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  border: 2px solid var(--nova-primary);
+  box-shadow: var(--nova-shadow-sm);
+  box-sizing: border-box;
+  transition: box-shadow var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-slider--invalid .nova-slider__thumb {
+  border-color: var(--nova-danger);
+}
+
+/* Focus ring driven by the real input's focus state. */
+.nova-slider__input:focus-visible + .nova-slider__thumb,
+.nova-slider:focus-within .nova-slider__thumb {
+  box-shadow: var(--nova-shadow-focus);
+}
+
+/* ---- Tooltip ------------------------------------------------------------ */
+.nova-slider__tooltip {
+  position: absolute;
+  bottom: calc(100% + var(--nova-space-2));
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--nova-space-1) var(--nova-space-2);
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-text);
+  color: var(--nova-bg);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-xs);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+  white-space: nowrap;
+  box-shadow: var(--nova-shadow-md);
+  pointer-events: none;
+}
+
+.nova-slider__tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--nova-text);
+}
+
+/* ---- Real input (transparent, on top, owns interaction) ----------------- */
+.nova-slider__input {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  height: var(--nova-slider-thumb);
+  outline: none;
+}
+
+/* Suppress native track/thumb visuals — we render our own — while keeping the
+   native thumb hit area for pointer + keyboard. */
+.nova-slider__input::-webkit-slider-runnable-track {
+  background: transparent;
+  height: var(--nova-slider-thumb);
+}
+.nova-slider__input::-moz-range-track {
+  background: transparent;
+  height: var(--nova-slider-rail);
+}
+.nova-slider__input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--nova-slider-thumb);
+  height: var(--nova-slider-thumb);
+  border-radius: var(--nova-radius-full);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.nova-slider__input::-moz-range-thumb {
+  width: var(--nova-slider-thumb);
+  height: var(--nova-slider-thumb);
+  border-radius: var(--nova-radius-full);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.nova-slider__input.nova-focusable:focus-visible {
+  box-shadow: none;
+}
+
+/* ---- Disabled ----------------------------------------------------------- */
+.nova-slider--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.nova-slider--disabled .nova-slider__input,
+.nova-slider__input:disabled {
+  cursor: not-allowed;
+}
+.nova-slider--disabled .nova-slider__fill {
+  background: var(--nova-text-subtle);
+}
+.nova-slider--disabled .nova-slider__thumb {
+  border-color: var(--nova-text-subtle);
+}
+
+/* ---- Sizes -------------------------------------------------------------- */
+.nova-slider--sm {
+  --nova-slider-thumb: 0.875rem;
+  --nova-slider-rail: 0.25rem;
+}
+.nova-slider--md {
+  --nova-slider-thumb: 1rem;
+  --nova-slider-rail: 0.375rem;
+}
+.nova-slider--lg {
+  --nova-slider-thumb: 1.25rem;
+  --nova-slider-rail: 0.5rem;
+}

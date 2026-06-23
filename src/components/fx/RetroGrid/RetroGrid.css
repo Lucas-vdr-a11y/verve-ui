@@ -1,0 +1,66 @@
+.nova-retro {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 200px;
+  --nova-retro-speed: 18s;
+  --nova-retro-cell: 50px;
+  --nova-retro-angle: 65deg;
+  --nova-retro-line: var(--nova-brand-400);
+}
+
+.nova-retro__plane {
+  position: absolute;
+  inset: 0;
+  top: 50%;
+  transform: rotateX(var(--nova-retro-angle));
+  transform-origin: center top;
+}
+
+.nova-retro__grid {
+  position: absolute;
+  inset: -100% 0;
+  height: 300%;
+  background-image: linear-gradient(
+      to right,
+      var(--nova-retro-line) 1px,
+      transparent 0
+    ),
+    linear-gradient(to bottom, var(--nova-retro-line) 1px, transparent 0);
+  background-size: var(--nova-retro-cell) var(--nova-retro-cell);
+  background-repeat: repeat;
+  opacity: 0.55;
+  animation: nova-retro-scroll var(--nova-retro-speed) linear infinite;
+  will-change: transform;
+}
+
+[data-theme="dark"] .nova-retro__grid {
+  opacity: 0.7;
+}
+
+.nova-retro--fade::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    transparent 0%,
+    var(--nova-bg) 78%
+  );
+}
+
+@keyframes nova-retro-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(var(--nova-retro-cell));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-retro__grid {
+    animation: none;
+  }
+}

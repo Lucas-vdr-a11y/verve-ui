@@ -1,0 +1,19 @@
+.nova-lead {
+  margin: 0;
+  color: var(--nova-text-muted);
+  font-family: var(--nova-font-sans);
+  font-weight: var(--nova-font-normal);
+  line-height: var(--nova-leading-relaxed);
+  text-wrap: pretty;
+}
+
+.nova-lead--sm {
+  font-size: var(--nova-text-lg);
+}
+.nova-lead--md {
+  font-size: var(--nova-text-xl);
+}
+.nova-lead--lg {
+  font-size: var(--nova-text-2xl);
+  line-height: var(--nova-leading-snug);
+}

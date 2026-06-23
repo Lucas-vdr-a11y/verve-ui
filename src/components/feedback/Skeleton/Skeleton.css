@@ -1,0 +1,76 @@
+.nova-skeleton {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: var(--nova-bg-muted);
+  border-radius: var(--nova-radius-md);
+}
+
+.nova-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--nova-surface-hover),
+    transparent
+  );
+  animation: nova-skeleton-shimmer 1.5s var(--nova-ease) infinite;
+}
+
+/* ---- Variants ---------------------------------------------------------- */
+.nova-skeleton--text {
+  block-size: 0.75em;
+  inline-size: 100%;
+  border-radius: var(--nova-radius-sm);
+  margin-block: 0.2em;
+}
+
+.nova-skeleton--circle {
+  inline-size: var(--nova-space-10);
+  block-size: var(--nova-space-10);
+  border-radius: var(--nova-radius-full);
+}
+
+.nova-skeleton--rect {
+  inline-size: 100%;
+  block-size: var(--nova-space-16);
+  border-radius: var(--nova-radius-md);
+}
+
+/* ---- Multiline group --------------------------------------------------- */
+.nova-skeleton-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+}
+
+.nova-skeleton-group .nova-skeleton--text:last-child {
+  inline-size: 70%;
+}
+
+@keyframes nova-skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-skeleton::after {
+    animation: nova-skeleton-fade 1.5s ease-in-out infinite;
+    transform: none;
+    background: var(--nova-surface-hover);
+  }
+
+  @keyframes nova-skeleton-fade {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+}

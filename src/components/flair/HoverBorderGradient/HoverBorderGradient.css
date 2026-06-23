@@ -1,0 +1,71 @@
+@property --nova-hbg-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.nova-hbg {
+  --nova-hbg-thickness: 1.5px;
+  --nova-hbg-from: var(--nova-brand-500);
+  --nova-hbg-to: var(--nova-info-500);
+  --nova-hbg-angle: 0deg;
+  --nova-hbg-intensity: 0.55;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nova-hbg-thickness);
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background:
+    conic-gradient(
+      from var(--nova-hbg-angle),
+      var(--nova-hbg-from),
+      var(--nova-hbg-to),
+      var(--nova-hbg-from)
+    );
+  cursor: pointer;
+  isolation: isolate;
+  animation: nova-hbg-spin 6s linear infinite;
+  transition: filter var(--nova-duration-base) var(--nova-ease);
+  filter: saturate(var(--nova-hbg-intensity)) brightness(0.9);
+}
+
+.nova-hbg__content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-2) var(--nova-space-5);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-medium);
+  line-height: var(--nova-leading-tight);
+}
+
+.nova-hbg:hover {
+  --nova-hbg-intensity: 1.4;
+  animation-duration: 2.4s;
+}
+
+.nova-hbg:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+@keyframes nova-hbg-spin {
+  to {
+    --nova-hbg-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-hbg {
+    animation: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,94 @@
+/* CheckoutSummary — order summary panel. */
+.nova-checkout-summary {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-4);
+  padding: var(--nova-space-6);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-lg);
+  background-color: var(--nova-surface);
+  color: var(--nova-text);
+}
+
+.nova-checkout-summary__heading {
+  margin: 0;
+  font-size: var(--nova-text-lg);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-snug);
+}
+
+.nova-checkout-summary__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  padding-bottom: var(--nova-space-4);
+  border-bottom: 1px solid var(--nova-border);
+}
+
+.nova-checkout-summary__lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-3);
+}
+
+.nova-checkout-summary__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--nova-space-4);
+  font-size: var(--nova-text-sm);
+}
+
+.nova-checkout-summary__row-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-1);
+  color: var(--nova-text-muted);
+}
+
+.nova-checkout-summary__row-note {
+  color: var(--nova-text-subtle);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-checkout-summary__row-amount {
+  color: var(--nova-text);
+  font-weight: var(--nova-font-medium);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.nova-checkout-summary__row--discount .nova-checkout-summary__row-amount {
+  color: var(--nova-success);
+}
+
+.nova-checkout-summary__promo {
+  padding-top: var(--nova-space-2);
+}
+
+/* Total --------------------------------------------------------------------- */
+.nova-checkout-summary__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--nova-space-4);
+  padding-top: var(--nova-space-4);
+  border-top: 1px solid var(--nova-border);
+}
+
+.nova-checkout-summary__total-label {
+  font-size: var(--nova-text-md);
+  font-weight: var(--nova-font-semibold);
+}
+
+.nova-checkout-summary__total-amount {
+  font-size: var(--nova-text-2xl);
+  font-weight: var(--nova-font-bold);
+  font-variant-numeric: tabular-nums;
+}
+
+.nova-checkout-summary__cta {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,52 @@
+.nova-aurora-text {
+  --nova-aurora-stops: var(--nova-brand-400), var(--nova-info-500),
+    var(--nova-brand-600), var(--nova-danger-500), var(--nova-brand-400);
+  --nova-aurora-duration: 8s;
+
+  display: inline-block;
+  font-weight: var(--nova-font-bold);
+  color: var(--nova-brand-500);
+
+  background-image: linear-gradient(
+    100deg,
+    var(--nova-aurora-stops)
+  );
+  background-size: 300% 100%;
+  background-position: 0% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+@supports (
+  (background-clip: text) or (-webkit-background-clip: text)
+) {
+  .nova-aurora-text {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: nova-aurora-drift var(--nova-aurora-duration)
+      var(--nova-ease) infinite;
+  }
+}
+
+@keyframes nova-aurora-drift {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: hue-rotate(20deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-aurora-text {
+    animation: none;
+    background-position: 50% 50%;
+    filter: none;
+  }
+}

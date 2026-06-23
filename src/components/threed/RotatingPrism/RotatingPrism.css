@@ -1,0 +1,59 @@
+.nova-prism {
+  --nova-prism-w: 280px;
+  --nova-prism-h: 160px;
+  --nova-prism-radius: 0px;
+  --nova-prism-rotation: 0deg;
+  display: inline-block;
+  width: var(--nova-prism-w);
+  height: var(--nova-prism-h);
+  perspective: calc(var(--nova-prism-w) * 4);
+}
+
+.nova-prism__solid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+.nova-prism--axis-x .nova-prism__solid {
+  transform: translateZ(calc(var(--nova-prism-radius) * -1))
+    rotateX(var(--nova-prism-rotation));
+}
+.nova-prism--axis-y .nova-prism__solid {
+  transform: translateZ(calc(var(--nova-prism-radius) * -1))
+    rotateY(var(--nova-prism-rotation));
+}
+
+.nova-prism__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: var(--nova-space-4);
+  background: var(--nova-surface-raised);
+  color: var(--nova-text);
+  border: 1px solid var(--nova-border);
+  border-radius: var(--nova-radius-md);
+  box-shadow: var(--nova-shadow-md), inset 0 0 0 1px rgb(99 102 241 / 0.05);
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.nova-prism--axis-x .nova-prism__face {
+  transform: rotateX(var(--nova-prism-face-angle))
+    translateZ(var(--nova-prism-radius));
+}
+.nova-prism--axis-y .nova-prism__face {
+  transform: rotateY(var(--nova-prism-face-angle))
+    translateZ(var(--nova-prism-radius));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-prism__solid {
+    transition: none;
+  }
+}

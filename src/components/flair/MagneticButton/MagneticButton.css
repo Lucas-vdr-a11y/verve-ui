@@ -1,0 +1,63 @@
+.nova-magnetic {
+  --nova-magnetic-x: 0px;
+  --nova-magnetic-y: 0px;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nova-space-2);
+  padding: var(--nova-space-3) var(--nova-space-6);
+  border: 1px solid var(--nova-primary);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-text-sm);
+  font-weight: var(--nova-font-semibold);
+  line-height: var(--nova-leading-tight);
+  cursor: pointer;
+  user-select: none;
+  transform: translate3d(var(--nova-magnetic-x), var(--nova-magnetic-y), 0);
+  transition: background var(--nova-duration-base) var(--nova-ease),
+    box-shadow var(--nova-duration-base) var(--nova-ease);
+  will-change: transform;
+}
+
+.nova-magnetic:hover {
+  background: var(--nova-primary-hover);
+  box-shadow: var(--nova-shadow-md);
+}
+
+.nova-magnetic:active {
+  background: var(--nova-primary-active);
+}
+
+.nova-magnetic:focus-visible {
+  outline: none;
+  box-shadow: var(--nova-shadow-focus);
+}
+
+.nova-magnetic__content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+}
+
+.nova-magnetic--parallax .nova-magnetic__content {
+  transform: translate3d(
+    calc(var(--nova-magnetic-x) * 0.35),
+    calc(var(--nova-magnetic-y) * 0.35),
+    0
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-magnetic {
+    transform: none;
+    will-change: auto;
+  }
+  .nova-magnetic--parallax .nova-magnetic__content {
+    transform: none;
+  }
+}

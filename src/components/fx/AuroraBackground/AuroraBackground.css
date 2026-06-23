@@ -1,0 +1,160 @@
+.nova-aurora {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--nova-bg);
+  --nova-aurora-duration: 18s;
+  --nova-aurora-blur: 60px;
+}
+
+.nova-aurora--fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: var(--nova-z-base);
+}
+
+.nova-aurora--speed-sm {
+  --nova-aurora-duration: 28s;
+}
+.nova-aurora--speed-md {
+  --nova-aurora-duration: 18s;
+}
+.nova-aurora--speed-lg {
+  --nova-aurora-duration: 11s;
+}
+
+.nova-aurora--blur-sm {
+  --nova-aurora-blur: 40px;
+}
+.nova-aurora--blur-md {
+  --nova-aurora-blur: 60px;
+}
+.nova-aurora--blur-lg {
+  --nova-aurora-blur: 90px;
+}
+
+.nova-aurora__field {
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  filter: blur(var(--nova-aurora-blur)) saturate(1.25);
+  pointer-events: none;
+}
+
+.nova-aurora__blob {
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  border-radius: var(--nova-radius-full);
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  will-change: transform;
+}
+
+[data-theme="dark"] .nova-aurora__blob {
+  opacity: 0.6;
+}
+
+.nova-aurora__blob--1 {
+  top: -8%;
+  left: -6%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--nova-brand-400),
+    transparent 70%
+  );
+  animation: nova-aurora-drift-1 var(--nova-aurora-duration) var(--nova-ease) infinite;
+}
+
+.nova-aurora__blob--2 {
+  top: -12%;
+  right: -10%;
+  background: radial-gradient(
+    circle at 60% 40%,
+    var(--nova-info-500),
+    transparent 70%
+  );
+  animation: nova-aurora-drift-2 calc(var(--nova-aurora-duration) * 1.3)
+    var(--nova-ease) infinite;
+}
+
+.nova-aurora__blob--3 {
+  bottom: -16%;
+  left: 12%;
+  background: radial-gradient(
+    circle at 40% 60%,
+    var(--nova-brand-600),
+    transparent 70%
+  );
+  animation: nova-aurora-drift-3 calc(var(--nova-aurora-duration) * 1.15)
+    var(--nova-ease) infinite;
+}
+
+.nova-aurora__blob--4 {
+  bottom: -10%;
+  right: 6%;
+  width: 45%;
+  height: 45%;
+  background: conic-gradient(
+    from 120deg,
+    var(--nova-brand-300),
+    var(--nova-info-500),
+    var(--nova-brand-500),
+    var(--nova-brand-300)
+  );
+  animation: nova-aurora-spin calc(var(--nova-aurora-duration) * 1.6) linear
+    infinite;
+}
+
+.nova-aurora__content {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes nova-aurora-drift-1 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(14%, 10%, 0) scale(1.15);
+  }
+  66% {
+    transform: translate3d(6%, -8%, 0) scale(0.95);
+  }
+}
+
+@keyframes nova-aurora-drift-2 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-16%, 14%, 0) scale(1.2);
+  }
+}
+
+@keyframes nova-aurora-drift-3 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  40% {
+    transform: translate3d(12%, -12%, 0) scale(0.9);
+  }
+  70% {
+    transform: translate3d(-10%, 4%, 0) scale(1.1);
+  }
+}
+
+@keyframes nova-aurora-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-aurora__blob {
+    animation: none !important;
+  }
+}

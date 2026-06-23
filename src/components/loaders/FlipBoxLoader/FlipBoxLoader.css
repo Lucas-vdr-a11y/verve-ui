@@ -1,0 +1,72 @@
+.nova-flip-box {
+  --nova-loader-color: var(--nova-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* track wider than the cube so it travels along a line */
+  width: calc(var(--nova-flip-size, 26px) * 3.4);
+  height: calc(var(--nova-flip-size, 26px) * 1.6);
+  color: var(--nova-loader-color);
+  line-height: 0;
+}
+
+.nova-flip-box[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-flip-box[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-flip-box[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-flip-box[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-flip-box[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-flip-box__cube {
+  width: var(--nova-flip-size, 26px);
+  height: var(--nova-flip-size, 26px);
+  border-radius: var(--nova-radius-xs);
+  background: var(--nova-loader-color);
+  box-shadow: 0 0 8px 0 currentColor, inset 0 0 0 1px rgb(255 255 255 / 0.15);
+  transform-origin: bottom right;
+  animation: nova-flip-roll 1.4s var(--nova-ease) infinite;
+}
+
+/* end-over-end: flip 90deg pivoting on the leading bottom corner, then shift origin */
+@keyframes nova-flip-roll {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(0) rotate(90deg);
+  }
+  50% {
+    transform: translateX(var(--nova-flip-size, 26px)) rotate(90deg);
+  }
+  75% {
+    transform: translateX(var(--nova-flip-size, 26px)) rotate(180deg);
+  }
+  100% {
+    transform: translateX(calc(var(--nova-flip-size, 26px) * 2)) rotate(180deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-flip-box__cube {
+    animation: nova-flip-fade 1.4s var(--nova-ease) infinite;
+    transform: none;
+  }
+  @keyframes nova-flip-fade {
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}

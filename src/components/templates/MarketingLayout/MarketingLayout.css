@@ -1,0 +1,126 @@
+/* MarketingLayout — landing-page wrapper with sticky transparent-to-solid nav. */
+.nova-marketing {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+  color: var(--nova-text);
+  background: var(--nova-bg);
+}
+
+/* Zero-height sentinel just above the sticky nav. */
+.nova-marketing__sentinel {
+  height: 0;
+}
+
+.nova-marketing__nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--nova-z-sticky);
+  box-sizing: border-box;
+  height: var(--nova-marketing-nav-h);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background var(--nova-duration-base) var(--nova-ease),
+    border-color var(--nova-duration-base) var(--nova-ease),
+    backdrop-filter var(--nova-duration-base) var(--nova-ease);
+}
+
+/* Scroll-driven solidification where supported: as the page scrolls past the
+ * nav height the bar gains a solid surface. Graceful fallback below. */
+@supports (animation-timeline: scroll()) {
+  .nova-marketing:not(.nova-marketing--solid-nav) .nova-marketing__nav {
+    animation: nova-marketing-solidify linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 var(--nova-marketing-nav-h);
+  }
+}
+
+@keyframes nova-marketing-solidify {
+  to {
+    background: var(--nova-surface);
+    border-bottom-color: var(--nova-border);
+    backdrop-filter: saturate(180%) blur(8px);
+  }
+}
+
+/* Solid-from-start variant, and the fallback for browsers without
+ * scroll-driven animations (translucent blurred surface). */
+.nova-marketing--solid-nav .nova-marketing__nav {
+  background: var(--nova-surface);
+  border-bottom-color: var(--nova-border);
+}
+
+@supports not (animation-timeline: scroll()) {
+  .nova-marketing:not(.nova-marketing--solid-nav) .nova-marketing__nav {
+    background: color-mix(in srgb, var(--nova-surface) 80%, transparent);
+    border-bottom-color: var(--nova-border);
+    backdrop-filter: saturate(180%) blur(8px);
+  }
+}
+
+.nova-marketing__nav-inner {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-6);
+  width: 100%;
+  max-width: 72rem;
+  height: 100%;
+  margin-inline: auto;
+  padding-inline: var(--nova-space-6);
+}
+
+.nova-marketing__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  flex: none;
+  font-weight: var(--nova-font-semibold);
+  font-size: var(--nova-text-lg);
+  color: var(--nova-text);
+}
+
+.nova-marketing__links {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-5);
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-marketing__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  flex: none;
+  margin-inline-start: auto;
+}
+
+.nova-marketing__main {
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  min-width: 0;
+  /* Pull content up under the transparent nav so the hero sits behind it. */
+  margin-top: calc(var(--nova-marketing-nav-h) * -1);
+}
+
+.nova-marketing--solid-nav .nova-marketing__main {
+  margin-top: 0;
+}
+
+.nova-marketing__footer {
+  box-sizing: border-box;
+  min-width: 0;
+  border-top: 1px solid var(--nova-border);
+  background: var(--nova-bg-subtle);
+}
+
+@media (max-width: 48rem) {
+  .nova-marketing__links {
+    display: none;
+  }
+}

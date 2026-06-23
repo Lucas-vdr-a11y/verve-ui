@@ -1,0 +1,151 @@
+.nova-togglechipgroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nova-space-2);
+  font-family: var(--nova-font-sans);
+}
+
+.nova-togglechipgroup--disabled {
+  opacity: 0.6;
+}
+
+/* ---- Chip --------------------------------------------------------------- */
+.nova-togglechipgroup__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  padding: var(--nova-space-1) var(--nova-space-3);
+  border: 1px solid var(--nova-border-strong);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+  line-height: var(--nova-leading-snug);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease),
+    border-color var(--nova-duration-fast) var(--nova-ease),
+    color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-togglechipgroup--sm .nova-togglechipgroup__chip {
+  padding: 2px var(--nova-space-2);
+  font-size: var(--nova-text-xs);
+}
+
+.nova-togglechipgroup--lg .nova-togglechipgroup__chip {
+  padding: var(--nova-space-2) var(--nova-space-4);
+  font-size: var(--nova-text-md);
+}
+
+.nova-togglechipgroup__chip:hover:not(:disabled) {
+  border-color: var(--nova-text-subtle);
+  background: var(--nova-surface-hover);
+}
+
+.nova-togglechipgroup__chip:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.nova-togglechipgroup__chip--selected {
+  background: var(--nova-primary);
+  border-color: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-togglechipgroup__chip--selected:hover:not(:disabled) {
+  background: var(--nova-primary-hover);
+  border-color: var(--nova-primary-hover);
+}
+
+.nova-togglechipgroup__check {
+  width: 0.85em;
+  height: 0.85em;
+  flex: 0 0 auto;
+}
+
+.nova-togglechipgroup__label {
+  white-space: nowrap;
+}
+
+.nova-togglechipgroup__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25em;
+  padding: 0 0.35em;
+  margin-left: var(--nova-space-1);
+  border-radius: var(--nova-radius-full);
+  font-size: 0.8em;
+  font-weight: var(--nova-font-semibold);
+  font-variant-numeric: tabular-nums;
+  background: var(--nova-bg-muted);
+  color: var(--nova-text-muted);
+}
+
+.nova-togglechipgroup__chip--selected .nova-togglechipgroup__count {
+  background: rgb(255 255 255 / 0.25);
+  color: var(--nova-text-on-brand);
+}
+
+/* ---- Add custom --------------------------------------------------------- */
+.nova-togglechipgroup__add {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-1);
+  padding: 2px 2px 2px var(--nova-space-3);
+  border: 1px dashed var(--nova-border-strong);
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface);
+}
+
+.nova-togglechipgroup__add-input {
+  width: 6rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--nova-text);
+  font-family: inherit;
+  font-size: var(--nova-text-sm);
+}
+
+.nova-togglechipgroup__add-input::placeholder {
+  color: var(--nova-text-subtle);
+}
+
+.nova-togglechipgroup__add-input:disabled {
+  cursor: not-allowed;
+}
+
+.nova-togglechipgroup__add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-primary-subtle);
+  color: var(--nova-primary-text);
+  cursor: pointer;
+  transition: background-color var(--nova-duration-fast) var(--nova-ease);
+}
+
+.nova-togglechipgroup__add-btn svg {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.nova-togglechipgroup__add-btn:hover:not(:disabled) {
+  background: var(--nova-primary);
+  color: var(--nova-text-on-brand);
+}
+
+.nova-togglechipgroup__add-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

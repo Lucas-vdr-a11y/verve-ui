@@ -1,0 +1,48 @@
+.nova-highlight-sweep {
+  --nova-highlight-sweep-color: rgb(99 102 241 / 0.28);
+  position: relative;
+  display: inline-block;
+  font-family: inherit;
+  color: var(--nova-text);
+  isolation: isolate;
+}
+
+[data-theme="dark"] .nova-highlight-sweep {
+  --nova-highlight-sweep-color: rgb(129 140 248 / 0.35);
+}
+
+.nova-highlight-sweep__text {
+  position: relative;
+  z-index: 1;
+}
+
+.nova-highlight-sweep__bar {
+  position: absolute;
+  left: -0.12em;
+  right: -0.12em;
+  height: var(--nova-highlight-sweep-height);
+  background: var(--nova-highlight-sweep-color);
+  border-radius: var(--nova-radius-xs);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--nova-duration-slow) var(--nova-ease-out);
+  z-index: 0;
+}
+
+.nova-highlight-sweep--behind .nova-highlight-sweep__bar {
+  bottom: 0.05em;
+}
+
+.nova-highlight-sweep--under .nova-highlight-sweep__bar {
+  bottom: -0.05em;
+  height: 0.18em;
+}
+
+.nova-highlight-sweep--in .nova-highlight-sweep__bar {
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-highlight-sweep__bar {
+    transition: none;
+  }
+}

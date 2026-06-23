@@ -1,0 +1,87 @@
+.nova-logo-orbit {
+  position: relative;
+  width: var(--nova-orbit-size);
+  height: var(--nova-orbit-size);
+  display: grid;
+  place-items: center;
+  color: var(--nova-text);
+}
+
+.nova-logo-orbit__path {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px dashed var(--nova-border);
+  border-radius: var(--nova-radius-full);
+  pointer-events: none;
+}
+
+.nova-logo-orbit__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+}
+
+/* Each ring is a zero-size point at center; it spins, carrying its slots. */
+.nova-logo-orbit__ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  z-index: 1;
+  animation: nova-logo-orbit-spin var(--nova-orbit-duration) linear infinite;
+}
+
+.nova-logo-orbit__ring--reverse {
+  animation-direction: reverse;
+}
+
+/* A slot is rotated to its angle then pushed out by the radius. */
+.nova-logo-orbit__slot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(var(--nova-orbit-angle))
+    translateX(var(--nova-orbit-radius));
+}
+
+/* Counter-rotate the item so it stays upright as the ring turns. */
+.nova-logo-orbit__item {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin: -1.5rem;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-surface-raised);
+  border: 1px solid var(--nova-border);
+  box-shadow: var(--nova-shadow-sm);
+  animation: nova-logo-orbit-spin var(--nova-orbit-duration) linear infinite
+    reverse;
+}
+
+.nova-logo-orbit__ring--reverse .nova-logo-orbit__item {
+  animation-direction: normal;
+}
+
+@keyframes nova-logo-orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-logo-orbit__ring,
+  .nova-logo-orbit__item {
+    animation: none;
+  }
+}

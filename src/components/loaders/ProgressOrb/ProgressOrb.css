@@ -1,0 +1,100 @@
+.nova-progress-orb {
+  --nova-loader-color: var(--nova-primary);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--nova-orb-size, 64px);
+  height: var(--nova-orb-size, 64px);
+  color: var(--nova-loader-color);
+}
+
+.nova-progress-orb[data-tone="primary"] {
+  --nova-loader-color: var(--nova-primary);
+}
+.nova-progress-orb[data-tone="success"] {
+  --nova-loader-color: var(--nova-success);
+}
+.nova-progress-orb[data-tone="warning"] {
+  --nova-loader-color: var(--nova-warning);
+}
+.nova-progress-orb[data-tone="danger"] {
+  --nova-loader-color: var(--nova-danger);
+}
+.nova-progress-orb[data-tone="info"] {
+  --nova-loader-color: var(--nova-info);
+}
+
+.nova-progress-orb__shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--nova-radius-full);
+  background: var(--nova-bg-muted);
+  border: 2px solid var(--nova-border);
+  box-shadow: inset 0 0 8px -2px currentColor, 0 0 10px -4px currentColor;
+}
+
+.nova-progress-orb__liquid {
+  position: absolute;
+  left: -25%;
+  right: -25%;
+  bottom: 0;
+  /* fill height tracks the value via the --nova-orb-fill ratio */
+  height: calc(var(--nova-orb-fill, 0) * 100%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--nova-loader-color) 80%, white),
+    var(--nova-loader-color)
+  );
+  transition: height var(--nova-duration-slow) var(--nova-ease-out);
+}
+
+/* the wobbling liquid surface — a wide blob that bobs side to side */
+.nova-progress-orb__liquid::before,
+.nova-progress-orb__liquid::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 200%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -75%);
+  border-radius: 42% 58% 43% 57% / 55% 48% 52% 45%;
+  background: inherit;
+}
+
+.nova-progress-orb__liquid::before {
+  animation: nova-orb-wobble 3.2s linear infinite;
+  opacity: 0.85;
+}
+
+.nova-progress-orb__liquid::after {
+  animation: nova-orb-wobble 2.4s linear infinite reverse;
+  opacity: 0.6;
+}
+
+@keyframes nova-orb-wobble {
+  to {
+    transform: translate(-50%, -75%) rotate(360deg);
+  }
+}
+
+.nova-progress-orb__value {
+  position: relative;
+  z-index: var(--nova-z-base);
+  font-family: var(--nova-font-sans);
+  font-size: calc(var(--nova-orb-size, 64px) * 0.26);
+  font-weight: var(--nova-font-semibold);
+  color: var(--nova-text);
+  mix-blend-mode: difference;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-progress-orb__liquid::before,
+  .nova-progress-orb__liquid::after {
+    animation: none;
+    border-radius: 50%;
+  }
+}
